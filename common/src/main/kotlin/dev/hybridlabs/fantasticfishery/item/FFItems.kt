@@ -1,8 +1,13 @@
 package dev.hybridlabs.fantasticfishery.item
 
+import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
+import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
+import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.Mob
 import net.minecraft.world.food.FoodProperties
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.SpawnEggItem
 import java.util.function.Supplier
 
 object FFItems {
@@ -191,7 +196,21 @@ object FFItems {
         )
     }
 
+    val FUNGILL_SPAWN_EGG =
+        registerSpawnEgg("fungill_spawn_egg", FFEntityTypes.FUNGILL, 0xFFFFFF, 0xFFFFFF)
+
+
     private fun register(id: String, item: Supplier<Item>): Supplier<Item> {
         return FantasticFisheryCommon.ITEMS.register(id, item)
+    }
+
+    private fun <T : Mob> registerSpawnEgg(
+        id: String,
+        type: Supplier<EntityType<T>>,
+        primaryColor: Int,
+        secondaryColor: Int,
+    ): Supplier<SpawnEggItem> {
+        return PLATFORM.registerSpawnEggItem(id, { type.get() }, primaryColor, secondaryColor)
+
     }
 }

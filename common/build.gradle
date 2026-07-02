@@ -59,6 +59,8 @@ dependencies {
     implementation 'org.jetbrains:annotations:25.0.0'
 
     //We load the Forge version of any included mod dependencies
+    modImplementation "software.bernie.geckolib:geckolib-forge-$geckolib_version"
+
     modImplementation("maven.modrinth:hybrid-aquatic:${aquatic_version}-forge") {
         transitive = false
     }

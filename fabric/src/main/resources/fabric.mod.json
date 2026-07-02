@@ -30,6 +30,12 @@
 				"adapter": "kotlin"
 			}
 		],
+        "client": [
+          {
+            "value": "dev.hybridlabs.fantasticfishery.FantasticFisheryClient",
+            "adapter": "kotlin"
+          }
+      ],
 		"fabric-datagen": [
 			{
 				"value": "dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator",

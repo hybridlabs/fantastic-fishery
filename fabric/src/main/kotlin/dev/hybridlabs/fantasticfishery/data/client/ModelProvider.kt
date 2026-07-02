@@ -1,14 +1,34 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
+import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.data.models.BlockModelGenerators
 import net.minecraft.data.models.ItemModelGenerators
+import net.minecraft.data.models.model.ModelLocationUtils
 import net.minecraft.data.models.model.ModelTemplates
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
-    override fun generateBlockStateModels(generator: BlockModelGenerators) {}
+    override fun generateBlockStateModels(generator: BlockModelGenerators) {
+        generator.run {
+
+            BuiltInRegistries.ITEM
+                .filter(filterFantasticFishery(BuiltInRegistries.ITEM))
+                .filter { item ->
+                    item in setOf(
+                        FFItems.FUNGILL_SPAWN_EGG.get(),
+                    )
+                }
+                .forEach { item ->
+                    delegateItemModel(
+                        item,
+                        ModelLocationUtils.decorateItemModelLocation("template_spawn_egg")
+                    )
+                }
+        }
+    }
 
     override fun generateItemModels(generator: ItemModelGenerators) {
         setOf(

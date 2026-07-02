@@ -1,4 +1,6 @@
 package dev.hybridlabs.fantasticfishery
+import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
+import dev.hybridlabs.fantasticfishery.entity.ForgeSpawnGroupRegistry
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.minecraftforge.fml.common.Mod
@@ -15,11 +17,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 @Suppress("UnusedExpression")
 @Mod(Constants.MOD_ID)
 object FantasticFisheryForge {
-    private val LOGGER = Constants.LOG
+    private val LOGGER = Constants.LOGGER
 
     init {
         FantasticFisheryCommon.init()
 
+        ForgeSpawnGroupRegistry.createFantasticFisherySpawnGroups()
+
+        FFEntityTypes
         FFItems
         FFItemGroups
     }

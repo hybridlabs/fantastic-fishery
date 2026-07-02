@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.platform;
 
 import dev.hybridlabs.fantasticfishery.Constants;
-import dev.hybridlabs.fantasticfishery.platform.services.*;
 import dev.hybridlabs.fantasticfishery.platform.services.PlatformHelper;
 
 import java.util.ServiceLoader;
@@ -26,7 +25,7 @@ public class Services {
 
         final T loadedService = ServiceLoader.load(clazz).findFirst().orElseThrow(() -> new NullPointerException(
                 "Failed to load service for " + clazz.getName()));
-        Constants.LOG.debug("Loaded {} for service {}", loadedService, clazz);
+        Constants.LOGGER.debug("Loaded {} for service {}", loadedService, clazz);
         return loadedService;
     }
 }

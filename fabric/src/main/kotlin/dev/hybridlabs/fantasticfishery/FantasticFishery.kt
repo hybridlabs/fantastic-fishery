@@ -1,25 +1,45 @@
 package dev.hybridlabs.fantasticfishery
 
-import dev.hybridlabs.fantasticfishery.item.FFItems
+import dev.hybridlabs.fantasticfishery.config.ConfigHelper
+import dev.hybridlabs.fantasticfishery.config.FFConfig
+import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
+import dev.hybridlabs.fantasticfishery.entity.SpawnRestrictionRegistry
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
+import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.api.ModInitializer
-import net.fabricmc.loader.api.FabricLoader
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
 
 object FantasticFishery : ModInitializer {
-	const val MOD_ID: String = "fantastic_fishery"
-	const val MOD_NAME: String = "Fantastic Fishery"
 
-	private val logger: Logger = LoggerFactory.getLogger(MOD_NAME)
+    private val logger = Constants.LOGGER
 
-	val loader: FabricLoader = FabricLoader.getInstance()
-
+    @Suppress("UnusedExpression")
 	override fun onInitialize() {
-		logger.info("Initializing $MOD_NAME")
+        val configHandler = ConfigHelper.initializeConfig(FantasticFisheryCommon.CONFIG_FILE)
+        logger.info("Initializing ${Constants.MOD_NAME}")
         FantasticFisheryCommon.init()
+
+        FFEntityTypes
 
         FFItems
         FFItemGroups
+
+        SpawnRestrictionRegistry.registerSpawnRestrictions()
+
+        registerBiomeModifications(configHandler.config)
 	}
+
+    private fun registerBiomeModifications(config: FFConfig) {
+        config.entitySpawnConfig.forEach { config ->
+            BiomeModifications.addSpawn(
+                BiomeSelectors.tag(config.biomes),
+                config.group,
+                config.type,
+                config.weight,
+                config.minGroupSize,
+                config.maxGroupSize
+            )
+        }
+    }
 }
