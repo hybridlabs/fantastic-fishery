@@ -1,0 +1,27 @@
+package dev.hybridlabs.fantasticfishery.data
+
+import dev.hybridlabs.fantasticfishery.Constants
+import dev.hybridlabs.fantasticfishery.data.client.LanguageProvider
+import dev.hybridlabs.fantasticfishery.data.client.ModelProvider
+import dev.hybridlabs.fantasticfishery.data.server.RecipeProvider
+import dev.hybridlabs.fantasticfishery.data.server.ItemTagProvider
+import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
+import net.minecraft.core.Registry
+
+object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
+    override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
+        val pack = generator.createPack()
+        pack.addProvider(::LanguageProvider)
+        pack.addProvider(::ModelProvider)
+        pack.addProvider(::ItemTagProvider)
+        pack.addProvider(::RecipeProvider)
+    }
+
+    fun <T> filterFantasticFishery(registry: Registry<T>): (T & Any) -> Boolean {
+        return { o ->
+            val id = registry.getKey(o)
+            id!!.namespace == Constants.MOD_ID
+        }
+    }
+}

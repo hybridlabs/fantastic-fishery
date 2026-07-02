@@ -1,0 +1,53 @@
+{
+	"schemaVersion": 1,
+	"id": "fantastic_fishery",
+	"version": "${version}",
+
+	"name": "Fantastic Fishery",
+	"description": "A mod that adds fantastical fish to your world",
+
+	"authors": [
+		"MysticKoko",
+		"Aqua",
+		"Andante",
+		"Eggo",
+		"murphy slaw"
+	],
+
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+
+	"license": "MIT",
+	"icon": "assets/fantastic_fishery/icon.png",
+
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "dev.hybridlabs.fantasticfishery.FantasticFishery",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator",
+				"adapter": "kotlin"
+			}
+		]
+	},
+
+  "mixins": [
+    "fantastic_fishery.mixins.json",
+    "fantastic_fishery.fabric.mixins.json"
+  ],
+
+	"depends": {
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-language-kotlin": "*",
+		"fabric-api": ">=0.92",
+		"hybrid_aquatic": ">=1.6.3"
+	}
+}
