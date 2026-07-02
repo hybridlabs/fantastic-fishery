@@ -37,7 +37,7 @@ object FFEntityTypes {
             entityFactory,
             dimensions,
             attributeContainer,
-            Services.PLATFORM.getHybridMobCategoryByName("fish"),
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
             trackingRange,
         )
     }

@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
-import dev.hybridlabs.aquatic.entity.HAEntityTypes
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
@@ -10,6 +9,8 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output) {
     override fun generateTranslations(builder: TranslationBuilder) {
@@ -61,7 +62,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             }
 
         if (nonPresentEntityNames.isNotEmpty()) {
-            throw IllegalStateException("Entity to display name map does not contain ${nonPresentEntityNames.joinToString()}. Please modify ${javaClass.simpleName} accordingly.")
+            logger.error("Entity to display name map does not contain elements. Please modify ${javaClass.simpleName} accordingly. The following are not present: \n${nonPresentEntityNames.joinToString(separator = "\n")}")
         }
 
         // generate entity and entity spawn egg translations
@@ -73,5 +74,9 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             builder.add(translationKey, translation)
             builder.add("item.$namespace.${path}_spawn_egg", "$translation Spawn Egg")
         }
+    }
+
+    companion object {
+        private val logger: Logger = LoggerFactory.getLogger(LanguageProvider::class.java)
     }
 }
