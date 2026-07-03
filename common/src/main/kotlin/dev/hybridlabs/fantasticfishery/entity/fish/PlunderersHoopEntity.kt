@@ -4,21 +4,29 @@ import dev.hybridlabs.aquatic.entity.ai.MobTargetConfiguration
 import dev.hybridlabs.aquatic.entity.ai.goal.boids.BoidGoal
 import dev.hybridlabs.aquatic.entity.base.HASchoolingFishEntity
 import dev.hybridlabs.aquatic.tag.HAEntityTags
+import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
+import net.minecraft.sounds.SoundEvents
 import net.minecraft.util.ByIdMap
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.DifficultyInstance
+import net.minecraft.world.InteractionHand
+import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobSpawnType
 import net.minecraft.world.entity.SpawnGroupData
 import net.minecraft.world.entity.VariantHolder
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.Items
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
+import net.minecraft.world.level.gameevent.GameEvent
 import java.util.function.IntFunction
 import kotlin.random.Random
 
@@ -52,6 +60,26 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
         return super.finalizeSpawn(world, difficulty, spawnReason, entityData, entityNbt)
     }
 
+    var coreTimer: Int
+        get() = entityData.get(CORE_TIMER)
+        set(value) = entityData.set(CORE_TIMER, value)
+
+    override fun mobInteract(player: Player, hand: InteractionHand): InteractionResult {
+        val itemStack = player.getItemInHand(hand)
+        if (!itemStack.isEmpty && itemStack.`is`(Items.SHEARS) && coreTimer == 0) {
+            if (!level().isClientSide) {
+                this.coreTimer = 3600
+                this.playSound(SoundEvents.SHEEP_SHEAR, 1.0f, 1.0f)
+                this.gameEvent(GameEvent.SHEAR, player)
+                itemStack.hurtAndBreak(1, player) { it.broadcastBreakEvent(hand) }
+                spawnAtLocation(ItemStack(FFItems.PLUNDERERS_CORE.get()))
+                return InteractionResult.SUCCESS
+            }
+            return InteractionResult.CONSUME
+        }
+        return super.mobInteract(player, hand)
+    }
+
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
             return createLivingAttributes()
@@ -63,6 +91,8 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
         }
 
         val TYPE: EntityDataAccessor<Int> =
+            SynchedEntityData.defineId(PlunderersHoopEntity::class.java, EntityDataSerializers.INT)
+        val CORE_TIMER: EntityDataAccessor<Int> =
             SynchedEntityData.defineId(PlunderersHoopEntity::class.java, EntityDataSerializers.INT)
 
         enum class Type(val id: Int, private val key: String) : StringRepresentable {
@@ -95,16 +125,19 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
 
     override fun defineSynchedData() {
         entityData.define(TYPE, 0)
+        entityData.define(CORE_TIMER, 0)
         super.defineSynchedData()
     }
 
     override fun addAdditionalSaveData(compound: CompoundTag) {
         compound.putString("Type", this.variant.serializedName)
+        compound.putInt("coreTimer", coreTimer)
         super.addAdditionalSaveData(compound)
     }
 
     override fun readAdditionalSaveData(compound: CompoundTag) {
         this.variant = Type.byName(compound.getString("Type"))
+        this.coreTimer = compound.getInt("coreTimer")
         super.readAdditionalSaveData(compound)
     }
 

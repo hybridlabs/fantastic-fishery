@@ -2,6 +2,7 @@ package dev.hybridlabs.fantasticfishery.entity
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
@@ -28,6 +29,13 @@ object FFEntityTypes {
         ::PlunderersHoopEntity,
         EntityDimensions.fixed(0.6f, 0.75f),
         PlunderersHoopEntity::createMobAttributes
+    )
+
+    val MORSEL = registerFish(
+        "morsel",
+        ::MorselEntity,
+        EntityDimensions.fixed(0.6f, 0.6f),
+        MorselEntity::createMobAttributes
     )
     //#endregion
 

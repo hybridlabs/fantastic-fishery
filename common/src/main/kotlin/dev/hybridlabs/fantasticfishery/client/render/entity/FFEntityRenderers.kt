@@ -3,6 +3,7 @@ package dev.hybridlabs.fantasticfishery.client.render.entity
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.ClientServices
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FungillEntityRenderer
+import dev.hybridlabs.fantasticfishery.client.render.entity.fish.MorselEntityRenderer
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.PlunderersHoopEntityRenderer
 
 @Suppress("unused")
@@ -18,5 +19,11 @@ object FFEntityRenderers {
         ClientServices.PLATFORM.registerEntityRenderer(
             FFEntityTypes.PLUNDERERS_HOOP,
             ::PlunderersHoopEntityRenderer
+        )
+
+    val MORSEL =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            FFEntityTypes.MORSEL,
+            ::MorselEntityRenderer
         )
 }

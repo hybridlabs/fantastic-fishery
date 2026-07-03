@@ -3,6 +3,7 @@ package dev.hybridlabs.fantasticfishery.config
 import dev.hybridlabs.aquatic.tag.HABiomeTags
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services
+import net.minecraft.tags.BiomeTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.MobCategory
@@ -22,14 +23,21 @@ class EntitySpawnConfigGenerator {
                 HABiomeTags.TEMPERATE_OCEANS,
                 HABiomeTags.LUKEWARM_OCEANS,
                 HABiomeTags.WARM_OCEANS),
-            1, 1, 3
+            10, 1, 3
         )
 
         addFish(
             FFEntityTypes.PLUNDERERS_HOOP.get(),
             listOf(
                 HABiomeTags.ALL_TRENCHES),
-            1, 1, 5
+            10, 1, 5
+        )
+
+        addFish(
+            FFEntityTypes.MORSEL.get(),
+            listOf(
+                BiomeTags.IS_OCEAN),
+            1, 1, 1
         )
     }
 

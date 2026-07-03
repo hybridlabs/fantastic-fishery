@@ -16,6 +16,7 @@ object SpawnRestrictionRegistry {
     fun registerSpawnRestrictions() {
         setOf(
             FFEntityTypes.FUNGILL.get(),
+            FFEntityTypes.MORSEL.get(),
         ).forEach { registerFish(it) }
 
         setOf(

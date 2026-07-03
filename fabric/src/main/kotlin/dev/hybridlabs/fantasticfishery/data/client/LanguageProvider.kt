@@ -29,8 +29,17 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFItems.OMPAX.get() to "Ompax",
             FFItems.BACKWARD_TROUT.get() to "Backward Trout",
             FFItems.CONSTELLATION_FISH.get() to "Constellation Fish",
+
             FFItems.MORSEL.get() to "Morsel",
+            FFItems.MORSEL_BUCKET.get() to "Bucket Of Morsel",
+            FFItems.MORSEL_BAR.get() to "Morsel Bar",
+            FFItems.MORSEL_POP.get() to "Morsel Pop",
+
             FFItems.PLUNDERERS_HOOP.get() to "Plunderer's Hoop",
+            FFItems.PLUNDERERS_HOOP_BUCKET.get() to "Bucket Of Plunderer's Hoop",
+            FFItems.PLUNDERERS_CORE.get() to "Plunderer's Core",
+            FFItems.STAR_DONUT.get() to "Star Donut",
+
             FFItems.ROTTEN_COD.get() to "Rotten Cod",
             FFItems.PLASMAFIN.get() to "Plasmafin",
             FFItems.POROUS_SHELL.get() to "Porous Shell",
@@ -47,6 +56,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         val entityNameMap = mapOf(
             FFEntityTypes.FUNGILL.get() to "Fungill",
             FFEntityTypes.PLUNDERERS_HOOP.get() to "Plunderers Hoop",
+            FFEntityTypes.MORSEL.get() to "Morsel",
         )
 
         // verify display name list is valid
