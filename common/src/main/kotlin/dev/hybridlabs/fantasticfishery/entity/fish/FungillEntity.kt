@@ -32,7 +32,7 @@ class FungillEntity(type: EntityType<out FungillEntity>, world: Level) :
     )
 
     override fun getMaxSpawnClusterSize(): Int {
-        return 2
+        return 3
     }
 
     override fun finalizeSpawn(
