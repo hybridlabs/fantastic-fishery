@@ -46,6 +46,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         // create map of entities to their display names
         val entityNameMap = mapOf(
             FFEntityTypes.FUNGILL.get() to "Fungill",
+            FFEntityTypes.PLUNDERERS_HOOP.get() to "Plunderers Hoop",
         )
 
         // verify display name list is valid

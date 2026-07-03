@@ -24,6 +24,13 @@ class EntitySpawnConfigGenerator {
                 HABiomeTags.WARM_OCEANS),
             1, 1, 3
         )
+
+        addFish(
+            FFEntityTypes.PLUNDERERS_HOOP.get(),
+            listOf(
+                HABiomeTags.ALL_TRENCHES),
+            1, 1, 5
+        )
     }
 
     private fun addFish(

@@ -2,6 +2,7 @@ package dev.hybridlabs.fantasticfishery.entity
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.entity.EntityDimensions
@@ -20,6 +21,13 @@ object FFEntityTypes {
         ::FungillEntity,
         EntityDimensions.fixed(0.6f, 0.5f),
         FungillEntity::createMobAttributes
+    )
+
+    val PLUNDERERS_HOOP = registerFish(
+        "plunderers_hoop",
+        ::PlunderersHoopEntity,
+        EntityDimensions.fixed(0.6f, 0.75f),
+        PlunderersHoopEntity::createMobAttributes
     )
     //#endregion
 

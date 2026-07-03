@@ -17,10 +17,18 @@ object SpawnRestrictionRegistry {
         setOf(
             FFEntityTypes.FUNGILL.get(),
         ).forEach { registerFish(it) }
+
+        setOf(
+            FFEntityTypes.PLUNDERERS_HOOP.get(),
+        ).forEach { registerDeepFish(it) }
     }
 
     private fun <T : HAWaterAnimal> registerFish(entityType: EntityType<T>) {
         registerFish(entityType, HAFishEntity::canSpawn)
+    }
+
+    private fun <T : HAWaterAnimal> registerDeepFish(entityType: EntityType<T>) {
+        registerDeepFish(entityType, HAFishEntity::canDeepSpawn)
     }
 
     private fun <T : WaterAnimal> registerWaterCreature(
@@ -35,6 +43,17 @@ object SpawnRestrictionRegistry {
     }
 
     private fun <T : HAWaterAnimal> registerFish(
+        entityType: EntityType<T>,
+        predicate: SpawnPlacements.SpawnPredicate<T>,
+    ) {
+        register(
+            entityType,
+            SpawnPlacements.Type.IN_WATER,
+            predicate
+        )
+    }
+
+    private fun <T : HAWaterAnimal> registerDeepFish(
         entityType: EntityType<T>,
         predicate: SpawnPlacements.SpawnPredicate<T>,
     ) {

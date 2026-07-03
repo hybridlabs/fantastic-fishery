@@ -6,4 +6,4 @@ import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context
 
 class FungillEntityRenderer(context: Context) :
-    HAFishEntityRenderer<FungillEntity>(context, FungillEntityModel(), false, false)
+    HAFishEntityRenderer<FungillEntity>(context, FungillEntityModel(), true, false)

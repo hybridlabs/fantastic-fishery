@@ -19,6 +19,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 .filter { item ->
                     item in setOf(
                         FFItems.FUNGILL_SPAWN_EGG.get(),
+                        FFItems.PLUNDERERS_HOOP_SPAWN_EGG.get(),
                     )
                 }
                 .forEach { item ->

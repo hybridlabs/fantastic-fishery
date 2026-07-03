@@ -198,6 +198,8 @@ object FFItems {
 
     val FUNGILL_SPAWN_EGG =
         registerSpawnEgg("fungill_spawn_egg", FFEntityTypes.FUNGILL, 0xFFFFFF, 0xFFFFFF)
+    val PLUNDERERS_HOOP_SPAWN_EGG =
+        registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP, 0xFFFFFF, 0xFFFFFF)
 
 
     private fun register(id: String, item: Supplier<Item>): Supplier<Item> {
