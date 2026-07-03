@@ -1,5 +1,6 @@
 {
   "entity.fantastic_fishery.fungill": "Fungill",
+  "entity.fantastic_fishery.plunderers_hoop": "Plunderers Hoop",
   "item.fantastic_fishery.backward_trout": "Backward Trout",
   "item.fantastic_fishery.blood_eel": "Blood Eel",
   "item.fantastic_fishery.clubhead": "Clubhead",
@@ -12,6 +13,7 @@
   "item.fantastic_fishery.ompax": "Ompax",
   "item.fantastic_fishery.plasmafin": "Plasmafin",
   "item.fantastic_fishery.plunderers_hoop": "Plunderer's Hoop",
+  "item.fantastic_fishery.plunderers_hoop_spawn_egg": "Plunderers Hoop Spawn Egg",
   "item.fantastic_fishery.porous_shell": "Porous Shell",
   "item.fantastic_fishery.rotten_cod": "Rotten Cod",
   "itemGroup.fantastic_fishery.items": "Fantastic Fishery"
