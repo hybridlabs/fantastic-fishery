@@ -21,6 +21,8 @@ object SpawnRestrictionRegistry {
 
         setOf(
             FFEntityTypes.PLUNDERERS_HOOP.get(),
+            FFEntityTypes.BLOOD_EEL.get(),
+            FFEntityTypes.POROUS_SHELL.get(),
         ).forEach { registerDeepFish(it) }
     }
 

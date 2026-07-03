@@ -26,9 +26,6 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         mapOf(
             FFItems.FRIGID_VESSEL.get() to "Frigid Vessel",
             FFItems.FUNGILL.get() to "Fungill",
-            FFItems.OMPAX.get() to "Ompax",
-            FFItems.BACKWARD_TROUT.get() to "Backward Trout",
-            FFItems.CONSTELLATION_FISH.get() to "Constellation Fish",
 
             FFItems.MORSEL.get() to "Morsel",
             FFItems.MORSEL_BUCKET.get() to "Bucket Of Morsel",
@@ -40,12 +37,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFItems.PLUNDERERS_CORE.get() to "Plunderer's Core",
             FFItems.STAR_DONUT.get() to "Star Donut",
 
-            FFItems.ROTTEN_COD.get() to "Rotten Cod",
-            FFItems.PLASMAFIN.get() to "Plasmafin",
             FFItems.POROUS_SHELL.get() to "Porous Shell",
             FFItems.BLOOD_EEL.get() to "Blood Eel",
-            FFItems.HAWALANZA.get() to "Hawalanza",
-            FFItems.CLUBHEAD.get() to "Clubhead",
         ).forEach { (item, translation) ->
             builder.add(item, translation)
         }
@@ -57,6 +50,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFEntityTypes.FUNGILL.get() to "Fungill",
             FFEntityTypes.PLUNDERERS_HOOP.get() to "Plunderers Hoop",
             FFEntityTypes.MORSEL.get() to "Morsel",
+            FFEntityTypes.POROUS_SHELL.get() to "Porous Shell",
+            FFEntityTypes.BLOOD_EEL.get() to "Blood Eel",
         )
 
         // verify display name list is valid

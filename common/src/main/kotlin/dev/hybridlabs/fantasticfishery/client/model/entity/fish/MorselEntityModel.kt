@@ -15,7 +15,6 @@ class MorselEntityModel : HAFishEntityModel<MorselEntity>("morsel") {
         return MORSEL_MODEL
     }
 
-
     override fun getAnimationResource(animatable: MorselEntity): ResourceLocation {
         return MORSEL_ANIMATION
     }

@@ -1,0 +1,69 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 8, 0]
+				},
+				{
+					"name": "torso",
+					"parent": "body",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 0, -8], "size": [6, 16, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "anal_fin",
+					"parent": "torso",
+					"pivot": [0, 0, 5],
+					"cubes": [
+						{"origin": [0, -4, 0], "size": [0, 6, 10], "uv": [26, 32]}
+					]
+				},
+				{
+					"name": "dorsal_fin",
+					"parent": "torso",
+					"pivot": [0, 17, 3.5],
+					"cubes": [
+						{"origin": [0, 14, -3], "size": [0, 6, 13], "uv": [0, 32]}
+					]
+				},
+				{
+					"name": "left_pelvic_fin",
+					"parent": "torso",
+					"pivot": [0, 0, -2.5],
+					"cubes": [
+						{"origin": [0, -4, -4], "size": [0, 4, 3], "pivot": [0, 0, -2.5], "rotation": [0, 0, -22.5], "uv": [44, 18]}
+					]
+				},
+				{
+					"name": "right_pelvic_fin",
+					"parent": "torso",
+					"pivot": [0, 0, -2.5],
+					"cubes": [
+						{"origin": [0, -4, -4], "size": [0, 4, 3], "pivot": [0, 0, -2.5], "rotation": [0, 0, 22.5], "uv": [44, 18], "mirror": true}
+					]
+				},
+				{
+					"name": "tail",
+					"parent": "torso",
+					"pivot": [0, 8, 8],
+					"cubes": [
+						{"origin": [0, 2, 8], "size": [0, 12, 6], "uv": [44, 0]}
+					]
+				}
+			]
+		}
+	]
+}

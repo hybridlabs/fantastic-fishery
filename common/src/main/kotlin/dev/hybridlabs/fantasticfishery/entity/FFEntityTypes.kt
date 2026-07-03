@@ -1,9 +1,11 @@
 package dev.hybridlabs.fantasticfishery.entity
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
+import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.entity.EntityDimensions
@@ -36,6 +38,20 @@ object FFEntityTypes {
         ::MorselEntity,
         EntityDimensions.fixed(0.6f, 0.6f),
         MorselEntity::createMobAttributes
+    )
+
+    val POROUS_SHELL = registerFish(
+        "porous_shell",
+        ::PorousShellEntity,
+        EntityDimensions.fixed(0.9f, 0.9f),
+        PorousShellEntity::createMobAttributes
+    )
+
+    val BLOOD_EEL = registerFish(
+        "blood_eel",
+        ::BloodEelEntity,
+        EntityDimensions.fixed(0.5f, 0.4f),
+        BloodEelEntity::createMobAttributes
     )
     //#endregion
 

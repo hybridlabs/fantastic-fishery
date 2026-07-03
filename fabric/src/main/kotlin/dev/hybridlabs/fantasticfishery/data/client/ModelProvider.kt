@@ -21,6 +21,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                         FFItems.FUNGILL_SPAWN_EGG.get(),
                         FFItems.PLUNDERERS_HOOP_SPAWN_EGG.get(),
                         FFItems.MORSEL_SPAWN_EGG.get(),
+                        FFItems.POROUS_SHELL_SPAWN_EGG.get(),
+                        FFItems.BLOOD_EEL_SPAWN_EGG.get(),
                     )
                 }
                 .forEach { item ->
@@ -36,18 +38,11 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         setOf(
             FFItems.FRIGID_VESSEL.get(),
             FFItems.FUNGILL.get(),
-            FFItems.OMPAX.get(),
-            FFItems.BACKWARD_TROUT.get(),
-            FFItems.CONSTELLATION_FISH.get(),
             FFItems.MORSEL.get(),
             FFItems.MORSEL_BAR.get(),
             FFItems.MORSEL_POP.get(),
-            FFItems.ROTTEN_COD.get(),
-            FFItems.PLASMAFIN.get(),
             FFItems.POROUS_SHELL.get(),
             FFItems.BLOOD_EEL.get(),
-            FFItems.HAWALANZA.get(),
-            FFItems.CLUBHEAD.get(),
             FFItems.MORSEL_BUCKET.get(),
             FFItems.PLUNDERERS_HOOP.get(),
             FFItems.PLUNDERERS_HOOP_BUCKET.get(),

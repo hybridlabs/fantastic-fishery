@@ -45,50 +45,6 @@ object FFItems {
         )
     }
 
-
-    val OMPAX = register(
-        "ompax",
-    ) {
-        Item(
-            Item.Properties()
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(1)
-                        .saturationMod(0.2F)
-                        .build()
-                )
-        )
-    }
-
-
-    val BACKWARD_TROUT = register(
-        "backward_trout",
-    ) {
-        Item(
-            Item.Properties()
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(1)
-                        .saturationMod(0.2F)
-                        .build()
-                )
-        )
-    }
-
-    val CONSTELLATION_FISH = register(
-        "constellation_fish",
-    ) {
-        Item(
-            Item.Properties()
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(1)
-                        .saturationMod(0.2F)
-                        .build()
-                )
-        )
-    }
-
     val MORSEL = register(
         "morsel",
     ) {
@@ -166,34 +122,6 @@ object FFItems {
         )
     }
 
-    val ROTTEN_COD = register(
-        "rotten_cod",
-    ) {
-        Item(
-            Item.Properties()
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(1)
-                        .saturationMod(0.2F)
-                        .build()
-                )
-        )
-    }
-
-    val PLASMAFIN = register(
-        "plasmafin",
-    ) {
-        Item(
-            Item.Properties()
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(1)
-                        .saturationMod(0.2F)
-                        .build()
-                )
-        )
-    }
-
     val POROUS_SHELL = register(
         "porous_shell",
     ) {
@@ -219,24 +147,6 @@ object FFItems {
                         .saturationMod(0.2F)
                         .build()
                 )
-        )
-    }
-
-    val HAWALANZA = register(
-        "hawalanza",
-    ) {
-        Item(
-            Item.Properties()
-                .stacksTo(1)
-        )
-    }
-
-    val CLUBHEAD = register(
-        "clubhead",
-    ) {
-        Item(
-            Item.Properties()
-                .stacksTo(1)
         )
     }
 
@@ -270,6 +180,10 @@ object FFItems {
         registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP, 0xFFFFFF, 0xFFFFFF)
     val MORSEL_SPAWN_EGG =
         registerSpawnEgg("morsel_spawn_egg", FFEntityTypes.MORSEL, 0xFFFFFF, 0xFFFFFF)
+    val POROUS_SHELL_SPAWN_EGG =
+        registerSpawnEgg("porous_shell_spawn_egg", FFEntityTypes.POROUS_SHELL, 0xFFFFFF, 0xFFFFFF)
+    val BLOOD_EEL_SPAWN_EGG =
+        registerSpawnEgg("blood_eel_spawn_egg", FFEntityTypes.BLOOD_EEL, 0xFFFFFF, 0xFFFFFF)
 
     private fun register(id: String, item: Supplier<Item>): Supplier<Item> {
         return FantasticFisheryCommon.ITEMS.register(id, item)
