@@ -46,6 +46,17 @@ class EntityTypeLootTableProvider(output: FabricDataOutput) :
             )
         }
 
+        export(exporter, FFEntityTypes.FRIGID_VESSEL.get()) {
+            pool(
+                LootPool.lootPool()
+                    .add(
+                        LootItem.lootTableItem(FFItems.FRIGID_VESSEL.get())
+                            .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                    ).build()
+            )
+        }
+
         export(exporter, FFEntityTypes.BLOOD_EEL.get()) {
             pool(
                 LootPool.lootPool()

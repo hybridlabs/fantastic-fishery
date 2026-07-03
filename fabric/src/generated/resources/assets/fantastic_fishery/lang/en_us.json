@@ -1,5 +1,6 @@
 {
   "entity.fantastic_fishery.blood_eel": "Blood Eel",
+  "entity.fantastic_fishery.frigid_vessel": "Frigid Vessel",
   "entity.fantastic_fishery.fungill": "Fungill",
   "entity.fantastic_fishery.morsel": "Morsel",
   "entity.fantastic_fishery.plunderers_hoop": "Plunderers Hoop",
@@ -7,6 +8,7 @@
   "item.fantastic_fishery.blood_eel": "Blood Eel",
   "item.fantastic_fishery.blood_eel_spawn_egg": "Blood Eel Spawn Egg",
   "item.fantastic_fishery.frigid_vessel": "Frigid Vessel",
+  "item.fantastic_fishery.frigid_vessel_spawn_egg": "Frigid Vessel Spawn Egg",
   "item.fantastic_fishery.fungill": "Fungill",
   "item.fantastic_fishery.fungill_spawn_egg": "Fungill Spawn Egg",
   "item.fantastic_fishery.morsel": "Morsel",

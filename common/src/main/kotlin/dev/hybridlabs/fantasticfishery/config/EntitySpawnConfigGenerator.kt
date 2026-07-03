@@ -34,6 +34,13 @@ class EntitySpawnConfigGenerator {
         )
 
         addFish(
+            FFEntityTypes.FRIGID_VESSEL.get(),
+            listOf(
+                HABiomeTags.FROZEN_OCEANS),
+            10, 1, 5
+        )
+
+        addFish(
             FFEntityTypes.POROUS_SHELL.get(),
             listOf(
                 HABiomeTags.SULFURIC_CAVE),

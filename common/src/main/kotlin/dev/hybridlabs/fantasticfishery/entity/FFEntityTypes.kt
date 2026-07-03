@@ -2,6 +2,7 @@ package dev.hybridlabs.fantasticfishery.entity
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
@@ -52,6 +53,13 @@ object FFEntityTypes {
         ::BloodEelEntity,
         EntityDimensions.fixed(0.5f, 0.4f),
         BloodEelEntity::createMobAttributes
+    )
+
+    val FRIGID_VESSEL = registerFish(
+        "frigid_vessel",
+        ::FrigidVesselEntity,
+        EntityDimensions.fixed(0.6f, 0.5f),
+        FrigidVesselEntity::createMobAttributes
     )
     //#endregion
 

@@ -17,6 +17,7 @@ object SpawnRestrictionRegistry {
         setOf(
             FFEntityTypes.FUNGILL.get(),
             FFEntityTypes.MORSEL.get(),
+            FFEntityTypes.FRIGID_VESSEL.get(),
         ).forEach { registerFish(it) }
 
         setOf(

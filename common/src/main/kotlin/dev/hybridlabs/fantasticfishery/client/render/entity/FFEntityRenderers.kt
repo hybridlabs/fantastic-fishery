@@ -1,6 +1,7 @@
 package dev.hybridlabs.fantasticfishery.client.render.entity
 
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.BloodEelEntityRenderer
+import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FrigidVesselEntityRenderer
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.ClientServices
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FungillEntityRenderer
@@ -39,5 +40,11 @@ object FFEntityRenderers {
         ClientServices.PLATFORM.registerEntityRenderer(
             FFEntityTypes.BLOOD_EEL,
             ::BloodEelEntityRenderer
+        )
+
+    val FRIGID_VESSEL =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            FFEntityTypes.FRIGID_VESSEL,
+            ::FrigidVesselEntityRenderer
         )
 }

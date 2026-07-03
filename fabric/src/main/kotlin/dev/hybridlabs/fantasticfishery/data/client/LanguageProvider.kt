@@ -52,6 +52,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFEntityTypes.MORSEL.get() to "Morsel",
             FFEntityTypes.POROUS_SHELL.get() to "Porous Shell",
             FFEntityTypes.BLOOD_EEL.get() to "Blood Eel",
+            FFEntityTypes.FRIGID_VESSEL.get() to "Frigid Vessel",
         )
 
         // verify display name list is valid

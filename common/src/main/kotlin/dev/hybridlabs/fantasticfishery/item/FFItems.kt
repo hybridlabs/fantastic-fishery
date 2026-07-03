@@ -184,6 +184,8 @@ object FFItems {
         registerSpawnEgg("porous_shell_spawn_egg", FFEntityTypes.POROUS_SHELL, 0xFFFFFF, 0xFFFFFF)
     val BLOOD_EEL_SPAWN_EGG =
         registerSpawnEgg("blood_eel_spawn_egg", FFEntityTypes.BLOOD_EEL, 0xFFFFFF, 0xFFFFFF)
+    val FRIGID_VESSEL_SPAWN_EGG =
+        registerSpawnEgg("frigid_vessel_spawn_egg", FFEntityTypes.FRIGID_VESSEL, 0xFFFFFF, 0xFFFFFF)
 
     private fun register(id: String, item: Supplier<Item>): Supplier<Item> {
         return FantasticFisheryCommon.ITEMS.register(id, item)
