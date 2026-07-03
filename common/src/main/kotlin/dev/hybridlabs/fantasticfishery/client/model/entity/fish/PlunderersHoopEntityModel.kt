@@ -7,26 +7,40 @@ import net.minecraft.resources.ResourceLocation
 class PlunderersHoopEntityModel : HAFishEntityModel<PlunderersHoopEntity>("plunderers_hoop") {
 
     override fun getTextureResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return PLUNDERERS_HOOP_TEXTURE
+        return when (animatable.variant) {
+            PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_TEXTURE
+            PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_TEXTURE
+        }
     }
 
     override fun getModelResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return PLUNDERERS_HOOP_MODEL
+        return when (animatable.variant) {
+            PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_MODEL
+            PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_MODEL
+        }
     }
 
-
     override fun getAnimationResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return PLUNDERERS_HOOP_ANIMATION
+        return when (animatable.variant) {
+            PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_ANIMATION
+            PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_ANIMATION
+        }
     }
 
     companion object {
         private val PLUNDERERS_HOOP_TEXTURE =
             ResourceLocation("fantastic_fishery", "textures/entity/fish/plunderers_hoop/plunderers_hoop.png")
+        private val SMALL_PLUNDERERS_HOOP_TEXTURE =
+            ResourceLocation("fantastic_fishery", "textures/entity/fish/plunderers_hoop/small_plunderers_hoop.png")
 
         private val PLUNDERERS_HOOP_MODEL =
             ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/plunderers_hoop.geo.json")
+        private val SMALL_PLUNDERERS_HOOP_MODEL =
+            ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/small_plunderers_hoop.geo.json")
 
         private val PLUNDERERS_HOOP_ANIMATION =
             ResourceLocation("fantastic_fishery", "animations/entity/fish/plunderers_hoop/plunderers_hoop.animation.json")
+        private val SMALL_PLUNDERERS_HOOP_ANIMATION =
+            ResourceLocation("fantastic_fishery", "animations/entity/fish/plunderers_hoop/small_plunderers_hoop.animation.json")
     }
 }

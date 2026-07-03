@@ -1,10 +1,7 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
 import dev.hybridlabs.aquatic.entity.ai.MobTargetConfiguration
-import dev.hybridlabs.aquatic.entity.ai.goal.WaterAnimalEatItemGoal
-import dev.hybridlabs.aquatic.entity.ai.goal.WaterAnimalJumpGoal
 import dev.hybridlabs.aquatic.entity.ai.goal.boids.BoidGoal
-import dev.hybridlabs.aquatic.entity.base.HAFishEntity
 import dev.hybridlabs.aquatic.entity.base.HASchoolingFishEntity
 import dev.hybridlabs.aquatic.tag.HAEntityTags
 import net.minecraft.nbt.CompoundTag
@@ -26,7 +23,8 @@ import java.util.function.IntFunction
 import kotlin.random.Random
 
 class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Level) :
-    HASchoolingFishEntity(type, world) {
+    HASchoolingFishEntity(type, world),
+    VariantHolder<PlunderersHoopEntity.Companion.Type> {
 
     override fun getTargetConfig() = MobTargetConfiguration.ofPrey(
         HAEntityTags.MEDIUM_CREATURES,
@@ -40,7 +38,18 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
     }
 
     override fun getMaxSpawnClusterSize(): Int {
-        return 2
+        return 5
+    }
+
+    override fun finalizeSpawn(
+        world: ServerLevelAccessor,
+        difficulty: DifficultyInstance,
+        spawnReason: MobSpawnType,
+        entityData: SpawnGroupData?,
+        entityNbt: CompoundTag?,
+    ): SpawnGroupData? {
+        variant = Type.entries.random(Random)
+        return super.finalizeSpawn(world, difficulty, spawnReason, entityData, entityNbt)
     }
 
     companion object {
@@ -52,5 +61,58 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0)
                 .add(Attributes.FOLLOW_RANGE, 4.0)
         }
+
+        val TYPE: EntityDataAccessor<Int> =
+            SynchedEntityData.defineId(PlunderersHoopEntity::class.java, EntityDataSerializers.INT)
+
+        enum class Type(val id: Int, private val key: String) : StringRepresentable {
+            NORMAL(0, "normal"),
+            SMALL(1, "small");
+
+            override fun getSerializedName(): String {
+                return this.key
+            }
+
+            companion object {
+                val CODEC: StringRepresentable.EnumCodec<Type> =
+                    StringRepresentable.fromEnum { Type.entries.toTypedArray() }
+                private val BY_ID: IntFunction<Type> = ByIdMap.continuous(
+                    { obj: Type -> obj.id },
+                    Type.entries.toTypedArray(),
+                    ByIdMap.OutOfBoundsStrategy.ZERO
+                )
+
+                fun byName(name: String?): Type {
+                    return CODEC.byName(name, NORMAL) as Type
+                }
+
+                fun fromId(id: Int): Type {
+                    return BY_ID.apply(id) as Type
+                }
+            }
+        }
+    }
+
+    override fun defineSynchedData() {
+        entityData.define(TYPE, 0)
+        super.defineSynchedData()
+    }
+
+    override fun addAdditionalSaveData(compound: CompoundTag) {
+        compound.putString("Type", this.variant.serializedName)
+        super.addAdditionalSaveData(compound)
+    }
+
+    override fun readAdditionalSaveData(compound: CompoundTag) {
+        this.variant = Type.byName(compound.getString("Type"))
+        super.readAdditionalSaveData(compound)
+    }
+
+    override fun getVariant(): Type {
+        return Type.fromId((entityData.get(TYPE) as Int))
+    }
+
+    override fun setVariant(type: Type) {
+        entityData.set(TYPE, type.id)
     }
 }
