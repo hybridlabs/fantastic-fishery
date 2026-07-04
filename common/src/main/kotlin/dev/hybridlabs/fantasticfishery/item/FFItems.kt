@@ -1,10 +1,13 @@
 package dev.hybridlabs.fantasticfishery.item
 
+import dev.hybridlabs.aquatic.item.HAItems
+import dev.hybridlabs.aquatic.item.HAItems.registerBlockItem
 import dev.hybridlabs.aquatic.item.PlaceableInWaterItem
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
+import net.minecraft.core.Direction
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
@@ -14,6 +17,7 @@ import net.minecraft.world.food.FoodProperties
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.MobBucketItem
 import net.minecraft.world.item.SpawnEggItem
+import net.minecraft.world.item.StandingAndWallBlockItem
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.material.Fluids
 import java.util.function.Supplier
@@ -22,7 +26,41 @@ object FFItems {
 
     val RED_FLOATING_CAP = registerPlaceableInWaterBlockItem("red_floating_cap") { FFBlocks.RED_FLOATING_CAP.get() }
     val BROWN_FLOATING_CAP = registerPlaceableInWaterBlockItem("brown_floating_cap") { FFBlocks.BROWN_FLOATING_CAP.get() }
-
+    
+    val AMETHYST_FUNGUS_BLOCK =
+        registerBlockItem("amethyst_fungus_block") { FFBlocks.AMETHYST_FUNGUS_BLOCK.get() }
+    val DRIED_AMETHYST_FUNGUS_BLOCK =
+        registerBlockItem("dried_amethyst_fungus_block") { FFBlocks.DRIED_AMETHYST_FUNGUS_BLOCK.get() }
+    val AMETHYST_FUNGUS = registerBlockItem("amethyst_fungus") { FFBlocks.AMETHYST_FUNGUS.get() }
+    val DRIED_AMETHYST_FUNGUS = registerBlockItem("dried_amethyst_fungus") { FFBlocks.DRIED_AMETHYST_FUNGUS.get() }
+    val AMETHYST_FUNGUS_FAN = registerVerticallyAttachable(
+        "amethyst_fungus_fan",
+        FFBlocks.AMETHYST_FUNGUS_FAN,
+        FFBlocks.AMETHYST_FUNGUS_WALL_FAN
+    )
+    val DRIED_AMETHYST_FUNGUS_FAN = registerVerticallyAttachable(
+        "dried_amethyst_fungus_fan",
+        FFBlocks.DRIED_AMETHYST_FUNGUS_FAN,
+        FFBlocks.DRIED_AMETHYST_FUNGUS_WALL_FAN
+    )
+    
+    val CHICKEN_FUNGUS_BLOCK =
+        registerBlockItem("chicken_fungus_block") { FFBlocks.CHICKEN_FUNGUS_BLOCK.get() }
+    val DRIED_CHICKEN_FUNGUS_BLOCK =
+        registerBlockItem("dried_chicken_fungus_block") { FFBlocks.DRIED_CHICKEN_FUNGUS_BLOCK.get() }
+    val CHICKEN_FUNGUS = registerBlockItem("chicken_fungus") { FFBlocks.CHICKEN_FUNGUS.get() }
+    val DRIED_CHICKEN_FUNGUS = registerBlockItem("dried_chicken_fungus") { FFBlocks.DRIED_CHICKEN_FUNGUS.get() }
+    val CHICKEN_FUNGUS_FAN = registerVerticallyAttachable(
+        "chicken_fungus_fan",
+        FFBlocks.CHICKEN_FUNGUS_FAN,
+        FFBlocks.CHICKEN_FUNGUS_WALL_FAN
+    )
+    val DRIED_CHICKEN_FUNGUS_FAN = registerVerticallyAttachable(
+        "dried_chicken_fungus_fan",
+        FFBlocks.DRIED_CHICKEN_FUNGUS_FAN,
+        FFBlocks.DRIED_CHICKEN_FUNGUS_WALL_FAN
+    )
+    
     val FRIGID_VESSEL = register(
         "frigid_vessel",
     ) {
@@ -208,5 +246,21 @@ object FFItems {
 
     private fun registerPlaceableInWaterBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
         return register(id) { PlaceableInWaterItem(block.get(), Item.Properties()) }
+    }
+
+    private fun registerVerticallyAttachable(
+        id: String,
+        standingBlock: Supplier<Block>,
+        wallBlock: Supplier<Block>,
+        direction: Direction = Direction.DOWN,
+    ): Supplier<Item> {
+        return HAItems.register(id) {
+            StandingAndWallBlockItem(
+                standingBlock.get(),
+                wallBlock.get(),
+                Item.Properties(),
+                direction
+            )
+        }
     }
 }

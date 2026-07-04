@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.FloatingCapBlock
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.item.FFItems
@@ -38,6 +39,28 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                         ModelLocationUtils.decorateItemModelLocation("template_spawn_egg")
                     )
                 }
+            
+            createCoral(
+                FFBlocks.AMETHYST_FUNGUS.get(),
+                FFBlocks.DRIED_AMETHYST_FUNGUS.get(),
+                FFBlocks.AMETHYST_FUNGUS_BLOCK.get(),
+                FFBlocks.DRIED_AMETHYST_FUNGUS_BLOCK.get(),
+                FFBlocks.AMETHYST_FUNGUS_FAN.get(),
+                FFBlocks.DRIED_AMETHYST_FUNGUS_FAN.get(),
+                FFBlocks.AMETHYST_FUNGUS_WALL_FAN.get(),
+                FFBlocks.DRIED_AMETHYST_FUNGUS_WALL_FAN.get()
+            )
+            
+            createCoral(
+                FFBlocks.CHICKEN_FUNGUS.get(),
+                FFBlocks.DRIED_CHICKEN_FUNGUS.get(),
+                FFBlocks.CHICKEN_FUNGUS_BLOCK.get(),
+                FFBlocks.DRIED_CHICKEN_FUNGUS_BLOCK.get(),
+                FFBlocks.CHICKEN_FUNGUS_FAN.get(),
+                FFBlocks.DRIED_CHICKEN_FUNGUS_FAN.get(),
+                FFBlocks.CHICKEN_FUNGUS_WALL_FAN.get(),
+                FFBlocks.DRIED_CHICKEN_FUNGUS_WALL_FAN.get()
+            )
         }
     }
 
