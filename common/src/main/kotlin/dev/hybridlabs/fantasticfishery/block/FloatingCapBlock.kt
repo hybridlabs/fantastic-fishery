@@ -100,6 +100,6 @@ class FloatingCapBlock(settings: Properties) : BushBlock(settings) {
     }
 
     companion object {
-        private val SHAPE: VoxelShape = box(0.0, 12.0, 0.0, 15.0, 16.0, 16.0)
+        private val SHAPE: VoxelShape = box(0.0, 12.0, 0.0, 16.0, 16.0, 16.0)
     }
 }
