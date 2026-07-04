@@ -31,7 +31,7 @@ class FrigidVesselEntity(type: EntityType<out FrigidVesselEntity>, world: Level)
     }
 
     override fun getHurtSound(source: DamageSource): SoundEvent {
-        return SoundEvents.GLASS_HIT
+        return SoundEvents.GLASS_BREAK
     }
 
     override fun getDeathSound(): SoundEvent {

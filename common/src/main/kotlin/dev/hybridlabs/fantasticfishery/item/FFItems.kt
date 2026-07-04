@@ -1,7 +1,10 @@
 package dev.hybridlabs.fantasticfishery.item
 
+import dev.hybridlabs.aquatic.block.HABlocks
+import dev.hybridlabs.aquatic.item.PlaceableInWaterItem
 import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
@@ -12,10 +15,14 @@ import net.minecraft.world.food.FoodProperties
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.MobBucketItem
 import net.minecraft.world.item.SpawnEggItem
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.material.Fluids
 import java.util.function.Supplier
 
 object FFItems {
+
+    val RED_FLOATING_CAP = registerPlaceableInWaterBlockItem("red_floating_cap") { FFBlocks.RED_FLOATING_CAP.get() }
+    val BROWN_FLOATING_CAP = registerPlaceableInWaterBlockItem("brown_floating_cap") { FFBlocks.BROWN_FLOATING_CAP.get() }
 
     val FRIGID_VESSEL = register(
         "frigid_vessel",
@@ -198,6 +205,9 @@ object FFItems {
         secondaryColor: Int,
     ): Supplier<SpawnEggItem> {
         return PLATFORM.registerSpawnEggItem(id, { type.get() }, primaryColor, secondaryColor)
+    }
 
+    private fun registerPlaceableInWaterBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
+        return register(id) { PlaceableInWaterItem(block.get(), Item.Properties()) }
     }
 }

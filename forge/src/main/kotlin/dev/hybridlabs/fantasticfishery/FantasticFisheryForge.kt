@@ -1,4 +1,5 @@
 package dev.hybridlabs.fantasticfishery
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.entity.ForgeSpawnGroupRegistry
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
@@ -21,6 +22,7 @@ object FantasticFisheryForge {
 
     init {
         FantasticFisheryCommon.init()
+        FFBlocks
 
         ForgeSpawnGroupRegistry.createFantasticFisherySpawnGroups()
 

@@ -1,6 +1,7 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
 import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
@@ -11,6 +12,8 @@ import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import kotlin.collections.component1
+import kotlin.collections.component2
 
 class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output) {
     override fun generateTranslations(builder: TranslationBuilder) {
@@ -21,6 +24,14 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         )
 
         generateEntities(builder)
+
+        // blocks
+        mapOf(
+            FFBlocks.RED_FLOATING_CAP.get() to "Red Floating Cap",
+            FFBlocks.BROWN_FLOATING_CAP.get() to "Brown Floating Cap",
+        ).forEach { (block, translation) ->
+            builder.add(block, translation)
+        }
 
         // items
         mapOf(

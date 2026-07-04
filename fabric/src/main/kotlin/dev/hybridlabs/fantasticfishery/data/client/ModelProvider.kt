@@ -13,7 +13,6 @@ import net.minecraft.data.models.model.ModelTemplates
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
         generator.run {
-
             BuiltInRegistries.ITEM
                 .filter(filterFantasticFishery(BuiltInRegistries.ITEM))
                 .filter { item ->

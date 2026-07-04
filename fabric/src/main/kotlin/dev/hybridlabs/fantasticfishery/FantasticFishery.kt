@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery
 
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.config.ConfigHelper
 import dev.hybridlabs.fantasticfishery.config.FFConfig
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
@@ -20,6 +21,7 @@ object FantasticFishery : ModInitializer {
         logger.info("Initializing ${Constants.MOD_NAME}")
         FantasticFisheryCommon.init()
 
+        FFBlocks
         FFEntityTypes
 
         FFItems
