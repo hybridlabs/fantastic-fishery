@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
+import dev.hybridlabs.aquatic.block.HABlocks
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.FloatingCapBlock
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
@@ -11,6 +12,7 @@ import net.minecraft.data.models.BlockModelGenerators
 import net.minecraft.data.models.ItemModelGenerators
 import net.minecraft.data.models.model.ModelLocationUtils
 import net.minecraft.data.models.model.ModelTemplates
+import net.minecraft.world.level.block.Blocks
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
@@ -60,6 +62,16 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 FFBlocks.DRIED_CHICKEN_FUNGUS_FAN.get(),
                 FFBlocks.CHICKEN_FUNGUS_WALL_FAN.get(),
                 FFBlocks.DRIED_CHICKEN_FUNGUS_WALL_FAN.get()
+            )
+
+            createNonTemplateModelBlock(
+                FFBlocks.RED_FLOATING_CAP.get(),
+                FFBlocks.RED_FLOATING_CAP.get()
+            )
+
+            createNonTemplateModelBlock(
+                FFBlocks.BROWN_FLOATING_CAP.get(),
+                FFBlocks.BROWN_FLOATING_CAP.get()
             )
         }
     }

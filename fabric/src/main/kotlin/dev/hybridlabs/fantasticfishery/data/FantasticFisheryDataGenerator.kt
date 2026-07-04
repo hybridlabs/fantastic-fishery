@@ -6,6 +6,7 @@ import dev.hybridlabs.fantasticfishery.data.client.ModelProvider
 import dev.hybridlabs.fantasticfishery.data.server.RecipeProvider
 import dev.hybridlabs.fantasticfishery.data.server.ItemTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.loot.EntityTypeLootTableProvider
+import dev.hybridlabs.fantasticfishery.data.server.worldgen.BiomeProvider
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.core.Registry
@@ -18,6 +19,7 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
         pack.addProvider(::ItemTagProvider)
         pack.addProvider(::RecipeProvider)
         pack.addProvider(::EntityTypeLootTableProvider)
+        pack.addProvider(::BiomeProvider)
     }
 
     fun <T> filterFantasticFishery(registry: Registry<T>): (T & Any) -> Boolean {

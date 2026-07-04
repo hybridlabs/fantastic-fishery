@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery
 
+import dev.hybridlabs.aquatic.world.gen.biome.HABiomes
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.config.ConfigHelper
 import dev.hybridlabs.fantasticfishery.config.FFConfig
@@ -7,6 +8,7 @@ import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.entity.SpawnRestrictionRegistry
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
+import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors
@@ -23,7 +25,7 @@ object FantasticFishery : ModInitializer {
 
         FFBlocks
         FFEntityTypes
-
+        FFBiomes.addBiomes()
         FFItems
         FFItemGroups
 
