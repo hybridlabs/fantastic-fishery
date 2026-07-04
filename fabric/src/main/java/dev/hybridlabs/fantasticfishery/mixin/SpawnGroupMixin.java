@@ -24,7 +24,7 @@ public class SpawnGroupMixin {
     private static MobCategory[] $VALUES;
 
     @Unique
-    private static MobCategory createHybridAquaticSpawnGroups(String enumname, int ordinal, FFSpawnGroup spawnGroup) {
+    private static MobCategory createFantasticFisherySpawnGroup(String enumname, int ordinal, FFSpawnGroup spawnGroup) {
         SpawnGroupMixin groups = new SpawnGroupMixin(
                 spawnGroup.name(), ordinal, spawnGroup.location.toString(),
                 spawnGroup.spawnCap, spawnGroup.peaceful, spawnGroup.rare, spawnGroup.immediateDespawnRange
@@ -44,7 +44,7 @@ public class SpawnGroupMixin {
         for (int i = 0; i < FFSpawnGroups.length; i++) {
             int pos = vanillaSpawnGroupsLength + i;
             FFSpawnGroup FFSpawnGroup = FFSpawnGroups[i];
-            FFSpawnGroup.spawnGroup = $VALUES[pos] = createHybridAquaticSpawnGroups(FFSpawnGroup.name(), pos, FFSpawnGroup);
+            FFSpawnGroup.spawnGroup = $VALUES[pos] = createFantasticFisherySpawnGroup(FFSpawnGroup.name(), pos, FFSpawnGroup);
         }
 
         for (FFSpawnGroup value : FFSpawnGroups) {

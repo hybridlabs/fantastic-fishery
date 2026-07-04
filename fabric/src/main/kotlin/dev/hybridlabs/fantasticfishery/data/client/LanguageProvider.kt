@@ -1,7 +1,7 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
-import dev.hybridlabs.aquatic.data.HybridAquaticDataGenerator.filterHybridAquatic
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
+import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
@@ -70,7 +70,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         val nonPresentEntityNames = mutableListOf<EntityType<*>>()
 
         BuiltInRegistries.ENTITY_TYPE
-            .filter(filterHybridAquatic(BuiltInRegistries.ENTITY_TYPE))
+            .filter(filterFantasticFishery(BuiltInRegistries.ENTITY_TYPE))
             .forEach { type ->
                 if (type.baseClass.isAssignableFrom(Mob::class.java)) {
                     if (!entityNameMap.containsKey(type)) {

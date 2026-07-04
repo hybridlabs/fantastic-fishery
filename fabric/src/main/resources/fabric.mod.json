@@ -19,7 +19,7 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 
-	"license": "MIT",
+	"license": "ARR",
 	"icon": "assets/fantastic_fishery/icon.png",
 
 	"environment": "*",

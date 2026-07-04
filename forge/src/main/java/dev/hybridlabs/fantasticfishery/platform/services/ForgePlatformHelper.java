@@ -28,7 +28,7 @@ public class ForgePlatformHelper implements PlatformHelper {
 
     public static IEventBus getEventBus() {
         final ModContainer cont =
-                ModList.get().getModContainerById(dev.hybridlabs.aquatic.Constants.MOD_ID).orElseThrow();
+                ModList.get().getModContainerById(Constants.MOD_ID).orElseThrow();
         if (cont instanceof FMLModContainer fmlModContainer) {
             return fmlModContainer.getEventBus();
         } else if (cont instanceof KotlinModContainer kotlinModContainer) {

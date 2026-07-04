@@ -1,11 +1,10 @@
 package dev.hybridlabs.fantasticfishery.item
 
-import dev.hybridlabs.aquatic.block.HABlocks
 import dev.hybridlabs.aquatic.item.PlaceableInWaterItem
-import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
+import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects

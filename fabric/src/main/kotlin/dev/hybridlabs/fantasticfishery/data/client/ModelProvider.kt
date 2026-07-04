@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
+import dev.hybridlabs.fantasticfishery.block.FloatingCapBlock
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -13,6 +14,12 @@ import net.minecraft.data.models.model.ModelTemplates
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
         generator.run {
+            BuiltInRegistries.BLOCK
+                .filterIsInstance<FloatingCapBlock>()
+                .forEach { block ->
+                    skipAutoItemBlock(block)
+                }
+
             BuiltInRegistries.ITEM
                 .filter(filterFantasticFishery(BuiltInRegistries.ITEM))
                 .filter { item ->
