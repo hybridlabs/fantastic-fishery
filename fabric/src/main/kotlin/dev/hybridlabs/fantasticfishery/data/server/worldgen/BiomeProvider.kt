@@ -31,6 +31,7 @@ class BiomeProvider(
         waterFogColor: Int,
         extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>> = ArrayList(),
         extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>> = emptyList(),
+        includeMonsters: Boolean = true,
         extraFeatures: (BiomeGenerationSettings.Builder.() -> Unit)? = null,
     ): Biome {
         val builder = BiomeGenerationSettings.Builder(
@@ -46,8 +47,13 @@ class BiomeProvider(
 
         return Biome.BiomeBuilder()
             .generationSettings(makeGenerationSettings(entries))
-            .generationSettings(builder.build()).mobSpawnSettings(
-                makeSpawnSettings(extraSpawns, extraSpawnCosts)
+            .generationSettings(builder.build())
+            .mobSpawnSettings(
+                makeSpawnSettings(
+                    extraSpawns,
+                    extraSpawnCosts,
+                    includeMonsters
+                )
             )
 
             .hasPrecipitation(true)
@@ -72,9 +78,16 @@ class BiomeProvider(
 
     fun makeSpawnSettings(
         extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>>,
-        extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>>
+        extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>>,
+        includeMonsters: Boolean
     ): MobSpawnSettings {
-        val builder = makeDefaultSpawnSettings()
+        val builder = MobSpawnSettings.Builder()
+
+        addDefaultAmbientSpawns(builder)
+
+        if (includeMonsters) {
+            addDefaultMonsterSpawns(builder)
+        }
 
         for ((category, spawner) in extraSpawns) {
             builder.addSpawn(category, spawner)
@@ -147,7 +160,8 @@ class BiomeProvider(
                         Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
                         MobSpawnSettings.SpawnerData(FFEntityTypes.FUNGILL.get(), 3, 3, 6)
                     )
-                )
+                ),
+                includeMonsters = false
             ) {
                 addFeature(
                     GenerationStep.Decoration.VEGETAL_DECORATION,
