@@ -64,6 +64,14 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
         get() = entityData.get(CORE_TIMER)
         set(value) = entityData.set(CORE_TIMER, value)
 
+    override fun aiStep() {
+        super.aiStep()
+
+        if (!level().isClientSide && coreTimer > 0) {
+            coreTimer--
+        }
+    }
+
     override fun mobInteract(player: Player, hand: InteractionHand): InteractionResult {
         val itemStack = player.getItemInHand(hand)
         if (!itemStack.isEmpty && itemStack.`is`(Items.SHEARS) && coreTimer == 0) {

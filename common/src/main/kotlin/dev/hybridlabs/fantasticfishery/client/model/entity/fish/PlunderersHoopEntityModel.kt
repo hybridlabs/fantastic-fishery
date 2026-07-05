@@ -14,9 +14,16 @@ class PlunderersHoopEntityModel : HAFishEntityModel<PlunderersHoopEntity>("plund
     }
 
     override fun getModelResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return when (animatable.variant) {
-            PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_MODEL
-            PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_MODEL
+        return if (animatable.coreTimer > 0) {
+            when (animatable.variant) {
+                PlunderersHoopEntity.Companion.Type.NORMAL -> CORELESS_PLUNDERERS_HOOP_MODEL
+                PlunderersHoopEntity.Companion.Type.SMALL -> CORELESS_SMALL_PLUNDERERS_HOOP_MODEL
+            }
+        } else {
+            when (animatable.variant) {
+                PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_MODEL
+                PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_MODEL
+            }
         }
     }
 
