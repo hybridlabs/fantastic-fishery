@@ -13,27 +13,27 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
 
         getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORAL_BLOCKS)
             .add(FFBlocks.CHICKEN_CORAL_BLOCK.get())
-            .add(FFBlocks.AMETHYST_CORAL_BLOCK.get())
+            .add(FFBlocks.SPIRAL_CORAL_BLOCK.get())
             .add(FFBlocks.OYSTER_CORAL_BLOCK.get())
-            .add(FFBlocks.CHANTERELLE_CORAL_BLOCK.get())
+            .add(FFBlocks.AMETHYST_CORAL_BLOCK.get())
 
         getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORAL_PLANTS)
             .add(FFBlocks.CHICKEN_CORAL.get())
-            .add(FFBlocks.AMETHYST_CORAL.get())
+            .add(FFBlocks.SPIRAL_CORAL.get())
             .add(FFBlocks.OYSTER_CORAL.get())
-            .add(FFBlocks.CHANTERELLE_CORAL.get())
+            .add(FFBlocks.AMETHYST_CORAL.get())
 
         getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORALS)
             .forceAddTag(FFBlockTags.FUNGAL_CORAL_PLANTS)
             .add(FFBlocks.CHICKEN_CORAL_FAN.get())
-            .add(FFBlocks.AMETHYST_CORAL_FAN.get())
+            .add(FFBlocks.SPIRAL_CORAL_FAN.get())
             .add(FFBlocks.OYSTER_CORAL_FAN.get())
-            .add(FFBlocks.CHANTERELLE_CORAL_FAN.get())
+            .add(FFBlocks.AMETHYST_CORAL_FAN.get())
 
         getOrCreateTagBuilder(FFBlockTags.FUNGAL_WALL_CORALS)
             .add(FFBlocks.CHICKEN_CORAL_WALL_FAN.get())
-            .add(FFBlocks.AMETHYST_CORAL_WALL_FAN.get())
+            .add(FFBlocks.SPIRAL_CORAL_WALL_FAN.get())
             .add(FFBlocks.OYSTER_CORAL_WALL_FAN.get())
-            .add(FFBlocks.CHANTERELLE_CORAL_WALL_FAN.get())
+            .add(FFBlocks.AMETHYST_CORAL_WALL_FAN.get())
     }
 }

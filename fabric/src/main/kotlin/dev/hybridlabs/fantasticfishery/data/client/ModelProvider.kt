@@ -2,7 +2,7 @@ package dev.hybridlabs.fantasticfishery.data.client
 
 import dev.hybridlabs.fantasticfishery.block.FFBlockFamilies
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
-import dev.hybridlabs.fantasticfishery.block.FloatingCapBlock
+import dev.hybridlabs.fantasticfishery.block.ShroompadBlock
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -19,7 +19,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
         generator.run {
             BuiltInRegistries.BLOCK
-                .filterIsInstance<FloatingCapBlock>()
+                .filterIsInstance<ShroompadBlock>()
                 .forEach { block ->
                     skipAutoItemBlock(block)
                 }
@@ -44,14 +44,14 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 }
             
             createCoral(
-                FFBlocks.AMETHYST_CORAL.get(),
-                FFBlocks.DEAD_AMETHYST_CORAL.get(),
-                FFBlocks.AMETHYST_CORAL_BLOCK.get(),
-                FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get(),
-                FFBlocks.AMETHYST_CORAL_FAN.get(),
-                FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
-                FFBlocks.AMETHYST_CORAL_WALL_FAN.get(),
-                FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get()
+                FFBlocks.SPIRAL_CORAL.get(),
+                FFBlocks.DEAD_SPIRAL_CORAL.get(),
+                FFBlocks.SPIRAL_CORAL_BLOCK.get(),
+                FFBlocks.DEAD_SPIRAL_CORAL_BLOCK.get(),
+                FFBlocks.SPIRAL_CORAL_FAN.get(),
+                FFBlocks.DEAD_SPIRAL_CORAL_FAN.get(),
+                FFBlocks.SPIRAL_CORAL_WALL_FAN.get(),
+                FFBlocks.DEAD_SPIRAL_CORAL_WALL_FAN.get()
             )
             
             createCoral(
@@ -77,14 +77,14 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             )
             
             createCoral(
-                FFBlocks.CHANTERELLE_CORAL.get(),
-                FFBlocks.DEAD_CHANTERELLE_CORAL.get(),
-                FFBlocks.CHANTERELLE_CORAL_BLOCK.get(),
-                FFBlocks.DEAD_CHANTERELLE_CORAL_BLOCK.get(),
-                FFBlocks.CHANTERELLE_CORAL_FAN.get(),
-                FFBlocks.DEAD_CHANTERELLE_CORAL_FAN.get(),
-                FFBlocks.CHANTERELLE_CORAL_WALL_FAN.get(),
-                FFBlocks.DEAD_CHANTERELLE_CORAL_WALL_FAN.get()
+                FFBlocks.AMETHYST_CORAL.get(),
+                FFBlocks.DEAD_AMETHYST_CORAL.get(),
+                FFBlocks.AMETHYST_CORAL_BLOCK.get(),
+                FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get(),
+                FFBlocks.AMETHYST_CORAL_FAN.get(),
+                FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
+                FFBlocks.AMETHYST_CORAL_WALL_FAN.get(),
+                FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get()
             )
 
             createNonTemplateModelBlock(

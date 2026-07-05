@@ -15,12 +15,12 @@ object FFBlockRendererRegistry {
             FFBlocks.DEAD_CHICKEN_CORAL_FAN.get(),
             FFBlocks.DEAD_CHICKEN_CORAL_WALL_FAN.get(),
             
-            FFBlocks.AMETHYST_CORAL.get(),
-            FFBlocks.AMETHYST_CORAL_FAN.get(),
-            FFBlocks.AMETHYST_CORAL_WALL_FAN.get(),
-            FFBlocks.DEAD_AMETHYST_CORAL.get(),
-            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
-            FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get(),
+            FFBlocks.SPIRAL_CORAL.get(),
+            FFBlocks.SPIRAL_CORAL_FAN.get(),
+            FFBlocks.SPIRAL_CORAL_WALL_FAN.get(),
+            FFBlocks.DEAD_SPIRAL_CORAL.get(),
+            FFBlocks.DEAD_SPIRAL_CORAL_FAN.get(),
+            FFBlocks.DEAD_SPIRAL_CORAL_WALL_FAN.get(),
 
             FFBlocks.OYSTER_CORAL.get(),
             FFBlocks.OYSTER_CORAL_FAN.get(),
@@ -29,12 +29,12 @@ object FFBlockRendererRegistry {
             FFBlocks.DEAD_OYSTER_CORAL_FAN.get(),
             FFBlocks.DEAD_OYSTER_CORAL_WALL_FAN.get(),
 
-            FFBlocks.CHANTERELLE_CORAL.get(),
-            FFBlocks.CHANTERELLE_CORAL_FAN.get(),
-            FFBlocks.CHANTERELLE_CORAL_WALL_FAN.get(),
-            FFBlocks.DEAD_CHANTERELLE_CORAL.get(),
-            FFBlocks.DEAD_CHANTERELLE_CORAL_FAN.get(),
-            FFBlocks.DEAD_CHANTERELLE_CORAL_WALL_FAN.get(),
+            FFBlocks.AMETHYST_CORAL.get(),
+            FFBlocks.AMETHYST_CORAL_FAN.get(),
+            FFBlocks.AMETHYST_CORAL_WALL_FAN.get(),
+            FFBlocks.DEAD_AMETHYST_CORAL.get(),
+            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
+            FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get(),
         )
     }
 }

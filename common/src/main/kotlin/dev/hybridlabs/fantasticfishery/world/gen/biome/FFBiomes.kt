@@ -36,7 +36,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -55,7 +55,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -74,7 +74,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -93,7 +93,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -112,7 +112,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -131,7 +131,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -150,7 +150,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(
@@ -169,7 +169,7 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.EDGE,
                     SubBiomeMatcher.CriterionTypes.RATIO,
                     0.0f,
-                    0.3f,
+                    0.25f,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofBiome(

@@ -49,12 +49,12 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFBlocks.CHICKEN_CORAL_FAN.get() to "Chicken Coral Fan",
             FFBlocks.DEAD_CHICKEN_CORAL_FAN.get() to "Dead Chicken Coral Fan",
 
-            FFBlocks.AMETHYST_CORAL_BLOCK.get() to "Amethyst Coral Block",
-            FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() to "Dead Amethyst Coral Block",
-            FFBlocks.AMETHYST_CORAL.get() to "Amethyst Coral",
-            FFBlocks.DEAD_AMETHYST_CORAL.get() to "Dead Amethyst Coral",
-            FFBlocks.AMETHYST_CORAL_FAN.get() to "Amethyst Coral Fan",
-            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get() to "Dead Amethyst Coral Fan",
+            FFBlocks.SPIRAL_CORAL_BLOCK.get() to "Spiral Coral Block",
+            FFBlocks.DEAD_SPIRAL_CORAL_BLOCK.get() to "Dead Spiral Coral Block",
+            FFBlocks.SPIRAL_CORAL.get() to "Spiral Coral",
+            FFBlocks.DEAD_SPIRAL_CORAL.get() to "Dead Spiral Coral",
+            FFBlocks.SPIRAL_CORAL_FAN.get() to "Spiral Coral Fan",
+            FFBlocks.DEAD_SPIRAL_CORAL_FAN.get() to "Dead Spiral Coral Fan",
 
             FFBlocks.OYSTER_CORAL_BLOCK.get() to "Oyster Coral Block",
             FFBlocks.DEAD_OYSTER_CORAL_BLOCK.get() to "Dead Oyster Coral Block",
@@ -63,12 +63,12 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFBlocks.OYSTER_CORAL_FAN.get() to "Oyster Coral Fan",
             FFBlocks.DEAD_OYSTER_CORAL_FAN.get() to "Dead Oyster Coral Fan",
 
-            FFBlocks.CHANTERELLE_CORAL_BLOCK.get() to "Chanterelle Coral Block",
-            FFBlocks.DEAD_CHANTERELLE_CORAL_BLOCK.get() to "Dead Chanterelle Coral Block",
-            FFBlocks.CHANTERELLE_CORAL.get() to "Chanterelle Coral",
-            FFBlocks.DEAD_CHANTERELLE_CORAL.get() to "Dead Chanterelle Coral",
-            FFBlocks.CHANTERELLE_CORAL_FAN.get() to "Chanterelle Coral Fan",
-            FFBlocks.DEAD_CHANTERELLE_CORAL_FAN.get() to "Dead Chanterelle Coral Fan",
+            FFBlocks.AMETHYST_CORAL_BLOCK.get() to "Cap Coral Block",
+            FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() to "Dead Cap Coral Block",
+            FFBlocks.AMETHYST_CORAL.get() to "Cap Coral",
+            FFBlocks.DEAD_AMETHYST_CORAL.get() to "Dead Cap Coral",
+            FFBlocks.AMETHYST_CORAL_FAN.get() to "Cap Coral Fan",
+            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get() to "Dead Cap Coral Fan",
 
             ).forEach { (block, translation) ->
             builder.add(block, translation)

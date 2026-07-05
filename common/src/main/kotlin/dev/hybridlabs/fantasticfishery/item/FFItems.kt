@@ -58,21 +58,21 @@ object FFItems {
         )
     }
     
-    val AMETHYST_CORAL_BLOCK =
-        registerBlockItem("amethyst_coral_block") { FFBlocks.AMETHYST_CORAL_BLOCK.get() }
-    val DEAD_AMETHYST_CORAL_BLOCK =
-        registerBlockItem("dead_amethyst_coral_block") { FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() }
-    val AMETHYST_CORAL = registerBlockItem("amethyst_coral") { FFBlocks.AMETHYST_CORAL.get() }
-    val DEAD_AMETHYST_CORAL = registerBlockItem("dead_amethyst_coral") { FFBlocks.DEAD_AMETHYST_CORAL.get() }
-    val AMETHYST_CORAL_FAN = registerVerticallyAttachable(
-        "amethyst_coral_fan",
-        FFBlocks.AMETHYST_CORAL_FAN,
-        FFBlocks.AMETHYST_CORAL_WALL_FAN
+    val SPIRAL_CORAL_BLOCK =
+        registerBlockItem("spiral_coral_block") { FFBlocks.SPIRAL_CORAL_BLOCK.get() }
+    val DEAD_SPIRAL_CORAL_BLOCK =
+        registerBlockItem("dead_spiral_coral_block") { FFBlocks.DEAD_SPIRAL_CORAL_BLOCK.get() }
+    val SPIRAL_CORAL = registerBlockItem("spiral_coral") { FFBlocks.SPIRAL_CORAL.get() }
+    val DEAD_SPIRAL_CORAL = registerBlockItem("dead_spiral_coral") { FFBlocks.DEAD_SPIRAL_CORAL.get() }
+    val SPIRAL_CORAL_FAN = registerVerticallyAttachable(
+        "spiral_coral_fan",
+        FFBlocks.SPIRAL_CORAL_FAN,
+        FFBlocks.SPIRAL_CORAL_WALL_FAN
     )
-    val DEAD_AMETHYST_CORAL_FAN = registerVerticallyAttachable(
-        "dead_amethyst_coral_fan",
-        FFBlocks.DEAD_AMETHYST_CORAL_FAN,
-        FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN
+    val DEAD_SPIRAL_CORAL_FAN = registerVerticallyAttachable(
+        "dead_spiral_coral_fan",
+        FFBlocks.DEAD_SPIRAL_CORAL_FAN,
+        FFBlocks.DEAD_SPIRAL_CORAL_WALL_FAN
     )
     
     val OYSTER_CORAL_BLOCK =
@@ -92,21 +92,21 @@ object FFItems {
         FFBlocks.DEAD_OYSTER_CORAL_WALL_FAN
     )
     
-    val CHANTERELLE_CORAL_BLOCK =
-        registerBlockItem("chanterelle_coral_block") { FFBlocks.CHANTERELLE_CORAL_BLOCK.get() }
-    val DEAD_CHANTERELLE_CORAL_BLOCK =
-        registerBlockItem("dead_chanterelle_coral_block") { FFBlocks.DEAD_CHANTERELLE_CORAL_BLOCK.get() }
-    val CHANTERELLE_CORAL = registerBlockItem("chanterelle_coral") { FFBlocks.CHANTERELLE_CORAL.get() }
-    val DEAD_CHANTERELLE_CORAL = registerBlockItem("dead_chanterelle_coral") { FFBlocks.DEAD_CHANTERELLE_CORAL.get() }
-    val CHANTERELLE_CORAL_FAN = registerVerticallyAttachable(
-        "chanterelle_coral_fan",
-        FFBlocks.CHANTERELLE_CORAL_FAN,
-        FFBlocks.CHANTERELLE_CORAL_WALL_FAN
+    val AMETHYST_CORAL_BLOCK =
+        registerBlockItem("amethyst_coral_block") { FFBlocks.AMETHYST_CORAL_BLOCK.get() }
+    val DEAD_AMETHYST_CORAL_BLOCK =
+        registerBlockItem("dead_amethyst_coral_block") { FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() }
+    val AMETHYST_CORAL = registerBlockItem("amethyst_coral") { FFBlocks.AMETHYST_CORAL.get() }
+    val DEAD_AMETHYST_CORAL = registerBlockItem("dead_amethyst_coral") { FFBlocks.DEAD_AMETHYST_CORAL.get() }
+    val AMETHYST_CORAL_FAN = registerVerticallyAttachable(
+        "amethyst_coral_fan",
+        FFBlocks.AMETHYST_CORAL_FAN,
+        FFBlocks.AMETHYST_CORAL_WALL_FAN
     )
-    val DEAD_CHANTERELLE_CORAL_FAN = registerVerticallyAttachable(
-        "dead_chanterelle_coral_fan",
-        FFBlocks.DEAD_CHANTERELLE_CORAL_FAN,
-        FFBlocks.DEAD_CHANTERELLE_CORAL_WALL_FAN
+    val DEAD_AMETHYST_CORAL_FAN = registerVerticallyAttachable(
+        "dead_amethyst_coral_fan",
+        FFBlocks.DEAD_AMETHYST_CORAL_FAN,
+        FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN
     )
     
     val CHICKEN_CORAL_BLOCK =

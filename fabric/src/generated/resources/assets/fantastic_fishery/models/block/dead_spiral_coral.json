@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "fantastic_fishery:block/dead_spiral_coral"
+  }
+}

@@ -16,42 +16,28 @@ class FungalReefTreeFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
         state: BlockState,
     ): Boolean {
         val mutableBlockPos = pos.mutable()
-        val i = (random.nextInt(8) + 2) * 2
+        val height = (random.nextInt(8) + 2) * 2
 
-        for (j in 0..<i) {
-            if (!this.placeFungusBlock(level, random, mutableBlockPos, state)) {
+        val direction = Direction.Plane.HORIZONTAL.getRandomDirection(random)
+        var verticalSteps = 0
+
+        for (j in 0 until height) {
+            if (!placeFungusBlock(level, random, mutableBlockPos, state)) {
                 return true
             }
 
             mutableBlockPos.move(Direction.UP)
+            verticalSteps++
+
+            if (verticalSteps >= 2 && random.nextFloat() < 0.35f) {
+                mutableBlockPos.move(direction)
+                verticalSteps = 0
+            }
         }
 
         val top = mutableBlockPos.immutable()
+
         placeFungusTip(level, random, top, state, 2)
-
-        val blockpos = mutableBlockPos.immutable()
-        val k = random.nextInt(3) + 2
-        val list = Direction.Plane.HORIZONTAL.shuffledCopy(random)
-
-        for (direction in list.subList(0, k)) {
-            mutableBlockPos.set(blockpos)
-            mutableBlockPos.move(direction)
-            val l = (random.nextInt(8) + 2) * 2
-            var i1 = 0
-
-            var j1 = 0
-            while (j1 < l && this.placeFungusBlock(level, random, mutableBlockPos, state)) {
-                ++i1
-                mutableBlockPos.move(Direction.UP)
-                if (j1 == 0 || i1 >= 2 && random.nextFloat() < 0.25f) {
-                    mutableBlockPos.move(direction)
-                    i1 = 0
-                }
-                ++j1
-            }
-
-            placeFungusTip(level, random, mutableBlockPos.immutable(), state, 2)
-        }
 
         return true
     }
@@ -61,7 +47,7 @@ class FungalReefTreeFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
         random: RandomSource,
         center: BlockPos,
         state: BlockState,
-        radius: Int
+        radius: Int,
     ) {
         val mutable = BlockPos.MutableBlockPos()
 
