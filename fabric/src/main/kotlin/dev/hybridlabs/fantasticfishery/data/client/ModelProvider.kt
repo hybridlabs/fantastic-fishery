@@ -53,7 +53,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 FFBlocks.SPIRAL_CORAL_WALL_FAN.get(),
                 FFBlocks.DEAD_SPIRAL_CORAL_WALL_FAN.get()
             )
-            
+
             createCoral(
                 FFBlocks.CHICKEN_CORAL.get(),
                 FFBlocks.DEAD_CHICKEN_CORAL.get(),
@@ -95,6 +95,11 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             createNonTemplateModelBlock(
                 FFBlocks.BROWN_SHROOMPAD.get(),
                 FFBlocks.BROWN_SHROOMPAD.get()
+            )
+
+            createNonTemplateModelBlock(
+                FFBlocks.PLUNDERERS_CORE_BLOCK.get(),
+                FFBlocks.PLUNDERERS_CORE_BLOCK.get()
             )
             
             setOf(

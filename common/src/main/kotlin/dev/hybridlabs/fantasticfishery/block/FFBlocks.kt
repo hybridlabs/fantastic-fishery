@@ -36,6 +36,15 @@ object FFBlocks {
             .copy(Blocks.LILY_PAD)
             .instabreak())
     }
+
+    val PLUNDERERS_CORE_BLOCK = register("plunderers_core_block") {
+        PlunderersCoreBlock(
+        Properties
+            .copy(Blocks.OCHRE_FROGLIGHT)
+            .noOcclusion()
+            .noParticlesOnBreak()
+            .instabreak())
+    }
     
     val MYCELIAL_SAND = register("mycelial_sand") { SandBlock(14406560, Properties.copy(Blocks.SAND)) }
 

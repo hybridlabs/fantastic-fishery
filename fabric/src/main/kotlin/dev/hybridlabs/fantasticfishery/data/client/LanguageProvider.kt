@@ -29,7 +29,9 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
         mapOf(
             FFBlocks.RED_SHROOMPAD.get() to "Red Shroompad",
             FFBlocks.BROWN_SHROOMPAD.get() to "Brown Shroompad",
-            
+
+            FFBlocks.PLUNDERERS_CORE_BLOCK.get() to "Plunderer's Core",
+
             FFBlocks.MYCELIAL_SAND.get() to "Mycelial Sand",
             FFBlocks.MYCELIAL_SANDSTONE.get() to "Mycelial Sandstone",
             FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get() to "Mycelial Sandstone Stairs",

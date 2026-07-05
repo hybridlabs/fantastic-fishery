@@ -226,8 +226,9 @@ object FFItems {
     val PLUNDERERS_CORE = register(
         "plunderers_core",
     ) {
-        Item(
+        PlunderersCoreItem(
             Item.Properties()
+                .stacksTo(16)
         )
     }
 

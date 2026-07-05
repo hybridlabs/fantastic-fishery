@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery.entity
 
+import dev.hybridlabs.aquatic.CommonClass
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
@@ -9,6 +10,7 @@ import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
+import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EntityDimensions
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
@@ -61,9 +63,30 @@ object FFEntityTypes {
         EntityDimensions.fixed(0.6f, 0.5f),
         FrigidVesselEntity::createMobAttributes
     )
+
+    val PLUNDERERS_CORE = registerMisc(
+        "plunderers_core",
+        ::PlunderersCoreEntity,
+        EntityDimensions.fixed(0.5f, 0.1f)
+    )
     //#endregion
 
     //#region Registration Functions
+    //#region Misc Entity Registration
+    private fun <T : Entity> registerMisc(
+        id: String,
+        entityFactory: EntityType.EntityFactory<T>,
+        dimensions: EntityDimensions,
+    ): dev.hybridlabs.aquatic.platform.registration.RegistryObject<EntityType<T>> {
+        return CommonClass.ENTITY_TYPES.register(id) {
+            EntityType.Builder
+                .of(entityFactory, MobCategory.MISC)
+                .sized(dimensions.width, dimensions.height)
+                .clientTrackingRange(10)
+                .updateInterval(10)
+                .build(id)
+        }
+    }
     //#region Fish Registration
     private fun <T : LivingEntity> registerFish(
         id: String,
