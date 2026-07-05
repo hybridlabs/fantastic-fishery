@@ -1,8 +1,9 @@
 {
   "replace": false,
   "values": [
-    "fantastic_fishery:chicken_fungus",
-    "fantastic_fishery:amethyst_fungus",
-    "fantastic_fishery:oyster_fungus"
+    "fantastic_fishery:chicken_coral",
+    "fantastic_fishery:amethyst_coral",
+    "fantastic_fishery:oyster_coral",
+    "fantastic_fishery:chanterelle_coral"
   ]
 }

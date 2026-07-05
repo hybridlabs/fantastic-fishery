@@ -4,35 +4,35 @@
     "features": [
       {
         "feature": {
-          "type": "fantastic_fishery:reef_fungus_tree",
+          "type": "fantastic_fishery:fungal_reef_coral_tree",
           "config": {}
         },
         "placement": []
       },
       {
         "feature": {
-          "type": "fantastic_fishery:reef_fungus_claw",
+          "type": "fantastic_fishery:fungal_reef_coral_claw",
           "config": {}
         },
         "placement": []
       },
       {
         "feature": {
-          "type": "fantastic_fishery:reef_fungus_mushroom",
+          "type": "fantastic_fishery:fungal_reef_coral_mushroom",
           "config": {}
         },
         "placement": []
       },
       {
         "feature": {
-          "type": "fantastic_fishery:reef_fungus_table",
+          "type": "fantastic_fishery:fungal_reef_coral_table",
           "config": {}
         },
         "placement": []
       },
       {
         "feature": {
-          "type": "fantastic_fishery:reef_fungus_disc",
+          "type": "fantastic_fishery:fungal_reef_coral_disc",
           "config": {}
         },
         "placement": []

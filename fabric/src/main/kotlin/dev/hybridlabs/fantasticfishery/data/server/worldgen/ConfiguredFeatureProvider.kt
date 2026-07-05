@@ -65,27 +65,27 @@ class ConfiguredFeatureProvider(
                 SimpleRandomFeatureConfiguration(
                     HolderSet.direct(
                         PlacementUtils.inlinePlaced(
-                            FFFeatures.REEF_FUNGUS_TREE.get(),
+                            FFFeatures.FUNGAL_REEF_CORAL_TREE.get(),
                             FeatureConfiguration.NONE,
                             *arrayOfNulls<PlacementModifier>(0)
                         ),
                         PlacementUtils.inlinePlaced(
-                            FFFeatures.REEF_FUNGUS_CLAW.get(),
+                            FFFeatures.FUNGAL_REEF_CORAL_CLAW.get(),
                             FeatureConfiguration.NONE,
                             *arrayOfNulls<PlacementModifier>(0)
                         ),
                         PlacementUtils.inlinePlaced(
-                            FFFeatures.REEF_FUNGUS_MUSHROOM.get(),
+                            FFFeatures.FUNGAL_REEF_CORAL_MUSHROOM.get(),
                             FeatureConfiguration.NONE,
                             *arrayOfNulls<PlacementModifier>(0)
                         ),
                         PlacementUtils.inlinePlaced(
-                            FFFeatures.REEF_FUNGUS_TABLE.get(),
+                            FFFeatures.FUNGAL_REEF_CORAL_TABLE.get(),
                             FeatureConfiguration.NONE,
                             *arrayOfNulls<PlacementModifier>(0)
                         ),
                         PlacementUtils.inlinePlaced(
-                            FFFeatures.REEF_FUNGUS_DISC.get(),
+                            FFFeatures.FUNGAL_REEF_CORAL_DISC.get(),
                             FeatureConfiguration.NONE,
                             *arrayOfNulls<PlacementModifier>(0)
                         )

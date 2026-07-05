@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "fantastic_fishery:block/oyster_coral_wall_fan",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "fantastic_fishery:block/oyster_coral_wall_fan"
+    },
+    "facing=south": {
+      "model": "fantastic_fishery:block/oyster_coral_wall_fan",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fantastic_fishery:block/oyster_coral_wall_fan",
+      "y": 270
+    }
+  }
+}

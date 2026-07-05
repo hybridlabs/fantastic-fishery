@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "fantastic_fishery:block/dried_chicken_fungus_fan"
-  }
-}

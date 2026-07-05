@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "fantastic_fishery:block/amethyst_coral"
+  }
+}

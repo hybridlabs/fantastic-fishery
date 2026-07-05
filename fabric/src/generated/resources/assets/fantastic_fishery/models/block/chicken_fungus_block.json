@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "fantastic_fishery:block/chicken_fungus_block"
-  }
-}

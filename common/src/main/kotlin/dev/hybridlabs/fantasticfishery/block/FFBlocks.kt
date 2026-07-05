@@ -110,111 +110,147 @@ object FFBlocks {
         )
     }
 
-    val DRIED_AMETHYST_FUNGUS_BLOCK = 
-        register("dried_amethyst_fungus_block") { Block(
+    val DEAD_AMETHYST_CORAL_BLOCK = 
+        register("dead_amethyst_coral_block") { Block(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_BLOCK)
             .mapColor(MapColor.COLOR_GRAY)) }
-    val AMETHYST_FUNGUS_BLOCK = 
-        register("amethyst_fungus_block") { CoralBlock(DRIED_AMETHYST_FUNGUS_BLOCK.get(),
+    val AMETHYST_CORAL_BLOCK = 
+        register("amethyst_coral_block") { CoralBlock(DEAD_AMETHYST_CORAL_BLOCK.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL_BLOCK)
                 .mapColor(MapColor.TERRACOTTA_MAGENTA)
                 .sound(SoundType.CORAL_BLOCK)) }
-    val DRIED_AMETHYST_FUNGUS_FAN =
-        register("dried_amethyst_fungus_fan") { BaseCoralFanBlock(
+    val DEAD_AMETHYST_CORAL_FAN =
+        register("dead_amethyst_coral_fan") { BaseCoralFanBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_FAN)) }
-    val AMETHYST_FUNGUS_FAN =
-        register("amethyst_fungus_fan") { CoralFanBlock(DRIED_AMETHYST_FUNGUS_FAN.get(),
+    val AMETHYST_CORAL_FAN =
+        register("amethyst_coral_fan") { CoralFanBlock(DEAD_AMETHYST_CORAL_FAN.get(),
             Properties
             .copy(Blocks.FIRE_CORAL_FAN)) }
-    val DRIED_AMETHYST_FUNGUS =
-        register("dried_amethyst_fungus") { BaseCoralPlantBlock(
+    val DEAD_AMETHYST_CORAL =
+        register("dead_amethyst_coral") { BaseCoralPlantBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL)) }
-    val AMETHYST_FUNGUS =
-        register("amethyst_fungus") { CoralPlantBlock(DRIED_AMETHYST_FUNGUS.get(),
+    val AMETHYST_CORAL =
+        register("amethyst_coral") { CoralPlantBlock(DEAD_AMETHYST_CORAL.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL)) }
-    val DRIED_AMETHYST_FUNGUS_WALL_FAN =
-        register("dried_amethyst_fungus_wall_fan") { BaseCoralWallFanBlock(
+    val DEAD_AMETHYST_CORAL_WALL_FAN =
+        register("dead_amethyst_coral_wall_fan") { BaseCoralWallFanBlock(
             Properties
                 .copy(Blocks.DEAD_FIRE_CORAL_WALL_FAN)) }
-    val AMETHYST_FUNGUS_WALL_FAN =
-        register("amethyst_fungus_wall_fan") { CoralWallFanBlock(DRIED_AMETHYST_FUNGUS_WALL_FAN.get(), 
+    val AMETHYST_CORAL_WALL_FAN =
+        register("amethyst_coral_wall_fan") { CoralWallFanBlock(DEAD_AMETHYST_CORAL_WALL_FAN.get(), 
             Properties
                 .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
 
-    val DRIED_OYSTER_FUNGUS_BLOCK = 
-        register("dried_oyster_fungus_block") { Block(
+    val DEAD_OYSTER_CORAL_BLOCK = 
+        register("dead_oyster_coral_block") { Block(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_BLOCK)
             .mapColor(MapColor.COLOR_GRAY)) }
-    val OYSTER_FUNGUS_BLOCK = 
-        register("oyster_fungus_block") { CoralBlock(DRIED_OYSTER_FUNGUS_BLOCK.get(),
+    val OYSTER_CORAL_BLOCK = 
+        register("oyster_coral_block") { CoralBlock(DEAD_OYSTER_CORAL_BLOCK.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL_BLOCK)
                 .mapColor(MapColor.TERRACOTTA_MAGENTA)
                 .sound(SoundType.CORAL_BLOCK)) }
-    val DRIED_OYSTER_FUNGUS_FAN =
-        register("dried_oyster_fungus_fan") { BaseCoralFanBlock(
+    val DEAD_OYSTER_CORAL_FAN =
+        register("dead_oyster_coral_fan") { BaseCoralFanBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_FAN)) }
-    val OYSTER_FUNGUS_FAN =
-        register("oyster_fungus_fan") { CoralFanBlock(DRIED_OYSTER_FUNGUS_FAN.get(),
+    val OYSTER_CORAL_FAN =
+        register("oyster_coral_fan") { CoralFanBlock(DEAD_OYSTER_CORAL_FAN.get(),
             Properties
             .copy(Blocks.FIRE_CORAL_FAN)) }
-    val DRIED_OYSTER_FUNGUS =
-        register("dried_oyster_fungus") { BaseCoralPlantBlock(
+    val DEAD_OYSTER_CORAL =
+        register("dead_oyster_coral") { BaseCoralPlantBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL)) }
-    val OYSTER_FUNGUS =
-        register("oyster_fungus") { CoralPlantBlock(DRIED_OYSTER_FUNGUS.get(),
+    val OYSTER_CORAL =
+        register("oyster_coral") { CoralPlantBlock(DEAD_OYSTER_CORAL.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL)) }
-    val DRIED_OYSTER_FUNGUS_WALL_FAN =
-        register("dried_oyster_fungus_wall_fan") { BaseCoralWallFanBlock(
+    val DEAD_OYSTER_CORAL_WALL_FAN =
+        register("dead_oyster_coral_wall_fan") { BaseCoralWallFanBlock(
             Properties
                 .copy(Blocks.DEAD_FIRE_CORAL_WALL_FAN)) }
-    val OYSTER_FUNGUS_WALL_FAN =
-        register("oyster_fungus_wall_fan") { CoralWallFanBlock(DRIED_OYSTER_FUNGUS_WALL_FAN.get(), 
+    val OYSTER_CORAL_WALL_FAN =
+        register("oyster_coral_wall_fan") { CoralWallFanBlock(DEAD_OYSTER_CORAL_WALL_FAN.get(), 
             Properties
                 .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
 
-    val DRIED_CHICKEN_FUNGUS_BLOCK = 
-        register("dried_chicken_fungus_block") { Block(
+    val DEAD_CHANTERELLE_CORAL_BLOCK = 
+        register("dead_chanterelle_coral_block") { Block(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_BLOCK)
             .mapColor(MapColor.COLOR_GRAY)) }
-    val CHICKEN_FUNGUS_BLOCK = 
-        register("chicken_fungus_block") { CoralBlock(DRIED_CHICKEN_FUNGUS_BLOCK.get(),
+    val CHANTERELLE_CORAL_BLOCK = 
+        register("chanterelle_coral_block") { CoralBlock(DEAD_CHANTERELLE_CORAL_BLOCK.get(),
+            Properties
+                .copy(Blocks.FIRE_CORAL_BLOCK)
+                .mapColor(MapColor.TERRACOTTA_MAGENTA)
+                .sound(SoundType.CORAL_BLOCK)) }
+    val DEAD_CHANTERELLE_CORAL_FAN =
+        register("dead_chanterelle_coral_fan") { BaseCoralFanBlock(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL_FAN)) }
+    val CHANTERELLE_CORAL_FAN =
+        register("chanterelle_coral_fan") { CoralFanBlock(DEAD_CHANTERELLE_CORAL_FAN.get(),
+            Properties
+            .copy(Blocks.FIRE_CORAL_FAN)) }
+    val DEAD_CHANTERELLE_CORAL =
+        register("dead_chanterelle_coral") { BaseCoralPlantBlock(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL)) }
+    val CHANTERELLE_CORAL =
+        register("chanterelle_coral") { CoralPlantBlock(DEAD_CHANTERELLE_CORAL.get(),
+            Properties
+                .copy(Blocks.FIRE_CORAL)) }
+    val DEAD_CHANTERELLE_CORAL_WALL_FAN =
+        register("dead_chanterelle_coral_wall_fan") { BaseCoralWallFanBlock(
+            Properties
+                .copy(Blocks.DEAD_FIRE_CORAL_WALL_FAN)) }
+    val CHANTERELLE_CORAL_WALL_FAN =
+        register("chanterelle_coral_wall_fan") { CoralWallFanBlock(DEAD_CHANTERELLE_CORAL_WALL_FAN.get(), 
+            Properties
+                .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
+
+    val DEAD_CHICKEN_CORAL_BLOCK = 
+        register("dead_chicken_coral_block") { Block(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL_BLOCK)
+            .mapColor(MapColor.COLOR_GRAY)) }
+    val CHICKEN_CORAL_BLOCK = 
+        register("chicken_coral_block") { CoralBlock(DEAD_CHICKEN_CORAL_BLOCK.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL_BLOCK)
                 .mapColor(MapColor.TERRACOTTA_ORANGE)
                 .sound(SoundType.CORAL_BLOCK)) }
-    val DRIED_CHICKEN_FUNGUS_FAN =
-        register("dried_chicken_fungus_fan") { BaseCoralFanBlock(
+    val DEAD_CHICKEN_CORAL_FAN =
+        register("dead_chicken_coral_fan") { BaseCoralFanBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL_FAN)) }
-    val CHICKEN_FUNGUS_FAN =
-        register("chicken_fungus_fan") { CoralFanBlock(DRIED_CHICKEN_FUNGUS_FAN.get(),
+    val CHICKEN_CORAL_FAN =
+        register("chicken_coral_fan") { CoralFanBlock(DEAD_CHICKEN_CORAL_FAN.get(),
             Properties
             .copy(Blocks.FIRE_CORAL_FAN)) }
-    val DRIED_CHICKEN_FUNGUS =
-        register("dried_chicken_fungus") { BaseCoralPlantBlock(
+    val DEAD_CHICKEN_CORAL =
+        register("dead_chicken_coral") { BaseCoralPlantBlock(
             Properties
             .copy(Blocks.DEAD_FIRE_CORAL)) }
-    val CHICKEN_FUNGUS =
-        register("chicken_fungus") { CoralPlantBlock(DRIED_CHICKEN_FUNGUS.get(),
+    val CHICKEN_CORAL =
+        register("chicken_coral") { CoralPlantBlock(DEAD_CHICKEN_CORAL.get(),
             Properties
                 .copy(Blocks.FIRE_CORAL)) }
-    val DRIED_CHICKEN_FUNGUS_WALL_FAN =
-        register("dried_chicken_fungus_wall_fan") { BaseCoralWallFanBlock(
+    val DEAD_CHICKEN_CORAL_WALL_FAN =
+        register("dead_chicken_coral_wall_fan") { BaseCoralWallFanBlock(
             Properties
                 .copy(Blocks.DEAD_FIRE_CORAL_WALL_FAN)) }
-    val CHICKEN_FUNGUS_WALL_FAN =
-        register("chicken_fungus_wall_fan") { CoralWallFanBlock(DRIED_CHICKEN_FUNGUS_WALL_FAN.get(), 
+    val CHICKEN_CORAL_WALL_FAN =
+        register("chicken_coral_wall_fan") { CoralWallFanBlock(DEAD_CHICKEN_CORAL_WALL_FAN.get(), 
             Properties
                 .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
 

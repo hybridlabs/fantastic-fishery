@@ -8,11 +8,11 @@ import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConf
 
 object FFFeatures {
 
-    val REEF_FUNGUS_CLAW = register("reef_fungus_claw", ReefFungusClawFeature(NoneFeatureConfiguration.CODEC))
-    val REEF_FUNGUS_TREE = register("reef_fungus_tree", ReefFungusTreeFeature(NoneFeatureConfiguration.CODEC))
-    val REEF_FUNGUS_MUSHROOM = register("reef_fungus_mushroom", ReefFungusMushroomFeature(NoneFeatureConfiguration.CODEC))
-    val REEF_FUNGUS_TABLE = register("reef_fungus_table", ReefFungusTableFeature(NoneFeatureConfiguration.CODEC))
-    val REEF_FUNGUS_DISC = register("reef_fungus_disc", ReefFungusDiscFeature(NoneFeatureConfiguration.CODEC))
+    val FUNGAL_REEF_CORAL_CLAW = register("fungal_reef_coral_claw", FungalReefClawFeature(NoneFeatureConfiguration.CODEC))
+    val FUNGAL_REEF_CORAL_TREE = register("fungal_reef_coral_tree", FungalReefTreeFeature(NoneFeatureConfiguration.CODEC))
+    val FUNGAL_REEF_CORAL_MUSHROOM = register("fungal_reef_coral_mushroom", FungalReefMushroomFeature(NoneFeatureConfiguration.CODEC))
+    val FUNGAL_REEF_CORAL_TABLE = register("fungal_reef_coral_table", FungalReefTableFeature(NoneFeatureConfiguration.CODEC))
+    val FUNGAL_REEF_CORAL_DISC = register("fungal_reef_coral_disc", FungalReefDiscFeature(NoneFeatureConfiguration.CODEC))
 
     fun <F : Feature<*>> register(
         id: String,

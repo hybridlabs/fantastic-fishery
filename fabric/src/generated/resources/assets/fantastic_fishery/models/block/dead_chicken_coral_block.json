@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "fantastic_fishery:block/dead_chicken_coral_block"
+  }
+}

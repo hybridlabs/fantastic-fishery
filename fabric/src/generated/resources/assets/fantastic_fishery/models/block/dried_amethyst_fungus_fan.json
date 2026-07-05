@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/coral_fan",
-  "textures": {
-    "fan": "fantastic_fishery:block/dried_amethyst_fungus_fan"
-  }
-}

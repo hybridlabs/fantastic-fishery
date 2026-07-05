@@ -1,8 +1,9 @@
 {
   "replace": false,
   "values": [
-    "fantastic_fishery:chicken_fungus_wall_fan",
-    "fantastic_fishery:amethyst_fungus_wall_fan",
-    "fantastic_fishery:oyster_fungus_wall_fan"
+    "fantastic_fishery:chicken_coral_wall_fan",
+    "fantastic_fishery:amethyst_coral_wall_fan",
+    "fantastic_fishery:oyster_coral_wall_fan",
+    "fantastic_fishery:chanterelle_coral_wall_fan"
   ]
 }

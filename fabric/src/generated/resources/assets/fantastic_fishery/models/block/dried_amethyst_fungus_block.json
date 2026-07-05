@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "fantastic_fishery:block/dried_amethyst_fungus_block"
-  }
-}
