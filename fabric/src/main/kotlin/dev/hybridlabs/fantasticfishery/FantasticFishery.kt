@@ -9,6 +9,7 @@ import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
 import dev.hybridlabs.fantasticfishery.tag.FFBlockTags
+import dev.hybridlabs.fantasticfishery.tag.FFEntityTags
 import dev.hybridlabs.fantasticfishery.tag.FFItemTags
 import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
@@ -35,6 +36,7 @@ object FantasticFishery : ModInitializer {
         FFItems
         FFItemGroups
         FFBlockTags
+        FFEntityTags
         FFItemTags
         FFBiomeTags
 
