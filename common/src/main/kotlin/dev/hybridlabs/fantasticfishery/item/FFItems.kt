@@ -75,6 +75,23 @@ object FFItems {
         FFBlocks.DRIED_AMETHYST_FUNGUS_WALL_FAN
     )
     
+    val OYSTER_FUNGUS_BLOCK =
+        registerBlockItem("oyster_fungus_block") { FFBlocks.OYSTER_FUNGUS_BLOCK.get() }
+    val DRIED_OYSTER_FUNGUS_BLOCK =
+        registerBlockItem("dried_oyster_fungus_block") { FFBlocks.DRIED_OYSTER_FUNGUS_BLOCK.get() }
+    val OYSTER_FUNGUS = registerBlockItem("oyster_fungus") { FFBlocks.OYSTER_FUNGUS.get() }
+    val DRIED_OYSTER_FUNGUS = registerBlockItem("dried_oyster_fungus") { FFBlocks.DRIED_OYSTER_FUNGUS.get() }
+    val OYSTER_FUNGUS_FAN = registerVerticallyAttachable(
+        "oyster_fungus_fan",
+        FFBlocks.OYSTER_FUNGUS_FAN,
+        FFBlocks.OYSTER_FUNGUS_WALL_FAN
+    )
+    val DRIED_OYSTER_FUNGUS_FAN = registerVerticallyAttachable(
+        "dried_oyster_fungus_fan",
+        FFBlocks.DRIED_OYSTER_FUNGUS_FAN,
+        FFBlocks.DRIED_OYSTER_FUNGUS_WALL_FAN
+    )
+    
     val CHICKEN_FUNGUS_BLOCK =
         registerBlockItem("chicken_fungus_block") { FFBlocks.CHICKEN_FUNGUS_BLOCK.get() }
     val DRIED_CHICKEN_FUNGUS_BLOCK =

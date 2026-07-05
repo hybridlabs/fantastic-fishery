@@ -146,6 +146,42 @@ object FFBlocks {
             Properties
                 .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
 
+    val DRIED_OYSTER_FUNGUS_BLOCK = 
+        register("dried_oyster_fungus_block") { Block(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL_BLOCK)
+            .mapColor(MapColor.COLOR_GRAY)) }
+    val OYSTER_FUNGUS_BLOCK = 
+        register("oyster_fungus_block") { CoralBlock(DRIED_OYSTER_FUNGUS_BLOCK.get(),
+            Properties
+                .copy(Blocks.FIRE_CORAL_BLOCK)
+                .mapColor(MapColor.TERRACOTTA_MAGENTA)
+                .sound(SoundType.CORAL_BLOCK)) }
+    val DRIED_OYSTER_FUNGUS_FAN =
+        register("dried_oyster_fungus_fan") { BaseCoralFanBlock(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL_FAN)) }
+    val OYSTER_FUNGUS_FAN =
+        register("oyster_fungus_fan") { CoralFanBlock(DRIED_OYSTER_FUNGUS_FAN.get(),
+            Properties
+            .copy(Blocks.FIRE_CORAL_FAN)) }
+    val DRIED_OYSTER_FUNGUS =
+        register("dried_oyster_fungus") { BaseCoralPlantBlock(
+            Properties
+            .copy(Blocks.DEAD_FIRE_CORAL)) }
+    val OYSTER_FUNGUS =
+        register("oyster_fungus") { CoralPlantBlock(DRIED_OYSTER_FUNGUS.get(),
+            Properties
+                .copy(Blocks.FIRE_CORAL)) }
+    val DRIED_OYSTER_FUNGUS_WALL_FAN =
+        register("dried_oyster_fungus_wall_fan") { BaseCoralWallFanBlock(
+            Properties
+                .copy(Blocks.DEAD_FIRE_CORAL_WALL_FAN)) }
+    val OYSTER_FUNGUS_WALL_FAN =
+        register("oyster_fungus_wall_fan") { CoralWallFanBlock(DRIED_OYSTER_FUNGUS_WALL_FAN.get(), 
+            Properties
+                .copy(Blocks.FIRE_CORAL_WALL_FAN)) }
+
     val DRIED_CHICKEN_FUNGUS_BLOCK = 
         register("dried_chicken_fungus_block") { Block(
             Properties

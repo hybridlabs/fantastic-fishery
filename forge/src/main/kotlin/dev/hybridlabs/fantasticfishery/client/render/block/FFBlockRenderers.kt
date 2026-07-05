@@ -21,6 +21,13 @@ object FFBlockRenderers {
             FFBlocks.DRIED_AMETHYST_FUNGUS.get(),
             FFBlocks.DRIED_AMETHYST_FUNGUS_FAN.get(),
             FFBlocks.DRIED_AMETHYST_FUNGUS_WALL_FAN.get(),
+
+            FFBlocks.OYSTER_FUNGUS.get(),
+            FFBlocks.OYSTER_FUNGUS_FAN.get(),
+            FFBlocks.OYSTER_FUNGUS_WALL_FAN.get(),
+            FFBlocks.DRIED_OYSTER_FUNGUS.get(),
+            FFBlocks.DRIED_OYSTER_FUNGUS_FAN.get(),
+            FFBlocks.DRIED_OYSTER_FUNGUS_WALL_FAN.get(),
         )
     }
 }

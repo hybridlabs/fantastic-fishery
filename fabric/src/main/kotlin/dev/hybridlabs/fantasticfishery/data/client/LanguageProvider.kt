@@ -56,6 +56,13 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFBlocks.AMETHYST_FUNGUS_FAN.get() to "Amethyst Fungus Fan",
             FFBlocks.DRIED_AMETHYST_FUNGUS_FAN.get() to "Dried Amethyst Fungus Fan",
 
+            FFBlocks.OYSTER_FUNGUS_BLOCK.get() to "Oyster Fungus Block",
+            FFBlocks.DRIED_OYSTER_FUNGUS_BLOCK.get() to "Dried Oyster Fungus Block",
+            FFBlocks.OYSTER_FUNGUS.get() to "Oyster Fungus",
+            FFBlocks.DRIED_OYSTER_FUNGUS.get() to "Dried Oyster Fungus",
+            FFBlocks.OYSTER_FUNGUS_FAN.get() to "Oyster Fungus Fan",
+            FFBlocks.DRIED_OYSTER_FUNGUS_FAN.get() to "Dried Oyster Fungus Fan",
+
             ).forEach { (block, translation) ->
             builder.add(block, translation)
         }

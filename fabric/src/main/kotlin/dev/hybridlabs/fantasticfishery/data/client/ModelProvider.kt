@@ -64,6 +64,17 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 FFBlocks.CHICKEN_FUNGUS_WALL_FAN.get(),
                 FFBlocks.DRIED_CHICKEN_FUNGUS_WALL_FAN.get()
             )
+            
+            createCoral(
+                FFBlocks.OYSTER_FUNGUS.get(),
+                FFBlocks.DRIED_OYSTER_FUNGUS.get(),
+                FFBlocks.OYSTER_FUNGUS_BLOCK.get(),
+                FFBlocks.DRIED_OYSTER_FUNGUS_BLOCK.get(),
+                FFBlocks.OYSTER_FUNGUS_FAN.get(),
+                FFBlocks.DRIED_OYSTER_FUNGUS_FAN.get(),
+                FFBlocks.OYSTER_FUNGUS_WALL_FAN.get(),
+                FFBlocks.DRIED_OYSTER_FUNGUS_WALL_FAN.get()
+            )
 
             createNonTemplateModelBlock(
                 FFBlocks.RED_SHROOMPAD.get(),
