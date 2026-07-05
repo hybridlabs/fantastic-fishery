@@ -10,6 +10,8 @@ object FFConfiguredFeatures {
     val RED_SHROOMPADS = register("red_shroompads")
     val BROWN_SHROOMPADS = register("brown_shroompads")
 
+    val FUNGAL_REEF_VEGETATION = register("fungal_reef_vegetation")
+
     fun register(id: String): ResourceKey<ConfiguredFeature<*, *>> {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, FantasticFisheryCommon.locate(id))
     }

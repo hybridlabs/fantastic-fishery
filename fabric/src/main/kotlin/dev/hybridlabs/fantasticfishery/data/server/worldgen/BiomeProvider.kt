@@ -4,6 +4,7 @@ import dev.hybridlabs.aquatic.world.gen.feature.HAPlacedFeatures
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
+import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderLookup
@@ -150,7 +151,7 @@ class BiomeProvider(
             ) {
                 addFeature(
                     GenerationStep.Decoration.VEGETAL_DECORATION,
-                    entries.ref(HAPlacedFeatures.CORAL_REEF_VEGETATION)
+                    entries.ref(FFPlacedFeatures.FUNGAL_REEF_VEGETATION)
                 )
             }
         )

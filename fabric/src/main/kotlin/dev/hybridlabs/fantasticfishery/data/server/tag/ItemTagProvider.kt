@@ -1,4 +1,4 @@
-package dev.hybridlabs.fantasticfishery.data.server
+package dev.hybridlabs.fantasticfishery.data.server.tag
 
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import dev.hybridlabs.fantasticfishery.tag.FFItemTags

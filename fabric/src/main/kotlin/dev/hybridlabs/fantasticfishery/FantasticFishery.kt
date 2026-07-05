@@ -8,8 +8,12 @@ import dev.hybridlabs.fantasticfishery.entity.SpawnRestrictionRegistry
 import dev.hybridlabs.fantasticfishery.item.FFItemGroups
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
+import dev.hybridlabs.fantasticfishery.tag.FFBlockTags
 import dev.hybridlabs.fantasticfishery.tag.FFItemTags
 import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
+import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
+import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
+import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FeatureBiomeModifications
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications
@@ -30,8 +34,13 @@ object FantasticFishery : ModInitializer {
         FFBiomes.addBiomes()
         FFItems
         FFItemGroups
+        FFBlockTags
         FFItemTags
         FFBiomeTags
+
+        FFFeatures
+        FFPlacedFeatures
+        FFConfiguredFeatures
 
         FeatureBiomeModifications.registerBiomeModifications()
         SpawnRestrictionRegistry.registerSpawnRestrictions()

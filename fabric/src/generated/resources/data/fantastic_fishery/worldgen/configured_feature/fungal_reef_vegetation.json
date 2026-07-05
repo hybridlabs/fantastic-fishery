@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "fantastic_fishery:reef_fungus_tree",
+          "config": {}
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "fantastic_fishery:reef_fungus_claw",
+          "config": {}
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "fantastic_fishery:reef_fungus_mushroom",
+          "config": {}
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "fantastic_fishery:reef_fungus_table",
+          "config": {}
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "fantastic_fishery:reef_fungus_disc",
+          "config": {}
+        },
+        "placement": []
+      }
+    ]
+  }
+}
