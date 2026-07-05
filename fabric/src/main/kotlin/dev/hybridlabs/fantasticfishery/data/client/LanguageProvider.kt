@@ -65,12 +65,12 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFBlocks.OYSTER_CORAL_FAN.get() to "Oyster Coral Fan",
             FFBlocks.DEAD_OYSTER_CORAL_FAN.get() to "Dead Oyster Coral Fan",
 
-            FFBlocks.AMETHYST_CORAL_BLOCK.get() to "Cap Coral Block",
-            FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() to "Dead Cap Coral Block",
-            FFBlocks.AMETHYST_CORAL.get() to "Cap Coral",
-            FFBlocks.DEAD_AMETHYST_CORAL.get() to "Dead Cap Coral",
-            FFBlocks.AMETHYST_CORAL_FAN.get() to "Cap Coral Fan",
-            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get() to "Dead Cap Coral Fan",
+            FFBlocks.AMETHYST_CORAL_BLOCK.get() to "Amethyst Coral Block",
+            FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get() to "Dead Amethyst Coral Block",
+            FFBlocks.AMETHYST_CORAL.get() to "Amethyst Coral",
+            FFBlocks.DEAD_AMETHYST_CORAL.get() to "Dead Amethyst Coral",
+            FFBlocks.AMETHYST_CORAL_FAN.get() to "Amethyst Coral Fan",
+            FFBlocks.DEAD_AMETHYST_CORAL_FAN.get() to "Dead Amethyst Coral Fan",
 
             ).forEach { (block, translation) ->
             builder.add(block, translation)
