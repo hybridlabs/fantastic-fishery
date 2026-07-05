@@ -27,9 +27,36 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
 
         // blocks
         mapOf(
-            FFBlocks.RED_FLOATING_CAP.get() to "Red Floating Cap",
-            FFBlocks.BROWN_FLOATING_CAP.get() to "Brown Floating Cap",
-        ).forEach { (block, translation) ->
+            FFBlocks.RED_SHROOMPAD.get() to "Red Shroompad",
+            FFBlocks.BROWN_SHROOMPAD.get() to "Brown Shroompad",
+            
+            FFBlocks.MYCELIAL_SAND.get() to "Mycelial Sand",
+            FFBlocks.MYCELIAL_SANDSTONE.get() to "Mycelial Sandstone",
+            FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get() to "Mycelial Sandstone Stairs",
+            FFBlocks.MYCELIAL_SANDSTONE_SLAB.get() to "Mycelial Sandstone Slab",
+            FFBlocks.MYCELIAL_SANDSTONE_WALL.get() to "Mycelial Sandstone Wall",
+            FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get() to "Smooth Mycelial Sandstone",
+            FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get() to "Smooth Mycelial Sandstone Slab",
+            FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get() to "Smooth Mycelial Sandstone Stairs",
+            FFBlocks.CUT_MYCELIAL_SANDSTONE.get() to "Cut Mycelial Sandstone",
+            FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get() to "Cut Mycelial Sandstone Slab",
+            FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get() to "Chiseled Mycelial Sandstone",
+
+            FFBlocks.CHICKEN_FUNGUS_BLOCK.get() to "Chicken Fungus Block",
+            FFBlocks.DRIED_CHICKEN_FUNGUS_BLOCK.get() to "Dried Chicken Fungus Block",
+            FFBlocks.CHICKEN_FUNGUS.get() to "Chicken Fungus",
+            FFBlocks.DRIED_CHICKEN_FUNGUS.get() to "Dried Chicken Fungus",
+            FFBlocks.CHICKEN_FUNGUS_FAN.get() to "Chicken Fungus Fan",
+            FFBlocks.DRIED_CHICKEN_FUNGUS_FAN.get() to "Dried Chicken Fungus Fan",
+
+            FFBlocks.AMETHYST_FUNGUS_BLOCK.get() to "Amethyst Fungus Block",
+            FFBlocks.DRIED_AMETHYST_FUNGUS_BLOCK.get() to "Dried Amethyst Fungus Block",
+            FFBlocks.AMETHYST_FUNGUS.get() to "Amethyst Fungus",
+            FFBlocks.DRIED_AMETHYST_FUNGUS.get() to "Dried Amethyst Fungus",
+            FFBlocks.AMETHYST_FUNGUS_FAN.get() to "Amethyst Fungus Fan",
+            FFBlocks.DRIED_AMETHYST_FUNGUS_FAN.get() to "Dried Amethyst Fungus Fan",
+
+            ).forEach { (block, translation) ->
             builder.add(block, translation)
         }
 

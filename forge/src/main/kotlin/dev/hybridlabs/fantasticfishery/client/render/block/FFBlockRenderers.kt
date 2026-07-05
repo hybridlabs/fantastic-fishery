@@ -1,0 +1,26 @@
+package dev.hybridlabs.fantasticfishery.client.render.block
+
+import dev.hybridlabs.fantasticfishery.platform.ClientServices
+import dev.hybridlabs.fantasticfishery.block.FFBlocks
+import net.minecraft.client.renderer.RenderType
+
+object FFBlockRenderers {
+    fun registerRenderShapes() {
+        ClientServices.PLATFORM.registerBlockRenderers(
+            RenderType.cutout(),
+            FFBlocks.CHICKEN_FUNGUS.get(),
+            FFBlocks.CHICKEN_FUNGUS_FAN.get(),
+            FFBlocks.CHICKEN_FUNGUS_WALL_FAN.get(),
+            FFBlocks.DRIED_CHICKEN_FUNGUS.get(),
+            FFBlocks.DRIED_CHICKEN_FUNGUS_FAN.get(),
+            FFBlocks.DRIED_CHICKEN_FUNGUS_WALL_FAN.get(),
+
+            FFBlocks.AMETHYST_FUNGUS.get(),
+            FFBlocks.AMETHYST_FUNGUS_FAN.get(),
+            FFBlocks.AMETHYST_FUNGUS_WALL_FAN.get(),
+            FFBlocks.DRIED_AMETHYST_FUNGUS.get(),
+            FFBlocks.DRIED_AMETHYST_FUNGUS_FAN.get(),
+            FFBlocks.DRIED_AMETHYST_FUNGUS_WALL_FAN.get(),
+        )
+    }
+}

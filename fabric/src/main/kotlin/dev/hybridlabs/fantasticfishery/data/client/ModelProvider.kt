@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
-import dev.hybridlabs.aquatic.block.HABlocks
+import dev.hybridlabs.fantasticfishery.block.FFBlockFamilies
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.FloatingCapBlock
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
@@ -12,7 +12,8 @@ import net.minecraft.data.models.BlockModelGenerators
 import net.minecraft.data.models.ItemModelGenerators
 import net.minecraft.data.models.model.ModelLocationUtils
 import net.minecraft.data.models.model.ModelTemplates
-import net.minecraft.world.level.block.Blocks
+import net.minecraft.data.models.model.TexturedModel
+
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
@@ -65,14 +66,36 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             )
 
             createNonTemplateModelBlock(
-                FFBlocks.RED_FLOATING_CAP.get(),
-                FFBlocks.RED_FLOATING_CAP.get()
+                FFBlocks.RED_SHROOMPAD.get(),
+                FFBlocks.RED_SHROOMPAD.get()
             )
 
             createNonTemplateModelBlock(
-                FFBlocks.BROWN_FLOATING_CAP.get(),
-                FFBlocks.BROWN_FLOATING_CAP.get()
+                FFBlocks.BROWN_SHROOMPAD.get(),
+                FFBlocks.BROWN_SHROOMPAD.get()
             )
+            
+            setOf(
+                FFBlocks.MYCELIAL_SAND.get(),
+            ).forEach(generator::createTrivialCube)
+
+            setOf(
+                FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get(),
+            ).forEach { block ->
+                generator.createTrivialBlock(block, TexturedModel.CUBE_TOP_BOTTOM)
+            }
+
+            generator.family(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get())
+                .generateFor(FFBlockFamilies.SMOOTH_MYCELIAL_SANDSTONE)
+
+            val mycelialSandstonePool = family(FFBlocks.MYCELIAL_SANDSTONE.get())
+            val cutMycelialSandstonePool = family(FFBlocks.CUT_MYCELIAL_SANDSTONE.get())
+
+            mycelialSandstonePool.stairs(FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get())
+            mycelialSandstonePool.slab(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get())
+            mycelialSandstonePool.wall(FFBlocks.MYCELIAL_SANDSTONE_WALL.get())
+
+            cutMycelialSandstonePool.slab(FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get())
         }
     }
 

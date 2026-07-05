@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "fantastic_fishery:block/cut_mycelial_sandstone",
+    "side": "fantastic_fishery:block/cut_mycelial_sandstone",
+    "top": "fantastic_fishery:block/cut_mycelial_sandstone"
+  }
+}

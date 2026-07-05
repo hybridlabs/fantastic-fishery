@@ -1,11 +1,11 @@
 {
-	"format_version": "1.9.0",
-	"credit": "Made with Blockbench",
-	"texture_size": [64, 64],
-	"textures": {
-		"1": "fantastic_fishery:block/brown_floating_cap"
-	},
-	"elements": [
+  "credit": "Made with Blockbench",
+  "texture_size": [32, 32],
+  "textures": {
+    "1": "fantastic_fishery:block/brown_shroompad",
+    "particle": "fantastic_fishery:block/brown_shroompad"
+  },
+  "elements": [
 		{
 			"from": [0.5, 12, 0.5],
 			"to": [15.5, 15, 15.5],

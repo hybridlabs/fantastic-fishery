@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "fantastic_fishery:block/smooth_mycelial_sandstone_slab"
+    },
+    "type=double": {
+      "model": "fantastic_fishery:block/smooth_mycelial_sandstone"
+    },
+    "type=top": {
+      "model": "fantastic_fishery:block/smooth_mycelial_sandstone_slab_top"
+    }
+  }
+}

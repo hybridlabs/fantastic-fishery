@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "fantastic_fishery:block/mycelial_sandstone",
+    "side": "fantastic_fishery:block/mycelial_sandstone",
+    "top": "fantastic_fishery:block/mycelial_sandstone"
+  }
+}

@@ -1,7 +1,5 @@
 package dev.hybridlabs.fantasticfishery.item
 
-import dev.hybridlabs.aquatic.item.HAItems
-import dev.hybridlabs.aquatic.item.HAItems.registerBlockItem
 import dev.hybridlabs.aquatic.item.PlaceableInWaterItem
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
@@ -14,18 +12,51 @@ import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
 import net.minecraft.world.food.FoodProperties
-import net.minecraft.world.item.Item
-import net.minecraft.world.item.MobBucketItem
-import net.minecraft.world.item.SpawnEggItem
-import net.minecraft.world.item.StandingAndWallBlockItem
+import net.minecraft.world.item.*
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.material.Fluids
 import java.util.function.Supplier
 
 object FFItems {
 
-    val RED_FLOATING_CAP = registerPlaceableInWaterBlockItem("red_floating_cap") { FFBlocks.RED_FLOATING_CAP.get() }
-    val BROWN_FLOATING_CAP = registerPlaceableInWaterBlockItem("brown_floating_cap") { FFBlocks.BROWN_FLOATING_CAP.get() }
+    val RED_FLOATING_CAP = registerPlaceableInWaterBlockItem("red_shroompad") { FFBlocks.RED_SHROOMPAD.get() }
+    val BROWN_FLOATING_CAP = registerPlaceableInWaterBlockItem("brown_shroompad") { FFBlocks.BROWN_SHROOMPAD.get() }
+    
+    val MYCELIAL_SAND = registerBlockItem("mycelial_sand") { FFBlocks.MYCELIAL_SAND.get() }
+    val CHISELED_MYCELIAL_SANDSTONE =
+        registerBlockItem("chiseled_mycelial_sandstone") { FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get() }
+    val MYCELIAL_SANDSTONE = registerBlockItem("mycelial_sandstone") { FFBlocks.MYCELIAL_SANDSTONE.get() }
+    val MYCELIAL_SANDSTONE_STAIRS = register("mycelial_sandstone_stairs") {
+        BlockItem(
+            FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get(),
+            Item.Properties()
+        )
+    }
+    val MYCELIAL_SANDSTONE_SLAB =
+        register("mycelial_sandstone_slab") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get(), Item.Properties()) }
+    val MYCELIAL_SANDSTONE_WALL =
+        register("mycelial_sandstone_wall") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_WALL.get(), Item.Properties()) }
+    val SMOOTH_MYCELIAL_SANDSTONE =
+        registerBlockItem("smooth_mycelial_sandstone") { FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get() }
+    val SMOOTH_MYCELIAL_SANDSTONE_STAIRS = register("smooth_mycelial_sandstone_stairs") {
+        BlockItem(
+            FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get(),
+            Item.Properties()
+        )
+    }
+    val SMOOTH_MYCELIAL_SANDSTONE_SLAB = register("smooth_mycelial_sandstone_slab") {
+        BlockItem(
+            FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get(),
+            Item.Properties()
+        )
+    }
+    val CUT_MYCELIAL_SANDSTONE = registerBlockItem("cut_mycelial_sandstone") { FFBlocks.CUT_MYCELIAL_SANDSTONE.get() }
+    val CUT_MYCELIAL_SANDSTONE_SLAB = register("cut_mycelial_sandstone_slab") {
+        BlockItem(
+            FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get(),
+            Item.Properties()
+        )
+    }
     
     val AMETHYST_FUNGUS_BLOCK =
         registerBlockItem("amethyst_fungus_block") { FFBlocks.AMETHYST_FUNGUS_BLOCK.get() }
@@ -244,6 +275,10 @@ object FFItems {
         return PLATFORM.registerSpawnEggItem(id, { type.get() }, primaryColor, secondaryColor)
     }
 
+    fun registerBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
+        return register(id) { BlockItem(block.get(), Item.Properties()) }
+    }
+
     private fun registerPlaceableInWaterBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
         return register(id) { PlaceableInWaterItem(block.get(), Item.Properties()) }
     }
@@ -254,7 +289,7 @@ object FFItems {
         wallBlock: Supplier<Block>,
         direction: Direction = Direction.DOWN,
     ): Supplier<Item> {
-        return HAItems.register(id) {
+        return register(id) {
             StandingAndWallBlockItem(
                 standingBlock.get(),
                 wallBlock.get(),

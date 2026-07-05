@@ -2,6 +2,7 @@
 
 package dev.hybridlabs.fantasticfishery
 
+import dev.hybridlabs.fantasticfishery.client.render.block.FFBlockRendererRegistry
 import dev.hybridlabs.fantasticfishery.client.render.entity.FFEntityRenderers
 import net.fabricmc.api.ClientModInitializer
 
@@ -9,6 +10,7 @@ import net.fabricmc.api.ClientModInitializer
 object FantasticFisheryClient : ClientModInitializer {
     override fun onInitializeClient() {
 
+        FFBlockRendererRegistry
         FFEntityRenderers
     }
 }

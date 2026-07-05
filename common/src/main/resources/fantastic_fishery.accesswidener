@@ -4,3 +4,4 @@ accessible method net/minecraft/world/entity/SpawnPlacements register (Lnet/mine
 accessible field net/minecraft/world/level/block/state/properties/IntegerProperty min I
 accessible field net/minecraft/world/level/block/state/properties/IntegerProperty max I
 accessible method net/minecraft/world/level/block/CoralWallFanBlock <init> (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+accessible method net/minecraft/world/level/block/StairBlock <init> (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
