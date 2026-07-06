@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.item
 
-import dev.hybridlabs.fantasticfishery.entity.PlunderersCoreEntity
+import dev.hybridlabs.fantasticfishery.entity.misc.PlunderersCoreEntity
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.sounds.SoundSource
 import net.minecraft.stats.Stats

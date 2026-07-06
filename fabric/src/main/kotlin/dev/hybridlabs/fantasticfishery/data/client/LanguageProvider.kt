@@ -82,12 +82,10 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFItems.FUNGILL.get() to "Fungill",
 
             FFItems.MORSEL.get() to "Morsel",
-            FFItems.MORSEL_BUCKET.get() to "Bucket Of Morsel",
             FFItems.MORSEL_BAR.get() to "Morsel Bar",
             FFItems.MORSEL_POP.get() to "Morsel Pop",
 
             FFItems.PLUNDERERS_HOOP.get() to "Plunderer's Hoop",
-            FFItems.PLUNDERERS_HOOP_BUCKET.get() to "Bucket Of Plunderer's Hoop",
             FFItems.PLUNDERERS_CORE.get() to "Plunderer's Core",
             FFItems.STAR_DONUT.get() to "Star Donut",
 
@@ -107,6 +105,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFEntityTypes.POROUS_SHELL.get() to "Porous Shell",
             FFEntityTypes.BLOOD_EEL.get() to "Blood Eel",
             FFEntityTypes.FRIGID_VESSEL.get() to "Frigid Vessel",
+            FFEntityTypes.JELLYSHROOM.get() to "Jellyshroom",
+            FFEntityTypes.PUFFBALL_PUFFER.get() to "Puffball Puffer",
         )
 
         // verify display name list is valid

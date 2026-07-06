@@ -260,32 +260,12 @@ object FFItems {
         )
     }
 
-    val MORSEL_BUCKET = register(
-        "morsel_bucket",
-    ) {
-        MobBucketItem(
-            FFEntityTypes.MORSEL.get(),
-            Fluids.WATER,
-            SoundEvents.BUCKET_EMPTY_FISH,
-            Item.Properties()
-                .stacksTo(1)
-        )
-    }
-
-    val PLUNDERERS_HOOP_BUCKET = register(
-        "plunderers_hoop_bucket",
-    ) {
-        MobBucketItem(
-            FFEntityTypes.PLUNDERERS_HOOP.get(),
-            Fluids.WATER,
-            SoundEvents.BUCKET_EMPTY_FISH,
-            Item.Properties()
-                .stacksTo(1)
-        )
-    }
-
     val FUNGILL_SPAWN_EGG =
         registerSpawnEgg("fungill_spawn_egg", FFEntityTypes.FUNGILL, 0xFFFFFF, 0xFFFFFF)
+    val JELLYSHROOM_SPAWN_EGG =
+        registerSpawnEgg("jellyshroom_spawn_egg", FFEntityTypes.JELLYSHROOM, 0xFFFFFF, 0xFFFFFF)
+    val PUFFBALL_PUFFER_SPAWN_EGG =
+        registerSpawnEgg("puffball_puffer_spawn_egg", FFEntityTypes.PUFFBALL_PUFFER, 0xFFFFFF, 0xFFFFFF)
     val PLUNDERERS_HOOP_SPAWN_EGG =
         registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP, 0xFFFFFF, 0xFFFFFF)
     val MORSEL_SPAWN_EGG =

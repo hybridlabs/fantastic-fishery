@@ -1,4 +1,4 @@
-package dev.hybridlabs.fantasticfishery.entity
+package dev.hybridlabs.fantasticfishery.entity.misc
 
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import net.minecraft.core.particles.ItemParticleOption

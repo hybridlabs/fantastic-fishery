@@ -8,6 +8,9 @@ import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.PuffballPufferEntity
+import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
+import dev.hybridlabs.fantasticfishery.entity.misc.PlunderersCoreEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.entity.Entity
@@ -64,6 +67,20 @@ object FFEntityTypes {
         FrigidVesselEntity::createMobAttributes
     )
 
+    val PUFFBALL_PUFFER = registerFish(
+        "puffball_puffer",
+        ::PuffballPufferEntity,
+        EntityDimensions.fixed(0.5f, 0.5f),
+        PuffballPufferEntity::createMobAttributes
+    )
+
+    val JELLYSHROOM = registerJelly(
+        "jellyshroom",
+        ::JellyshroomEntity,
+        EntityDimensions.fixed(0.9f, 0.9f),
+        JellyshroomEntity::createMobAttributes
+    )
+
     val PLUNDERERS_CORE = registerMisc(
         "plunderers_core",
         ::PlunderersCoreEntity,
@@ -104,6 +121,23 @@ object FFEntityTypes {
             trackingRange,
         )
     }
+
+    private fun <T : LivingEntity> registerJelly(
+        id: String,
+        entityFactory: EntityType.EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: Callable<AttributeSupplier.Builder>,
+        trackingRange: Int = 6,
+    ): RegistryObject<EntityType<T>> {
+        return registerCustomSpawnGroup(
+            id,
+            entityFactory,
+            dimensions,
+            attributeContainer,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
+            trackingRange,
+        )
+    }
     //#endregion
 
     /**
@@ -114,7 +148,7 @@ object FFEntityTypes {
         entityFactory: EntityType.EntityFactory<T>,
         dimensions: EntityDimensions,
         attributeContainer: Callable<AttributeSupplier.Builder>,
-        hybridAquaticSpawnGroup: MobCategory,
+        fantasticFisherySpawnGroup: MobCategory,
         trackingRange: Int = 5,
         updateInterval: Int = 3,
         canSpawnFarFromPlayer: Boolean = false,
@@ -124,7 +158,7 @@ object FFEntityTypes {
             entityFactory,
             dimensions,
             attributeContainer,
-            hybridAquaticSpawnGroup,
+            fantasticFisherySpawnGroup,
             trackingRange,
             updateInterval,
             canSpawnFarFromPlayer

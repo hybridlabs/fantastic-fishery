@@ -2,6 +2,7 @@ package dev.hybridlabs.fantasticfishery.entity
 
 import dev.hybridlabs.aquatic.entity.HAEntityTypes
 import dev.hybridlabs.aquatic.entity.base.HAFishEntity
+import dev.hybridlabs.aquatic.entity.base.HAJellyfishEntity
 import dev.hybridlabs.aquatic.entity.base.HAWaterAnimal
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
@@ -18,6 +19,7 @@ object SpawnRestrictionRegistry {
             FFEntityTypes.FUNGILL.get(),
             FFEntityTypes.MORSEL.get(),
             FFEntityTypes.FRIGID_VESSEL.get(),
+            FFEntityTypes.PUFFBALL_PUFFER.get(),
         ).forEach { registerFish(it) }
 
         setOf(
@@ -25,6 +27,10 @@ object SpawnRestrictionRegistry {
             FFEntityTypes.BLOOD_EEL.get(),
             FFEntityTypes.POROUS_SHELL.get(),
         ).forEach { registerDeepFish(it) }
+
+        setOf(
+            FFEntityTypes.JELLYSHROOM.get(),
+        ).forEach { registerJellyfish(it) }
     }
 
     private fun <T : HAWaterAnimal> registerFish(entityType: EntityType<T>) {
@@ -33,6 +39,10 @@ object SpawnRestrictionRegistry {
 
     private fun <T : HAWaterAnimal> registerDeepFish(entityType: EntityType<T>) {
         registerDeepFish(entityType, HAFishEntity::canDeepSpawn)
+    }
+
+    private fun <T : HAJellyfishEntity> registerJellyfish(entityType: EntityType<T>) {
+        registerDeepFish(entityType, HAJellyfishEntity::canSpawn)
     }
 
     private fun <T : WaterAnimal> registerWaterCreature(

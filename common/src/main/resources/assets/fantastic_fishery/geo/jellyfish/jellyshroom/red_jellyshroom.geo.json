@@ -1,0 +1,236 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 0.5, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "core_tentacles",
+					"parent": "body",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-6, -3, -6], "size": [12, 5, 12], "uv": [0, 40]}
+					]
+				},
+				{
+					"name": "tentacle_a1",
+					"parent": "core_tentacles",
+					"pivot": [0, -3, -5],
+					"cubes": [
+						{"origin": [-4, -8, -5], "size": [8, 5, 0], "uv": [48, 40]}
+					]
+				},
+				{
+					"name": "tentacle_a2",
+					"parent": "tentacle_a1",
+					"pivot": [0, -8, -5],
+					"cubes": [
+						{"origin": [-4, -13, -5], "size": [8, 5, 0], "uv": [48, 45]}
+					]
+				},
+				{
+					"name": "tentacle_a3",
+					"parent": "tentacle_a2",
+					"pivot": [0, -13, -5],
+					"cubes": [
+						{"origin": [-4, -18, -5], "size": [8, 5, 0], "uv": [48, 50]}
+					]
+				},
+				{
+					"name": "tentacle_b1",
+					"parent": "core_tentacles",
+					"pivot": [4.23223, -3, -4.23223],
+					"rotation": [0, -45, 0],
+					"cubes": [
+						{"origin": [2.73223, -8, -4.23223], "size": [3, 5, 0], "uv": [48, 55]}
+					]
+				},
+				{
+					"name": "tentacle_b2",
+					"parent": "tentacle_b1",
+					"pivot": [4.23223, -8, -4.23223],
+					"cubes": [
+						{"origin": [2.73223, -13, -4.23223], "size": [3, 5, 0], "uv": [54, 55]}
+					]
+				},
+				{
+					"name": "tentacle_b3",
+					"parent": "tentacle_b2",
+					"pivot": [4.23223, -13, -4.23223],
+					"cubes": [
+						{"origin": [2.73223, -18, -4.23223], "size": [3, 5, 0], "uv": [56, 23]}
+					]
+				},
+				{
+					"name": "tentacle_h1",
+					"parent": "core_tentacles",
+					"pivot": [-4.23223, -3, -4.23223],
+					"rotation": [0, 45, 0],
+					"cubes": [
+						{"origin": [-5.73223, -8, -4.23223], "size": [3, 5, 0], "uv": [48, 55], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_h2",
+					"parent": "tentacle_h1",
+					"pivot": [-4.23223, -8, -4.23223],
+					"cubes": [
+						{"origin": [-5.73223, -13, -4.23223], "size": [3, 5, 0], "uv": [54, 55], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_h3",
+					"parent": "tentacle_h2",
+					"pivot": [-4.23223, -13, -4.23223],
+					"cubes": [
+						{"origin": [-5.73223, -18, -4.23223], "size": [3, 5, 0], "uv": [56, 23], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_d1",
+					"parent": "core_tentacles",
+					"pivot": [4.23223, -3, 4.23223],
+					"rotation": [0, 45, 0],
+					"cubes": [
+						{"origin": [2.73223, -8, 4.23223], "size": [3, 5, 0], "uv": [48, 55]}
+					]
+				},
+				{
+					"name": "tentacle_d2",
+					"parent": "tentacle_d1",
+					"pivot": [4.23223, -8, 4.23223],
+					"cubes": [
+						{"origin": [2.73223, -13, 4.23223], "size": [3, 5, 0], "uv": [54, 55]}
+					]
+				},
+				{
+					"name": "tentacle_d3",
+					"parent": "tentacle_d2",
+					"pivot": [4.23223, -13, 4.23223],
+					"cubes": [
+						{"origin": [2.73223, -18, 4.23223], "size": [3, 5, 0], "uv": [56, 23]}
+					]
+				},
+				{
+					"name": "tentacle_f1",
+					"parent": "core_tentacles",
+					"pivot": [-4.23223, -3, 4.23223],
+					"rotation": [0, -45, 0],
+					"cubes": [
+						{"origin": [-5.73223, -8, 4.23223], "size": [3, 5, 0], "uv": [48, 55], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_f2",
+					"parent": "tentacle_f1",
+					"pivot": [-4.23223, -8, 4.23223],
+					"cubes": [
+						{"origin": [-5.73223, -13, 4.23223], "size": [3, 5, 0], "uv": [54, 55], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_f3",
+					"parent": "tentacle_f2",
+					"pivot": [-4.23223, -13, 4.23223],
+					"cubes": [
+						{"origin": [-5.73223, -18, 4.23223], "size": [3, 5, 0], "uv": [56, 23], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_c1",
+					"parent": "core_tentacles",
+					"pivot": [5, -3, 0],
+					"rotation": [0, -90, 0],
+					"cubes": [
+						{"origin": [1, -8, 0], "size": [8, 5, 0], "uv": [48, 40]}
+					]
+				},
+				{
+					"name": "tentacle_c2",
+					"parent": "tentacle_c1",
+					"pivot": [5, -8, 0],
+					"cubes": [
+						{"origin": [1, -13, 0], "size": [8, 5, 0], "uv": [48, 45]}
+					]
+				},
+				{
+					"name": "tentacle_c3",
+					"parent": "tentacle_c2",
+					"pivot": [5, -13, 0],
+					"cubes": [
+						{"origin": [1, -18, 0], "size": [8, 5, 0], "uv": [48, 50]}
+					]
+				},
+				{
+					"name": "tentacle_e1",
+					"parent": "core_tentacles",
+					"pivot": [0, -3, 5],
+					"cubes": [
+						{"origin": [-4, -8, 5], "size": [8, 5, 0], "uv": [48, 40]}
+					]
+				},
+				{
+					"name": "tentacle_e2",
+					"parent": "tentacle_e1",
+					"pivot": [0, -8, 5],
+					"cubes": [
+						{"origin": [-4, -13, 5], "size": [8, 5, 0], "uv": [48, 45]}
+					]
+				},
+				{
+					"name": "tentacle_e3",
+					"parent": "tentacle_e2",
+					"pivot": [0, -13, 5],
+					"cubes": [
+						{"origin": [-4, -18, 5], "size": [8, 5, 0], "uv": [48, 50]}
+					]
+				},
+				{
+					"name": "tentacle_g1",
+					"parent": "core_tentacles",
+					"pivot": [-5, -3, 0],
+					"rotation": [0, 90, 0],
+					"cubes": [
+						{"origin": [-9, -8, 0], "size": [8, 5, 0], "uv": [48, 40], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_g2",
+					"parent": "tentacle_g1",
+					"pivot": [-5, -8, 0],
+					"cubes": [
+						{"origin": [-9, -13, 0], "size": [8, 5, 0], "uv": [48, 45], "mirror": true}
+					]
+				},
+				{
+					"name": "tentacle_g3",
+					"parent": "tentacle_g2",
+					"pivot": [-5, -13, 0],
+					"cubes": [
+						{"origin": [-9, -18, 0], "size": [8, 5, 0], "uv": [48, 50], "mirror": true}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 6, 0],
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [16, 7, 16], "uv": [0, 0]},
+						{"origin": [-7, 7, -7], "size": [14, 3, 14], "uv": [0, 23]}
+					]
+				}
+			]
+		}
+	]
+}

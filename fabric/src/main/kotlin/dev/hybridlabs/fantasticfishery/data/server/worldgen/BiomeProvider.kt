@@ -153,8 +153,8 @@ class BiomeProvider(
                 entries,
                 temperature = 0.5f,
                 downfall = 0.5f,
-                waterColor = 0x7f6891,
-                waterFogColor = 0x7f6891,
+                waterColor = 0x4159204,
+                waterFogColor = 0x329011,
                 listOf(
                     Pair(
                         Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),

@@ -29,6 +29,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 .filter { item ->
                     item in setOf(
                         FFItems.FUNGILL_SPAWN_EGG.get(),
+                        FFItems.JELLYSHROOM_SPAWN_EGG.get(),
+                        FFItems.PUFFBALL_PUFFER_SPAWN_EGG.get(),
                         FFItems.PLUNDERERS_HOOP_SPAWN_EGG.get(),
                         FFItems.MORSEL_SPAWN_EGG.get(),
                         FFItems.POROUS_SHELL_SPAWN_EGG.get(),
@@ -135,9 +137,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             FFItems.MORSEL_POP.get(),
             FFItems.POROUS_SHELL.get(),
             FFItems.BLOOD_EEL.get(),
-            FFItems.MORSEL_BUCKET.get(),
             FFItems.PLUNDERERS_HOOP.get(),
-            FFItems.PLUNDERERS_HOOP_BUCKET.get(),
             FFItems.PLUNDERERS_CORE.get(),
             FFItems.STAR_DONUT.get(),
         ).forEach { item ->

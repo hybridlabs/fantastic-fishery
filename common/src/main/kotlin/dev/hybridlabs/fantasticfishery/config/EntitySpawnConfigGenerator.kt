@@ -3,6 +3,7 @@ package dev.hybridlabs.fantasticfishery.config
 import dev.hybridlabs.aquatic.tag.HABiomeTags
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services
+import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
 import net.minecraft.tags.BiomeTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.entity.EntityType
@@ -17,37 +18,49 @@ class EntitySpawnConfigGenerator {
     private val list: MutableList<EntitySpawnConfig> = mutableListOf()
 
     fun finalizeSpawn() {
-        addFish(
+        addFantasticFish(
             FFEntityTypes.FUNGILL.get(),
             listOf(
-                HABiomeTags.TEMPERATE_OCEANS,
-                HABiomeTags.LUKEWARM_OCEANS,
-                HABiomeTags.WARM_OCEANS),
+                FFBiomeTags.MUSHROOM_BIOMES),
             10, 1, 3
         )
 
-        addFish(
+        addFantasticFish(
+            FFEntityTypes.JELLYSHROOM.get(),
+            listOf(
+                FFBiomeTags.MUSHROOM_BIOMES),
+            8, 1, 3
+        )
+
+        addFantasticFish(
+            FFEntityTypes.PUFFBALL_PUFFER.get(),
+            listOf(
+                FFBiomeTags.MUSHROOM_BIOMES),
+            6, 1, 3
+        )
+
+        addFantasticFish(
             FFEntityTypes.PLUNDERERS_HOOP.get(),
             listOf(
                 HABiomeTags.ALL_TRENCHES),
             10, 1, 5
         )
 
-        addFish(
+        addFantasticFish(
             FFEntityTypes.FRIGID_VESSEL.get(),
             listOf(
                 HABiomeTags.FROZEN_OCEANS),
             10, 1, 5
         )
 
-        addFish(
+        addFantasticFish(
             FFEntityTypes.POROUS_SHELL.get(),
             listOf(
                 HABiomeTags.SULFURIC_CAVE),
-            5, 1, 2
+            8, 1, 2
         )
 
-        addFish(
+        addFantasticFish(
             FFEntityTypes.MORSEL.get(),
             listOf(
                 BiomeTags.IS_OCEAN),
@@ -55,7 +68,7 @@ class EntitySpawnConfigGenerator {
         )
     }
 
-    private fun addFish(
+    private fun addFantasticFish(
         entityType: EntityType<*>,
         spawnTags: List<TagKey<Biome>>,
         weight: Int,

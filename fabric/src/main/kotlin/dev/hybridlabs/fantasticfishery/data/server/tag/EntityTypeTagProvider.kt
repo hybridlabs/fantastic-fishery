@@ -33,5 +33,10 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
                 FFEntityTypes.BLOOD_EEL.get(),
                 FFEntityTypes.POROUS_SHELL.get(),
             )
+
+        getOrCreateTagBuilder(FFEntityTags.ALL_JELLYFISH)
+            .add(
+                FFEntityTypes.JELLYSHROOM.get(),
+            )
     }
 }
