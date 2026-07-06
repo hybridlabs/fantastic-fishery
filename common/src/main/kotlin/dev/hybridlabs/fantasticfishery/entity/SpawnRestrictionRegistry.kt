@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.entity
 
-import dev.hybridlabs.aquatic.entity.HAEntityTypes
+import dev.hybridlabs.aquatic.entity.base.HACrustaceanEntity
 import dev.hybridlabs.aquatic.entity.base.HAFishEntity
 import dev.hybridlabs.aquatic.entity.base.HAJellyfishEntity
 import dev.hybridlabs.aquatic.entity.base.HAWaterAnimal
@@ -31,6 +31,10 @@ object SpawnRestrictionRegistry {
         setOf(
             FFEntityTypes.JELLYSHROOM.get(),
         ).forEach { registerJellyfish(it) }
+
+        setOf(
+            FFEntityTypes.MYCRAB.get(),
+        ).forEach { registerAquaticCrustacean(it) }
     }
 
     private fun <T : HAWaterAnimal> registerFish(entityType: EntityType<T>) {
@@ -43,6 +47,10 @@ object SpawnRestrictionRegistry {
 
     private fun <T : HAJellyfishEntity> registerJellyfish(entityType: EntityType<T>) {
         registerDeepFish(entityType, HAJellyfishEntity::canSpawn)
+    }
+
+    private fun <T : HAWaterAnimal> registerAquaticCrustacean(entityType: EntityType<T>) {
+        registerCrustacean(entityType, HACrustaceanEntity::canSpawnInWater)
     }
 
     private fun <T : WaterAnimal> registerWaterCreature(
@@ -74,6 +82,17 @@ object SpawnRestrictionRegistry {
         register(
             entityType,
             SpawnPlacements.Type.IN_WATER,
+            predicate
+        )
+    }
+
+    private fun <T : HAWaterAnimal> registerCrustacean(
+        entityType: EntityType<T>,
+        predicate: SpawnPlacements.SpawnPredicate<T>,
+    ) {
+        register(
+            entityType,
+            SpawnPlacements.Type.NO_RESTRICTIONS,
             predicate
         )
     }

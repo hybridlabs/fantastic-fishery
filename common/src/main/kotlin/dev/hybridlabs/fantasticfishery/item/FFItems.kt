@@ -266,6 +266,8 @@ object FFItems {
         registerSpawnEgg("jellyshroom_spawn_egg", FFEntityTypes.JELLYSHROOM, 0xFFFFFF, 0xFFFFFF)
     val PUFFBALL_PUFFER_SPAWN_EGG =
         registerSpawnEgg("puffball_puffer_spawn_egg", FFEntityTypes.PUFFBALL_PUFFER, 0xFFFFFF, 0xFFFFFF)
+    val MYCRAB_SPAWN_EGG =
+        registerSpawnEgg("mycrab_spawn_egg", FFEntityTypes.MYCRAB, 0xFFFFFF, 0xFFFFFF)
     val PLUNDERERS_HOOP_SPAWN_EGG =
         registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP, 0xFFFFFF, 0xFFFFFF)
     val MORSEL_SPAWN_EGG =

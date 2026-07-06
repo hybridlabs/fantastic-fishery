@@ -1,23 +1,13 @@
 package dev.hybridlabs.fantasticfishery.entity
 
-import dev.hybridlabs.aquatic.CommonClass
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
-import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.PuffballPufferEntity
+import dev.hybridlabs.fantasticfishery.entity.crustacean.MycrabEntity
+import dev.hybridlabs.fantasticfishery.entity.fish.*
 import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
 import dev.hybridlabs.fantasticfishery.entity.misc.PlunderersCoreEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
-import net.minecraft.world.entity.Entity
-import net.minecraft.world.entity.EntityDimensions
-import net.minecraft.world.entity.EntityType
-import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.MobCategory
+import net.minecraft.world.entity.*
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import java.util.concurrent.Callable
 
@@ -81,6 +71,13 @@ object FFEntityTypes {
         JellyshroomEntity::createMobAttributes
     )
 
+    val MYCRAB = registerCrustacean(
+        "mycrab",
+        ::MycrabEntity,
+        EntityDimensions.fixed(0.6f, 0.25f),
+        MycrabEntity::createMobAttributes
+    )
+
     val PLUNDERERS_CORE = registerMisc(
         "plunderers_core",
         ::PlunderersCoreEntity,
@@ -94,8 +91,8 @@ object FFEntityTypes {
         id: String,
         entityFactory: EntityType.EntityFactory<T>,
         dimensions: EntityDimensions,
-    ): dev.hybridlabs.aquatic.platform.registration.RegistryObject<EntityType<T>> {
-        return CommonClass.ENTITY_TYPES.register(id) {
+    ): RegistryObject<EntityType<T>> {
+        return FantasticFisheryCommon.ENTITY_TYPES.register(id) {
             EntityType.Builder
                 .of(entityFactory, MobCategory.MISC)
                 .sized(dimensions.width, dimensions.height)
@@ -139,6 +136,24 @@ object FFEntityTypes {
         )
     }
     //#endregion
+
+    //#region Crustacean Registration
+    private fun <T : LivingEntity> registerCrustacean(
+        id: String,
+        entityFactory: EntityType.EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: Callable<AttributeSupplier.Builder>,
+        trackingRange: Int = 6,
+    ): RegistryObject<EntityType<T>> {
+        return registerCustomSpawnGroup(
+            id,
+            entityFactory,
+            dimensions,
+            attributeContainer,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
+            trackingRange,
+        )
+    }
 
     /**
      * Registers a living entity to the entity type registry with a Hybrid Aquatic spawn group.

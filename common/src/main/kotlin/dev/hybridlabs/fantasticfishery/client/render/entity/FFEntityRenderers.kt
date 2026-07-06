@@ -1,6 +1,7 @@
 package dev.hybridlabs.fantasticfishery.client.render.entity
 
 import dev.hybridlabs.fantasticfishery.client.model.entity.fish.PuffballPufferEntityModel
+import dev.hybridlabs.fantasticfishery.client.render.entity.crustacean.MycrabEntityRenderer
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.BloodEelEntityRenderer
 import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FrigidVesselEntityRenderer
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
@@ -61,5 +62,11 @@ object FFEntityRenderers {
         ClientServices.PLATFORM.registerEntityRenderer(
             FFEntityTypes.JELLYSHROOM,
             ::JellyshroomEntityRenderer
+        )
+
+    val MYCRAB =
+        ClientServices.PLATFORM.registerEntityRenderer(
+            FFEntityTypes.MYCRAB,
+            ::MycrabEntityRenderer
         )
 }

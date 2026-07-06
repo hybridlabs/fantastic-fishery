@@ -33,6 +33,13 @@ class EntitySpawnConfigGenerator {
         )
 
         addFantasticFish(
+            FFEntityTypes.MYCRAB.get(),
+            listOf(
+                FFBiomeTags.MUSHROOM_BIOMES),
+            8, 1, 3
+        )
+
+        addFantasticFish(
             FFEntityTypes.PUFFBALL_PUFFER.get(),
             listOf(
                 FFBiomeTags.MUSHROOM_BIOMES),

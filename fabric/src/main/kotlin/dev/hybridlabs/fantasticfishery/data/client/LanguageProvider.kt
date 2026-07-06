@@ -107,6 +107,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFEntityTypes.FRIGID_VESSEL.get() to "Frigid Vessel",
             FFEntityTypes.JELLYSHROOM.get() to "Jellyshroom",
             FFEntityTypes.PUFFBALL_PUFFER.get() to "Puffball Puffer",
+            FFEntityTypes.MYCRAB.get() to "Mycrab",
         )
 
         // verify display name list is valid

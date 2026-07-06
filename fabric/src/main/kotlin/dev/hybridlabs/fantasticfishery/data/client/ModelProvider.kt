@@ -36,6 +36,7 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                         FFItems.POROUS_SHELL_SPAWN_EGG.get(),
                         FFItems.BLOOD_EEL_SPAWN_EGG.get(),
                         FFItems.FRIGID_VESSEL_SPAWN_EGG.get(),
+                        FFItems.MYCRAB_SPAWN_EGG.get(),
                     )
                 }
                 .forEach { item ->
