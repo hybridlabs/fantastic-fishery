@@ -19,9 +19,15 @@ class FungalReefDiscFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
         val radius = random.nextInt(3) + 2
         val spacing = 2
 
-        placeDisc(level, random, pos.offset(-spacing, 0, 0), radius, state)
-        placeDisc(level, random, pos, radius, state)
-        placeDisc(level, random, pos.offset(spacing, 0, 0), radius, state)
+        if (random.nextBoolean()) {
+            placeDisc(level, random, pos.offset(-spacing, 0, 0), radius, state)
+            placeDisc(level, random, pos, radius, state)
+            placeDisc(level, random, pos.offset(spacing, 0, 0), radius, state)
+        } else {
+            placeDisc(level, random, pos.offset(0, 0, -spacing), radius, state)
+            placeDisc(level, random, pos, radius, state)
+            placeDisc(level, random, pos.offset(0, 0, spacing), radius, state)
+        }
 
         return true
     }

@@ -25,24 +25,25 @@ class EntitySpawnConfigGenerator {
             10, 1, 3
         )
 
-        addFantasticFish(
+        addFantasticJellyfish(
             FFEntityTypes.JELLYSHROOM.get(),
             listOf(
-                FFBiomeTags.MUSHROOM_BIOMES),
+                FFBiomeTags.FUNGAL_SEA),
             8, 1, 3
         )
 
-        addFantasticFish(
+        addFantasticCrustacean(
             FFEntityTypes.MYCRAB.get(),
             listOf(
-                FFBiomeTags.MUSHROOM_BIOMES),
+                FFBiomeTags.MUSHROOM_SHORES,
+                FFBiomeTags.FUNGAL_SEA),
             8, 1, 3
         )
 
         addFantasticFish(
             FFEntityTypes.PUFFBALL_PUFFER.get(),
             listOf(
-                FFBiomeTags.MUSHROOM_BIOMES),
+                FFBiomeTags.FUNGAL_SEA),
             6, 1, 3
         )
 
@@ -86,6 +87,57 @@ class EntitySpawnConfigGenerator {
             entityType,
             spawnTags,
             Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
+            weight,
+            minGroup,
+            maxGroup
+        )
+    }
+
+    private fun addFantasticCrustacean(
+        entityType: EntityType<*>,
+        spawnTags: List<TagKey<Biome>>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int,
+    ) {
+        add(
+            entityType,
+            spawnTags,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_crustacean"),
+            weight,
+            minGroup,
+            maxGroup
+        )
+    }
+
+    private fun addFantasticJellyfish(
+        entityType: EntityType<*>,
+        spawnTags: List<TagKey<Biome>>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int,
+    ) {
+        add(
+            entityType,
+            spawnTags,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_jellyfish"),
+            weight,
+            minGroup,
+            maxGroup
+        )
+    }
+
+    private fun addFantasticShark(
+        entityType: EntityType<*>,
+        spawnTags: List<TagKey<Biome>>,
+        weight: Int,
+        minGroup: Int,
+        maxGroup: Int,
+    ) {
+        add(
+            entityType,
+            spawnTags,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_shark"),
             weight,
             minGroup,
             maxGroup

@@ -15,14 +15,14 @@ data class BiomeFeatureAddition(
             //#region Shroompads
             add(
                 BiomeFeatureAddition(
-                    FFBiomeTags.MUSHROOM_BIOMES,
+                    FFBiomeTags.MUSHROOM_SHORES,
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     FFPlacedFeatures.RED_SHROOMPADS
                 ),
             )
             add(
                 BiomeFeatureAddition(
-                    FFBiomeTags.MUSHROOM_BIOMES,
+                    FFBiomeTags.MUSHROOM_SHORES,
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     FFPlacedFeatures.BROWN_SHROOMPADS
                 )

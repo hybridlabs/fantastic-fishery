@@ -9,15 +9,26 @@ import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.tags.BiomeTags
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.biome.Biomes
 import net.minecraft.world.level.levelgen.SurfaceRules.*
 
 object FFBiomes {
-    val FUNGAL_REEF: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("fungal_reef"))
-    val FUNGAL_REEF_SURFACE_RULE: RuleSource = ifTrue(
-        isBiome(FUNGAL_REEF),
+    val FUNGAL_SEA: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("fungal_sea"))
+    val FUNGAL_SEA_SURFACE_RULE: RuleSource = ifTrue(
+        isBiome(FUNGAL_SEA),
+        sequence(
+            ifTrue(ON_FLOOR,
+                state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
+            ),
+            ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
+            ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+        )
+    )
+
+    val MUSHROOM_FIELDS_SHORE: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("mushroom_fields_shore"))
+    val MUSHROOM_FIELDS_SHORE_SURFACE_RULE: RuleSource = ifTrue(
+        isBiome(MUSHROOM_FIELDS_SHORE),
         sequence(
             ifTrue(ON_FLOOR,
                 state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
@@ -30,53 +41,8 @@ object FFBiomes {
     fun addBiomes() {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_OCEAN,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                )
-            )
-        )
-
-        BiomePlacement.addSubOverworld(
-            Biomes.DEEP_COLD_OCEAN,
-            FUNGAL_REEF,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                )
-            )
-        )
-
-        BiomePlacement.addSubOverworld(
-            Biomes.DEEP_FROZEN_OCEAN,
-            FUNGAL_REEF,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
@@ -87,15 +53,8 @@ object FFBiomes {
 
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_LUKEWARM_OCEAN,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
@@ -106,15 +65,8 @@ object FFBiomes {
 
         BiomePlacement.addSubOverworld(
             HABiomes.DEEP_WARM_OCEAN,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
@@ -125,15 +77,8 @@ object FFBiomes {
 
         BiomePlacement.addSubOverworld(
             Biomes.WARM_OCEAN,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
@@ -144,15 +89,8 @@ object FFBiomes {
 
         BiomePlacement.addSubOverworld(
             HABiomes.DEEP_CORAL_REEF,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
@@ -163,18 +101,25 @@ object FFBiomes {
 
         BiomePlacement.addSubOverworld(
             HABiomes.TROPICAL_DEEP_CORAL_REEF,
-            FUNGAL_REEF,
+            FUNGAL_SEA,
             SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.EDGE,
-                    SubBiomeMatcher.CriterionTypes.RATIO,
-                    0.0f,
-                    0.25f,
-                    false
-                ),
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
+                    false
+                )
+            )
+        )
+
+        BiomePlacement.addSubOverworld(
+            Biomes.MUSHROOM_FIELDS,
+            MUSHROOM_FIELDS_SHORE,
+            SubBiomeMatcher.of(
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.075f,
+                    -1.05f,
                     false
                 )
             )
@@ -186,7 +131,8 @@ object FFBiomes {
             ifTrue(
                 abovePreliminarySurface(),
                 sequence(
-                    FUNGAL_REEF_SURFACE_RULE,
+                    FUNGAL_SEA_SURFACE_RULE,
+                    MUSHROOM_FIELDS_SHORE_SURFACE_RULE,
                 )
             )
         )

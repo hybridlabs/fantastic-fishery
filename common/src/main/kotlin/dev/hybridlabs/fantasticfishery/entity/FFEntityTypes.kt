@@ -15,63 +15,63 @@ import java.util.concurrent.Callable
 object FFEntityTypes {
 
     //#region Fish
-    val FUNGILL = registerFish(
+    val FUNGILL = registerFantasticFish(
         "fungill",
         ::FungillEntity,
         EntityDimensions.fixed(0.6f, 0.5f),
         FungillEntity::createMobAttributes
     )
 
-    val PLUNDERERS_HOOP = registerFish(
+    val PLUNDERERS_HOOP = registerFantasticFish(
         "plunderers_hoop",
         ::PlunderersHoopEntity,
         EntityDimensions.fixed(0.6f, 0.75f),
         PlunderersHoopEntity::createMobAttributes
     )
 
-    val MORSEL = registerFish(
+    val MORSEL = registerFantasticFish(
         "morsel",
         ::MorselEntity,
         EntityDimensions.fixed(0.6f, 0.6f),
         MorselEntity::createMobAttributes
     )
 
-    val POROUS_SHELL = registerFish(
+    val POROUS_SHELL = registerFantasticFish(
         "porous_shell",
         ::PorousShellEntity,
         EntityDimensions.fixed(0.9f, 0.9f),
         PorousShellEntity::createMobAttributes
     )
 
-    val BLOOD_EEL = registerFish(
+    val BLOOD_EEL = registerFantasticFish(
         "blood_eel",
         ::BloodEelEntity,
         EntityDimensions.fixed(0.5f, 0.4f),
         BloodEelEntity::createMobAttributes
     )
 
-    val FRIGID_VESSEL = registerFish(
+    val FRIGID_VESSEL = registerFantasticFish(
         "frigid_vessel",
         ::FrigidVesselEntity,
         EntityDimensions.fixed(0.6f, 0.5f),
         FrigidVesselEntity::createMobAttributes
     )
 
-    val PUFFBALL_PUFFER = registerFish(
+    val PUFFBALL_PUFFER = registerFantasticFish(
         "puffball_puffer",
         ::PuffballPufferEntity,
         EntityDimensions.fixed(0.5f, 0.5f),
         PuffballPufferEntity::createMobAttributes
     )
 
-    val JELLYSHROOM = registerJelly(
+    val JELLYSHROOM = registerFantasticJelly(
         "jellyshroom",
         ::JellyshroomEntity,
         EntityDimensions.fixed(0.9f, 0.9f),
         JellyshroomEntity::createMobAttributes
     )
 
-    val MYCRAB = registerCrustacean(
+    val MYCRAB = registerFantasticCrustacean(
         "mycrab",
         ::MycrabEntity,
         EntityDimensions.fixed(0.6f, 0.25f),
@@ -102,7 +102,7 @@ object FFEntityTypes {
         }
     }
     //#region Fish Registration
-    private fun <T : LivingEntity> registerFish(
+    private fun <T : LivingEntity> registerFantasticFish(
         id: String,
         entityFactory: EntityType.EntityFactory<T>,
         dimensions: EntityDimensions,
@@ -119,7 +119,7 @@ object FFEntityTypes {
         )
     }
 
-    private fun <T : LivingEntity> registerJelly(
+    private fun <T : LivingEntity> registerFantasticJelly(
         id: String,
         entityFactory: EntityType.EntityFactory<T>,
         dimensions: EntityDimensions,
@@ -131,14 +131,14 @@ object FFEntityTypes {
             entityFactory,
             dimensions,
             attributeContainer,
-            Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_jellyfish"),
             trackingRange,
         )
     }
     //#endregion
 
     //#region Crustacean Registration
-    private fun <T : LivingEntity> registerCrustacean(
+    private fun <T : LivingEntity> registerFantasticCrustacean(
         id: String,
         entityFactory: EntityType.EntityFactory<T>,
         dimensions: EntityDimensions,
@@ -150,7 +150,24 @@ object FFEntityTypes {
             entityFactory,
             dimensions,
             attributeContainer,
-            Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_crustacean"),
+            trackingRange,
+        )
+    }
+
+    private fun <T : LivingEntity> registerFantasticShark(
+        id: String,
+        entityFactory: EntityType.EntityFactory<T>,
+        dimensions: EntityDimensions,
+        attributeContainer: Callable<AttributeSupplier.Builder>,
+        trackingRange: Int = 6,
+    ): RegistryObject<EntityType<T>> {
+        return registerCustomSpawnGroup(
+            id,
+            entityFactory,
+            dimensions,
+            attributeContainer,
+            Services.PLATFORM.getHybridMobCategoryByName("fantastic_shark"),
             trackingRange,
         )
     }

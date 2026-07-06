@@ -1,8 +1,5 @@
 package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
-import dev.hybridlabs.aquatic.world.gen.feature.HAPlacedFeatures
-import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
-import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -148,19 +145,13 @@ class BiomeProvider(
         entries: Entries,
     ) {
         entries.add(
-            FFBiomes.FUNGAL_REEF,
+            FFBiomes.FUNGAL_SEA,
             create(
                 entries,
                 temperature = 0.5f,
                 downfall = 0.5f,
                 waterColor = 0x3F76E4,
                 waterFogColor = 0x3F76E4,
-                listOf(
-                    Pair(
-                        Services.PLATFORM.getHybridMobCategoryByName("fantastic_fish"),
-                        MobSpawnSettings.SpawnerData(FFEntityTypes.FUNGILL.get(), 3, 3, 6)
-                    )
-                ),
                 includeMonsters = false
             ) {
                 addFeature(
@@ -168,6 +159,18 @@ class BiomeProvider(
                     entries.ref(FFPlacedFeatures.FUNGAL_REEF_VEGETATION)
                 )
             }
+        )
+
+        entries.add(
+            FFBiomes.MUSHROOM_FIELDS_SHORE,
+            create(
+                entries,
+                temperature = 0.5f,
+                downfall = 0.5f,
+                waterColor = 0x3F76E4,
+                waterFogColor = 0x3F76E4,
+                includeMonsters = false
+            )
         )
     }
 

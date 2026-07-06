@@ -84,14 +84,10 @@
     ],
     "axolotls": [],
     "creature": [],
-    "fantastic_fishery:fantastic_fish": [
-      {
-        "type": "fantastic_fishery:fungill",
-        "maxCount": 6,
-        "minCount": 3,
-        "weight": 3
-      }
-    ],
+    "fantastic_fishery:fantastic_crustacean": [],
+    "fantastic_fishery:fantastic_fish": [],
+    "fantastic_fishery:fantastic_jellyfish": [],
+    "fantastic_fishery:fantastic_shark": [],
     "hybrid_aquatic:cephalopod": [],
     "hybrid_aquatic:critter": [],
     "hybrid_aquatic:crustacean": [],
