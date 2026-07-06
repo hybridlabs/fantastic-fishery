@@ -1,10 +1,13 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
+import dev.hybridlabs.aquatic.world.gen.feature.HAFeatures
+import dev.hybridlabs.aquatic.world.gen.feature.algae.SeaLettuceFeature
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.level.levelgen.feature.Feature
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
 
 object FFFeatures {
 
@@ -13,6 +16,7 @@ object FFFeatures {
     val FUNGAL_REEF_CORAL_MUSHROOM = register("fungal_reef_coral_mushroom", FungalReefMushroomFeature(NoneFeatureConfiguration.CODEC))
     val FUNGAL_REEF_CORAL_TABLE = register("fungal_reef_coral_table", FungalReefTableFeature(NoneFeatureConfiguration.CODEC))
     val FUNGAL_REEF_CORAL_DISC = register("fungal_reef_coral_disc", FungalReefDiscFeature(NoneFeatureConfiguration.CODEC))
+    val MYCELIAL_SEAGRASS_PATCH = register("mycelial_seagrass_patch", SeaLettuceFeature(ProbabilityFeatureConfiguration.CODEC))
 
     fun <F : Feature<*>> register(
         id: String,

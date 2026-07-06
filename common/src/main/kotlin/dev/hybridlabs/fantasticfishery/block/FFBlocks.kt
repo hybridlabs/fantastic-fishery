@@ -1,5 +1,8 @@
 package dev.hybridlabs.fantasticfishery.block
 
+import dev.hybridlabs.aquatic.block.HABlocks
+import dev.hybridlabs.aquatic.block.SeaLettuceBlock
+import dev.hybridlabs.aquatic.block.TallSeaLettuceBlock
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.item.DyeColor
@@ -17,6 +20,7 @@ import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.StairBlock
 import net.minecraft.world.level.block.WallBlock
+import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties
 import net.minecraft.world.level.material.MapColor
 import java.util.function.Supplier
@@ -35,6 +39,22 @@ object FFBlocks {
         Properties
             .copy(Blocks.LILY_PAD)
             .instabreak())
+    }
+
+    val MYCELIAL_SEAGRASS = HABlocks.register("mycelial_seagrass") {
+        MycelialSeagrassBlock(
+            Properties
+                .copy(Blocks.SEAGRASS)
+                .offsetType(BlockBehaviour.OffsetType.XZ)
+        )
+    }
+
+    val TALL_MYCELIAL_SEAGRASS = HABlocks.register("tall_mycelial_seagrass") {
+        TallMycelialSeagrassBlock(
+            Properties
+                .copy(Blocks.TALL_SEAGRASS)
+                .offsetType(BlockBehaviour.OffsetType.NONE)
+        )
     }
 
     val PLUNDERERS_CORE_BLOCK = register("plunderers_core_block") {

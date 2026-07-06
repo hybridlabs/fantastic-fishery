@@ -1,5 +1,6 @@
 package dev.hybridlabs.fantasticfishery.data.client
 
+import dev.hybridlabs.aquatic.block.HABlocks
 import dev.hybridlabs.fantasticfishery.block.FFBlockFamilies
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.ShroompadBlock
@@ -45,6 +46,16 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                         ModelLocationUtils.decorateItemModelLocation("template_spawn_egg")
                     )
                 }
+
+            createCrossBlock(
+                FFBlocks.MYCELIAL_SEAGRASS.get(),
+                BlockModelGenerators.TintState.NOT_TINTED,
+            )
+
+            createDoublePlant(
+                FFBlocks.TALL_MYCELIAL_SEAGRASS.get(),
+                BlockModelGenerators.TintState.NOT_TINTED,
+            )
             
             createCoral(
                 FFBlocks.SPIRAL_CORAL.get(),

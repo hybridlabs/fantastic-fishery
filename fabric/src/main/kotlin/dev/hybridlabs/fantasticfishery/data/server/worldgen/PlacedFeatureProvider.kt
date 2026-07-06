@@ -14,6 +14,15 @@ class PlacedFeatureProvider(
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
     override fun configure(registries: HolderLookup.Provider, entries: Entries) {
 
+        fun seaweedModifier(count: Int): List<PlacementModifier> {
+            return listOf(
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                CountPlacement.of(count),
+                BiomeFilter.biome()
+            )
+        }
+
         entries.add(
             FFPlacedFeatures.RED_SHROOMPADS, PlacedFeature(
                 entries.ref(FFConfiguredFeatures.RED_SHROOMPADS), listOf(
@@ -36,6 +45,11 @@ class PlacedFeatureProvider(
             )
         )
 
+        entries.add(
+            FFPlacedFeatures.MYCELIAL_SEAGRASS_PATCH, PlacedFeature(
+                entries.ref(FFConfiguredFeatures.MYCELIAL_SEAGRASS_PATCH), seaweedModifier(80)
+            )
+        )
 
         entries.add(
             FFPlacedFeatures.FUNGAL_REEF_VEGETATION, PlacedFeature(

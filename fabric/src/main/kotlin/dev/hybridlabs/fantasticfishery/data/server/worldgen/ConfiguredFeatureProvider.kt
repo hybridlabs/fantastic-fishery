@@ -1,5 +1,7 @@
 package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
+import dev.hybridlabs.aquatic.world.gen.feature.HAConfiguredFeatures
+import dev.hybridlabs.aquatic.world.gen.feature.HAFeatures
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
@@ -13,6 +15,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature
 import net.minecraft.world.level.levelgen.feature.Feature
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration
@@ -54,6 +57,15 @@ class ConfiguredFeatureProvider(
                         ),
                         BlockPredicate.matchesBlocks(Blocks.WATER)
                     )
+                )
+            )
+        )
+
+        entries.add(
+            FFConfiguredFeatures.MYCELIAL_SEAGRASS_PATCH,
+            ConfiguredFeature(
+                FFFeatures.MYCELIAL_SEAGRASS_PATCH.get(), ProbabilityFeatureConfiguration(
+                    0.33f
                 )
             )
         )

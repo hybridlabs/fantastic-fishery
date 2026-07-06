@@ -6,22 +6,25 @@ import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
 import net.minecraft.core.Direction
-import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
 import net.minecraft.world.food.FoodProperties
-import net.minecraft.world.item.*
+import net.minecraft.world.item.BlockItem
+import net.minecraft.world.item.Item
+import net.minecraft.world.item.SpawnEggItem
+import net.minecraft.world.item.StandingAndWallBlockItem
 import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.material.Fluids
 import java.util.function.Supplier
 
 object FFItems {
 
-    val RED_FLOATING_CAP = registerPlaceableInWaterBlockItem("red_shroompad") { FFBlocks.RED_SHROOMPAD.get() }
-    val BROWN_FLOATING_CAP = registerPlaceableInWaterBlockItem("brown_shroompad") { FFBlocks.BROWN_SHROOMPAD.get() }
+    val RED_SHROOMPAD = registerPlaceableInWaterBlockItem("red_shroompad") { FFBlocks.RED_SHROOMPAD.get() }
+    val BROWN_SHROOMPAD = registerPlaceableInWaterBlockItem("brown_shroompad") { FFBlocks.BROWN_SHROOMPAD.get() }
     
+    val MYCELIAL_SEAGRASS = registerBlockItem("mycelial_seagrass") { FFBlocks.MYCELIAL_SEAGRASS.get() }
+
     val MYCELIAL_SAND = registerBlockItem("mycelial_sand") { FFBlocks.MYCELIAL_SAND.get() }
     val CHISELED_MYCELIAL_SANDSTONE =
         registerBlockItem("chiseled_mycelial_sandstone") { FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get() }

@@ -1,5 +1,8 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
+import dev.hybridlabs.aquatic.tag.HABiomeTags
+import dev.hybridlabs.aquatic.world.gen.feature.BiomeFeatureAddition
+import dev.hybridlabs.aquatic.world.gen.feature.HAPlacedFeatures
 import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
 import net.minecraft.resources.ResourceKey
 import net.minecraft.tags.TagKey
@@ -26,6 +29,14 @@ data class BiomeFeatureAddition(
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     FFPlacedFeatures.BROWN_SHROOMPADS
                 )
+            )
+
+            add(
+                BiomeFeatureAddition(
+                    FFBiomeTags.FUNGAL_SEA,
+                    GenerationStep.Decoration.VEGETAL_DECORATION,
+                    FFPlacedFeatures.MYCELIAL_SEAGRASS_PATCH
+                ),
             )
         }
     }

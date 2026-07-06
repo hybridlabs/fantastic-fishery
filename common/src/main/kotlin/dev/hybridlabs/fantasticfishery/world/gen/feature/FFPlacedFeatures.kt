@@ -13,6 +13,8 @@ object FFPlacedFeatures {
 
     val FUNGAL_REEF_VEGETATION = register("fungal_reef_vegetation")
 
+    val MYCELIAL_SEAGRASS_PATCH = register("mycelial_seagrass_patch")
+
     private fun register(id: String): ResourceKey<PlacedFeature> {
         return ResourceKey.create(Registries.PLACED_FEATURE, FantasticFisheryCommon.locate(id))
     }
