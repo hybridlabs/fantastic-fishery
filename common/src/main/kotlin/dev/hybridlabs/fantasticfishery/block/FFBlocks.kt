@@ -41,7 +41,7 @@ object FFBlocks {
             .instabreak())
     }
 
-    val MYCELIAL_SEAGRASS = HABlocks.register("mycelial_seagrass") {
+    val MYCELIAL_SEAGRASS = register("mycelial_seagrass") {
         MycelialSeagrassBlock(
             Properties
                 .copy(Blocks.SEAGRASS)
@@ -49,7 +49,7 @@ object FFBlocks {
         )
     }
 
-    val TALL_MYCELIAL_SEAGRASS = HABlocks.register("tall_mycelial_seagrass") {
+    val TALL_MYCELIAL_SEAGRASS = register("tall_mycelial_seagrass") {
         TallMycelialSeagrassBlock(
             Properties
                 .copy(Blocks.TALL_SEAGRASS)

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "fantastic_fishery:block/tall_mycelial_seagrass_bottom"
+    },
+    "half=upper": {
+      "model": "fantastic_fishery:block/tall_mycelial_seagrass_top"
+    }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "hybrid_aquatic:block/tall_mycelial_seagrass_bottom"
-  }
-}

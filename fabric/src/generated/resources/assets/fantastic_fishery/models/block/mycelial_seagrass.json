@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "hybrid_aquatic:block/mycelial_seagrass"
+    "cross": "fantastic_fishery:block/mycelial_seagrass"
   }
 }
