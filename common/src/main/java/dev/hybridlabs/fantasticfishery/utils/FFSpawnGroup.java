@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public enum FFSpawnGroup {
-    FANTASTIC_FISHERY_FISH("fantastic_fish", 10, true, false, 128);
+    FANTASTIC_FISHERY_FISH("fantastic_fish", 16, true, false, 128);
     
     public MobCategory spawnGroup;
     public final ResourceLocation location;
