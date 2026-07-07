@@ -97,13 +97,11 @@ loom {
     }
 
     mixin {
-        useLegacyMixinAp = true
         defaultRefmapName.set("${mod_id}.refmap.json")
     }
 
     compileKotlin {
         source(project(":common").sourceSets.main.allSource)
-        source(sourceSets.main.allSource)
         inputs.file "../gradle.properties"
     }
 

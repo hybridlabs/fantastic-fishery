@@ -34,3 +34,15 @@ mandatory = true
 versionRange = "${aquatic_version}"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "geckolib"
+mandatory = true
+versionRange = "[4.7.4,)"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "biolith"
+mandatory = true
+versionRange = "[1.0.1-alpha.1,)"
+side = "SERVER"

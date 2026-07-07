@@ -4,7 +4,7 @@
 	"version": "${version}",
 
 	"name": "Fantastic Fishery",
-	"description": "A fantasy fish addon for Hybrid Aquatic",
+	"description": "${description}",
 
 	"authors": [
 		"MysticKoko",
@@ -45,7 +45,6 @@
 	},
 
   "mixins": [
-    "fantastic_fishery.mixins.json",
     "fantastic_fishery.fabric.mixins.json"
   ],
 
@@ -54,6 +53,8 @@
 		"java": ">=17",
 		"fabric-language-kotlin": "*",
 		"fabric-api": ">=0.92",
-		"hybrid_aquatic": ">=1.6.3"
-	}
+		"hybrid_aquatic": ">=1.6.3",
+        "geckolib": ">=4.4",
+       "biolith": "*"
+    }
 }
