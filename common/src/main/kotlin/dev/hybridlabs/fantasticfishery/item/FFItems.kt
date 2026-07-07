@@ -18,6 +18,7 @@ import net.minecraft.world.item.StandingAndWallBlockItem
 import net.minecraft.world.level.block.Block
 import java.util.function.Supplier
 
+@Suppress("unused")
 object FFItems {
 
     val RED_SHROOMPAD = registerPlaceableInWaterBlockItem("red_shroompad") { FFBlocks.RED_SHROOMPAD.get() }
@@ -183,13 +184,45 @@ object FFItems {
     val MORSEL_POP = register(
         "morsel_pop",
     ) {
-        Item(
+        MorselPopItem(
             Item.Properties()
                 .stacksTo(1)
                 .food(
                     FoodProperties.Builder()
-                        .nutrition(10)
+                        .nutrition(8)
                         .saturationMod(1.0F)
+                        .effect(MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0f)
+                        .build()
+                )
+        )
+    }
+
+    val HALF_MORSEL_POP = register(
+        "half_morsel_pop",
+    ) {
+        MorselPopItem(
+            Item.Properties()
+                .stacksTo(1)
+                .food(
+                    FoodProperties.Builder()
+                        .nutrition(6)
+                        .saturationMod(0.8F)
+                        .effect(MobEffectInstance(MobEffects.REGENERATION, 160, 1), 1.0f)
+                        .build()
+                )
+        )
+    }
+
+    val QUARTER_MORSEL_POP = register(
+        "quarter_morsel_pop",
+    ) {
+        MorselPopItem(
+            Item.Properties()
+                .stacksTo(1)
+                .food(
+                    FoodProperties.Builder()
+                        .nutrition(4)
+                        .saturationMod(0.6F)
                         .effect(MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0f)
                         .build()
                 )

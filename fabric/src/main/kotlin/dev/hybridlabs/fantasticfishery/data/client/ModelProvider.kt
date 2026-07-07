@@ -147,6 +147,8 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             FFItems.MORSEL.get(),
             FFItems.MORSEL_BAR.get(),
             FFItems.MORSEL_POP.get(),
+            FFItems.HALF_MORSEL_POP.get(),
+            FFItems.QUARTER_MORSEL_POP.get(),
             FFItems.POROUS_SHELL.get(),
             FFItems.BLOOD_EEL.get(),
             FFItems.PLUNDERERS_HOOP.get(),
