@@ -60,7 +60,7 @@ object FFEntityTypes {
     val PUFFBALL_PUFFER = registerFantasticFish(
         "puffball_puffer",
         ::PuffballPufferEntity,
-        EntityDimensions.fixed(0.5f, 0.5f),
+        EntityDimensions.scalable(0.3f, 0.3f),
         PuffballPufferEntity::createMobAttributes
     )
 
