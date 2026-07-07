@@ -4,6 +4,7 @@ import dev.hybridlabs.fantasticfishery.Constants
 import dev.hybridlabs.fantasticfishery.data.client.LanguageProvider
 import dev.hybridlabs.fantasticfishery.data.client.ModelProvider
 import dev.hybridlabs.fantasticfishery.data.server.RecipeProvider
+import dev.hybridlabs.fantasticfishery.data.server.loot.BlockLootTableProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.ItemTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.loot.EntityTypeLootTableProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.BiomeTagProvider
@@ -27,6 +28,7 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
         pack.addProvider(::BiomeTagProvider)
         pack.addProvider(::RecipeProvider)
         pack.addProvider(::EntityTypeLootTableProvider)
+        pack.addProvider(::BlockLootTableProvider)
         pack.addProvider(::BiomeProvider)
         pack.addProvider(::ConfiguredFeatureProvider)
         pack.addProvider(::PlacedFeatureProvider)
