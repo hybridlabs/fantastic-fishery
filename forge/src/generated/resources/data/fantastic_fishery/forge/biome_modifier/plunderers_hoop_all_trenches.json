@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#hybrid_aquatic:all_trenches",
+  "spawners": {
+    "type": "fantastic_fishery:plunderers_hoop",
+    "maxCount": 5,
+    "minCount": 1,
+    "weight": 10
+  }
+}

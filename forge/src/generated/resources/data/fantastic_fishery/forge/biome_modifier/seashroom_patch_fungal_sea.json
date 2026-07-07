@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#fantastic_fishery:fungal_sea",
+  "features": "fantastic_fishery:seashroom_patch",
+  "step": "vegetal_decoration"
+}

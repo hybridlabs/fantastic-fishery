@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#fantastic_fishery:mushroom_biomes",
+  "spawners": {
+    "type": "fantastic_fishery:fungill",
+    "maxCount": 3,
+    "minCount": 1,
+    "weight": 10
+  }
+}

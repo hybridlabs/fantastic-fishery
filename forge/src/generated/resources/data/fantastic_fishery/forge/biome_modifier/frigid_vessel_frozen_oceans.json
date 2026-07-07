@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#hybrid_aquatic:frozen_oceans",
+  "spawners": {
+    "type": "fantastic_fishery:frigid_vessel",
+    "maxCount": 5,
+    "minCount": 1,
+    "weight": 10
+  }
+}

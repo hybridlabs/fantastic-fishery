@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#fantastic_fishery:mushroom_shores",
+  "features": "fantastic_fishery:brown_shroompads",
+  "step": "vegetal_decoration"
+}

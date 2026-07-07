@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#hybrid_aquatic:sulfuric_cave",
+  "spawners": {
+    "type": "fantastic_fishery:porous_shell",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 8
+  }
+}
