@@ -102,16 +102,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             )
 
             createNonTemplateModelBlock(
-                FFBlocks.RED_SHROOMPAD.get(),
-                FFBlocks.RED_SHROOMPAD.get()
-            )
-
-            createNonTemplateModelBlock(
-                FFBlocks.BROWN_SHROOMPAD.get(),
-                FFBlocks.BROWN_SHROOMPAD.get()
-            )
-
-            createNonTemplateModelBlock(
                 FFBlocks.PLUNDERERS_CORE_BLOCK.get(),
                 FFBlocks.PLUNDERERS_CORE_BLOCK.get()
             )
