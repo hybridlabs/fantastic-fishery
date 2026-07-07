@@ -51,6 +51,7 @@ object FFBlocks {
             Properties
                 .copy(Blocks.TALL_SEAGRASS)
                 .offsetType(BlockBehaviour.OffsetType.NONE)
+                .dropsLike(SEASHROOM.get())
         )
     }
 

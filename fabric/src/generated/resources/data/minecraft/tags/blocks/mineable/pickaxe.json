@@ -21,10 +21,14 @@
     "fantastic_fishery:dead_oyster_coral",
     "fantastic_fishery:dead_oyster_coral_fan",
     "fantastic_fishery:dead_oyster_coral_wall_fan",
+    "fantastic_fishery:mycelial_sandstone",
     "fantastic_fishery:mycelial_sandstone_wall",
     "fantastic_fishery:mycelial_sandstone_slab",
     "fantastic_fishery:mycelial_sandstone_stairs",
+    "fantastic_fishery:chiseled_mycelial_sandstone",
+    "fantastic_fishery:cut_mycelial_sandstone",
     "fantastic_fishery:cut_mycelial_sandstone_slab",
+    "fantastic_fishery:smooth_mycelial_sandstone",
     "fantastic_fishery:smooth_mycelial_sandstone_slab",
     "fantastic_fishery:smooth_mycelial_sandstone_stairs"
   ]

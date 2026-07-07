@@ -65,13 +65,20 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(FFBlocks.DEAD_OYSTER_CORAL_FAN.get())
             .add(FFBlocks.DEAD_OYSTER_CORAL_WALL_FAN.get())
 
+            .add(FFBlocks.MYCELIAL_SANDSTONE.get())
             .add(FFBlocks.MYCELIAL_SANDSTONE_WALL.get())
             .add(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get())
             .add(FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get())
+            .add(FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get())
+            .add(FFBlocks.CUT_MYCELIAL_SANDSTONE.get())
             .add(FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get())
+            .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get())
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get())
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get())
         
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
+            .add(FFBlocks.MYCELIAL_SAND.get())
+
         getOrCreateTagBuilder(BlockTags.WALLS)
             .add(FFBlocks.MYCELIAL_SANDSTONE_WALL.get())
 

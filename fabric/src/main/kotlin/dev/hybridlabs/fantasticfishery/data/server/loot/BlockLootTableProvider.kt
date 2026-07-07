@@ -82,6 +82,13 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
                 block !is BaseCoralWallFanBlock
                         && block.lootTable !in map
             }
-            .forEach(::dropSelf)
+            .forEach { block ->
+                val id = BuiltInRegistries.BLOCK.getKey(block)
+                if (id.path.endsWith("slab")) {
+                    add(block, createSlabItemTable(block))
+                } else {
+                    dropSelf(block)
+                }
+            }
     }
 }
