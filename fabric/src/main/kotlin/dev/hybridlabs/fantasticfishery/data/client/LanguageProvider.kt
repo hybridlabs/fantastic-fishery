@@ -88,7 +88,7 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFItems.MORSEL_BAR.get() to "Morsel Bar",
             FFItems.MORSEL_POP.get() to "Morsel Pop",
             FFItems.PARTIALLY_EATEN_MORSEL_POP.get() to "Partially Eaten Morsel Pop",
-            FFItems.MOSTLY_EATEN_MORSEL_POP.get() to "Half Eaten Morsel Pop",
+            FFItems.MOSTLY_EATEN_MORSEL_POP.get() to "Mostly Eaten Morsel Pop",
 
             FFItems.PLUNDERERS_HOOP.get() to "Plunderer's Hoop",
             FFItems.PLUNDERERS_CORE.get() to "Plunderer's Core",

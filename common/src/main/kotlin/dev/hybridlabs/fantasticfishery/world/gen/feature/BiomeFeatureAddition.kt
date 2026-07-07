@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import dev.hybridlabs.aquatic.world.gen.feature.BiomeFeatureAddition
 import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
 import net.minecraft.resources.ResourceKey
 import net.minecraft.tags.TagKey

@@ -5,17 +5,21 @@ import dev.hybridlabs.fantasticfishery.data.client.LanguageProvider
 import dev.hybridlabs.fantasticfishery.data.client.ModelProvider
 import dev.hybridlabs.fantasticfishery.data.server.RecipeProvider
 import dev.hybridlabs.fantasticfishery.data.server.loot.BlockLootTableProvider
-import dev.hybridlabs.fantasticfishery.data.server.tag.ItemTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.loot.EntityTypeLootTableProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.BiomeTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.BlockTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.EntityTypeTagProvider
+import dev.hybridlabs.fantasticfishery.data.server.tag.ItemTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.BiomeProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.ConfiguredFeatureProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.PlacedFeatureProvider
+import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
+import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.core.Registry
+import net.minecraft.core.RegistrySetBuilder
+import net.minecraft.core.registries.Registries
 
 object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(generator: FabricDataGenerator) {
@@ -32,6 +36,15 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
         pack.addProvider(::BiomeProvider)
         pack.addProvider(::ConfiguredFeatureProvider)
         pack.addProvider(::PlacedFeatureProvider)
+    }
+
+    override fun buildRegistry(registryBuilder: RegistrySetBuilder) {
+        registryBuilder.add(Registries.BIOME) {
+            FFBiomes
+        }
+        registryBuilder.add(Registries.CONFIGURED_FEATURE) {
+            FFConfiguredFeatures
+        }
     }
 
     fun <T> filterFantasticFishery(registry: Registry<T>): (T & Any) -> Boolean {
