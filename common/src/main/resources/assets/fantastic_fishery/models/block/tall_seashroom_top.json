@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "fantastic_fishery:block/tall_seashroom_top"
+  }
+}

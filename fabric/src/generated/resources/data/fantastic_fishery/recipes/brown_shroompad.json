@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "B": {
+      "item": "minecraft:brown_mushroom_block"
+    }
+  },
+  "pattern": [
+    "BB"
+  ],
+  "result": {
+    "count": 4,
+    "item": "fantastic_fishery:brown_shroompad"
+  },
+  "show_notification": true
+}

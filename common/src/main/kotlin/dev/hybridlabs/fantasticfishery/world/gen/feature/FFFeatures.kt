@@ -14,7 +14,7 @@ object FFFeatures {
     val FUNGAL_REEF_CORAL_MUSHROOM = register("fungal_reef_coral_mushroom", FungalReefMushroomFeature(NoneFeatureConfiguration.CODEC))
     val FUNGAL_REEF_CORAL_TABLE = register("fungal_reef_coral_table", FungalReefTableFeature(NoneFeatureConfiguration.CODEC))
     val FUNGAL_REEF_CORAL_DISC = register("fungal_reef_coral_disc", FungalReefDiscFeature(NoneFeatureConfiguration.CODEC))
-    val MYCELIAL_SEAGRASS_PATCH = register("mycelial_seagrass_patch", MycelialSeagrassFeature(ProbabilityFeatureConfiguration.CODEC))
+    val SEASHROOM_PATCH = register("seashroom_patch", SeashroomFeature(ProbabilityFeatureConfiguration.CODEC))
 
     fun <F : Feature<*>> register(
         id: String,

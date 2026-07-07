@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 0.15,
+  "ingredient": {
+    "item": "fantastic_fishery:morsel"
+  },
+  "result": "fantastic_fishery:morsel_bar"
+}

@@ -40,7 +40,7 @@ class TallMycelialSeagrassBlock(settings: Properties) : DoublePlantBlock(setting
     }
 
     override fun getCloneItemStack(world: BlockGetter, pos: BlockPos, state: BlockState): ItemStack {
-        return ItemStack(FFBlocks.MYCELIAL_SEAGRASS.get())
+        return ItemStack(FFBlocks.SEASHROOM.get())
     }
 
     override fun getStateForPlacement(ctx: BlockPlaceContext): BlockState? {

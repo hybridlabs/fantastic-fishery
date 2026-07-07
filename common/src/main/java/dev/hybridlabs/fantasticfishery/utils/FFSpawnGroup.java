@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public enum FFSpawnGroup {
-    FANTASTIC_FISHERY_FISH("fantastic_fish", 8, true, false, 128),
+    FANTASTIC_FISHERY_FISH("fantastic_fish", 6, true, false, 128),
     FANTASTIC_FISHERY_CRUSTACEAN("fantastic_crustacean", 4, true, false, 64),
     FANTASTIC_FISHERY_JELLYFISH("fantastic_jellyfish", 4, true, false, 64),
     FANTASTIC_FISHERY_SHARK("fantastic_shark", 2, true, false, 128);

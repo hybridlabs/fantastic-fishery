@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import dev.hybridlabs.aquatic.world.gen.feature.HAPlacedFeatures
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
@@ -13,7 +12,7 @@ object FFPlacedFeatures {
 
     val FUNGAL_REEF_VEGETATION = register("fungal_reef_vegetation")
 
-    val MYCELIAL_SEAGRASS_PATCH = register("mycelial_seagrass_patch")
+    val SEASHROOM_PATCH = register("seashroom_patch")
 
     private fun register(id: String): ResourceKey<PlacedFeature> {
         return ResourceKey.create(Registries.PLACED_FEATURE, FantasticFisheryCommon.locate(id))

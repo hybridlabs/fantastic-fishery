@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "R": {
+      "item": "minecraft:red_mushroom_block"
+    }
+  },
+  "pattern": [
+    "RR"
+  ],
+  "result": {
+    "count": 4,
+    "item": "fantastic_fishery:red_shroompad"
+  },
+  "show_notification": true
+}

@@ -1,7 +1,5 @@
 package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
-import dev.hybridlabs.aquatic.world.gen.feature.HAConfiguredFeatures
-import dev.hybridlabs.aquatic.world.gen.feature.HAFeatures
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
@@ -62,9 +60,9 @@ class ConfiguredFeatureProvider(
         )
 
         entries.add(
-            FFConfiguredFeatures.MYCELIAL_SEAGRASS_PATCH,
+            FFConfiguredFeatures.SEASHROOM_PATCH,
             ConfiguredFeature(
-                FFFeatures.MYCELIAL_SEAGRASS_PATCH.get(), ProbabilityFeatureConfiguration(
+                FFFeatures.SEASHROOM_PATCH.get(), ProbabilityFeatureConfiguration(
                     0.33f
                 )
             )

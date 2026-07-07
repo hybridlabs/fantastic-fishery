@@ -59,6 +59,7 @@ class PorousShellEntity(type: EntityType<out PorousShellEntity>, world: Level) :
                 .add(Attributes.MOVEMENT_SPEED, 0.6)
                 .add(Attributes.ATTACK_DAMAGE, 4.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 1.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
         }
     }

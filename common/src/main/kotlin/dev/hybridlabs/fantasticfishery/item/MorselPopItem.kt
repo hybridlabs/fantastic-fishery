@@ -22,12 +22,12 @@ class MorselPopItem(properties: Properties) : Item(properties) {
 
         val result = when {
             stack.`is`(FFItems.MORSEL_POP.get()) ->
-                ItemStack(FFItems.HALF_MORSEL_POP.get())
+                ItemStack(FFItems.PARTIALLY_EATEN_MORSEL_POP.get())
 
-            stack.`is`(FFItems.HALF_MORSEL_POP.get()) ->
-                ItemStack(FFItems.QUARTER_MORSEL_POP.get())
+            stack.`is`(FFItems.PARTIALLY_EATEN_MORSEL_POP.get()) ->
+                ItemStack(FFItems.MOSTLY_EATEN_MORSEL_POP.get())
 
-            stack.`is`(FFItems.QUARTER_MORSEL_POP.get()) ->
+            stack.`is`(FFItems.MOSTLY_EATEN_MORSEL_POP.get()) ->
                 ItemStack.EMPTY
 
             else ->

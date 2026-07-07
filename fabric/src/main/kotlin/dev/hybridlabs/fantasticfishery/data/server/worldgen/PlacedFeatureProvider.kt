@@ -46,8 +46,8 @@ class PlacedFeatureProvider(
         )
 
         entries.add(
-            FFPlacedFeatures.MYCELIAL_SEAGRASS_PATCH, PlacedFeature(
-                entries.ref(FFConfiguredFeatures.MYCELIAL_SEAGRASS_PATCH), seaweedModifier(80)
+            FFPlacedFeatures.SEASHROOM_PATCH, PlacedFeature(
+                entries.ref(FFConfiguredFeatures.SEASHROOM_PATCH), seaweedModifier(80)
             )
         )
 

@@ -76,7 +76,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
     }
 
     override fun performBonemeal(world: ServerLevel, random: RandomSource, pos: BlockPos, state: BlockState) {
-        val blockState = FFBlocks.TALL_MYCELIAL_SEAGRASS.get().defaultBlockState()
+        val blockState = FFBlocks.TALL_SEASHROOM.get().defaultBlockState()
         val blockState2 = blockState.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER) as BlockState
         val blockPos = pos.above()
         if (world.getBlockState(blockPos).`is`(Blocks.WATER)) {

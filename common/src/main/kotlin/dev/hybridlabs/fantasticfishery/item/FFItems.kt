@@ -24,7 +24,7 @@ object FFItems {
     val RED_SHROOMPAD = registerPlaceableInWaterBlockItem("red_shroompad") { FFBlocks.RED_SHROOMPAD.get() }
     val BROWN_SHROOMPAD = registerPlaceableInWaterBlockItem("brown_shroompad") { FFBlocks.BROWN_SHROOMPAD.get() }
     
-    val MYCELIAL_SEAGRASS = registerBlockItem("mycelial_seagrass") { FFBlocks.MYCELIAL_SEAGRASS.get() }
+    val SEASHROOM = registerBlockItem("seashroom") { FFBlocks.SEASHROOM.get() }
 
     val MYCELIAL_SAND = registerBlockItem("mycelial_sand") { FFBlocks.MYCELIAL_SAND.get() }
     val CHISELED_MYCELIAL_SANDSTONE =
@@ -197,8 +197,8 @@ object FFItems {
         )
     }
 
-    val HALF_MORSEL_POP = register(
-        "half_morsel_pop",
+    val PARTIALLY_EATEN_MORSEL_POP = register(
+        "partially_eaten_morsel_pop",
     ) {
         MorselPopItem(
             Item.Properties()
@@ -213,8 +213,8 @@ object FFItems {
         )
     }
 
-    val QUARTER_MORSEL_POP = register(
-        "quarter_morsel_pop",
+    val MOSTLY_EATEN_MORSEL_POP = register(
+        "mostly_eaten_morsel_pop",
     ) {
         MorselPopItem(
             Item.Properties()

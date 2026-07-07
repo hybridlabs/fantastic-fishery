@@ -30,8 +30,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFBlocks.RED_SHROOMPAD.get() to "Red Shroompad",
             FFBlocks.BROWN_SHROOMPAD.get() to "Brown Shroompad",
 
-            FFBlocks.MYCELIAL_SEAGRASS.get() to "Mycelial Seagrass",
-            FFBlocks.TALL_MYCELIAL_SEAGRASS.get() to "Tall Mycelial Seagrass",
+            FFBlocks.SEASHROOM.get() to "Seashroom",
+            FFBlocks.TALL_SEASHROOM.get() to "Tall Seashroom",
 
             FFBlocks.PLUNDERERS_CORE_BLOCK.get() to "Plunderer's Core",
 
@@ -87,8 +87,8 @@ class LanguageProvider(output: FabricDataOutput) : FabricLanguageProvider(output
             FFItems.MORSEL.get() to "Morsel",
             FFItems.MORSEL_BAR.get() to "Morsel Bar",
             FFItems.MORSEL_POP.get() to "Morsel Pop",
-            FFItems.HALF_MORSEL_POP.get() to "Morsel Pop",
-            FFItems.QUARTER_MORSEL_POP.get() to "Morsel Pop",
+            FFItems.PARTIALLY_EATEN_MORSEL_POP.get() to "Partially Eaten Morsel Pop",
+            FFItems.MOSTLY_EATEN_MORSEL_POP.get() to "Half Eaten Morsel Pop",
 
             FFItems.PLUNDERERS_HOOP.get() to "Plunderer's Hoop",
             FFItems.PLUNDERERS_CORE.get() to "Plunderer's Core",

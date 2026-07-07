@@ -28,10 +28,11 @@ class MorselEntity(type: EntityType<out MorselEntity>, world: Level) :
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
             return createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 4.0)
+                .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.5)
                 .add(Attributes.ATTACK_DAMAGE, 1.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.0)
                 .add(Attributes.FOLLOW_RANGE, 8.0)
         }
     }

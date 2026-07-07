@@ -36,8 +36,8 @@ object FFBlockRendererRegistry {
             FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
             FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get(),
 
-            FFBlocks.MYCELIAL_SEAGRASS.get(),
-            FFBlocks.TALL_MYCELIAL_SEAGRASS.get(),
+            FFBlocks.SEASHROOM.get(),
+            FFBlocks.TALL_SEASHROOM.get(),
         )
     }
 }

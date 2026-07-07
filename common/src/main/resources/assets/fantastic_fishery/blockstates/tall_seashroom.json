@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "fantastic_fishery:block/tall_seashroom_bottom"
+    },
+    "half=upper": {
+      "model": "fantastic_fishery:block/tall_seashroom_top"
+    }
+  }
+}

@@ -1,8 +1,5 @@
 package dev.hybridlabs.fantasticfishery.block
 
-import dev.hybridlabs.aquatic.block.HABlocks
-import dev.hybridlabs.aquatic.block.SeaLettuceBlock
-import dev.hybridlabs.aquatic.block.TallSeaLettuceBlock
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
 import net.minecraft.world.item.DyeColor
@@ -41,7 +38,7 @@ object FFBlocks {
             .instabreak())
     }
 
-    val MYCELIAL_SEAGRASS = register("mycelial_seagrass") {
+    val SEASHROOM = register("seashroom") {
         MycelialSeagrassBlock(
             Properties
                 .copy(Blocks.SEAGRASS)
@@ -49,7 +46,7 @@ object FFBlocks {
         )
     }
 
-    val TALL_MYCELIAL_SEAGRASS = register("tall_mycelial_seagrass") {
+    val TALL_SEASHROOM = register("tall_seashroom") {
         TallMycelialSeagrassBlock(
             Properties
                 .copy(Blocks.TALL_SEAGRASS)
@@ -132,7 +129,7 @@ object FFBlocks {
     }
 
     val CHISELED_MYCELIAL_SANDSTONE = register("chiseled_mycelial_sandstone") {
-        SlabBlock(
+        Block(
             Properties
                 .copy(MYCELIAL_SANDSTONE.get())
                 .mapColor(DyeColor.MAGENTA)
