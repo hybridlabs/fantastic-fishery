@@ -3,14 +3,12 @@ package dev.hybridlabs.fantasticfishery.data.client
 import dev.hybridlabs.fantasticfishery.block.FFBlockFamilies
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.ShroompadBlock
-import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.data.models.BlockModelGenerators
 import net.minecraft.data.models.ItemModelGenerators
-import net.minecraft.data.models.model.ModelLocationUtils
 import net.minecraft.data.models.model.ModelTemplates
 import net.minecraft.data.models.model.TexturedModel
 
@@ -22,28 +20,6 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 .filterIsInstance<ShroompadBlock>()
                 .forEach { block ->
                     skipAutoItemBlock(block)
-                }
-
-            BuiltInRegistries.ITEM
-                .filter(filterFantasticFishery(BuiltInRegistries.ITEM))
-                .filter { item ->
-                    item in setOf(
-                        FFItems.FUNGILL_SPAWN_EGG.get(),
-                        FFItems.JELLYSHROOM_SPAWN_EGG.get(),
-                        FFItems.PUFFBALL_PUFFER_SPAWN_EGG.get(),
-                        FFItems.PLUNDERERS_HOOP_SPAWN_EGG.get(),
-                        FFItems.MORSEL_SPAWN_EGG.get(),
-                        FFItems.POROUS_SHELL_SPAWN_EGG.get(),
-                        FFItems.BLOOD_EEL_SPAWN_EGG.get(),
-                        FFItems.FRIGID_VESSEL_SPAWN_EGG.get(),
-                        FFItems.MYCRAB_SPAWN_EGG.get(),
-                    )
-                }
-                .forEach { item ->
-                    delegateItemModel(
-                        item,
-                        ModelLocationUtils.decorateItemModelLocation("template_spawn_egg")
-                    )
                 }
 
             createCrossBlock(
@@ -143,6 +119,16 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
             FFItems.PLUNDERERS_CORE.get(),
             FFItems.STAR_DONUT.get(),
             FFItems.SEASHROOM.get(),
+
+            FFItems.FUNGILL_SPAWN_EGG.get(),
+            FFItems.JELLYSHROOM_SPAWN_EGG.get(),
+            FFItems.PUFFBALL_PUFFER_SPAWN_EGG.get(),
+            FFItems.PLUNDERERS_HOOP_SPAWN_EGG.get(),
+            FFItems.MORSEL_SPAWN_EGG.get(),
+            FFItems.POROUS_SHELL_SPAWN_EGG.get(),
+            FFItems.BLOOD_EEL_SPAWN_EGG.get(),
+            FFItems.FRIGID_VESSEL_SPAWN_EGG.get(),
+            FFItems.MYCRAB_SPAWN_EGG.get(),
         ).forEach { item ->
             generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM)
         }
