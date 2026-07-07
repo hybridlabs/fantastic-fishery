@@ -39,6 +39,43 @@ object FFBiomes {
 
     fun addBiomes() {
         BiomePlacement.addSubOverworld(
+            Biomes.DEEP_FROZEN_OCEAN,
+            FUNGAL_SEA,
+            SubBiomeMatcher.of(
+                SubBiomeMatcher.Criterion.ofBiome(
+                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
+                    Biomes.MUSHROOM_FIELDS,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
+                )
+            )
+        )
+        BiomePlacement.addSubOverworld(
+            Biomes.DEEP_COLD_OCEAN,
+            FUNGAL_SEA,
+            SubBiomeMatcher.of(
+                SubBiomeMatcher.Criterion.ofBiome(
+                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
+                    Biomes.MUSHROOM_FIELDS,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
+                )
+            )
+        )
+
+        BiomePlacement.addSubOverworld(
             Biomes.DEEP_OCEAN,
             FUNGAL_SEA,
             SubBiomeMatcher.of(
@@ -83,6 +120,44 @@ object FFBiomes {
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
+                )
+            )
+        )
+
+        BiomePlacement.addSubOverworld(
+            Biomes.DEEP_FROZEN_OCEAN,
+            FUNGAL_SEA,
+            SubBiomeMatcher.of(
+                SubBiomeMatcher.Criterion.ofBiome(
+                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
+                    MUSHROOM_FIELDS_SHORE,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
+                )
+            )
+        )
+
+        BiomePlacement.addSubOverworld(
+            Biomes.DEEP_COLD_OCEAN,
+            FUNGAL_SEA,
+            SubBiomeMatcher.of(
+                SubBiomeMatcher.Criterion.ofBiome(
+                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
+                    MUSHROOM_FIELDS_SHORE,
                     false
                 ),
                 SubBiomeMatcher.Criterion.ofRange(
