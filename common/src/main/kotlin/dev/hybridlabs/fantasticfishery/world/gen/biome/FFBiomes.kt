@@ -3,7 +3,6 @@ package dev.hybridlabs.fantasticfishery.world.gen.biome
 import com.terraformersmc.biolith.api.biome.BiomePlacement
 import com.terraformersmc.biolith.api.biome.SubBiomeMatcher
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration
-import dev.hybridlabs.aquatic.world.gen.biome.HABiomes
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import net.minecraft.core.registries.Registries
@@ -47,6 +46,13 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
                     false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
                 )
             )
         )
@@ -59,6 +65,13 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
                     false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
                 )
             )
         )
@@ -70,6 +83,13 @@ object FFBiomes {
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     Biomes.MUSHROOM_FIELDS,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
                     false
                 )
             )
@@ -83,6 +103,13 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     MUSHROOM_FIELDS_SHORE,
                     false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
                 )
             )
         )
@@ -95,6 +122,13 @@ object FFBiomes {
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     MUSHROOM_FIELDS_SHORE,
                     false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
+                    false
                 )
             )
         )
@@ -106,6 +140,13 @@ object FFBiomes {
                 SubBiomeMatcher.Criterion.ofBiome(
                     SubBiomeMatcher.CriterionTargets.NEIGHBOR,
                     MUSHROOM_FIELDS_SHORE,
+                    false
+                ),
+                SubBiomeMatcher.Criterion.ofRange(
+                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
+                    SubBiomeMatcher.CriterionTypes.VALUE,
+                    -1.05f,
+                    -0.085f,
                     false
                 )
             )

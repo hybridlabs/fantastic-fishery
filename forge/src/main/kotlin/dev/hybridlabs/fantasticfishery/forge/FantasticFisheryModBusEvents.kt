@@ -16,10 +16,10 @@ object FantasticFisheryModBusEvents {
     init {
         MOD_BUS.addListener(::registerSpawnPlacements)
         MOD_BUS.addListener(::addBiomes)
-        MOD_BUS.addListener(::registerBlockEntityRenderers)
 
         runForDist(
             clientTarget = {
+                MOD_BUS.addListener(::registerBlockEntityRenderers)
                 FFEntityRenderers
             },
             serverTarget = {
