@@ -80,7 +80,7 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
             return createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 6.0)
+                .add(Attributes.MAX_HEALTH, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.3)
                 .add(Attributes.ATTACK_DAMAGE, 5.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0)
