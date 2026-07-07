@@ -46,7 +46,6 @@ class JellyshroomEntity(entityType: EntityType<out JellyshroomEntity>, world: Le
                 .add(Attributes.ATTACK_DAMAGE, 2.0)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.0)
                 .add(Attributes.FOLLOW_RANGE, 4.0)
-
         }
 
         val TYPE: EntityDataAccessor<Int> =
