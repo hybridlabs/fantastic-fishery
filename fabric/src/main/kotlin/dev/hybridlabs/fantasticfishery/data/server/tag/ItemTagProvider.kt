@@ -16,5 +16,20 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
         ).forEach { item ->
             getOrCreateTagBuilder(FFItemTags.FISHES).add(item)
         }
+
+        setOf(
+            FFItems.FUNGILL.get(),
+            FFItems.MORSEL.get(),
+            FFItems.PLUNDERERS_HOOP.get(),
+            FFItems.BLOOD_EEL.get(),
+        ).forEach { item ->
+            getOrCreateTagBuilder(FFItemTags.SMALL_FISH).add(item)
+        }
+
+        setOf(
+            FFItems.POROUS_SHELL.get(),
+        ).forEach { item ->
+            getOrCreateTagBuilder(FFItemTags.MEDIUM_FISH).add(item)
+        }
     }
 }
