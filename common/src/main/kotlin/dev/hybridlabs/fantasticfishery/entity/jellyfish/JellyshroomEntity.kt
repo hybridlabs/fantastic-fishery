@@ -20,7 +20,7 @@ import java.util.function.IntFunction
 import kotlin.random.Random
 
 class JellyshroomEntity(entityType: EntityType<out JellyshroomEntity>, world: Level) :
-    HAJellyfishEntity(entityType, world, false, 1),
+    HAJellyfishEntity(entityType, world, true, 1),
     VariantHolder<JellyshroomEntity.Companion.Type> {
 
     override fun getMaxSpawnClusterSize(): Int {
