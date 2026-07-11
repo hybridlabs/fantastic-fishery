@@ -56,7 +56,7 @@ public class FantasticFisheryCommon {
     public static final Path CONFIG_FILE = Services.PLATFORM.getConfigDir().resolve(Constants.MOD_ID + ".json");
 
     public static ResourceLocation locate(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
     }
 
     public static void init() {

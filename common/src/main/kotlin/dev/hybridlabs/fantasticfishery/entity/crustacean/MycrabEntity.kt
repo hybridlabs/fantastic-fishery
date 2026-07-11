@@ -17,12 +17,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
+import software.bernie.geckolib.animation.AnimatableManager
+import software.bernie.geckolib.animation.AnimationController
+import software.bernie.geckolib.animation.AnimationState
+import software.bernie.geckolib.animation.PlayState
 import software.bernie.geckolib.constant.DefaultAnimations
-import software.bernie.geckolib.core.animation.AnimatableManager
-import software.bernie.geckolib.core.animation.AnimationController
-import software.bernie.geckolib.core.animation.AnimationController.AnimationStateHandler
-import software.bernie.geckolib.core.animation.AnimationState
-import software.bernie.geckolib.core.`object`.PlayState
 import java.util.function.IntFunction
 import kotlin.random.Random
 
@@ -42,7 +41,7 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         controllerRegistrar.add(
             AnimationController(
                 this, "Spawning",
-                AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
+                AnimationController.AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
                     if (this.tickCount < 20)
                         return@AnimationStateHandler state.setAndContinue(DefaultAnimations.SPAWN)
                     PlayState.STOP
@@ -55,7 +54,7 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         controllerRegistrar.add(
             AnimationController(
                 this, "Digging",
-                AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
+                AnimationController.AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
                     if (this.isDigging())
                         return@AnimationStateHandler state.setAndContinue(DIG_ANIMATION)
                     PlayState.STOP
@@ -70,11 +69,10 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         world: ServerLevelAccessor,
         difficulty: DifficultyInstance,
         spawnReason: MobSpawnType,
-        entityData: SpawnGroupData?,
-        entityNbt: CompoundTag?,
+        entityData: SpawnGroupData?
     ): SpawnGroupData? {
         variant = Type.entries.random(Random)
-        return super.finalizeSpawn(world, difficulty, spawnReason, entityData, entityNbt)
+        return super.finalizeSpawn(world, difficulty, spawnReason, entityData)
     }
 
     companion object {
@@ -118,9 +116,9 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         }
     }
 
-    override fun defineSynchedData() {
-        entityData.define(TYPE, 0)
-        super.defineSynchedData()
+    override fun defineSynchedData(builder: SynchedEntityData.Builder) {
+        builder.define(TYPE, 0)
+        super.defineSynchedData(builder)
     }
 
     override fun addAdditionalSaveData(compound: CompoundTag) {

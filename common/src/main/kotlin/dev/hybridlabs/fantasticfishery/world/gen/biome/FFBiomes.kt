@@ -1,7 +1,8 @@
 package dev.hybridlabs.fantasticfishery.world.gen.biome
 
 import com.terraformersmc.biolith.api.biome.BiomePlacement
-import com.terraformersmc.biolith.api.biome.SubBiomeMatcher
+import com.terraformersmc.biolith.api.biome.sub.BiomeParameterTargets
+import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
@@ -41,36 +42,24 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_FROZEN_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(Biomes.MUSHROOM_FIELDS),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_COLD_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(Biomes.MUSHROOM_FIELDS),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -78,18 +67,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(Biomes.MUSHROOM_FIELDS),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -97,18 +80,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_LUKEWARM_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(Biomes.MUSHROOM_FIELDS),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -116,18 +93,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.WARM_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    Biomes.MUSHROOM_FIELDS,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(Biomes.MUSHROOM_FIELDS),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -135,18 +106,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_FROZEN_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    MUSHROOM_FIELDS_SHORE,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(MUSHROOM_FIELDS_SHORE),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -154,18 +119,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_COLD_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    MUSHROOM_FIELDS_SHORE,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(MUSHROOM_FIELDS_SHORE),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -173,18 +132,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    MUSHROOM_FIELDS_SHORE,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(MUSHROOM_FIELDS_SHORE),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -192,18 +145,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.DEEP_LUKEWARM_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    MUSHROOM_FIELDS_SHORE,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(MUSHROOM_FIELDS_SHORE),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -211,18 +158,12 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.WARM_OCEAN,
             FUNGAL_SEA,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofBiome(
-                    SubBiomeMatcher.CriterionTargets.NEIGHBOR,
-                    MUSHROOM_FIELDS_SHORE,
-                    false
-                ),
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.neighbor(MUSHROOM_FIELDS_SHORE),
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.05f,
                     -0.085f,
-                    false
                 )
             )
         )
@@ -230,20 +171,18 @@ object FFBiomes {
         BiomePlacement.addSubOverworld(
             Biomes.MUSHROOM_FIELDS,
             MUSHROOM_FIELDS_SHORE,
-            SubBiomeMatcher.of(
-                SubBiomeMatcher.Criterion.ofRange(
-                    SubBiomeMatcher.CriterionTargets.CONTINENTALNESS,
-                    SubBiomeMatcher.CriterionTypes.VALUE,
+            CriterionBuilder.allOf(
+                CriterionBuilder.value(
+                    BiomeParameterTargets.CONTINENTALNESS,
                     -1.075f,
                     -1.05f,
-                    false
                 )
             )
         )
 
         //#region Surface Rule Generation
         SurfaceGeneration.addOverworldSurfaceRules(
-            ResourceLocation("fantastic_fishery", "rules/overworld"),
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "rules/overworld"),
             ifTrue(
                 abovePreliminarySurface(),
                 sequence(

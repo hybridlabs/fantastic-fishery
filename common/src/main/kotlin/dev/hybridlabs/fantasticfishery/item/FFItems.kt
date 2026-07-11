@@ -138,7 +138,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(0.2F)
+                        .saturationModifier(0.2F)
                         .build()
                 )
         )
@@ -152,7 +152,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(0.2F)
+                        .saturationModifier(0.2F)
                         .build()
                 )
         )
@@ -166,7 +166,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(1.0F)
+                        .saturationModifier(1.0F)
                         .effect(MobEffectInstance(MobEffects.REGENERATION, 200, 0), 1.0f)
                         .build()
                 )
@@ -190,7 +190,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(8)
-                        .saturationMod(1.0F)
+                        .saturationModifier(1.0F)
                         .effect(MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0f)
                         .build()
                 )
@@ -206,7 +206,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(6)
-                        .saturationMod(0.8F)
+                        .saturationModifier(0.8F)
                         .effect(MobEffectInstance(MobEffects.REGENERATION, 160, 1), 1.0f)
                         .build()
                 )
@@ -222,7 +222,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(4)
-                        .saturationMod(0.6F)
+                        .saturationModifier(0.6F)
                         .effect(MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0f)
                         .build()
                 )
@@ -237,7 +237,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(0.2F)
+                        .saturationModifier(0.2F)
                         .build()
                 )
         )
@@ -252,7 +252,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(6)
-                        .saturationMod(0.5F)
+                        .saturationModifier(0.5F)
                         .effect(MobEffectInstance(MobEffects.GLOWING, 400, 0), 1.0f)
                         .build()
                 )
@@ -276,7 +276,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(0.2F)
+                        .saturationModifier(0.2F)
                         .build()
                 )
         )
@@ -290,7 +290,7 @@ object FFItems {
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
-                        .saturationMod(0.2F)
+                        .saturationModifier(0.2F)
                         .build()
                 )
         )

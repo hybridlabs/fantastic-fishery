@@ -2,22 +2,23 @@ modLoader = "kotlinforforge"
 
 loaderVersion = "[4,)"
 license = "${license}"
-issueTrackerURL="https://github.com/hybridlabs/fantastic_fishery/issues"
+issueTrackerURL="https://github.com/hybridlabs/hybrid_aquatic/issues"
 
 [[mods]]
 modId = "${mod_id}"
 version = "${version}"
 displayName = "${mod_name}"
-displayURL= "https://github.com/hybridlabs/fantastic_fishery"
+displayURL= "https://github.com/hybridlabs/hybrid_aquatic"
 logoFile = "${mod_id}.png"
 credits = '''${credits}'''
 authors = "${mod_author}"
 description = '''${description}'''
+enumExtensions="META-INF/enumextensions.json"
 
 [[dependencies.${mod_id}]]
-modId = "forge"
+modId = "neoforge"
 mandatory = true
-versionRange = "[${version},)"
+versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -25,13 +26,6 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version_range}"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.${mod_id}]]
-modId = "hybrid_aquatic"
-mandatory = true
-versionRange = "${aquatic_version}"
 ordering = "NONE"
 side = "BOTH"
 
@@ -46,3 +40,18 @@ modId = "biolith"
 mandatory = true
 versionRange = "[1.0.1-alpha.1,)"
 side = "SERVER"
+
+[[dependencies.${mod_id}]]
+modId = "curios"
+mandatory = true
+versionRange = "[5.9.1+1.20.1,)"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "lithostitched"
+mandatory = true
+versionRange = "[1.4.11,)"
+side = "SERVER"
+
+[[mixins]]
+config = "${mod_id}.forge.mixins.json"

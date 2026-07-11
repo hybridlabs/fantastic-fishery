@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.platform.services;
 
-import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject;
+import dev.hybridlabs.aquatic.platform.registration.RegistryObject;
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon;
 import dev.hybridlabs.fantasticfishery.utils.FFSpawnGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -50,11 +50,13 @@ public class FabricPlatformHelper implements PlatformHelper {
     }
 
     @Override
-    public <T extends Mob> void registerSpawnPlacement(RegistryObject<EntityType<T>> entityType,
-                                                       SpawnPlacements.Type decoratorType,
-                                                       Heightmap.Types heightMapType,
-                                                       SpawnPlacements.SpawnPredicate<T> decoratorPredicate) {
-        SpawnPlacements.register(entityType.get(), decoratorType, heightMapType, decoratorPredicate);
+    public <T extends Mob> void registerSpawnPlacement(
+            RegistryObject<EntityType<T>> entityType,
+            SpawnPlacementType decoratorType,
+            Heightmap.Types heightMapType,
+            SpawnPlacements.SpawnPredicate<T> decoratorPredicate) {
+        SpawnPlacements.register(
+                entityType.get(), decoratorType, heightMapType, decoratorPredicate);
     }
 
     @Override

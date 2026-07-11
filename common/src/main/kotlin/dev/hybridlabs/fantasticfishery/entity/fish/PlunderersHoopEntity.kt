@@ -53,11 +53,10 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
         world: ServerLevelAccessor,
         difficulty: DifficultyInstance,
         spawnReason: MobSpawnType,
-        entityData: SpawnGroupData?,
-        entityNbt: CompoundTag?,
+        entityData: SpawnGroupData?
     ): SpawnGroupData? {
         variant = Type.entries.random(Random)
-        return super.finalizeSpawn(world, difficulty, spawnReason, entityData, entityNbt)
+        return super.finalizeSpawn(world, difficulty, spawnReason, entityData)
     }
 
     var coreTimer: Int
@@ -79,7 +78,7 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
                 this.coreTimer = 3600
                 this.playSound(SoundEvents.SHEEP_SHEAR, 1.0f, 1.0f)
                 this.gameEvent(GameEvent.SHEAR, player)
-                itemStack.hurtAndBreak(1, player) { it.broadcastBreakEvent(hand) }
+                itemStack.hurtAndBreak(1, player, getSlotForHand(hand))
                 spawnAtLocation(ItemStack(FFItems.PLUNDERERS_CORE.get()))
                 return InteractionResult.SUCCESS
             }
@@ -131,10 +130,10 @@ class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Le
         }
     }
 
-    override fun defineSynchedData() {
-        entityData.define(TYPE, 0)
-        entityData.define(CORE_TIMER, 0)
-        super.defineSynchedData()
+    override fun defineSynchedData(builder: SynchedEntityData.Builder) {
+        builder.define(TYPE, 0)
+        builder.define(CORE_TIMER, 0)
+        super.defineSynchedData(builder)
     }
 
     override fun addAdditionalSaveData(compound: CompoundTag) {

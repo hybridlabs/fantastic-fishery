@@ -21,6 +21,6 @@ object FFEntityTags {
     }
 
     private fun createHybridAquaticTag(id: String): TagKey<EntityType<*>> {
-        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation("hybrid_aquatic", id))
+        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("hybrid_aquatic", id))
     }
 }

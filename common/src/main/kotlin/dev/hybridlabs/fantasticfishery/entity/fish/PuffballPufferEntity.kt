@@ -16,12 +16,12 @@ import net.minecraft.world.entity.EntityDimensions
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.Mob
-import net.minecraft.world.entity.MobType
 import net.minecraft.world.entity.Pose
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.ai.goal.Goal
 import net.minecraft.world.entity.ai.targeting.TargetingConditions
+import net.minecraft.world.entity.animal.WaterAnimal
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import java.util.function.Predicate
@@ -51,9 +51,9 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
     var inflateTicks = 0
     var deflateTicks = 0
 
-    override fun defineSynchedData() {
-        super.defineSynchedData()
-        entityData.define(PUFF_STATE, NOT_PUFFED)
+    override fun defineSynchedData(builder: SynchedEntityData.Builder) {
+        super.defineSynchedData(builder)
+        builder.define(PUFF_STATE, NOT_PUFFED)
     }
 
     override fun onSyncedDataUpdated(key: EntityDataAccessor<*>) {
@@ -167,7 +167,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
         }
     }
 
-    override fun getDimensions(pose: Pose): EntityDimensions {
+    override fun getDefaultDimensions(pose: Pose): EntityDimensions {
         val scale = when (getPuffState()) {
             NOT_PUFFED -> 0.75f
             SEMI_PUFFED -> 1.0f
@@ -190,7 +190,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
         private val PUFF_STATE: EntityDataAccessor<Int> =
             SynchedEntityData.defineId(PuffballPufferEntity::class.java, EntityDataSerializers.INT)
         private val BLOW_UP_FILTER: Predicate<LivingEntity> =
-            Predicate { entity -> if (entity is Player && entity.isCreative) false else entity.mobType != MobType.WATER }
+            Predicate { entity -> !(entity is Player && entity.isCreative) or (entity !is WaterAnimal) }
         private val BLOW_UP_TARGET_PREDICATE: TargetingConditions =
             TargetingConditions.forNonCombat().ignoreInvisibilityTesting().ignoreLineOfSight()
                 .selector(BLOW_UP_FILTER)

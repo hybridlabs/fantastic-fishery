@@ -41,7 +41,7 @@ class PuffballPufferEntityModel : HAFishEntityModel<PuffballPufferEntity>("puffb
 
     companion object {
         private val PUFFBALL_PUFFER_ANIMATION =
-            ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                 "fantastic_fishery",
                 "animations/entity/fish/puffball_puffer/puffball_puffer.animation.json"
             )

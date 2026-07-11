@@ -19,10 +19,10 @@ object FFItemTags {
     }
 
     private fun createConventional(id: String): TagKey<Item> {
-		return TagKey.create(Registries.ITEM, ResourceLocation("c", id))
+		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", id))
     }
 
     private fun createHybridAquaticTag(id: String): TagKey<Item> {
-		return TagKey.create(Registries.ITEM, ResourceLocation("hybrid_aquatic", id))
+		return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("hybrid_aquatic", id))
     }
 }

@@ -26,16 +26,16 @@ class JellyshroomEntityModel : HAJellyfishEntityModel<JellyshroomEntity>("jellys
 
     companion object {
         private val RED_JELLYSHROOM_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/red_jellyshroom.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/red_jellyshroom.png")
         private val BROWN_JELLYSHROOM_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/brown_jellyshroom.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/brown_jellyshroom.png")
 
         private val RED_JELLYSHROOM_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/jellyfish/jellyshroom/red_jellyshroom.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/jellyfish/jellyshroom/red_jellyshroom.geo.json")
         private val BROWN_JELLYSHROOM_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/jellyfish/jellyshroom/brown_jellyshroom.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/jellyfish/jellyshroom/brown_jellyshroom.geo.json")
 
         private val JELLYSHROOM_ANIMATION =
-            ResourceLocation("fantastic_fishery", "animations/entity/jellyfish/jellyshroom/jellyshroom.animation.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/jellyfish/jellyshroom/jellyshroom.animation.json")
     }
 }

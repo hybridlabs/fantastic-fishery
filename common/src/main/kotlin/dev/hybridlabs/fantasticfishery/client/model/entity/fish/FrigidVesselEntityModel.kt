@@ -25,13 +25,13 @@ class FrigidVesselEntityModel : HAFishEntityModel<FrigidVesselEntity>("frigid_ve
     
     companion object {
         private val FRIGID_VESSEL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/frigid_vessel/frigid_vessel.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/frigid_vessel/frigid_vessel.png")
 
         private val FRIGID_VESSEL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/frigid_vessel/frigid_vessel.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/frigid_vessel/frigid_vessel.geo.json")
 
         private val FRIGID_VESSEL_ANIMATION =
-            ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                 "fantastic_fishery",
                 "animations/entity/fish/frigid_vessel/frigid_vessel.animation.json"
             )

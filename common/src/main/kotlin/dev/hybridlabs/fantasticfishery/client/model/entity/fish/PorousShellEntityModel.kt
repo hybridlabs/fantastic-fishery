@@ -20,13 +20,13 @@ class PorousShellEntityModel : HAFishEntityModel<PorousShellEntity>("porous_shel
     
     companion object {
         private val POROUS_SHELL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/porous_shell/porous_shell.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/porous_shell/porous_shell.png")
 
         private val POROUS_SHELL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/porous_shell/porous_shell.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/porous_shell/porous_shell.geo.json")
 
         private val POROUS_SHELL_ANIMATION =
-            ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                 "fantastic_fishery",
                 "animations/entity/fish/porous_shell/porous_shell.animation.json"
             )

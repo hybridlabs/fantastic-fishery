@@ -2,7 +2,6 @@ package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
-import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import net.minecraft.resources.ResourceLocation
 
 class MorselEntityModel : HAFishEntityModel<MorselEntity>("morsel") {
@@ -21,13 +20,13 @@ class MorselEntityModel : HAFishEntityModel<MorselEntity>("morsel") {
     
     companion object {
         private val MORSEL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/morsel/morsel.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/morsel/morsel.png")
 
         private val MORSEL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/morsel/morsel.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/morsel/morsel.geo.json")
 
         private val MORSEL_ANIMATION =
-            ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                 "fantastic_fishery",
                 "animations/entity/fish/morsel/morsel.animation.json"
             )

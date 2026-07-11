@@ -5,6 +5,7 @@ import dev.hybridlabs.fantasticfishery.tag.FFEntityTags
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
 import net.minecraft.core.HolderLookup
+import net.minecraft.tags.EntityTypeTags
 import java.util.concurrent.CompletableFuture
 
 class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<HolderLookup.Provider>) :
@@ -25,6 +26,16 @@ class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: Completa
             )
 
         getOrCreateTagBuilder(FFEntityTags.ALL_FISH)
+            .add(
+                FFEntityTypes.MORSEL.get(),
+                FFEntityTypes.PLUNDERERS_HOOP.get(),
+                FFEntityTypes.FRIGID_VESSEL.get(),
+                FFEntityTypes.FUNGILL.get(),
+                FFEntityTypes.BLOOD_EEL.get(),
+                FFEntityTypes.POROUS_SHELL.get(),
+            )
+
+        getOrCreateTagBuilder(EntityTypeTags.CAN_BREATHE_UNDER_WATER)
             .add(
                 FFEntityTypes.MORSEL.get(),
                 FFEntityTypes.PLUNDERERS_HOOP.get(),

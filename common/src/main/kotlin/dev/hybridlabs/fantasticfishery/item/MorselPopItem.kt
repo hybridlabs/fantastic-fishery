@@ -41,7 +41,7 @@ class MorselPopItem(properties: Properties) : Item(properties) {
         return result
     }
 
-    override fun getUseDuration(stack: ItemStack): Int {
+    override fun getUseDuration(stack: ItemStack, entity: LivingEntity): Int {
         return 32
     }
 

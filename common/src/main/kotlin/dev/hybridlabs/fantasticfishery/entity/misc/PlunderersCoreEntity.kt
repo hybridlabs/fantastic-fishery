@@ -27,7 +27,7 @@ class PlunderersCoreEntity : ThrowableItemProjectile {
 
     private val particle: ParticleOptions
         get() {
-            val itemstack = this.itemRaw
+            val itemstack = this.item
             return if (itemstack.isEmpty)
                 ParticleTypes.ITEM_SNOWBALL
             else

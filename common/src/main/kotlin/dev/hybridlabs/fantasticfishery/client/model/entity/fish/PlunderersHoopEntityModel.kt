@@ -36,22 +36,22 @@ class PlunderersHoopEntityModel : HAFishEntityModel<PlunderersHoopEntity>("plund
 
     companion object {
         private val PLUNDERERS_HOOP_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/plunderers_hoop/plunderers_hoop.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/plunderers_hoop.png")
         private val SMALL_PLUNDERERS_HOOP_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/plunderers_hoop/small_plunderers_hoop.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/small_plunderers_hoop.png")
 
         private val PLUNDERERS_HOOP_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/plunderers_hoop.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/plunderers_hoop.geo.json")
         private val CORELESS_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_plunderers_hoop.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_plunderers_hoop.geo.json")
         private val SMALL_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/small_plunderers_hoop.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/small_plunderers_hoop.geo.json")
         private val CORELESS_SMALL_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_small_plunderers_hoop.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_small_plunderers_hoop.geo.json")
 
         private val PLUNDERERS_HOOP_ANIMATION =
-            ResourceLocation("fantastic_fishery", "animations/entity/fish/plunderers_hoop/plunderers_hoop.animation.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/fish/plunderers_hoop/plunderers_hoop.animation.json")
         private val SMALL_PLUNDERERS_HOOP_ANIMATION =
-            ResourceLocation("fantastic_fishery", "animations/entity/fish/plunderers_hoop/small_plunderers_hoop.animation.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/fish/plunderers_hoop/small_plunderers_hoop.animation.json")
     }
 }

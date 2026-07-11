@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
-import dev.hybridlabs.aquatic.entity.ai.goal.WaterAnimalDigGoal
 import dev.hybridlabs.aquatic.entity.base.HAFishEntity
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import net.minecraft.world.entity.EntityType

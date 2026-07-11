@@ -20,13 +20,13 @@ class BloodEelEntityModel : HAFishEntityModel<BloodEelEntity>("blood_eel") {
     
     companion object {
         private val BLOOD_EEL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/blood_eel/blood_eel.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/blood_eel/blood_eel.png")
 
         private val BLOOD_EEL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/blood_eel/blood_eel.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/blood_eel/blood_eel.geo.json")
 
         private val BLOOD_EEL_ANIMATION =
-            ResourceLocation(
+            ResourceLocation.fromNamespaceAndPath(
                 "fantastic_fishery",
                 "animations/entity/fish/blood_eel/blood_eel.animation.json"
             )

@@ -12,7 +12,6 @@ import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.block.BushBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED
@@ -24,7 +23,7 @@ import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
 
 @Suppress("OVERRIDE_DEPRECATION", "DEPRECATION")
-class ShroompadBlock(settings: Properties) : BushBlock(settings) {
+class ShroompadBlock(settings: Properties) : Block(settings) {
     init {
         this.registerDefaultState(stateDefinition.any().setValue(WATERLOGGED, true))
     }

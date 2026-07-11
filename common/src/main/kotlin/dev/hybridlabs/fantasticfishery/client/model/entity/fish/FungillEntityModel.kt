@@ -26,16 +26,16 @@ class FungillEntityModel : HAFishEntityModel<FungillEntity>("fungill") {
 
     companion object {
         private val RED_FUNGILL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/fungill/red_fungill.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/fungill/red_fungill.png")
         private val BROWN_FUNGILL_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/fish/fungill/brown_fungill.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/fungill/brown_fungill.png")
 
         private val RED_FUNGILL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/fungill/red_fungill.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/fungill/red_fungill.geo.json")
         private val BROWN_FUNGILL_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/fish/fungill/brown_fungill.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/fungill/brown_fungill.geo.json")
 
         private val FUNGILL_ANIMATION =
-            ResourceLocation("fantastic_fishery", "animations/entity/fish/fungill/fungill.animation.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/fish/fungill/fungill.animation.json")
     }
 }

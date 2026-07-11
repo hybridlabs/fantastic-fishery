@@ -1,11 +1,14 @@
 package dev.hybridlabs.fantasticfishery.block
 
+import com.mojang.serialization.MapCodec
 import dev.hybridlabs.aquatic.block.HABlocks
+import dev.hybridlabs.aquatic.block.WildMusselBlock
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.FluidTags
 import net.minecraft.util.RandomSource
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
@@ -17,6 +20,8 @@ import net.minecraft.world.level.block.BushBlock
 import net.minecraft.world.level.block.LiquidBlockContainer
 import net.minecraft.world.level.block.TallSeagrassBlock
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.block.state.properties.BlockStateProperties
+import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
 import net.minecraft.world.level.material.Fluid
 import net.minecraft.world.level.material.FluidState
@@ -63,7 +68,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return blockState
     }
 
-    override fun isValidBonemealTarget(world: LevelReader, pos: BlockPos, state: BlockState, isClient: Boolean): Boolean {
+    override fun isValidBonemealTarget(world: LevelReader, pos: BlockPos, state: BlockState): Boolean {
         return true
     }
 
@@ -85,7 +90,13 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         }
     }
 
-    override fun canPlaceLiquid(world: BlockGetter, pos: BlockPos, state: BlockState, fluid: Fluid): Boolean {
+    override fun canPlaceLiquid(
+        player: Player?,
+        world: BlockGetter,
+        pos: BlockPos,
+        state: BlockState,
+        fluid: Fluid
+    ): Boolean {
         return false
     }
 
@@ -98,7 +109,13 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return false
     }
 
+    override fun codec(): MapCodec<out BushBlock> {
+        return CODEC
+    }
+
     companion object {
+        val CODEC: MapCodec<WildMusselBlock> = simpleCodec(::WildMusselBlock)
+
         private val SHAPE: VoxelShape = box(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)
     }
 }

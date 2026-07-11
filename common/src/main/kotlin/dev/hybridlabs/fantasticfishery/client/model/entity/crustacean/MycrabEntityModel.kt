@@ -27,16 +27,16 @@ class MycrabEntityModel : HACrustaceanEntityModel<MycrabEntity>("mycrab") {
 
     companion object {
         private val RED_MYCRAB_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/crustacean/mycrab/red_mycrab.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/crustacean/mycrab/red_mycrab.png")
         private val BROWN_MYCRAB_TEXTURE =
-            ResourceLocation("fantastic_fishery", "textures/entity/crustacean/mycrab/brown_mycrab.png")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/crustacean/mycrab/brown_mycrab.png")
 
         private val RED_MYCRAB_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/crustacean/mycrab/red_mycrab.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/crustacean/mycrab/red_mycrab.geo.json")
         private val BROWN_MYCRAB_MODEL =
-            ResourceLocation("fantastic_fishery", "geo/crustacean/mycrab/brown_mycrab.geo.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/crustacean/mycrab/brown_mycrab.geo.json")
 
         private val MYCRAB_ANIMATION =
-            ResourceLocation("fantastic_fishery", "animations/entity/crustacean/mycrab/mycrab.animation.json")
+            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/crustacean/mycrab/mycrab.animation.json")
     }
 }
