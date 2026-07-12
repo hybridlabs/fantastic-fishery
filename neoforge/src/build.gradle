@@ -85,6 +85,9 @@ processResources {
 
 dependencies {
     compileOnly project(":common")
+    implementation ("maven.modrinth:hybrid-aquatic:${aquatic_version}-neoforge") {
+        transitive = false
+    }
     implementation "software.bernie.geckolib:geckolib-neoforge-$geckolib_version"
     implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-1.21.1"
     implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {

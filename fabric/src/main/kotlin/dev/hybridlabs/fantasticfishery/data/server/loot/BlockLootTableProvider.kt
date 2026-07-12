@@ -4,13 +4,16 @@ import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
+import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.level.block.BaseCoralWallFanBlock
 import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.LootTable
 import net.minecraft.world.level.storage.loot.entries.LootItem
+import java.util.concurrent.CompletableFuture
 
-class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTableProvider(output) {
+class BlockLootTableProvider(output: FabricDataOutput, registryLookup: CompletableFuture<HolderLookup.Provider>) :
+    FabricBlockLootTableProvider(output, registryLookup) {
 
     override fun generate() {
 
@@ -18,7 +21,7 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
             LootTable.lootTable().pool(
                 LootPool.lootPool()
                     .add(LootItem.lootTableItem(block))
-                    .conditionally(HAS_SHEARS_OR_SILK_TOUCH.build())
+                    .conditionally(hasShearsOrSilkTouch().build())
                     .build()
             )
         }
@@ -29,11 +32,11 @@ class BlockLootTableProvider(output: FabricDataOutput) : FabricBlockLootTablePro
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(block)
-                            .`when`(HAS_SILK_TOUCH)
+                            .`when`(hasSilkTouch())
                     )
                     .add(
                         LootItem.lootTableItem(FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get())
-                            .`when`(HAS_SILK_TOUCH.invert())
+                            .`when`(hasSilkTouch().invert())
                     )
             )
         }

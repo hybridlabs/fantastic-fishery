@@ -4,18 +4,22 @@ import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancements.critereon.InventoryChangeTrigger
-import net.minecraft.data.recipes.FinishedRecipe
+import net.minecraft.core.HolderLookup
 import net.minecraft.data.recipes.RecipeCategory
+import net.minecraft.data.recipes.RecipeOutput
 import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.world.item.Items
+import net.minecraft.world.item.crafting.CampfireCookingRecipe
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.RecipeSerializer
-import java.util.function.Consumer
+import net.minecraft.world.item.crafting.SmeltingRecipe
+import net.minecraft.world.item.crafting.SmokingRecipe
+import java.util.concurrent.CompletableFuture
 
-class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
-
-    override fun buildRecipes(exporter: Consumer<FinishedRecipe>) {
+class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture<HolderLookup.Provider>) :
+    FabricRecipeProvider(output, lookupProvider) {
+    override fun buildRecipes(exporter: RecipeOutput) {
         //#region Sandstone Block Recipes
         stairBuilder(
             FFItems.MYCELIAL_SANDSTONE_STAIRS.get(),
@@ -125,6 +129,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             exporter,
             "smelting_mycelial_sand",
             RecipeSerializer.SMELTING_RECIPE,
+            ::SmeltingRecipe,
             200,
             FFItems.MYCELIAL_SAND.get(),
             Items.GLASS,
@@ -135,6 +140,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             exporter,
             "smelting",
             RecipeSerializer.SMELTING_RECIPE,
+            ::SmeltingRecipe,
             600,
             FFItems.MORSEL.get(),
             FFItems.MORSEL_BAR.get(),
@@ -145,6 +151,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             exporter,
             "smoking",
             RecipeSerializer.SMOKING_RECIPE,
+            ::SmokingRecipe,
             300,
             FFItems.MORSEL.get(),
             FFItems.MORSEL_BAR.get(),
@@ -155,6 +162,7 @@ class RecipeProvider(output: FabricDataOutput) : FabricRecipeProvider(output) {
             exporter,
             "campfire_cooking",
             RecipeSerializer.CAMPFIRE_COOKING_RECIPE,
+            ::CampfireCookingRecipe,
             600,
             FFItems.MORSEL.get(),
             FFItems.MORSEL_BAR.get(),
