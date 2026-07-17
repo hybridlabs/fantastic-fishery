@@ -56,7 +56,9 @@ dependencies {
     implementation 'org.jetbrains:annotations:25.0.0'
 
     //We still have to load the loader-specific version of any mods included in common
-    modImplementation ("maven.modrinth:hybrid-aquatic:${aquatic_version}-fabric") {
+
+    //modImplementation ("maven.modrinth:hybrid-aquatic:${aquatic_version}-fabric") {
+    modImplementation("maven.modrinth:hybrid-aquatic:zgKmZOSd") {
         transitive = false
     }
     modApi "software.bernie.geckolib:geckolib-fabric-$geckolib_version"
