@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.crustacean
 
 import dev.hybridlabs.aquatic.client.model.entity.crustacean.HACrustaceanEntityModel
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.crustacean.MycrabEntity
 import net.minecraft.resources.ResourceLocation
 

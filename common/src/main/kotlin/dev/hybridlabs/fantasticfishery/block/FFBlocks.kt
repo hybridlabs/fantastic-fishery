@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.CoralBlock
 import net.minecraft.world.level.block.CoralFanBlock
 import net.minecraft.world.level.block.CoralPlantBlock
 import net.minecraft.world.level.block.CoralWallFanBlock
-import net.minecraft.world.level.block.FallingBlock
 import net.minecraft.world.level.block.SlabBlock
 import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.StairBlock

@@ -174,7 +174,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
             FULLY_PUFFED -> 1.25f
             else -> 1.0f
         }
-        return super.getDimensions(pose).scale(scale)
+        return super.getDefaultDimensions(pose).scale(scale)
     }
 
     companion object {

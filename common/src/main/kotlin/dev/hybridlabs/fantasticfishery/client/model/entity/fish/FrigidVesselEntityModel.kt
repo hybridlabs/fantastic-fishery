@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
-import dev.hybridlabs.aquatic.entity.fish.DiscusEntity
 import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.resources.ResourceLocation

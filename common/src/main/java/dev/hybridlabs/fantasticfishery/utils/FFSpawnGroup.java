@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.utils;
 
 import dev.hybridlabs.fantasticfishery.Constants;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.MobCategory;
 
 import java.util.Map;
