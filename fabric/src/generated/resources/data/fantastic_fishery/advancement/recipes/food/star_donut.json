@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_plunderers_core": {
+      "conditions": {
+        "items": [
+          {
+            "items": "fantastic_fishery:plunderers_core"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "fantastic_fishery:star_donut"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_plunderers_core"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "fantastic_fishery:star_donut"
+    ]
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "fantastic_fishery:mycelial_sandstone"
-  },
-  "result": "fantastic_fishery:cut_mycelial_sandstone"
-}
