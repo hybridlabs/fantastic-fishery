@@ -7,6 +7,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.HolderSet
+import net.minecraft.core.registries.Registries
+import net.minecraft.data.worldgen.BootstrapContext
+import net.minecraft.data.worldgen.features.FeatureUtils
 import net.minecraft.data.worldgen.placement.PlacementUtils
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate
@@ -25,12 +28,14 @@ class ConfiguredFeatureProvider(
     output: FabricDataOutput,
     registriesFuture: CompletableFuture<HolderLookup.Provider>,
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
-    override fun configure(registries: HolderLookup.Provider, entries: Entries) {
+    companion object {
+        fun bootstrapConfiguredFeatures(bootstrap: BootstrapContext<ConfiguredFeature<*, *>>) {
 
-        entries.add(
-            FFConfiguredFeatures.RED_SHROOMPADS,
-            ConfiguredFeature(
-                Feature.RANDOM_PATCH, RandomPatchConfiguration(
+            FeatureUtils.register(
+                bootstrap,
+                FFConfiguredFeatures.RED_SHROOMPADS,
+                Feature.RANDOM_PATCH,
+                RandomPatchConfiguration(
                     10, 5, 5,
                     PlacementUtils.filtered(
                         Feature.SIMPLE_BLOCK,
@@ -41,12 +46,12 @@ class ConfiguredFeatureProvider(
                     )
                 )
             )
-        )
 
-        entries.add(
-            FFConfiguredFeatures.BROWN_SHROOMPADS,
-            ConfiguredFeature(
-                Feature.RANDOM_PATCH, RandomPatchConfiguration(
+            FeatureUtils.register(
+                bootstrap,
+                FFConfiguredFeatures.BROWN_SHROOMPADS,
+                Feature.RANDOM_PATCH,
+                RandomPatchConfiguration(
                     10, 5, 5,
                     PlacementUtils.filtered(
                         Feature.SIMPLE_BLOCK,
@@ -57,20 +62,19 @@ class ConfiguredFeatureProvider(
                     )
                 )
             )
-        )
 
-        entries.add(
-            FFConfiguredFeatures.SEASHROOM_PATCH,
-            ConfiguredFeature(
-                FFFeatures.SEASHROOM_PATCH.get(), ProbabilityFeatureConfiguration(
+            FeatureUtils.register(
+                bootstrap,
+                FFConfiguredFeatures.SEASHROOM_PATCH,
+                FFFeatures.SEASHROOM_PATCH.get(),
+                ProbabilityFeatureConfiguration(
                     0.33f
                 )
             )
-        )
 
-        entries.add(
-            FFConfiguredFeatures.FUNGAL_REEF_VEGETATION,
-            ConfiguredFeature(
+            FeatureUtils.register(
+                bootstrap,
+                FFConfiguredFeatures.FUNGAL_REEF_VEGETATION,
                 Feature.SIMPLE_RANDOM_SELECTOR,
                 SimpleRandomFeatureConfiguration(
                     HolderSet.direct(
@@ -102,7 +106,16 @@ class ConfiguredFeatureProvider(
                     )
                 )
             )
-        )
+        }
+    }
+
+    override fun configure(registries: HolderLookup.Provider, entries: Entries) {
+        val reg = registries.lookup(Registries.CONFIGURED_FEATURE).get()
+
+        entries.add(reg.getOrThrow(FFConfiguredFeatures.RED_SHROOMPADS))
+        entries.add(reg.getOrThrow(FFConfiguredFeatures.BROWN_SHROOMPADS))
+        entries.add(reg.getOrThrow(FFConfiguredFeatures.SEASHROOM_PATCH))
+        entries.add(reg.getOrThrow(FFConfiguredFeatures.FUNGAL_REEF_VEGETATION))
     }
 
     override fun getName(): String {

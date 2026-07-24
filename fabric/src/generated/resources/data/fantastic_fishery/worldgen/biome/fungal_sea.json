@@ -65,7 +65,8 @@
       "minecraft:spring_lava"
     ],
     [
-      "minecraft:glow_lichen"
+      "minecraft:glow_lichen",
+      "fantastic_fishery:fungal_reef_vegetation"
     ],
     [
       "minecraft:freeze_top_layer"
