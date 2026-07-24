@@ -58,7 +58,7 @@ dependencies {
     //We still have to load the loader-specific version of any mods included in common
 
     //modImplementation ("maven.modrinth:hybrid-aquatic:${aquatic_version}-fabric") {
-    modImplementation("maven.modrinth:hybrid-aquatic:zgKmZOSd") {
+    modImplementation("maven.modrinth:hybrid-aquatic:qzgZEGoR") {
         transitive = false
     }
     modApi "software.bernie.geckolib:geckolib-fabric-$geckolib_version"
