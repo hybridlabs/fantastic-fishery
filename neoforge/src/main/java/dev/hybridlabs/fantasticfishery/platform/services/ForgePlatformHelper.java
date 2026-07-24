@@ -97,35 +97,8 @@ public class ForgePlatformHelper implements PlatformHelper {
     }
 
     @Override
-    public Attribute getReachAttribute() {
-        return Attributes.BLOCK_INTERACTION_RANGE.value();
-    }
-
-    @Override
     public MobCategory getHybridMobCategoryByName(String name) {
         return MobCategory.valueOf((Constants.MOD_ID + '_' + name).toUpperCase());
-    }
-
-    @Override
-    public Item createBlockItem(Block block, Item.Properties properties) {
-        if (block.equals(HABlocks.INSTANCE.getANEMONE().get())) {
-            return new AnemoneBlockItem(block, properties);
-        } else if (block.equals(HABlocks.INSTANCE.getSTRAWBERRY_ANEMONE().get())) {
-            return new StrawberryAnemoneBlockItem(block, properties);
-        } else if (block.equals(HABlocks.INSTANCE.getGIANT_GREEN_ANEMONE().get())) {
-            return new GiantGreenAnemoneBlockItem(block, properties);
-        }
-        return new BlockItem(block, properties);
-    }
-
-    @Override
-    public Item createMessageInABottleItem(Item.Properties properties) {
-        return new MessageInABottleItem(properties);
-    }
-
-    @Override
-    public void sendHookToServer(int entityId, ItemStack entityData) {
-        HybridAquaticNetworkingForge.INSTANCE.sendHookPacket(entityId, entityData);
     }
 
     private record SpawnPlacementRegistrationHandler<T extends LivingEntity>(
@@ -157,5 +130,4 @@ public class ForgePlatformHelper implements PlatformHelper {
             }
         }
     }
-
 }
