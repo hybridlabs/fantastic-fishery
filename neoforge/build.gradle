@@ -99,12 +99,6 @@ dependencies {
     runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 }
 
-jar {
-    manifest.attributes([
-            "MixinConfigs": "${mod_id}.forge.mixins.json"
-    ])
-}
-
 compileKotlin {
     source(project(":common").sourceSets.main.allSource)
     inputs.file "../gradle.properties"

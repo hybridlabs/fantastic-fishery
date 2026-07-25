@@ -1,13 +1,22 @@
 package dev.hybridlabs.fantasticfishery.datagen
 
 import dev.hybridlabs.fantasticfishery.Constants
-import dev.hybridlabs.fantasticfishery.datagen.server.BiomeModifierProvider
+import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
+import dev.hybridlabs.fantasticfishery.config.ConfigHelper.initializeConfig
 import dev.hybridlabs.fantasticfishery.utils.NaughtyRegistrySetBuilder
-import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider
-import net.minecraftforge.data.event.GatherDataEvent
-import net.minecraftforge.eventbus.api.SubscribeEvent
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber
-import net.minecraftforge.registries.ForgeRegistries.Keys.BIOME_MODIFIERS
+import dev.hybridlabs.fantasticfishery.world.gen.feature.BiomeFeatureAddition
+import net.minecraft.core.HolderSet
+import net.minecraft.core.registries.Registries
+import net.minecraft.data.worldgen.BootstrapContext
+import net.minecraft.resources.ResourceKey
+import net.minecraft.world.level.biome.MobSpawnSettings
+import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.fml.common.EventBusSubscriber
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider
+import net.neoforged.neoforge.common.world.BiomeModifier
+import net.neoforged.neoforge.common.world.BiomeModifiers
+import net.neoforged.neoforge.data.event.GatherDataEvent
+import net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.BIOME_MODIFIERS
 
 /**
  * Datagen for Forge specific data resources like biome modifiers.
@@ -32,9 +41,15 @@ object DataGenerators {
             registerFeatures(context)
         }
 
-        generator.addProvider(event.includeServer(), DatapackBuiltinEntriesProvider(packOutput, lookupProvider, builder,
-            setOf(Constants.MOD_ID)
-        ))
+        generator.addProvider(
+            event.includeServer(),
+            DatapackBuiltinEntriesProvider(
+                packOutput,
+                lookupProvider,
+                builder,
+                setOf(Constants.MOD_ID)
+        )
+        )
     }
 
     /**
@@ -50,7 +65,7 @@ object DataGenerators {
             val location = "${addition.placedFeature.location().path}_${addition.biomeTag.location.path}"
             val key = ResourceKey.create(
                 BIOME_MODIFIERS,
-                CommonClass.locate(location)
+                FantasticFisheryCommon.locate(location)
             )
             context.register(
                 key, BiomeModifiers.AddFeaturesBiomeModifier(
@@ -68,13 +83,13 @@ object DataGenerators {
     private fun registerBiomeSpawns(
         context: BootstrapContext<BiomeModifier>,
     ) {
-        val configHandler = initializeConfig(CommonClass.CONFIG_FILE)
+        val configHandler = initializeConfig(FantasticFisheryCommon.CONFIG_FILE)
         val biomeRegistry = context.lookup(Registries.BIOME)
         for (spawnConfig in configHandler.defaultConfig.entitySpawnConfig) {
 
             val location = "${spawnConfig.type.toShortString()}_${spawnConfig.biomes.location.path}"
             val key = ResourceKey.create(
-                BIOME_MODIFIERS, CommonClass.locate(location)
+                BIOME_MODIFIERS, FantasticFisheryCommon.locate(location)
             )
 
             context.register(

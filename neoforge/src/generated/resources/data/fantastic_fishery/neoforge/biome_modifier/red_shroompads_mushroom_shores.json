@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#fantastic_fishery:mushroom_shores",
+  "features": "fantastic_fishery:red_shroompads",
+  "step": "vegetal_decoration"
+}

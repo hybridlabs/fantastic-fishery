@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.platform.services;
 
-import dev.hybridlabs.aquatic.platform.registration.RegistryObject;
+import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject;
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon;
 import dev.hybridlabs.fantasticfishery.utils.FFSpawnGroup;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;

@@ -1,16 +1,12 @@
 package dev.hybridlabs.fantasticfishery.platform.services;
 
+import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject;
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon;
 import dev.hybridlabs.fantasticfishery.Constants;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -59,7 +55,7 @@ public class ForgePlatformHelper implements PlatformHelper {
             Supplier<EntityType<T>> entityType,
             int backgroundColor,
             int highlightColor) {
-        return CommonClass.ITEMS.register(
+        return FantasticFisheryCommon.ITEMS.register(
                 name,
                 () ->
                         new DeferredSpawnEggItem(
@@ -82,7 +78,7 @@ public class ForgePlatformHelper implements PlatformHelper {
             SpawnPlacements.SpawnPredicate<T> decoratorPredicate) {
 
         var handler =
-                new SpawnPlacementRegistrationHandler<T>(
+                new ForgePlatformHelper.SpawnPlacementRegistrationHandler<T>(
                         entityType, decoratorType, heightMapType, decoratorPredicate);
         ForgePlatformHelper.getEventBus().addListener(handler::handleEvent);
     }

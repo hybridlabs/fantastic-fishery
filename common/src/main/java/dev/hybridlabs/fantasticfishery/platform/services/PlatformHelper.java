@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.platform.services;
 
-import dev.hybridlabs.aquatic.platform.registration.RegistryObject;
+import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.item.SpawnEggItem;

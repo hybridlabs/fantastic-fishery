@@ -1,18 +1,18 @@
 package dev.hybridlabs.fantasticfishery.datagen.server
 
-import dev.hybridlabs.fantasticfishery.config.ConfigHelper.initializeConfig
-import dev.hybridlabs.fantasticfishery.world.gen.feature.BiomeFeatureAddition
+import dev.hybridlabs.aquatic.config.ConfigHelper.initializeConfig
+import dev.hybridlabs.aquatic.world.gen.feature.BiomeFeatureAddition
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.Registries
-import net.minecraft.data.worldgen.BootstapContext
+import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.level.biome.MobSpawnSettings
-import net.minecraftforge.common.world.BiomeModifier
-import net.minecraftforge.common.world.ForgeBiomeModifiers
-import net.minecraftforge.registries.ForgeRegistries.Keys.BIOME_MODIFIERS
+import net.neoforged.neoforge.common.world.BiomeModifier
+import net.neoforged.neoforge.common.world.BiomeModifiers
+import net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.BIOME_MODIFIERS
 
-class BiomeModifierProvider(context: BootstapContext<BiomeModifier>) {
+class BiomeModifierProvider(context: BootstrapContext<BiomeModifier>) {
     init {
         registerBiomeSpawns(context)
         registerFeatures(context)
@@ -22,7 +22,7 @@ class BiomeModifierProvider(context: BootstapContext<BiomeModifier>) {
      * Create Forge biome modifiers to add mob spawns based on the config.
      */
     private fun registerBiomeSpawns(
-        context: BootstapContext<BiomeModifier>,
+        context: BootstrapContext<BiomeModifier>,
     ) {
         val configHandler = initializeConfig(FantasticFisheryCommon.CONFIG_FILE)
         val biomeRegistry = context.lookup(Registries.BIOME)
@@ -34,7 +34,7 @@ class BiomeModifierProvider(context: BootstapContext<BiomeModifier>) {
             )
 
             context.register(
-                key, ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                key, BiomeModifiers.AddSpawnsBiomeModifier(
                     biomeRegistry.get(spawnConfig.biomes).get(),
                     listOf(
                         MobSpawnSettings.SpawnerData(
@@ -54,7 +54,7 @@ class BiomeModifierProvider(context: BootstapContext<BiomeModifier>) {
      * Create Forge biome modifiers to add placed features.
      */
     private fun registerFeatures(
-        context: BootstapContext<BiomeModifier>,
+        context: BootstrapContext<BiomeModifier>,
     ) {
         val biomeRegistry = context.lookup(Registries.BIOME)
         val featureRegistry = context.lookup(Registries.PLACED_FEATURE)
@@ -66,7 +66,7 @@ class BiomeModifierProvider(context: BootstapContext<BiomeModifier>) {
                 FantasticFisheryCommon.locate(location)
             )
             context.register(
-                key, ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                key, BiomeModifiers.AddFeaturesBiomeModifier(
                     biomeRegistry.getOrThrow(addition.biomeTag),
                     HolderSet.direct(featureRegistry.getOrThrow(addition.placedFeature)),
                     addition.step

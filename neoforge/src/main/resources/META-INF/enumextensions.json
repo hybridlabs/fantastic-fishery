@@ -4,7 +4,7 @@
             "_enum_comment": "The enum class the entry should be added to",
             "enum": "net/minecraft/world/entity/MobCategory",
             "_name_comment": "The field name of the new entry, must be prefixed with the mod ID",
-            "name": "FANTASTIC_FISHERY_FISH",
+            "name": "FANTASTIC_FISHERY_FANTASTIC_FISH",
             "_constructor_comment": "The constructor to be used",
             "constructor": "(Ljava/lang/String;IZZI)V",
             "_parameters_comment": "Constant parameters provided directly.",
@@ -12,19 +12,19 @@
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
-            "name": "FANTASTIC_FISHERY_JELLYFISH",
+            "name": "FANTASTIC_FISHERY_FANTASTIC_JELLYFISH",
             "constructor": "(Ljava/lang/String;IZZI)V",
             "parameters": [ "fantastic_fishery:fantastic_jellyfish", 4, true, false, 64]
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
-            "name": "FANTASTIC_FISHERY_SHARK",
+            "name": "FANTASTIC_FISHERY_FANTASTIC_SHARK",
             "constructor": "(Ljava/lang/String;IZZI)V",
             "parameters": [ "fantastic_fishery:fantastic_shark", 2, true, true, 128]
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
-            "name": "FANTASTIC_FISHERY_CRUSTACEAN",
+            "name": "FANTASTIC_FISHERY_FANTASTIC_CRUSTACEAN",
             "constructor": "(Ljava/lang/String;IZZI)V",
             "parameters": [ "fantastic_fishery:fantastic_crustacean", 4, true, false, 64]
         }

@@ -4,7 +4,6 @@ import com.mojang.serialization.Lifecycle;
 import net.minecraft.core.*;
 import net.minecraft.resources.ResourceKey;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
