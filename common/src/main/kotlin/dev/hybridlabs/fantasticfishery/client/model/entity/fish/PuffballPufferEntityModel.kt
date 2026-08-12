@@ -1,12 +1,12 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.PuffballPufferEntity
+import dev.hybridlabs.hapi.client.model.entity.BaseFishEntityModel
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.resources.ResourceLocation
 
-class PuffballPufferEntityModel : HAFishEntityModel<PuffballPufferEntity>("puffball_puffer") {
+class PuffballPufferEntityModel : BaseFishEntityModel<PuffballPufferEntity>("fantastic_fishery", "puffball_puffer") {
     override fun getRenderType(animatable: PuffballPufferEntity, texture: ResourceLocation): RenderType {
         return RenderType.entityTranslucent(texture)
     }

@@ -1,8 +1,8 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
-import dev.hybridlabs.aquatic.entity.ai.MobTargetConfiguration
-import dev.hybridlabs.aquatic.entity.base.HAFishEntity
-import dev.hybridlabs.aquatic.tag.HAEntityTags
+import dev.hybridlabs.hapi.entity.ai.MobTargetConfiguration
+import dev.hybridlabs.hapi.entity.water.base.BaseFishEntity
+import dev.hybridlabs.hapi.tag.HAPIEntityTags
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket
 import net.minecraft.network.syncher.EntityDataAccessor
@@ -12,11 +12,7 @@ import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
-import net.minecraft.world.entity.EntityDimensions
-import net.minecraft.world.entity.EntityType
-import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.Mob
-import net.minecraft.world.entity.Pose
+import net.minecraft.world.entity.*
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.ai.goal.Goal
@@ -27,12 +23,12 @@ import net.minecraft.world.level.Level
 import java.util.function.Predicate
 
 class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Level) :
-    HAFishEntity(type, world) {
+    BaseFishEntity(type, world) {
 
     override fun getTargetConfig() = MobTargetConfiguration.ofPrey(
-        HAEntityTags.MEDIUM_CREATURES,
-        HAEntityTags.LARGE_CREATURES,
-        HAEntityTags.ALL_SHARKS
+        HAPIEntityTags.MEDIUM_CREATURES,
+        HAPIEntityTags.LARGE_CREATURES,
+        HAPIEntityTags.ALL_SHARKS
     )
 
     override fun shouldFlopOnLand(): Boolean {

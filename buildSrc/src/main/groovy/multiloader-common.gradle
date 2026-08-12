@@ -106,7 +106,6 @@ processResources {
             'credits'                      : credits,
             'java_version'                 : java_version,
             'kotlin_version'               : kotlin_version,
-            'aquatic_version'              : aquatic_version,
     ]
 
     filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {

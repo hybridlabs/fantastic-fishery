@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
-import dev.hybridlabs.aquatic.entity.ai.MobTargetConfiguration
-import dev.hybridlabs.aquatic.entity.ai.goal.boids.BoidGoal
-import dev.hybridlabs.aquatic.entity.base.HASchoolingFishEntity
-import dev.hybridlabs.aquatic.tag.HAEntityTags
 import dev.hybridlabs.fantasticfishery.item.FFItems
+import dev.hybridlabs.hapi.entity.ai.MobTargetConfiguration
+import dev.hybridlabs.hapi.entity.ai.goal.boids.BoidGoal
+import dev.hybridlabs.hapi.entity.water.base.BaseSchoolingFishEntity
+import dev.hybridlabs.hapi.tag.HAPIEntityTags
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
@@ -31,13 +31,13 @@ import java.util.function.IntFunction
 import kotlin.random.Random
 
 class PlunderersHoopEntity(type: EntityType<out PlunderersHoopEntity>, world: Level) :
-    HASchoolingFishEntity(type, world),
+    BaseSchoolingFishEntity(type, world),
     VariantHolder<PlunderersHoopEntity.Companion.Type> {
 
     override fun getTargetConfig() = MobTargetConfiguration.ofPrey(
-        HAEntityTags.MEDIUM_CREATURES,
-        HAEntityTags.LARGE_CREATURES,
-        HAEntityTags.ALL_SHARKS
+        HAPIEntityTags.MEDIUM_CREATURES,
+        HAPIEntityTags.LARGE_CREATURES,
+        HAPIEntityTags.ALL_SHARKS
     )
 
     override fun registerGoals() {

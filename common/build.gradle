@@ -53,6 +53,7 @@ repositories {
         url = "https://maven.minecraftforge.net/"
     }
     mavenCentral()
+    mavenLocal()
 }
 
 dependencies {
@@ -61,18 +62,14 @@ dependencies {
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0"))
     implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.0"))
     implementation 'org.jetbrains:annotations:25.0.0'
+    implementation("dev.hybridlabs.hapi:hapi-common-1.21.1:1.0.0")
 
     //We load the Forge version of any included mod dependencies
     implementation "software.bernie.geckolib:geckolib-neoforge-$geckolib_version"
 
-    implementation("maven.modrinth:hybrid-aquatic:${aquatic_version}-neoforge") {
-        transitive = false
-    }
-
     implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {
         exclude(group: "com.github.glitchfiend")
     }
-    implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-1.21.1"
 }
 
 configurations {

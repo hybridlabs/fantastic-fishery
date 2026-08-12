@@ -1,8 +1,6 @@
 package dev.hybridlabs.fantasticfishery.block
 
 import com.mojang.serialization.MapCodec
-import dev.hybridlabs.aquatic.block.HABlocks
-import dev.hybridlabs.aquatic.block.WildMusselBlock
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
@@ -40,9 +38,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
 
     override fun mayPlaceOn(floor: BlockState, world: BlockGetter, pos: BlockPos): Boolean {
         return floor.isFaceSturdy(world, pos, Direction.UP) &&
-                !floor.`is`(Blocks.MAGMA_BLOCK) &&
-                !floor.`is`(HABlocks.AERATED_SAND.get()) &&
-                !floor.`is`(HABlocks.BUBBLE_GEYSER.get())
+                !floor.`is`(Blocks.MAGMA_BLOCK)
     }
 
     override fun getStateForPlacement(ctx: BlockPlaceContext): BlockState? {
@@ -112,7 +108,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
     }
 
     companion object {
-        val CODEC: MapCodec<WildMusselBlock> = simpleCodec(::WildMusselBlock)
+        val CODEC: MapCodec<MycelialSeagrassBlock> = simpleCodec(::MycelialSeagrassBlock)
 
         private val SHAPE: VoxelShape = box(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)
     }

@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": "#hybrid_aquatic:all_trenches",
+  "biomes": "#hapi:all_trenches",
   "spawners": {
     "type": "fantastic_fishery:plunderers_hoop",
     "maxCount": 5,

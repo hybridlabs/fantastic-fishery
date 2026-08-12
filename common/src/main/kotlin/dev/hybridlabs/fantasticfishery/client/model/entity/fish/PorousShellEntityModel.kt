@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
+import dev.hybridlabs.hapi.client.model.entity.BaseFishEntityModel
 import net.minecraft.resources.ResourceLocation
 
-class PorousShellEntityModel : HAFishEntityModel<PorousShellEntity>("porous_shell") {
+class PorousShellEntityModel : BaseFishEntityModel<PorousShellEntity>("fantastic_fishery", "porous_shell") {
 
     override fun getTextureResource(animatable: PorousShellEntity): ResourceLocation {
         return POROUS_SHELL_TEXTURE

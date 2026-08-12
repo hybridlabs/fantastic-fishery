@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_spawns",
-  "biomes": "#hybrid_aquatic:sulfuric_cave",
+  "biomes": "#hapi:sulfuric_cave",
   "spawners": {
     "type": "fantastic_fishery:porous_shell",
     "maxCount": 2,

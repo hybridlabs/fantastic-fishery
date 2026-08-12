@@ -1,8 +1,8 @@
 package dev.hybridlabs.fantasticfishery.datagen.server
 
-import dev.hybridlabs.aquatic.config.ConfigHelper.initializeConfig
-import dev.hybridlabs.aquatic.world.gen.feature.BiomeFeatureAddition
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
+import dev.hybridlabs.fantasticfishery.config.ConfigHelper.initializeConfig
+import dev.hybridlabs.fantasticfishery.world.gen.feature.BiomeFeatureAddition
 import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext

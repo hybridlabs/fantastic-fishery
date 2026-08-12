@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.entity.jellyfish
 
-import dev.hybridlabs.aquatic.entity.base.HAJellyfishEntity
+import dev.hybridlabs.hapi.entity.water.base.BaseJellyfishEntity
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
@@ -20,7 +20,7 @@ import java.util.function.IntFunction
 import kotlin.random.Random
 
 class JellyshroomEntity(entityType: EntityType<out JellyshroomEntity>, world: Level) :
-    HAJellyfishEntity(entityType, world, true, 1),
+    BaseJellyfishEntity(entityType, world, true, 1),
     VariantHolder<JellyshroomEntity.Companion.Type> {
 
     override fun getMaxSpawnClusterSize(): Int {

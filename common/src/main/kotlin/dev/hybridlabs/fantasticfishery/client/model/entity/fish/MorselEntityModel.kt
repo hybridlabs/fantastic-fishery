@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.MorselEntity
+import dev.hybridlabs.hapi.client.model.entity.BaseFishEntityModel
 import net.minecraft.resources.ResourceLocation
 
-class MorselEntityModel : HAFishEntityModel<MorselEntity>("morsel") {
+class MorselEntityModel : BaseFishEntityModel<MorselEntity>("fantastic_fishery", "morsel") {
 
     override fun getTextureResource(animatable: MorselEntity): ResourceLocation {
         return MORSEL_TEXTURE

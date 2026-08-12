@@ -1,9 +1,9 @@
 package dev.hybridlabs.fantasticfishery.config
 
-import dev.hybridlabs.aquatic.tag.HABiomeTags
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
+import dev.hybridlabs.hapi.tag.HAPIBiomeTags
 import net.minecraft.tags.BiomeTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.entity.EntityType
@@ -50,21 +50,21 @@ class EntitySpawnConfigGenerator {
         addFantasticFish(
             FFEntityTypes.PLUNDERERS_HOOP.get(),
             listOf(
-                HABiomeTags.ALL_TRENCHES),
+                HAPIBiomeTags.ALL_TRENCHES),
             10, 1, 5
         )
 
         addFantasticFish(
             FFEntityTypes.FRIGID_VESSEL.get(),
             listOf(
-                HABiomeTags.FROZEN_OCEANS),
+                HAPIBiomeTags.FROZEN_OCEANS),
             10, 1, 5
         )
 
         addFantasticFish(
             FFEntityTypes.POROUS_SHELL.get(),
             listOf(
-                HABiomeTags.SULFURIC_CAVE),
+                HAPIBiomeTags.SULFURIC_CAVE),
             8, 1, 2
         )
 

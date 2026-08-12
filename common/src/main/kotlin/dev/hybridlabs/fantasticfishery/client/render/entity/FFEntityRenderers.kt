@@ -1,17 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.render.entity
 
-import dev.hybridlabs.fantasticfishery.client.model.entity.fish.PuffballPufferEntityModel
 import dev.hybridlabs.fantasticfishery.client.render.entity.crustacean.MycrabEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.BloodEelEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FrigidVesselEntityRenderer
+import dev.hybridlabs.fantasticfishery.client.render.entity.fish.*
+import dev.hybridlabs.fantasticfishery.client.render.entity.jellyfish.JellyshroomEntityRenderer
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.ClientServices
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.FungillEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.MorselEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.PlunderersHoopEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.PorousShellEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.fish.PuffballPufferEntityRenderer
-import dev.hybridlabs.fantasticfishery.client.render.entity.jellyfish.JellyshroomEntityRenderer
 
 @Suppress("unused")
 object FFEntityRenderers {

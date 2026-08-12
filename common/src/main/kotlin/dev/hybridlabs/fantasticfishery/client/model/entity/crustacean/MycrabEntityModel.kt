@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.crustacean
 
-import dev.hybridlabs.aquatic.client.model.entity.crustacean.HACrustaceanEntityModel
 import dev.hybridlabs.fantasticfishery.entity.crustacean.MycrabEntity
+import dev.hybridlabs.hapi.client.model.entity.BaseCrustaceanEntityModel
 import net.minecraft.resources.ResourceLocation
 
-class MycrabEntityModel : HACrustaceanEntityModel<MycrabEntity>("mycrab") {
+class MycrabEntityModel : BaseCrustaceanEntityModel<MycrabEntity>("fantastic_fishery", "mycrab") {
 
     override fun getTextureResource(animatable: MycrabEntity): ResourceLocation {
         return when (animatable.variant) {

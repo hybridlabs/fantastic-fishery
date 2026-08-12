@@ -70,6 +70,8 @@ repositories {
         name = "Curios"
         url = "https://maven.theillusivec4.top/"
     }
+
+    mavenLocal()
 }
 sourceSets.main.resources.srcDirs += 'src/generated/resources'
 
@@ -84,18 +86,15 @@ processResources {
 
 dependencies {
     compileOnly project(":common")
-    implementation ("maven.modrinth:hybrid-aquatic:${aquatic_version}-neoforge") {
-        transitive = false
-    }
     implementation "software.bernie.geckolib:geckolib-neoforge-$geckolib_version"
-    implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-1.21.1"
     implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {
         exclude(group: "com.github.glitchfiend")
     }
+
+    implementation("dev.hybridlabs.hapi:hapi-neoforge-1.21.1:1.0.0")
+
     implementation 'org.jetbrains:annotations:25.0.0'
     implementation "thedarkcolour:kotlinforforge-neoforge:${kotlin_for_forge_version}"
-    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-    runtimeOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}"
 }
 
 compileKotlin {

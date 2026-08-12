@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
-import dev.hybridlabs.aquatic.entity.base.HAFishEntity
+import dev.hybridlabs.hapi.entity.water.base.BaseFishEntity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 
 class BloodEelEntity(type: EntityType<out BloodEelEntity>, world: Level) :
-    HAFishEntity(type, world) {
+    BaseFishEntity(type, world) {
 
     override fun getMaxSpawnClusterSize(): Int {
         return 1
