@@ -2,7 +2,7 @@ package dev.hybridlabs.fantasticfishery.entity.fish
 
 import dev.hybridlabs.hapi.entity.ai.MobTargetConfiguration
 import dev.hybridlabs.hapi.entity.ai.goal.boids.BoidGoal
-import dev.hybridlabs.hapi.entity.water.base.BaseSchoolingFishEntity
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseSchoolingFishEntity
 import dev.hybridlabs.hapi.tag.HAPIEntityTags
 import net.minecraft.sounds.SoundEvent
 import net.minecraft.sounds.SoundEvents

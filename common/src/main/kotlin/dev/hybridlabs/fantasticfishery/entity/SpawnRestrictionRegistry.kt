@@ -1,9 +1,9 @@
 package dev.hybridlabs.fantasticfishery.entity
 
-import dev.hybridlabs.hapi.entity.water.base.BaseCrustaceanEntity
-import dev.hybridlabs.hapi.entity.water.base.BaseFishEntity
-import dev.hybridlabs.hapi.entity.water.base.BaseJellyfishEntity
-import dev.hybridlabs.hapi.entity.water.base.BaseWaterAnimal
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseCrustaceanEntity
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseFishEntity
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseJellyfishEntity
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseWaterAnimal
 import net.minecraft.world.entity.*
 import net.minecraft.world.entity.animal.WaterAnimal
 import net.minecraft.world.level.levelgen.Heightmap
