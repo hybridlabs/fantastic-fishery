@@ -235,7 +235,7 @@ object FFItems {
     val MOSTLY_EATEN_MORSEL_POP = register(
         "mostly_eaten_morsel_pop",
     ) {
-        ProgressiveFoodItem(
+        Item(
             Item.Properties()
                 .stacksTo(1)
                 .food(
@@ -252,9 +252,7 @@ object FFItems {
                         )
                         .build()
                 )
-        ) {
-            null
-        }
+        )
     }
 
     val PLUNDERERS_HOOP = register(
