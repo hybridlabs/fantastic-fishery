@@ -1,7 +1,7 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.jellyfish
 
 import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
-import dev.hybridlabs.hapi.client.model.entity.BaseJellyfishEntityModel
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseJellyfishEntityModel
 import net.minecraft.resources.ResourceLocation
 
 class JellyshroomEntityModel : BaseJellyfishEntityModel<JellyshroomEntity>("fantastic_fishery", "jellyshroom") {

@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.entity.crustacean
 
-import dev.hybridlabs.hapi.entity.ai.goal.WaterAnimalDigGoal
+import dev.hybridlabs.hapi.entity.ai.goal.aquatic.WaterAnimalDigGoal
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseCrustaceanEntity
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.syncher.EntityDataAccessor

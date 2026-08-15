@@ -1,7 +1,7 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.fantasticfishery.entity.fish.PorousShellEntity
-import dev.hybridlabs.hapi.client.model.entity.BaseFishEntityModel
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import net.minecraft.resources.ResourceLocation
 
 class PorousShellEntityModel : BaseFishEntityModel<PorousShellEntity>("fantastic_fishery", "porous_shell") {
