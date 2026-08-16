@@ -5,7 +5,6 @@ import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.platform.Services.PLATFORM
-import dev.hybridlabs.hapi.item.ProgressiveFoodItem
 import net.minecraft.core.Direction
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
@@ -182,56 +181,6 @@ object FFItems {
         )
     }
 
-    val MORSEL_POP = register(
-        "morsel_pop",
-    ) {
-        ProgressiveFoodItem(
-            Item.Properties()
-                .stacksTo(1)
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(8)
-                        .saturationModifier(1.0F)
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                200,
-                                1
-                            ),
-                            1.0F
-                        )
-                        .build()
-                )
-        ) {
-            PARTIALLY_EATEN_MORSEL_POP.get()
-        }
-    }
-
-    val PARTIALLY_EATEN_MORSEL_POP = register(
-        "partially_eaten_morsel_pop",
-    ) {
-        ProgressiveFoodItem(
-            Item.Properties()
-                .stacksTo(1)
-                .food(
-                    FoodProperties.Builder()
-                        .nutrition(6)
-                        .saturationModifier(0.8F)
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                160,
-                                1
-                            ),
-                            1.0F
-                        )
-                        .build()
-                )
-        ) {
-            MOSTLY_EATEN_MORSEL_POP.get()
-        }
-    }
-
     val MOSTLY_EATEN_MORSEL_POP = register(
         "mostly_eaten_morsel_pop",
     ) {
@@ -246,6 +195,54 @@ object FFItems {
                             MobEffectInstance(
                                 MobEffects.REGENERATION,
                                 100,
+                                1
+                            ),
+                            1.0F
+                        )
+                        .build()
+                )
+        )
+    }
+
+    val PARTIALLY_EATEN_MORSEL_POP = register(
+        "partially_eaten_morsel_pop",
+    ) {
+        Item(
+            Item.Properties()
+                .stacksTo(1)
+                .food(
+                    FoodProperties.Builder()
+                        .nutrition(6)
+                        .saturationModifier(0.8F)
+                        .usingConvertsTo { MOSTLY_EATEN_MORSEL_POP.get() }
+                        .effect(
+                            MobEffectInstance(
+                                MobEffects.REGENERATION,
+                                160,
+                                1
+                            ),
+                            1.0F
+                        )
+                        .build()
+                )
+        )
+    }
+
+    val MORSEL_POP = register(
+        "morsel_pop",
+    ) {
+        Item(
+            Item.Properties()
+                .stacksTo(1)
+                .food(
+                    FoodProperties.Builder()
+                        .nutrition(8)
+                        .saturationModifier(1.0F)
+                        .usingConvertsTo { PARTIALLY_EATEN_MORSEL_POP.get() }
+                        .effect(
+                            MobEffectInstance(
+                                MobEffects.REGENERATION,
+                                200,
                                 1
                             ),
                             1.0F
