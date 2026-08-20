@@ -1,7 +1,7 @@
 package dev.hybridlabs.fantasticfishery.entity.crustacean
 
-import dev.hybridlabs.aquatic.entity.ai.goal.WaterAnimalDigGoal
-import dev.hybridlabs.aquatic.entity.base.HACrustaceanEntity
+import dev.hybridlabs.hapi.entity.ai.goal.aquatic.WaterAnimalDigGoal
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseCrustaceanEntity
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
@@ -27,8 +27,8 @@ import java.util.function.IntFunction
 import kotlin.random.Random
 
 @Suppress("UNUSED_PARAMETER", "DEPRECATION")
-class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level) :
-    HACrustaceanEntity(entityType, world, false),
+class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
+    BaseCrustaceanEntity(entityType, world, false),
     VariantHolder<MycrabEntity.Companion.Type> {
 
     override fun registerGoals() {
@@ -42,7 +42,7 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         controllerRegistrar.add(
             AnimationController(
                 this, "Spawning",
-                AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
+                AnimationStateHandler { state: AnimationState<BaseCrustaceanEntity> ->
                     if (this.tickCount < 20)
                         return@AnimationStateHandler state.setAndContinue(DefaultAnimations.SPAWN)
                     PlayState.STOP
@@ -55,7 +55,7 @@ class MycrabEntity(entityType: EntityType<out HACrustaceanEntity>, world: Level)
         controllerRegistrar.add(
             AnimationController(
                 this, "Digging",
-                AnimationStateHandler { state: AnimationState<HACrustaceanEntity> ->
+                AnimationStateHandler { state: AnimationState<BaseCrustaceanEntity> ->
                     if (this.isDigging())
                         return@AnimationStateHandler state.setAndContinue(DIG_ANIMATION)
                     PlayState.STOP

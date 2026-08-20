@@ -10,9 +10,9 @@ import net.minecraft.world.item.Item
 
 object FFItemTags {
     val FISHES = create("fishes")
-    val SMALL_FISH = createHybridAquaticTag("small_fish")
-    val MEDIUM_FISH = createHybridAquaticTag("medium_fish")
-    val LARGE_FISH = createHybridAquaticTag("large_fish")
+    val SMALL_FISH = createHAPITag("small_fish")
+    val MEDIUM_FISH = createHAPITag("medium_fish")
+    val LARGE_FISH = createHAPITag("large_fish")
 
     private fun create(id: String): TagKey<Item> {
         return TagKey.create(Registries.ITEM, FantasticFisheryCommon.locate(id))
@@ -22,7 +22,7 @@ object FFItemTags {
 		return TagKey.create(Registries.ITEM, ResourceLocation("c", id))
     }
 
-    private fun createHybridAquaticTag(id: String): TagKey<Item> {
-		return TagKey.create(Registries.ITEM, ResourceLocation("hybrid_aquatic", id))
+    private fun createHAPITag(id: String): TagKey<Item> {
+		return TagKey.create(Registries.ITEM, ResourceLocation("hapi", id))
     }
 }

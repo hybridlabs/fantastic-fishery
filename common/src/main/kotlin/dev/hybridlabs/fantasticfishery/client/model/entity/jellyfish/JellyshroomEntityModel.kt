@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.jellyfish
 
-import dev.hybridlabs.aquatic.client.model.entity.jellyfish.HAJellyfishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseJellyfishEntityModel
 import net.minecraft.resources.ResourceLocation
 
-class JellyshroomEntityModel : HAJellyfishEntityModel<JellyshroomEntity>("jellyshroom") {
+class JellyshroomEntityModel : BaseJellyfishEntityModel<JellyshroomEntity>("fantastic_fishery", "jellyshroom") {
 
     override fun getTextureResource(animatable: JellyshroomEntity): ResourceLocation {
         return when (animatable.variant) {

@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
 import net.minecraft.resources.ResourceLocation
 
-class PlunderersHoopEntityModel : HAFishEntityModel<PlunderersHoopEntity>("plunderers_hoop") {
+class PlunderersHoopEntityModel : BaseFishEntityModel<PlunderersHoopEntity>("fantastic_fishery", "plunderers_hoop") {
 
     override fun getTextureResource(animatable: PlunderersHoopEntity): ResourceLocation {
         return when (animatable.variant) {

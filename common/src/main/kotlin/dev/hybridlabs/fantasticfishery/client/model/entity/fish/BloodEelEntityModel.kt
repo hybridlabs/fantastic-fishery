@@ -1,10 +1,10 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
 import net.minecraft.resources.ResourceLocation
 
-class BloodEelEntityModel : HAFishEntityModel<BloodEelEntity>("blood_eel") {
+class BloodEelEntityModel : BaseFishEntityModel<BloodEelEntity>("fantastic_fishery", "blood_eel") {
 
     override fun getTextureResource(animatable: BloodEelEntity): ResourceLocation {
         return BLOOD_EEL_TEXTURE

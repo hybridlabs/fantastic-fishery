@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.item
 
-import dev.hybridlabs.aquatic.item.PlaceableInWaterItem
+import dev.hybridlabs.hapi.item.PlaceableInWaterItem
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes

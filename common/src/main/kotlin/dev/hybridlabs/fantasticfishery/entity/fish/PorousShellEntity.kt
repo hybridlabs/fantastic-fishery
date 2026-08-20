@@ -1,8 +1,7 @@
 package dev.hybridlabs.fantasticfishery.entity.fish
 
-import dev.hybridlabs.aquatic.entity.ai.goal.WaterAnimalDigGoal
-import dev.hybridlabs.aquatic.entity.base.HAFishEntity
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
+import dev.hybridlabs.hapi.entity.base.aquatic.BaseFishEntity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
@@ -11,7 +10,7 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 
 class PorousShellEntity(type: EntityType<out PorousShellEntity>, world: Level) :
-    HAFishEntity(type, world) {
+    BaseFishEntity(type, world) {
 
     override fun getMaxSpawnClusterSize(): Int {
         return 2

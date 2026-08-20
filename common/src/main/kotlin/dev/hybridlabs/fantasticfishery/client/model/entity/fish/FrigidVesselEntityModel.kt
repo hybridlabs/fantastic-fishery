@@ -1,12 +1,11 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
-import dev.hybridlabs.aquatic.client.model.entity.fish.HAFishEntityModel
-import dev.hybridlabs.aquatic.entity.fish.DiscusEntity
+import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.resources.ResourceLocation
 
-class FrigidVesselEntityModel : HAFishEntityModel<FrigidVesselEntity>("frigid_vessel") {
+class FrigidVesselEntityModel : BaseFishEntityModel<FrigidVesselEntity>("fantastic_fishery", "frigid_vessel") {
     override fun getRenderType(animatable: FrigidVesselEntity, texture: ResourceLocation): RenderType {
         return RenderType.entityTranslucent(texture)
     }

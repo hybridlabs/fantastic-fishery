@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.block
 
-import dev.hybridlabs.aquatic.block.HABlocks
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
@@ -37,9 +36,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
 
     override fun mayPlaceOn(floor: BlockState, world: BlockGetter, pos: BlockPos): Boolean {
         return floor.isFaceSturdy(world, pos, Direction.UP) &&
-                !floor.`is`(Blocks.MAGMA_BLOCK) &&
-                !floor.`is`(HABlocks.AERATED_SAND.get()) &&
-                !floor.`is`(HABlocks.BUBBLE_GEYSER.get())
+                !floor.`is`(Blocks.MAGMA_BLOCK)
     }
 
     override fun getStateForPlacement(ctx: BlockPlaceContext): BlockState? {
