@@ -40,3 +40,9 @@ modId = "biolith"
 mandatory = true
 versionRange = "[1.0.1-alpha.1,)"
 side = "SERVER"
+
+[[dependencies.${mod_id}]]
+modId = "hapi"
+mandatory = true
+versionRange = "[1.0.0,)"
+side = "BOTH"

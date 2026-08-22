@@ -50,6 +50,7 @@
 		"fabric-language-kotlin": "*",
 		"fabric-api": ">=0.92",
         "geckolib": ">=4.4",
-        "biolith": "*"
+        "biolith": "*",
+        "hapi": ">=1.0.0"
     }
 }
