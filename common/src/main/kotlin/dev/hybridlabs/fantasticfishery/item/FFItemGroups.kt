@@ -5,6 +5,7 @@ package dev.hybridlabs.fantasticfishery.item
 import dev.hybridlabs.fantasticfishery.Constants
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
+import dev.hybridlabs.hapi.item.HAPIItems
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
@@ -16,6 +17,9 @@ object FFItemGroups {
         .title(Component.translatable("itemGroup.${Constants.MOD_ID}.items"))
         .icon { ItemStack(FFItems.FUNGILL.get()) }
         .displayItems { _, entries ->
+
+            entries.accept(HAPIItems.CREATURE_NET.get())
+
             BuiltInRegistries.ITEM.forEach { item ->
                 val id = BuiltInRegistries.ITEM.getKey(item)
                 if (id.namespace != Constants.MOD_ID) return@forEach
