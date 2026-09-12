@@ -11,8 +11,9 @@
 	],
 
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://hybridlabs.net/",
+		"sources": "https://github.com/hybridlabs/fantastic-fishery",
+		"issues": "https://github.com/hybridlabs/fantastic-fishery/issues"
 	},
 
 	"license": "ARR",
