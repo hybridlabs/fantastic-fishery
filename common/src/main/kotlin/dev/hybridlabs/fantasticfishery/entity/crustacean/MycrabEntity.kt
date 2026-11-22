@@ -2,7 +2,8 @@ package dev.hybridlabs.fantasticfishery.entity.crustacean
 
 import dev.hybridlabs.hapi.entity.ai.goal.aquatic.WaterAnimalDigGoal
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseCrustaceanEntity
-import net.minecraft.nbt.CompoundTag
+import net.minecraft.world.level.storage.ValueInput
+import net.minecraft.world.level.storage.ValueOutput
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
@@ -10,18 +11,18 @@ import net.minecraft.util.ByIdMap
 import net.minecraft.util.StringRepresentable
 import net.minecraft.world.DifficultyInstance
 import net.minecraft.world.entity.EntityType
-import net.minecraft.world.entity.MobSpawnType
+import net.minecraft.world.entity.EntitySpawnReason
 import net.minecraft.world.entity.SpawnGroupData
-import net.minecraft.world.entity.VariantHolder
+import dev.hybridlabs.hapi.entity.base.VariantHolder
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
 import software.bernie.geckolib.constant.DefaultAnimations
-import software.bernie.geckolib.animation.AnimatableManager
+import software.bernie.geckolib.animatable.manager.AnimatableManager
 import software.bernie.geckolib.animation.AnimationController
-import software.bernie.geckolib.animation.AnimationState
-import software.bernie.geckolib.animation.PlayState
+import software.bernie.geckolib.animation.state.AnimationTest
+import software.bernie.geckolib.animation.`object`.PlayState
 import java.util.function.IntFunction
 import kotlin.random.Random
 
@@ -40,21 +41,27 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
 
         controllerRegistrar.add(
             AnimationController(
-                this, "Spawning",
-                AnimationController.AnimationStateHandler { state: AnimationState<BaseCrustaceanEntity> ->
+                "Spawning", 4,
+                AnimationController.AnimationStateHandler { state: AnimationTest<BaseCrustaceanEntity> ->
                     if (this.tickCount < 20)
                         return@AnimationStateHandler state.setAndContinue(DefaultAnimations.SPAWN)
                     PlayState.STOP
                 }
             )
-                .setParticleKeyframeHandler { event -> particleEvents(event)
+                .setParticleKeyframeHandler { event ->
+                    particleEvents(
+                        event as software.bernie.geckolib.animation.state.KeyFrameEvent<
+                            BaseCrustaceanEntity,
+                            software.bernie.geckolib.cache.animation.keyframeevent.ParticleKeyframeData
+                        >
+                    )
                 }
         )
 
         controllerRegistrar.add(
             AnimationController(
-                this, "Digging",
-                AnimationController.AnimationStateHandler { state: AnimationState<BaseCrustaceanEntity> ->
+                "Digging", 4,
+                AnimationController.AnimationStateHandler { state: AnimationTest<BaseCrustaceanEntity> ->
                     if (this.isDigging())
                         return@AnimationStateHandler state.setAndContinue(DIG_ANIMATION)
                     PlayState.STOP
@@ -62,13 +69,13 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
             )
         )
         controllerRegistrar.add(
-            DefaultAnimations.genericAttackAnimation(this, DefaultAnimations.ATTACK_SWING))
+            DefaultAnimations.genericAttackAnimation<BaseCrustaceanEntity>(DefaultAnimations.ATTACK_SWING))
     }
 
     override fun finalizeSpawn(
         world: ServerLevelAccessor,
         difficulty: DifficultyInstance,
-        spawnReason: MobSpawnType,
+        spawnReason: EntitySpawnReason,
         entityData: SpawnGroupData?
     ): SpawnGroupData? {
         variant = Type.entries.random(Random)
@@ -77,7 +84,7 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
 
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
-            return createLivingAttributes()
+            return createLivingAttributes().add(Attributes.TEMPT_RANGE, 10.0)
                 .add(Attributes.MAX_HEALTH, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.3)
                 .add(Attributes.ATTACK_DAMAGE, 5.0)
@@ -105,7 +112,7 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
                     ByIdMap.OutOfBoundsStrategy.ZERO
                 )
 
-                fun byName(name: String?): Type {
+                fun byName(name: String): Type {
                     return CODEC.byName(name, RED_MYCRAB) as Type
                 }
 
@@ -121,23 +128,19 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
         super.defineSynchedData(builder)
     }
 
-    override fun addAdditionalSaveData(compound: CompoundTag) {
-        compound.putString("Type", this.variant.serializedName)
-        super.addAdditionalSaveData(compound)
+    override fun addAdditionalSaveData(output: ValueOutput) {
+        output.putString("Type", this.variant.serializedName)
+        super.addAdditionalSaveData(output)
     }
 
-    override fun readAdditionalSaveData(compound: CompoundTag) {
-        this.variant = Type.byName(compound.getString("Type"))
-        super.readAdditionalSaveData(compound)
+    override fun readAdditionalSaveData(input: ValueInput) {
+        this.variant = Type.byName(input.getStringOr("Type", "red_mycrab"))
+        super.readAdditionalSaveData(input)
     }
 
-    override fun getVariant(): Type {
-        return Type.fromId((entityData.get(TYPE) as Int))
-    }
-
-    override fun setVariant(type: Type) {
-        entityData.set(TYPE, type.id)
-    }
+    override var variant: Type
+        get() = Type.fromId((entityData.get(TYPE) as Int))
+        set(value) { entityData.set(TYPE, value.id) }
 
     override fun getMaxSize() : Int {
         return 5

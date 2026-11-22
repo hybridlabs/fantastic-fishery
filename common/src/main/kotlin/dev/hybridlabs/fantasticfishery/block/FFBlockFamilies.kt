@@ -1,7 +1,6 @@
 package dev.hybridlabs.fantasticfishery.block
 
 import net.minecraft.data.BlockFamily
-import net.minecraft.data.models.model.ModelTemplates
 
 @Suppress("unused")
 object FFBlockFamilies {
@@ -12,7 +11,6 @@ object FFBlockFamilies {
             .stairs(FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get())
             .slab(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get())
             .wall(FFBlocks.MYCELIAL_SANDSTONE_WALL.get())
-            .chiseled(FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get())
             .family
     }
 

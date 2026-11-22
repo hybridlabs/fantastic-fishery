@@ -7,9 +7,11 @@ import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.LivingEntity
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.BlockHitResult
@@ -19,15 +21,15 @@ import net.minecraft.world.phys.HitResult
 class PlunderersCoreEntity : ThrowableItemProjectile {
     constructor(entityType: EntityType<out PlunderersCoreEntity>, level: Level) : super(entityType, level)
 
-    constructor(level: Level, shooter: LivingEntity) : super(EntityType.SNOWBALL, shooter, level)
+    constructor(level: Level, shooter: LivingEntity) : super(EntityType.SNOWBALL, shooter, level, ItemStack.EMPTY)
 
-    constructor(level: Level, x: Double, y: Double, z: Double) : super(EntityType.SNOWBALL, x, y, z, level)
+    constructor(level: Level, x: Double, y: Double, z: Double) : super(EntityType.SNOWBALL, x, y, z, level, ItemStack.EMPTY)
 
     override fun getDefaultItem(): Item = Items.SNOWBALL
 
     private val particle: ParticleOptions
         get() {
-            val itemstack = this.item
+            val itemstack = this.getItem()
             return if (itemstack.isEmpty)
                 ParticleTypes.ITEM_SNOWBALL
             else
@@ -50,7 +52,7 @@ class PlunderersCoreEntity : ThrowableItemProjectile {
         val entity = result.entity
         val damage = 2f
 
-        entity.hurt(damageSources().thrown(this, owner), damage)
+        entity.hurtServer(level() as ServerLevel, damageSources().thrown(this, getOwner()), damage)
         if (entity is LivingEntity) {
             entity.addEffect(MobEffectInstance(MobEffects.GLOWING, 200))
         }

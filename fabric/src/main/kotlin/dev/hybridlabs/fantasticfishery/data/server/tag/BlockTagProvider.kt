@@ -12,35 +12,35 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
     FabricTagProvider.BlockTagProvider(output, registriesFuture) {
     override fun addTags(arg: HolderLookup.Provider) {
 
-        getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORAL_BLOCKS)
+        valueLookupBuilder(FFBlockTags.FUNGAL_CORAL_BLOCKS)
             .add(FFBlocks.CHICKEN_CORAL_BLOCK.get())
             .add(FFBlocks.SPIRAL_CORAL_BLOCK.get())
             .add(FFBlocks.OYSTER_CORAL_BLOCK.get())
             .add(FFBlocks.AMETHYST_CORAL_BLOCK.get())
 
-        getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORAL_PLANTS)
+        valueLookupBuilder(FFBlockTags.FUNGAL_CORAL_PLANTS)
             .add(FFBlocks.CHICKEN_CORAL.get())
             .add(FFBlocks.SPIRAL_CORAL.get())
             .add(FFBlocks.OYSTER_CORAL.get())
             .add(FFBlocks.AMETHYST_CORAL.get())
 
-        getOrCreateTagBuilder(FFBlockTags.FUNGAL_CORALS)
+        valueLookupBuilder(FFBlockTags.FUNGAL_CORALS)
             .forceAddTag(FFBlockTags.FUNGAL_CORAL_PLANTS)
             .add(FFBlocks.CHICKEN_CORAL_FAN.get())
             .add(FFBlocks.SPIRAL_CORAL_FAN.get())
             .add(FFBlocks.OYSTER_CORAL_FAN.get())
             .add(FFBlocks.AMETHYST_CORAL_FAN.get())
 
-        getOrCreateTagBuilder(FFBlockTags.FUNGAL_WALL_CORALS)
+        valueLookupBuilder(FFBlockTags.FUNGAL_WALL_CORALS)
             .add(FFBlocks.CHICKEN_CORAL_WALL_FAN.get())
             .add(FFBlocks.SPIRAL_CORAL_WALL_FAN.get())
             .add(FFBlocks.OYSTER_CORAL_WALL_FAN.get())
             .add(FFBlocks.AMETHYST_CORAL_WALL_FAN.get())
 
-        getOrCreateTagBuilder(BlockTags.SAND)
+        valueLookupBuilder(BlockTags.SAND)
             .add(FFBlocks.MYCELIAL_SAND.get())
 
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
             .add(FFBlocks.AMETHYST_CORAL_BLOCK.get())
             .add(FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get())
             .add(FFBlocks.DEAD_AMETHYST_CORAL.get())
@@ -76,18 +76,18 @@ class BlockTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get())
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get())
         
-        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_SHOVEL)
             .add(FFBlocks.MYCELIAL_SAND.get())
 
-        getOrCreateTagBuilder(BlockTags.WALLS)
+        valueLookupBuilder(BlockTags.WALLS)
             .add(FFBlocks.MYCELIAL_SANDSTONE_WALL.get())
 
-        getOrCreateTagBuilder(BlockTags.SLABS)
+        valueLookupBuilder(BlockTags.SLABS)
             .add(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get())
             .add(FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get())
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get())
         
-        getOrCreateTagBuilder(BlockTags.STAIRS)
+        valueLookupBuilder(BlockTags.STAIRS)
             .add(FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get())
             .add(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get())
     }

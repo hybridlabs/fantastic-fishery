@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": "fantastic_fishery:smooth_mycelial_sandstone"
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 4,
+    "id": "fantastic_fishery:smooth_mycelial_sandstone_stairs"
+  }
+}

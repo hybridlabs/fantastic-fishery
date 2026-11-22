@@ -4,9 +4,8 @@ import com.mojang.serialization.Codec
 import dev.hybridlabs.fantasticfishery.tag.FFBlockTags
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
-import net.minecraft.core.Holder
-import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.tags.TagKey
 import net.minecraft.util.RandomSource
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.block.BaseCoralWallFanBlock
@@ -16,23 +15,14 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.levelgen.feature.Feature
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
-import java.util.function.Consumer
-import java.util.function.Function
 
-abstract class FungalReefFeature(codec: Codec<NoneFeatureConfiguration>) : Feature<NoneFeatureConfiguration?>(codec) {
-    override fun place(context: FeaturePlaceContext<NoneFeatureConfiguration?>): Boolean {
+abstract class FungalReefFeature(codec: Codec<NoneFeatureConfiguration>) : Feature<NoneFeatureConfiguration>(codec) {
+    override fun place(context: FeaturePlaceContext<NoneFeatureConfiguration>): Boolean {
         val randomSource = context.random()
         val worldGenLevel = context.level()
         val blockPos = context.origin()
-        val optional = BuiltInRegistries.BLOCK.getTag(FFBlockTags.FUNGAL_CORAL_BLOCKS)
-            .flatMap(Function { named: HolderSet.Named<Block?>? ->
-                named!!.getRandomElement(randomSource)
-            }).map<Block>(
-                Function { obj: Holder<Block?>? -> obj!!.value() })
-        return if (optional.isEmpty) false else this.placeFeature(
-            worldGenLevel, randomSource, blockPos, optional.get()
-                .defaultBlockState()
-        )
+        val block = randomBlock(FFBlockTags.FUNGAL_CORAL_BLOCKS, randomSource) ?: return false
+        return this.placeFeature(worldGenLevel, randomSource, blockPos, block.defaultBlockState())
     }
 
     protected abstract fun placeFeature(
@@ -56,33 +46,25 @@ abstract class FungalReefFeature(codec: Codec<NoneFeatureConfiguration>) : Featu
         ) {
             level.setBlock(pos, state, 3)
             if (random.nextFloat() < 0.25f) {
-                BuiltInRegistries.BLOCK.getTag(FFBlockTags.FUNGAL_CORALS)
-                    .flatMap(Function { named: HolderSet.Named<Block?>? ->
-                        named!!.getRandomElement(random)
-                    }).map<Block?>(
-                        Function { obj: Holder<Block?>? -> obj!!.value() })
-                    .ifPresent(Consumer { block: Block? -> level.setBlock(blockPos, block!!.defaultBlockState(), 2) })
+                randomBlock(FFBlockTags.FUNGAL_CORALS, random)?.let {
+                    level.setBlock(blockPos, it.defaultBlockState(), 2)
+                }
             }
 
             for (direction in Direction.Plane.HORIZONTAL) {
                 if (random.nextFloat() < 0.2f) {
                     val blockPos2 = pos.relative(direction)
                     if (level.getBlockState(blockPos2).`is`(Blocks.WATER)) {
-                        BuiltInRegistries.BLOCK.getTag(FFBlockTags.FUNGAL_WALL_CORALS)
-                            .flatMap(Function { named: HolderSet.Named<Block?>? ->
-                                named!!.getRandomElement(random)
-                            }).map<Block?>(
-                                Function { obj: Holder<Block?>? -> obj!!.value() })
-                            .ifPresent(Consumer { block: Block? ->
-                                var blockState = block!!.defaultBlockState()
-                                if (blockState.hasProperty(BaseCoralWallFanBlock.FACING)) {
-                                    blockState = blockState.setValue(
-                                        BaseCoralWallFanBlock.FACING,
-                                        direction
-                                    ) as BlockState
-                                }
-                                level.setBlock(blockPos2, blockState, 2)
-                            })
+                        randomBlock(FFBlockTags.FUNGAL_WALL_CORALS, random)?.let { block ->
+                            var blockState = block.defaultBlockState()
+                            if (blockState.hasProperty(BaseCoralWallFanBlock.FACING)) {
+                                blockState = blockState.setValue(
+                                    BaseCoralWallFanBlock.FACING,
+                                    direction
+                                )
+                            }
+                            level.setBlock(blockPos2, blockState, 2)
+                        }
                     }
                 }
             }
@@ -91,5 +73,10 @@ abstract class FungalReefFeature(codec: Codec<NoneFeatureConfiguration>) : Featu
         } else {
             return false
         }
+    }
+
+    private fun randomBlock(tag: TagKey<Block>, random: RandomSource): Block? {
+        val blocks = BuiltInRegistries.BLOCK.getTagOrEmpty(tag).toList()
+        return if (blocks.isEmpty()) null else blocks[random.nextInt(blocks.size)].value()
     }
 }

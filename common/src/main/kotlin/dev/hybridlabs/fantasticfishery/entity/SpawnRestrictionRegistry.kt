@@ -5,7 +5,7 @@ import dev.hybridlabs.hapi.entity.base.aquatic.BaseFishEntity
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseJellyfishEntity
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseWaterAnimal
 import net.minecraft.world.entity.*
-import net.minecraft.world.entity.animal.WaterAnimal
+import net.minecraft.world.entity.animal.fish.WaterAnimal
 import net.minecraft.world.level.levelgen.Heightmap
 
 /**

@@ -7,6 +7,8 @@ import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
 import dev.hybridlabs.fantasticfishery.entity.misc.PlunderersCoreEntity
 import dev.hybridlabs.fantasticfishery.platform.Services
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject
+import net.minecraft.core.registries.Registries
+import net.minecraft.resources.ResourceKey
 import net.minecraft.world.entity.*
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import java.util.concurrent.Callable
@@ -98,7 +100,7 @@ object FFEntityTypes {
                 .sized(dimensions.width, dimensions.height)
                 .clientTrackingRange(10)
                 .updateInterval(10)
-                .build(id)
+                .build(ResourceKey.create(Registries.ENTITY_TYPE, FantasticFisheryCommon.locate(id)))
         }
     }
     //#region Fish Registration
@@ -229,7 +231,7 @@ object FFEntityTypes {
         attributeContainer: Callable<AttributeSupplier.Builder>,
     ): RegistryObject<EntityType<T>> {
         return FantasticFisheryCommon.ENTITY_TYPES.register(id) {
-            val entityType = entity.build(id)
+            val entityType = entity.build(ResourceKey.create(Registries.ENTITY_TYPE, FantasticFisheryCommon.locate(id)))
             Services.PLATFORM.registerAttributes(id, entityType, attributeContainer)
             entityType
         }

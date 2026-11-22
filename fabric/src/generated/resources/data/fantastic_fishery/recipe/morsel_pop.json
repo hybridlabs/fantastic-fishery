@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "fantastic_fishery:morsel_bar"
-    },
-    {
-      "item": "minecraft:stick"
-    }
+    "fantastic_fishery:morsel_bar",
+    "minecraft:stick"
   ],
   "result": {
     "count": 1,

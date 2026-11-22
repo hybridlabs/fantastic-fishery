@@ -8,7 +8,7 @@ import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.biome.Biomes
 import net.minecraft.world.level.levelgen.SurfaceRules.*
@@ -182,7 +182,7 @@ object FFBiomes {
 
         //#region Surface Rule Generation
         SurfaceGeneration.addOverworldSurfaceRules(
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "rules/overworld"),
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "rules/overworld"),
             ifTrue(
                 abovePreliminarySurface(),
                 sequence(

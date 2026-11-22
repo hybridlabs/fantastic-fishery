@@ -9,6 +9,7 @@ import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.resources.ResourceKey
+import net.minecraft.util.random.Weighted
 import net.minecraft.world.level.biome.MobSpawnSettings
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -24,11 +25,11 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries.Keys.BIOME_MODIFIERS
  * The rest of the generated resources are imported from the output of the Fabric project's runDatagen task.
  */
 @Suppress("Unused")
-@EventBusSubscriber(modid = Constants.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Constants.MOD_ID)
 object DataGenerators {
 
     @SubscribeEvent
-    fun gatherData(event: GatherDataEvent) {
+    fun gatherData(event: GatherDataEvent.Server) {
         val generator = event.generator
         val packOutput = generator.packOutput
 
@@ -41,14 +42,13 @@ object DataGenerators {
             registerFeatures(context)
         }
 
-        generator.addProvider(
-            event.includeServer(),
+        event.addProvider(
             DatapackBuiltinEntriesProvider(
                 packOutput,
                 lookupProvider,
                 builder,
                 setOf(Constants.MOD_ID)
-        )
+            )
         )
     }
 
@@ -62,7 +62,7 @@ object DataGenerators {
         val featureRegistry = context.lookup(Registries.PLACED_FEATURE)
         for (addition in BiomeFeatureAddition.builtIn) {
 
-            val location = "${addition.placedFeature.location().path}_${addition.biomeTag.location.path}"
+            val location = "${addition.placedFeature.identifier().path}_${addition.biomeTag.location.path}"
             val key = ResourceKey.create(
                 BIOME_MODIFIERS,
                 FantasticFisheryCommon.locate(location)
@@ -93,15 +93,15 @@ object DataGenerators {
             )
 
             context.register(
-                key, BiomeModifiers.AddSpawnsBiomeModifier(
+                key, BiomeModifiers.AddSpawnsBiomeModifier.singleSpawn(
                     biomeRegistry.get(spawnConfig.biomes).get(),
-                    listOf(
+                    Weighted(
                         MobSpawnSettings.SpawnerData(
                             spawnConfig.type,
-                            spawnConfig.weight,
                             spawnConfig.minGroupSize,
                             spawnConfig.maxGroupSize
-                        )
+                        ),
+                        spawnConfig.weight
                     )
                 )
             )

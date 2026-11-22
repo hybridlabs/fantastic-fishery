@@ -2,17 +2,15 @@ package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.entity.fish.PuffballPufferEntity
+import dev.hybridlabs.fantasticfishery.client.model.FFDataTickets
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
-import net.minecraft.client.renderer.RenderType
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
+import software.bernie.geckolib.renderer.base.GeoRenderState
 
 class PuffballPufferEntityModel : BaseFishEntityModel<PuffballPufferEntity>("fantastic_fishery", "puffball_puffer") {
-    override fun getRenderType(animatable: PuffballPufferEntity, texture: ResourceLocation): RenderType {
-        return RenderType.entityTranslucent(texture)
-    }
 
-    override fun getTextureResource(animatable: PuffballPufferEntity): ResourceLocation {
-        val puffState = animatable.getPuffState()
+    override fun getTextureResource(renderState: GeoRenderState): Identifier {
+        val puffState = renderState.getGeckolibData(FFDataTickets.PUFF_STATE) ?: 0
 
         val texturePath = when (puffState) {
             0 -> "textures/entity/fish/puffball_puffer/puffball_puffer_small.png"
@@ -23,27 +21,35 @@ class PuffballPufferEntityModel : BaseFishEntityModel<PuffballPufferEntity>("fan
         return FantasticFisheryCommon.locate(texturePath)
     }
 
-    override fun getModelResource(animatable: PuffballPufferEntity): ResourceLocation {
-        val puffState = animatable.getPuffState()
+    override fun getModelResource(renderState: GeoRenderState): Identifier {
+        val puffState = renderState.getGeckolibData(FFDataTickets.PUFF_STATE) ?: 0
 
         val texturePath = when (puffState) {
-            0 -> "geo/fish/puffball_puffer/puffball_puffer_small.geo.json"
-            1 -> "geo/fish/puffball_puffer/puffball_puffer_medium.geo.json"
-            else -> "geo/fish/puffball_puffer/puffball_puffer_large.geo.json"
+            0 -> "fish/puffball_puffer/puffball_puffer_small"
+            1 -> "fish/puffball_puffer/puffball_puffer_medium"
+            else -> "fish/puffball_puffer/puffball_puffer_large"
         }
 
         return FantasticFisheryCommon.locate(texturePath)
     }
 
-    override fun getAnimationResource(animatable: PuffballPufferEntity): ResourceLocation {
+    override fun addAdditionalStateData(
+        animatable: PuffballPufferEntity,
+        relatedObject: Any?,
+        renderState: GeoRenderState,
+    ) {
+        renderState.addGeckolibData(FFDataTickets.PUFF_STATE, animatable.getPuffState())
+    }
+
+    override fun getAnimationResource(animatable: PuffballPufferEntity): Identifier {
         return PUFFBALL_PUFFER_ANIMATION
     }
 
     companion object {
         private val PUFFBALL_PUFFER_ANIMATION =
-            ResourceLocation.fromNamespaceAndPath(
+            Identifier.fromNamespaceAndPath(
                 "fantastic_fishery",
-                "animations/entity/fish/puffball_puffer/puffball_puffer.animation.json"
+                "entity/fish/puffball_puffer/puffball_puffer"
             )
     }
 }

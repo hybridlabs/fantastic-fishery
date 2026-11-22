@@ -14,15 +14,15 @@ class BiomeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFu
     FabricTagProvider<Biome>(output, Registries.BIOME, registriesFuture) {
     override fun addTags(arg: HolderLookup.Provider) {
 
-        getOrCreateTagBuilder(FFBiomeTags.MUSHROOM_BIOMES)
+        builder(FFBiomeTags.MUSHROOM_BIOMES)
             .addOptional(FFBiomes.FUNGAL_SEA)
             .addOptional(FFBiomes.MUSHROOM_FIELDS_SHORE)
             .addOptional(Biomes.MUSHROOM_FIELDS)
 
-        getOrCreateTagBuilder(FFBiomeTags.FUNGAL_SEA)
+        builder(FFBiomeTags.FUNGAL_SEA)
             .addOptional(FFBiomes.FUNGAL_SEA)
 
-        getOrCreateTagBuilder(FFBiomeTags.MUSHROOM_SHORES)
+        builder(FFBiomeTags.MUSHROOM_SHORES)
             .addOptional(FFBiomes.MUSHROOM_FIELDS_SHORE)
     }
 }

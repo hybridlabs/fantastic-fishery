@@ -1,33 +1,44 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.fantasticfishery.entity.fish.PlunderersHoopEntity
+import dev.hybridlabs.fantasticfishery.client.model.FFDataTickets
+import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
+import software.bernie.geckolib.renderer.base.GeoRenderState
 
 class PlunderersHoopEntityModel : BaseFishEntityModel<PlunderersHoopEntity>("fantastic_fishery", "plunderers_hoop") {
 
-    override fun getTextureResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return when (animatable.variant) {
+    override fun getTextureResource(renderState: GeoRenderState): Identifier {
+        return when (renderState.getVariant(PlunderersHoopEntity.Companion.Type.entries)!!) {
             PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_TEXTURE
             PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_TEXTURE
         }
     }
 
-    override fun getModelResource(animatable: PlunderersHoopEntity): ResourceLocation {
-        return if (animatable.coreTimer > 0) {
-            when (animatable.variant) {
+    override fun getModelResource(renderState: GeoRenderState): Identifier {
+        return if ((renderState.getGeckolibData(FFDataTickets.CORE_TIMER) ?: 0) > 0) {
+            when (renderState.getVariant(PlunderersHoopEntity.Companion.Type.entries)!!) {
                 PlunderersHoopEntity.Companion.Type.NORMAL -> CORELESS_PLUNDERERS_HOOP_MODEL
                 PlunderersHoopEntity.Companion.Type.SMALL -> CORELESS_SMALL_PLUNDERERS_HOOP_MODEL
             }
         } else {
-            when (animatable.variant) {
+            when (renderState.getVariant(PlunderersHoopEntity.Companion.Type.entries)!!) {
                 PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_MODEL
                 PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_MODEL
             }
         }
     }
 
-    override fun getAnimationResource(animatable: PlunderersHoopEntity): ResourceLocation {
+    override fun addAdditionalStateData(
+        animatable: PlunderersHoopEntity,
+        relatedObject: Any?,
+        renderState: GeoRenderState,
+    ) {
+        renderState.addGeckolibData(FFDataTickets.CORE_TIMER, animatable.coreTimer)
+    }
+
+    override fun getAnimationResource(animatable: PlunderersHoopEntity): Identifier {
         return when (animatable.variant) {
             PlunderersHoopEntity.Companion.Type.NORMAL -> PLUNDERERS_HOOP_ANIMATION
             PlunderersHoopEntity.Companion.Type.SMALL -> SMALL_PLUNDERERS_HOOP_ANIMATION
@@ -36,22 +47,22 @@ class PlunderersHoopEntityModel : BaseFishEntityModel<PlunderersHoopEntity>("fan
 
     companion object {
         private val PLUNDERERS_HOOP_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/plunderers_hoop.png")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/plunderers_hoop.png")
         private val SMALL_PLUNDERERS_HOOP_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/small_plunderers_hoop.png")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/plunderers_hoop/small_plunderers_hoop.png")
 
         private val PLUNDERERS_HOOP_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/plunderers_hoop.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "fish/plunderers_hoop/plunderers_hoop")
         private val CORELESS_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_plunderers_hoop.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "fish/plunderers_hoop/coreless_plunderers_hoop")
         private val SMALL_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/small_plunderers_hoop.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "fish/plunderers_hoop/small_plunderers_hoop")
         private val CORELESS_SMALL_PLUNDERERS_HOOP_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/plunderers_hoop/coreless_small_plunderers_hoop.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "fish/plunderers_hoop/coreless_small_plunderers_hoop")
 
         private val PLUNDERERS_HOOP_ANIMATION =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/fish/plunderers_hoop/plunderers_hoop.animation.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "entity/fish/plunderers_hoop/plunderers_hoop")
         private val SMALL_PLUNDERERS_HOOP_ANIMATION =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/fish/plunderers_hoop/small_plunderers_hoop.animation.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "entity/fish/plunderers_hoop/small_plunderers_hoop")
     }
 }

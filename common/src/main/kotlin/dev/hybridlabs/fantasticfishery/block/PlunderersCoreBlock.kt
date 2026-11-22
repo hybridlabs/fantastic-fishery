@@ -3,13 +3,15 @@ package dev.hybridlabs.fantasticfishery.block
 import net.minecraft.core.BlockPos
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
-import net.minecraft.world.level.LevelAccessor
+import net.minecraft.world.level.LevelReader
+import net.minecraft.world.level.ScheduledTickAccess
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.SimpleWaterloggedBlock
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.block.state.properties.BooleanProperty
+import net.minecraft.util.RandomSource
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.phys.shapes.CollisionContext
@@ -42,16 +44,18 @@ class PlunderersCoreBlock(settings: Properties) : Block(settings), SimpleWaterlo
 
     override fun updateShape(
         state: BlockState,
-        direction: net.minecraft.core.Direction,
-        neighborState: BlockState,
-        level: LevelAccessor,
+        level: LevelReader,
+        scheduledTickAccess: ScheduledTickAccess,
         currentPos: BlockPos,
+        direction: net.minecraft.core.Direction,
         neighborPos: BlockPos,
+        neighborState: BlockState,
+        random: RandomSource,
     ): BlockState {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level))
+            scheduledTickAccess.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level))
         }
-        return super.updateShape(state, direction, neighborState, level, currentPos, neighborPos)
+        return super.updateShape(state, level, scheduledTickAccess, currentPos, direction, neighborPos, neighborState, random)
     }
 
     override fun getShape(

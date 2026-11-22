@@ -2,6 +2,8 @@ package dev.hybridlabs.fantasticfishery.entity.fish
 
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseFishEntity
+import net.minecraft.server.level.ServerLevel
+import net.minecraft.world.entity.EntitySpawnReason
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
@@ -30,13 +32,13 @@ class PorousShellEntity(type: EntityType<out PorousShellEntity>, world: Level) :
             for (l in 0 until spawnCount) {
                 val offsetX = (level().random.nextFloat() - 0.5f) * 2.0f
                 val offsetZ = (level().random.nextFloat() - 0.5f) * 2.0f
-                val pearlfishEntity = FFEntityTypes.BLOOD_EEL.get().create(level())
+                val pearlfishEntity = FFEntityTypes.BLOOD_EEL.get().create(level() as ServerLevel, EntitySpawnReason.MOB_SUMMONED)
 
                 pearlfishEntity?.let {
                     it.customName = text
                     it.isNoAi = isNoAi
                     it.isInvulnerable = this.isInvulnerable
-                    it.moveTo(
+                    it.snapTo(
                         this.x + offsetX,
                         this.y + 0.5,
                         this.z + offsetZ,
@@ -53,7 +55,7 @@ class PorousShellEntity(type: EntityType<out PorousShellEntity>, world: Level) :
 
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
-            return createLivingAttributes()
+            return createLivingAttributes().add(Attributes.TEMPT_RANGE, 10.0)
                 .add(Attributes.MAX_HEALTH, 8.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.6)
                 .add(Attributes.ATTACK_DAMAGE, 4.0)

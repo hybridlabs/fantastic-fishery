@@ -10,7 +10,10 @@ import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.Mob
+import net.minecraft.core.component.DataComponents
 import net.minecraft.world.food.FoodProperties
+import net.minecraft.world.item.component.Consumable
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.SpawnEggItem
@@ -33,32 +36,32 @@ object FFItems {
     val MYCELIAL_SANDSTONE_STAIRS = register("mycelial_sandstone_stairs") {
         BlockItem(
             FFBlocks.MYCELIAL_SANDSTONE_STAIRS.get(),
-            Item.Properties()
+            FFItemProperties.blockProps()
         )
     }
     val MYCELIAL_SANDSTONE_SLAB =
-        register("mycelial_sandstone_slab") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get(), Item.Properties()) }
+        register("mycelial_sandstone_slab") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_SLAB.get(), FFItemProperties.blockProps()) }
     val MYCELIAL_SANDSTONE_WALL =
-        register("mycelial_sandstone_wall") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_WALL.get(), Item.Properties()) }
+        register("mycelial_sandstone_wall") { BlockItem(FFBlocks.MYCELIAL_SANDSTONE_WALL.get(), FFItemProperties.blockProps()) }
     val SMOOTH_MYCELIAL_SANDSTONE =
         registerBlockItem("smooth_mycelial_sandstone") { FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get() }
     val SMOOTH_MYCELIAL_SANDSTONE_STAIRS = register("smooth_mycelial_sandstone_stairs") {
         BlockItem(
             FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get(),
-            Item.Properties()
+            FFItemProperties.blockProps()
         )
     }
     val SMOOTH_MYCELIAL_SANDSTONE_SLAB = register("smooth_mycelial_sandstone_slab") {
         BlockItem(
             FFBlocks.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get(),
-            Item.Properties()
+            FFItemProperties.blockProps()
         )
     }
     val CUT_MYCELIAL_SANDSTONE = registerBlockItem("cut_mycelial_sandstone") { FFBlocks.CUT_MYCELIAL_SANDSTONE.get() }
     val CUT_MYCELIAL_SANDSTONE_SLAB = register("cut_mycelial_sandstone_slab") {
         BlockItem(
             FFBlocks.CUT_MYCELIAL_SANDSTONE_SLAB.get(),
-            Item.Properties()
+            FFItemProperties.blockProps()
         )
     }
     
@@ -134,7 +137,7 @@ object FFItems {
         "frigid_vessel",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
@@ -148,7 +151,7 @@ object FFItems {
         "fungill",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
@@ -162,12 +165,17 @@ object FFItems {
         "morsel",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
                         .saturationModifier(1.0F)
-                        .effect(MobEffectInstance(MobEffects.REGENERATION, 200, 0), 1.0f)
+                        .build()
+                )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.REGENERATION, 200, 0), 1.0f))
                         .build()
                 )
         )
@@ -177,7 +185,7 @@ object FFItems {
         "morsel_bar",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
         )
     }
 
@@ -185,20 +193,18 @@ object FFItems {
         "mostly_eaten_morsel_pop",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .stacksTo(1)
                 .food(
                     FoodProperties.Builder()
                         .nutrition(4)
                         .saturationModifier(0.6F)
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                100,
-                                1
-                            ),
-                            1.0F
-                        )
+                        .build()
+                )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0f))
                         .build()
                 )
         )
@@ -208,23 +214,21 @@ object FFItems {
         "partially_eaten_morsel_pop",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .stacksTo(1)
                 .food(
                     FoodProperties.Builder()
                         .nutrition(6)
                         .saturationModifier(0.8F)
-                        .usingConvertsTo { MOSTLY_EATEN_MORSEL_POP.get() }
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                160,
-                                1
-                            ),
-                            1.0F
-                        )
                         .build()
                 )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.REGENERATION, 160, 1), 1.0f))
+                        .build()
+                )
+                .usingConvertsTo(MOSTLY_EATEN_MORSEL_POP.get())
         )
     }
 
@@ -232,23 +236,21 @@ object FFItems {
         "morsel_pop",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .stacksTo(1)
                 .food(
                     FoodProperties.Builder()
                         .nutrition(8)
                         .saturationModifier(1.0F)
-                        .usingConvertsTo { PARTIALLY_EATEN_MORSEL_POP.get() }
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                200,
-                                1
-                            ),
-                            1.0F
-                        )
                         .build()
                 )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.REGENERATION, 200, 1), 1.0f))
+                        .build()
+                )
+                .usingConvertsTo(PARTIALLY_EATEN_MORSEL_POP.get())
         )
     }
 
@@ -256,19 +258,17 @@ object FFItems {
         "plunderers_hoop",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
                         .saturationModifier(0.2F)
-                        .effect(
-                            MobEffectInstance(
-                                MobEffects.REGENERATION,
-                                100,
-                                1
-                            ),
-                            1.0F
-                        )
+                        .build()
+                )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1.0f))
                         .build()
                 )
         )
@@ -278,13 +278,18 @@ object FFItems {
         "star_donut",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .stacksTo(16)
                 .food(
                     FoodProperties.Builder()
                         .nutrition(6)
                         .saturationModifier(0.5F)
-                        .effect(MobEffectInstance(MobEffects.GLOWING, 400, 0), 1.0f)
+                        .build()
+                )
+                .component(
+                    DataComponents.CONSUMABLE,
+                    Consumable.builder()
+                        .onConsume(ApplyStatusEffectsConsumeEffect(MobEffectInstance(MobEffects.GLOWING, 400, 0), 1.0f))
                         .build()
                 )
         )
@@ -294,7 +299,7 @@ object FFItems {
         "plunderers_core",
     ) {
         PlunderersCoreItem(
-            Item.Properties()
+            FFItemProperties.props()
                 .stacksTo(16)
         )
     }
@@ -303,7 +308,7 @@ object FFItems {
         "porous_shell",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
@@ -317,7 +322,7 @@ object FFItems {
         "blood_eel",
     ) {
         Item(
-            Item.Properties()
+            FFItemProperties.props()
                 .food(
                     FoodProperties.Builder()
                         .nutrition(1)
@@ -328,43 +333,41 @@ object FFItems {
     }
 
     val FUNGILL_SPAWN_EGG =
-        registerSpawnEgg("fungill_spawn_egg", FFEntityTypes.FUNGILL, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("fungill_spawn_egg", FFEntityTypes.FUNGILL)
     val JELLYSHROOM_SPAWN_EGG =
-        registerSpawnEgg("jellyshroom_spawn_egg", FFEntityTypes.JELLYSHROOM, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("jellyshroom_spawn_egg", FFEntityTypes.JELLYSHROOM)
     val PUFFBALL_PUFFER_SPAWN_EGG =
-        registerSpawnEgg("puffball_puffer_spawn_egg", FFEntityTypes.PUFFBALL_PUFFER, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("puffball_puffer_spawn_egg", FFEntityTypes.PUFFBALL_PUFFER)
     val MYCRAB_SPAWN_EGG =
-        registerSpawnEgg("mycrab_spawn_egg", FFEntityTypes.MYCRAB, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("mycrab_spawn_egg", FFEntityTypes.MYCRAB)
     val PLUNDERERS_HOOP_SPAWN_EGG =
-        registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("plunderers_hoop_spawn_egg", FFEntityTypes.PLUNDERERS_HOOP)
     val MORSEL_SPAWN_EGG =
-        registerSpawnEgg("morsel_spawn_egg", FFEntityTypes.MORSEL, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("morsel_spawn_egg", FFEntityTypes.MORSEL)
     val POROUS_SHELL_SPAWN_EGG =
-        registerSpawnEgg("porous_shell_spawn_egg", FFEntityTypes.POROUS_SHELL, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("porous_shell_spawn_egg", FFEntityTypes.POROUS_SHELL)
     val BLOOD_EEL_SPAWN_EGG =
-        registerSpawnEgg("blood_eel_spawn_egg", FFEntityTypes.BLOOD_EEL, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("blood_eel_spawn_egg", FFEntityTypes.BLOOD_EEL)
     val FRIGID_VESSEL_SPAWN_EGG =
-        registerSpawnEgg("frigid_vessel_spawn_egg", FFEntityTypes.FRIGID_VESSEL, 0xFFFFFF, 0xFFFFFF)
+        registerSpawnEgg("frigid_vessel_spawn_egg", FFEntityTypes.FRIGID_VESSEL)
 
     private fun register(id: String, item: Supplier<Item>): Supplier<Item> {
-        return FantasticFisheryCommon.ITEMS.register(id, item)
+        return FantasticFisheryCommon.ITEMS.register(id) { FFItemProperties.withId(id, item::get) }
     }
 
     private fun <T : Mob> registerSpawnEgg(
         id: String,
         type: Supplier<EntityType<T>>,
-        primaryColor: Int,
-        secondaryColor: Int,
     ): Supplier<SpawnEggItem> {
-        return PLATFORM.registerSpawnEggItem(id, { type.get() }, primaryColor, secondaryColor)
+        return PLATFORM.registerSpawnEggItem(id, { type.get() })
     }
 
     fun registerBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
-        return register(id) { BlockItem(block.get(), Item.Properties()) }
+        return register(id) { BlockItem(block.get(), FFItemProperties.blockProps()) }
     }
 
     private fun registerPlaceableInWaterBlockItem(id: String, block: Supplier<Block>): Supplier<Item> {
-        return register(id) { PlaceableInWaterItem(block.get(), Item.Properties()) }
+        return register(id) { PlaceableInWaterItem(block.get(), FFItemProperties.blockProps()) }
     }
 
     private fun registerVerticallyAttachable(
@@ -377,8 +380,8 @@ object FFItems {
             StandingAndWallBlockItem(
                 standingBlock.get(),
                 wallBlock.get(),
-                Item.Properties(),
-                direction
+                direction,
+                FFItemProperties.blockProps()
             )
         }
     }

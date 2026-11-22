@@ -14,7 +14,7 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
         setOf(
             FFItems.FUNGILL.get(),
         ).forEach { item ->
-            getOrCreateTagBuilder(FFItemTags.FISHES).add(item)
+            valueLookupBuilder(FFItemTags.FISHES).add(item)
         }
 
         setOf(
@@ -23,13 +23,13 @@ class ItemTagProvider(output: FabricDataOutput, registriesFuture: CompletableFut
             FFItems.PLUNDERERS_HOOP.get(),
             FFItems.BLOOD_EEL.get(),
         ).forEach { item ->
-            getOrCreateTagBuilder(FFItemTags.SMALL_FISH).add(item)
+            valueLookupBuilder(FFItemTags.SMALL_FISH).add(item)
         }
 
         setOf(
             FFItems.POROUS_SHELL.get(),
         ).forEach { item ->
-            getOrCreateTagBuilder(FFItemTags.MEDIUM_FISH).add(item)
+            valueLookupBuilder(FFItemTags.MEDIUM_FISH).add(item)
         }
     }
 }

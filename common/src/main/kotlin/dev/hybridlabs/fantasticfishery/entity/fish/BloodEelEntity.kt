@@ -22,7 +22,7 @@ class BloodEelEntity(type: EntityType<out BloodEelEntity>, world: Level) :
 
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
-            return createLivingAttributes()
+            return createLivingAttributes().add(Attributes.TEMPT_RANGE, 10.0)
                 .add(Attributes.MAX_HEALTH, 3.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.7)
                 .add(Attributes.ATTACK_DAMAGE, 2.0)

@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.world.item.Items
 import net.minecraft.world.level.block.BaseCoralWallFanBlock
 import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.LootTable
@@ -25,6 +26,8 @@ class BlockLootTableProvider(output: FabricDataOutput, registryLookup: Completab
                     .build()
             )
         }
+
+        add(FFBlocks.TALL_SEASHROOM.get(), createSingleItemTable(FFBlocks.SEASHROOM.get()))
 
         //#region Corals
         add(FFBlocks.AMETHYST_CORAL_BLOCK.get()) { block ->
@@ -82,8 +85,9 @@ class BlockLootTableProvider(output: FabricDataOutput, registryLookup: Completab
         BuiltInRegistries.BLOCK
             .filter(filterFantasticFishery(BuiltInRegistries.BLOCK))
             .filter { block ->
-                block !is BaseCoralWallFanBlock
-                        && block.lootTable !in map
+                block.asItem() != Items.AIR
+                        && block !is BaseCoralWallFanBlock
+                        && block.lootTable.orElse(null) !in map
             }
             .forEach { block ->
                 val id = BuiltInRegistries.BLOCK.getKey(block)

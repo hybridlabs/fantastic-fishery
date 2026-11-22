@@ -88,7 +88,6 @@ class BiomeProvider(
                 .specialEffects(
                     createStandardBiomeEffects()
                         .waterColor(waterColor)
-                        .waterFogColor(waterFogColor)
                         .build()
                 )
                 .build()
@@ -125,7 +124,6 @@ class BiomeProvider(
                 .specialEffects(
                     createStandardBiomeEffects()
                         .waterColor(waterColor)
-                        .waterFogColor(waterFogColor)
                         .build()
                 )
                 .build()
@@ -149,7 +147,7 @@ class BiomeProvider(
             val builder = makeDefaultFungalBiomeSpawnSettings()
 
             for ((category, spawner) in extraSpawns) {
-                builder.addSpawn(category, spawner)
+                builder.addSpawn(category, 10, spawner)
             }
 
             for ((entity, charge, budget) in extraSpawnCosts) {
@@ -166,7 +164,7 @@ class BiomeProvider(
             val builder = makeDefaultSpawnSettings()
 
             for ((category, spawner) in extraSpawns) {
-                builder.addSpawn(category, spawner)
+                builder.addSpawn(category, 10, spawner)
             }
 
             for ((entity, charge, budget) in extraSpawnCosts) {
@@ -199,30 +197,27 @@ class BiomeProvider(
         }
 
         fun addDefaultAmbientSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.AMBIENT, MobSpawnSettings.SpawnerData(EntityType.BAT, 10, 8, 8))
+            builder.addSpawn(MobCategory.AMBIENT, 10, MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8))
             builder.addSpawn(
-                MobCategory.UNDERGROUND_WATER_CREATURE,
-                MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 5, 2, 5)
+                MobCategory.UNDERGROUND_WATER_CREATURE, 5,
+                MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 2, 5)
             )
         }
 
         fun addDefaultMonsterSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.SPIDER, 100, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 95, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 5, 1, 1))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.SKELETON, 100, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 10, 1, 4))
-            builder.addSpawn(MobCategory.MONSTER, MobSpawnSettings.SpawnerData(EntityType.WITCH, 5, 1, 1))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 95, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 10, MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4))
+            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1))
         }
 
         fun createStandardBiomeEffects(): BiomeSpecialEffects.Builder {
             return BiomeSpecialEffects.Builder()
                 .waterColor(0x3f76e4)
-                .waterFogColor(0x50533)
-                .fogColor(0xC0D8FF)
-                .skyColor(0x78A7FF)
         }
     }
 

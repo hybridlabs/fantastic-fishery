@@ -4,8 +4,8 @@ import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider
-import net.minecraft.advancements.critereon.EntityFlagsPredicate
-import net.minecraft.advancements.critereon.EntityPredicate
+import net.minecraft.advancements.criterion.EntityFlagsPredicate
+import net.minecraft.advancements.criterion.EntityPredicate
 import net.minecraft.core.HolderLookup
 import net.minecraft.resources.ResourceKey
 import net.minecraft.world.level.storage.loot.LootPool
@@ -26,7 +26,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
     SimpleFabricLootTableProvider(exporter, lookupProvider, LootContextParamSets.ENTITY) {
     override fun generate(exporter: BiConsumer<ResourceKey<LootTable>, LootTable.Builder>) {
         val lookup = lookupProvider.join()
-        export(exporter, FFEntityTypes.MORSEL.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.MORSEL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
@@ -37,7 +37,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
             )
         }
 
-        export(exporter, FFEntityTypes.PLUNDERERS_HOOP.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.PLUNDERERS_HOOP.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
@@ -48,7 +48,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
             )
         }
 
-        export(exporter, FFEntityTypes.FRIGID_VESSEL.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.FRIGID_VESSEL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
@@ -59,7 +59,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
             )
         }
 
-        export(exporter, FFEntityTypes.BLOOD_EEL.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.BLOOD_EEL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
@@ -70,7 +70,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
             )
         }
 
-        export(exporter, FFEntityTypes.POROUS_SHELL.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.POROUS_SHELL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
@@ -81,7 +81,7 @@ class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider
             )
         }
 
-        export(exporter, FFEntityTypes.FUNGILL.get().defaultLootTable) {
+        export(exporter, FFEntityTypes.FUNGILL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(

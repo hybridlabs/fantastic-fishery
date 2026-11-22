@@ -3,11 +3,13 @@ package dev.hybridlabs.fantasticfishery.entity.fish
 import dev.hybridlabs.hapi.entity.ai.MobTargetConfiguration
 import dev.hybridlabs.hapi.entity.base.aquatic.BaseFishEntity
 import dev.hybridlabs.hapi.tag.HAPIEntityTags
-import net.minecraft.nbt.CompoundTag
+import net.minecraft.world.level.storage.ValueInput
+import net.minecraft.world.level.storage.ValueOutput
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket
 import net.minecraft.network.syncher.EntityDataAccessor
 import net.minecraft.network.syncher.EntityDataSerializers
 import net.minecraft.network.syncher.SynchedEntityData
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.server.level.ServerPlayer
 import net.minecraft.sounds.SoundEvents
 import net.minecraft.world.effect.MobEffectInstance
@@ -17,7 +19,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.entity.ai.goal.Goal
 import net.minecraft.world.entity.ai.targeting.TargetingConditions
-import net.minecraft.world.entity.animal.WaterAnimal
+import net.minecraft.world.entity.animal.fish.WaterAnimal
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import java.util.function.Predicate
@@ -68,14 +70,14 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
         refreshDimensions()
     }
 
-    override fun addAdditionalSaveData(compound: CompoundTag) {
-        super.addAdditionalSaveData(compound)
-        compound.putInt("PuffState", getPuffState())
+    override fun addAdditionalSaveData(output: ValueOutput) {
+        super.addAdditionalSaveData(output)
+        output.putInt("PuffState", getPuffState())
     }
 
-    override fun readAdditionalSaveData(compound: CompoundTag) {
-        super.readAdditionalSaveData(compound)
-        setPuffState(compound.getInt("PuffState").coerceAtMost(FULLY_PUFFED))
+    override fun readAdditionalSaveData(input: ValueInput) {
+        super.readAdditionalSaveData(input)
+        setPuffState(input.getIntOr("PuffState", 0).coerceAtMost(FULLY_PUFFED))
     }
 
     override fun tick() {
@@ -113,8 +115,9 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
     override fun aiStep() {
         super.aiStep()
         if (isAlive && getPuffState() > 0) {
-            val nearbyEntities = level().getEntitiesOfClass(Mob::class.java, boundingBox.inflate(0.3)) {
-                BLOW_UP_TARGET_PREDICATE.test(this, it)
+            val serverLevel = level() as? ServerLevel ?: return
+            val nearbyEntities = serverLevel.getEntitiesOfClass(Mob::class.java, boundingBox.inflate(0.3)) {
+                BLOW_UP_TARGET_PREDICATE.test(serverLevel, this, it)
             }
             nearbyEntities.forEach { touch(it) }
         }
@@ -122,7 +125,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
 
     private fun touch(mob: Mob) {
         val i = this.getPuffState()
-        if (mob.hurt(damageSources().mobAttack(this), (1 + i).toFloat())) {
+        if (mob.hurtServer(level() as ServerLevel, damageSources().mobAttack(this), (1 + i).toFloat())) {
             mob.addEffect(
                 MobEffectInstance(MobEffects.POISON, 60 * i, 0),
                 this
@@ -133,7 +136,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
 
     override fun playerTouch(entity: Player) {
         val i = this.getPuffState()
-        if (entity is ServerPlayer && i > 0 && entity.hurt(damageSources().mobAttack(this), (1 + i).toFloat())) {
+        if (entity is ServerPlayer && i > 0 && entity.hurtServer(level() as ServerLevel, damageSources().mobAttack(this), (1 + i).toFloat())) {
             if (!this.isSilent) {
                 entity.connection.send(ClientboundGameEventPacket(ClientboundGameEventPacket.PUFFER_FISH_STING, 0.0f))
             }
@@ -147,8 +150,9 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
 
     private inner class InflateGoal : Goal() {
         override fun canUse(): Boolean {
-            val nearbyEntities = level().getEntitiesOfClass(LivingEntity::class.java, boundingBox.inflate(2.0)) {
-                BLOW_UP_TARGET_PREDICATE.test(this@PuffballPufferEntity, it)
+            val serverLevel = level() as? ServerLevel ?: return false
+            val nearbyEntities = serverLevel.getEntitiesOfClass(LivingEntity::class.java, boundingBox.inflate(2.0)) {
+                BLOW_UP_TARGET_PREDICATE.test(serverLevel, this@PuffballPufferEntity, it)
             }
             return nearbyEntities.isNotEmpty()
         }
@@ -175,7 +179,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
 
     companion object {
         fun createMobAttributes(): AttributeSupplier.Builder {
-            return createLivingAttributes()
+            return createLivingAttributes().add(Attributes.TEMPT_RANGE, 10.0)
                 .add(Attributes.MAX_HEALTH, 4.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.5)
                 .add(Attributes.ATTACK_DAMAGE, 1.0)
@@ -189,7 +193,7 @@ class PuffballPufferEntity(type: EntityType<out PuffballPufferEntity>, world: Le
             Predicate { entity -> !(entity is Player && entity.isCreative) or (entity !is WaterAnimal) }
         private val BLOW_UP_TARGET_PREDICATE: TargetingConditions =
             TargetingConditions.forNonCombat().ignoreInvisibilityTesting().ignoreLineOfSight()
-                .selector(BLOW_UP_FILTER)
+                .selector { entity, _ -> BLOW_UP_FILTER.test(entity) }
 
         const val NOT_PUFFED = 0
         const val SEMI_PUFFED = 1

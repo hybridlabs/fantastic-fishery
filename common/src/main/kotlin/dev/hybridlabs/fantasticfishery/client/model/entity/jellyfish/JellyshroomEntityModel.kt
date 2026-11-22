@@ -1,41 +1,43 @@
 package dev.hybridlabs.fantasticfishery.client.model.entity.jellyfish
 
 import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
+import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseJellyfishEntityModel
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
+import software.bernie.geckolib.renderer.base.GeoRenderState
 
 class JellyshroomEntityModel : BaseJellyfishEntityModel<JellyshroomEntity>("fantastic_fishery", "jellyshroom") {
 
-    override fun getTextureResource(animatable: JellyshroomEntity): ResourceLocation {
-        return when (animatable.variant) {
+    override fun getTextureResource(renderState: GeoRenderState): Identifier {
+        return when (renderState.getVariant(JellyshroomEntity.Companion.Type.entries)!!) {
             JellyshroomEntity.Companion.Type.RED_JELLYSHROOM -> RED_JELLYSHROOM_TEXTURE
             JellyshroomEntity.Companion.Type.BROWN_JELLYSHROOM -> BROWN_JELLYSHROOM_TEXTURE
         }
     }
 
-    override fun getModelResource(animatable: JellyshroomEntity): ResourceLocation {
-        return when (animatable.variant) {
+    override fun getModelResource(renderState: GeoRenderState): Identifier {
+        return when (renderState.getVariant(JellyshroomEntity.Companion.Type.entries)!!) {
             JellyshroomEntity.Companion.Type.RED_JELLYSHROOM -> RED_JELLYSHROOM_MODEL
             JellyshroomEntity.Companion.Type.BROWN_JELLYSHROOM -> BROWN_JELLYSHROOM_MODEL
         }
     }
 
-    override fun getAnimationResource(animatable: JellyshroomEntity): ResourceLocation {
+    override fun getAnimationResource(animatable: JellyshroomEntity): Identifier {
         return JELLYSHROOM_ANIMATION
     }
 
     companion object {
         private val RED_JELLYSHROOM_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/red_jellyshroom.png")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/red_jellyshroom.png")
         private val BROWN_JELLYSHROOM_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/brown_jellyshroom.png")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "textures/entity/jellyfish/jellyshroom/brown_jellyshroom.png")
 
         private val RED_JELLYSHROOM_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/jellyfish/jellyshroom/red_jellyshroom.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "jellyfish/jellyshroom/red_jellyshroom")
         private val BROWN_JELLYSHROOM_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/jellyfish/jellyshroom/brown_jellyshroom.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "jellyfish/jellyshroom/brown_jellyshroom")
 
         private val JELLYSHROOM_ANIMATION =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "animations/entity/jellyfish/jellyshroom/jellyshroom.animation.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "entity/jellyfish/jellyshroom/jellyshroom")
     }
 }

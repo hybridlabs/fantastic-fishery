@@ -38,10 +38,12 @@ public class FabricPlatformHelper implements PlatformHelper {
 
     @Override
     public <T extends Mob> Supplier<SpawnEggItem> registerSpawnEggItem(@NotNull String name,
-                                                                       Supplier<EntityType<T>> entityType,
-                                                                       int backgroundColor, int highlightColor) {
-        return FantasticFisheryCommon.ITEMS.register(name, () -> new SpawnEggItem(entityType.get(), backgroundColor,
-                highlightColor, new Item.Properties()));
+                                                                       Supplier<EntityType<T>> entityType) {
+        return FantasticFisheryCommon.ITEMS.register(name, () -> new SpawnEggItem(
+                new Item.Properties()
+                        .setId(net.minecraft.resources.ResourceKey.create(net.minecraft.core.registries.Registries.ITEM,
+                                FantasticFisheryCommon.locate(name)))
+                        .spawnEgg(entityType.get())));
     }
 
     @Override

@@ -2,12 +2,12 @@ package dev.hybridlabs.fantasticfishery.client.render.block
 
 import dev.hybridlabs.fantasticfishery.platform.ClientServices
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
-import net.minecraft.client.renderer.RenderType
+import net.minecraft.client.renderer.chunk.ChunkSectionLayer
 
 object FFBlockRenderers {
     fun registerRenderShapes() {
         ClientServices.PLATFORM.registerBlockRenderers(
-            RenderType.cutout(),
+            ChunkSectionLayer.CUTOUT,
             FFBlocks.CHICKEN_CORAL.get(),
             FFBlocks.CHICKEN_CORAL_FAN.get(),
             FFBlocks.CHICKEN_CORAL_WALL_FAN.get(),

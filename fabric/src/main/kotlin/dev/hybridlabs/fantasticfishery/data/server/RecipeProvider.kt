@@ -3,10 +3,12 @@ package dev.hybridlabs.fantasticfishery.data.server
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
-import net.minecraft.advancements.critereon.InventoryChangeTrigger
+import net.minecraft.advancements.criterion.InventoryChangeTrigger
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeOutput
+import net.minecraft.data.recipes.RecipeProvider as VanillaRecipeProvider
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.world.item.Items
@@ -19,48 +21,58 @@ import java.util.concurrent.CompletableFuture
 
 class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture<HolderLookup.Provider>) :
     FabricRecipeProvider(output, lookupProvider) {
-    override fun buildRecipes(exporter: RecipeOutput) {
+
+    override fun createRecipeProvider(
+        registries: HolderLookup.Provider,
+        output: RecipeOutput,
+    ): VanillaRecipeProvider = GeneratedRecipes(registries, output)
+
+    override fun getName(): String = "Recipes"
+
+    private class GeneratedRecipes(
+        registries: HolderLookup.Provider,
+        output: RecipeOutput,
+    ) : VanillaRecipeProvider(registries, output) {
+        private val itemLookup = registries.lookupOrThrow(net.minecraft.core.registries.Registries.ITEM)
+
+    override fun buildRecipes() {
+        val exporter = this.output
         //#region Sandstone Block Recipes
         stairBuilder(
             FFItems.MYCELIAL_SANDSTONE_STAIRS.get(),
             Ingredient.of(FFItems.MYCELIAL_SANDSTONE.get())
-        )
+        ).unlockedBy(getHasName(FFItems.MYCELIAL_SANDSTONE.get()), has(FFItems.MYCELIAL_SANDSTONE.get())).save(exporter)
 
         stairBuilder(
             FFItems.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get(),
             Ingredient.of(FFItems.SMOOTH_MYCELIAL_SANDSTONE.get())
-        )
+        ).unlockedBy(getHasName(FFItems.SMOOTH_MYCELIAL_SANDSTONE.get()), has(FFItems.SMOOTH_MYCELIAL_SANDSTONE.get())).save(exporter)
 
         slab(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         slab(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.CUT_MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.CUT_MYCELIAL_SANDSTONE.get()
         )
 
         slab(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.SMOOTH_MYCELIAL_SANDSTONE.get()
         )
 
         chiseled(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.CHISELED_MYCELIAL_SANDSTONE.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.MYCELIAL_SANDSTONE.get(),
@@ -68,7 +80,6 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.CUT_MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.CUT_MYCELIAL_SANDSTONE.get(),
@@ -76,7 +87,6 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.SMOOTH_MYCELIAL_SANDSTONE_SLAB.get(),
             FFItems.SMOOTH_MYCELIAL_SANDSTONE.get(),
@@ -84,92 +94,82 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.MYCELIAL_SANDSTONE_STAIRS.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.SMOOTH_MYCELIAL_SANDSTONE_STAIRS.get(),
             FFItems.SMOOTH_MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.MYCELIAL_SANDSTONE_WALL.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.CHISELED_MYCELIAL_SANDSTONE.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.SMOOTH_MYCELIAL_SANDSTONE.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
         stonecutterResultFromBase(
-            exporter,
             RecipeCategory.BUILDING_BLOCKS,
             FFItems.CUT_MYCELIAL_SANDSTONE.get(),
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
-        simpleCookingRecipe(
-            exporter,
-            "smelting_mycelial_sand",
-            RecipeSerializer.SMELTING_RECIPE,
-            ::SmeltingRecipe,
-            200,
-            FFItems.MYCELIAL_SAND.get(),
+        SimpleCookingRecipeBuilder.generic(
+            Ingredient.of(FFItems.MYCELIAL_SAND.get()),
+            RecipeCategory.FOOD,
             Items.GLASS,
-            0.15f
-        )
-
-        simpleCookingRecipe(
-            exporter,
-            "smelting",
+            0.15f,
+            200,
             RecipeSerializer.SMELTING_RECIPE,
-            ::SmeltingRecipe,
-            600,
-            FFItems.MORSEL.get(),
-            FFItems.MORSEL_BAR.get(),
-            0.15f
-        )
+            ::SmeltingRecipe
+        ).unlockedBy("has_material", has(FFItems.MYCELIAL_SAND.get())).save(exporter, "glass_from_smelting_mycelial_sand")
 
-        simpleCookingRecipe(
-            exporter,
-            "smoking",
-            RecipeSerializer.SMOKING_RECIPE,
-            ::SmokingRecipe,
+        SimpleCookingRecipeBuilder.generic(
+            Ingredient.of(FFItems.MORSEL.get()),
+            RecipeCategory.FOOD,
+            FFItems.MORSEL_BAR.get(),
+            0.15f,
+            600,
+            RecipeSerializer.SMELTING_RECIPE,
+            ::SmeltingRecipe
+        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smelting")
+
+        SimpleCookingRecipeBuilder.generic(
+            Ingredient.of(FFItems.MORSEL.get()),
+            RecipeCategory.FOOD,
+            FFItems.MORSEL_BAR.get(),
+            0.15f,
             300,
-            FFItems.MORSEL.get(),
-            FFItems.MORSEL_BAR.get(),
-            0.15f
-        )
+            RecipeSerializer.SMOKING_RECIPE,
+            ::SmokingRecipe
+        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smoking")
 
-        simpleCookingRecipe(
-            exporter,
-            "campfire_cooking",
-            RecipeSerializer.CAMPFIRE_COOKING_RECIPE,
-            ::CampfireCookingRecipe,
+        SimpleCookingRecipeBuilder.generic(
+            Ingredient.of(FFItems.MORSEL.get()),
+            RecipeCategory.FOOD,
+            FFItems.MORSEL_BAR.get(),
+            0.15f,
             600,
-            FFItems.MORSEL.get(),
-            FFItems.MORSEL_BAR.get(),
-            0.15f
-        )
+            RecipeSerializer.CAMPFIRE_COOKING_RECIPE,
+            ::CampfireCookingRecipe
+        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_campfire_cooking")
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FFItems.STAR_DONUT.get())
+        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.FOOD, FFItems.STAR_DONUT.get())
             .requires(FFItems.PLUNDERERS_CORE.get())
             .requires(Items.WHEAT)
             .requires(Items.EGG)
@@ -179,7 +179,7 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
             )
             .save(exporter)
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, FFItems.MORSEL_POP.get())
+        ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.FOOD, FFItems.MORSEL_POP.get())
             .requires(FFItems.MORSEL_BAR.get())
             .requires(Items.STICK)
             .unlockedBy(
@@ -192,16 +192,17 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
             )
             .save(exporter)
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FFItems.RED_SHROOMPAD.get(), 4)
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.BUILDING_BLOCKS, FFItems.RED_SHROOMPAD.get(), 4)
             .pattern("RR")
             .define('R', Items.RED_MUSHROOM_BLOCK)
             .unlockedBy("has_red_mushroom_block", InventoryChangeTrigger.TriggerInstance.hasItems(Items.RED_MUSHROOM_BLOCK))
             .save(exporter)
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, FFItems.BROWN_SHROOMPAD.get(), 4)
+        ShapedRecipeBuilder.shaped(itemLookup, RecipeCategory.BUILDING_BLOCKS, FFItems.BROWN_SHROOMPAD.get(), 4)
             .pattern("BB")
             .define('B', Items.BROWN_MUSHROOM_BLOCK)
             .unlockedBy("has_brown_mushroom_block", InventoryChangeTrigger.TriggerInstance.hasItems(Items.BROWN_MUSHROOM_BLOCK))
             .save(exporter)
+    }
     }
 }

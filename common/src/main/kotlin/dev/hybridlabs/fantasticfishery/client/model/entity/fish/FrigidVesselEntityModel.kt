@@ -2,37 +2,34 @@ package dev.hybridlabs.fantasticfishery.client.model.entity.fish
 
 import dev.hybridlabs.fantasticfishery.entity.fish.FrigidVesselEntity
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
-import net.minecraft.client.renderer.RenderType
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
+import software.bernie.geckolib.renderer.base.GeoRenderState
 
 class FrigidVesselEntityModel : BaseFishEntityModel<FrigidVesselEntity>("fantastic_fishery", "frigid_vessel") {
-    override fun getRenderType(animatable: FrigidVesselEntity, texture: ResourceLocation): RenderType {
-        return RenderType.entityTranslucent(texture)
-    }
 
-    override fun getTextureResource(animatable: FrigidVesselEntity): ResourceLocation {
+    override fun getTextureResource(renderState: GeoRenderState): Identifier {
         return FRIGID_VESSEL_TEXTURE
     }
 
-    override fun getModelResource(animatable: FrigidVesselEntity): ResourceLocation {
+    override fun getModelResource(renderState: GeoRenderState): Identifier {
         return FRIGID_VESSEL_MODEL
     }
 
-    override fun getAnimationResource(animatable: FrigidVesselEntity): ResourceLocation {
+    override fun getAnimationResource(animatable: FrigidVesselEntity): Identifier {
         return FRIGID_VESSEL_ANIMATION
     }
     
     companion object {
         private val FRIGID_VESSEL_TEXTURE =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/frigid_vessel/frigid_vessel.png")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "textures/entity/fish/frigid_vessel/frigid_vessel.png")
 
         private val FRIGID_VESSEL_MODEL =
-            ResourceLocation.fromNamespaceAndPath("fantastic_fishery", "geo/fish/frigid_vessel/frigid_vessel.geo.json")
+            Identifier.fromNamespaceAndPath("fantastic_fishery", "fish/frigid_vessel/frigid_vessel")
 
         private val FRIGID_VESSEL_ANIMATION =
-            ResourceLocation.fromNamespaceAndPath(
+            Identifier.fromNamespaceAndPath(
                 "fantastic_fishery",
-                "animations/entity/fish/frigid_vessel/frigid_vessel.animation.json"
+                "entity/fish/frigid_vessel/frigid_vessel"
             )
     }
 }

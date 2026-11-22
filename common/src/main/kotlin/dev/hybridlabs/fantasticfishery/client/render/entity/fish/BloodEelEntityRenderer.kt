@@ -4,6 +4,7 @@ import dev.hybridlabs.hapi.client.render.entity.aquatic.BaseFishEntityRenderer
 import dev.hybridlabs.fantasticfishery.client.model.entity.fish.BloodEelEntityModel
 import dev.hybridlabs.fantasticfishery.entity.fish.BloodEelEntity
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context
+import net.minecraft.client.renderer.entity.state.LivingEntityRenderState
 
 class BloodEelEntityRenderer(context: Context) :
-    BaseFishEntityRenderer<BloodEelEntity>(context, BloodEelEntityModel(), true, false)
+    BaseFishEntityRenderer<BloodEelEntity, LivingEntityRenderState>(context, BloodEelEntityModel(), true, false)

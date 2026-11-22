@@ -46,12 +46,12 @@
   ],
 
 	"depends": {
-		"minecraft": "~1.21.1",
+		"minecraft": "~1.21.11",
 		"java": ">=21",
 		"fabric-language-kotlin": "*",
-		"fabric-api": ">=0.92",
-        "geckolib": ">=4.4",
+		"fabric-api": ">=0.141",
+        "geckolib": ">=5.4.5",
         "biolith": "*",
-        "hapi": ">=1.0.0"
+        "hapi": ">=1.3.0"
     }
 }

@@ -4,17 +4,20 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.Entity
-import net.minecraft.world.entity.vehicle.Boat
+import net.minecraft.world.entity.InsideBlockEffectApplier
+import net.minecraft.world.entity.vehicle.boat.Boat
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
+import net.minecraft.world.level.ScheduledTickAccess
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED
+import net.minecraft.util.RandomSource
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.material.Fluids
 import net.minecraft.world.level.material.Fluids.WATER
@@ -56,21 +59,23 @@ class ShroompadBlock(settings: Properties) : Block(settings) {
 
     override fun updateShape(
         state: BlockState,
-        direction: Direction,
-        neighborState: BlockState,
-        world: LevelAccessor,
+        level: LevelReader,
+        scheduledTickAccess: ScheduledTickAccess,
         pos: BlockPos,
+        direction: Direction,
         neighborPos: BlockPos,
+        neighborState: BlockState,
+        random: RandomSource,
     ): BlockState {
         if (state.getValue(WATERLOGGED)) {
-            world.scheduleTick(pos, WATER, WATER.getTickDelay(world))
+            scheduledTickAccess.scheduleTick(pos, WATER, WATER.getTickDelay(level))
         }
 
-        if (!canSurvive(state, world, pos)) {
+        if (!canSurvive(state, level, pos)) {
             return Blocks.AIR.defaultBlockState()
         }
 
-        return super.updateShape(state, direction, neighborState, world, pos, neighborPos)
+        return super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random)
     }
 
     override fun getShape(
@@ -86,12 +91,12 @@ class ShroompadBlock(settings: Properties) : Block(settings) {
         return if (state.getValue(WATERLOGGED)) WATER.getSource(false) else super.getFluidState(state)
     }
 
-    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block?, BlockState?>) {
+    override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
         builder.add(WATERLOGGED)
     }
 
-    override fun entityInside(state: BlockState, world: Level, pos: BlockPos, entity: Entity) {
-        super.entityInside(state, world, pos, entity)
+    override fun entityInside(state: BlockState, world: Level, pos: BlockPos, entity: Entity, applier: InsideBlockEffectApplier, intersects: Boolean) {
+        super.entityInside(state, world, pos, entity, applier, intersects)
         if (world is ServerLevel && entity is Boat) {
             entity.makeStuckInBlock(state, Vec3(0.66, 0.66, 0.66))
             world.destroyBlock(BlockPos(pos), false, entity)

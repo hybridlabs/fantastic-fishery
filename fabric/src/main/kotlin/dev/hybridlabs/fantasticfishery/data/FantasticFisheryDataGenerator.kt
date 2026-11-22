@@ -42,7 +42,7 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
         registryBuilder.add(Registries.BIOME, BiomeProvider::bootstrapBiomes )
     }
 
-    fun <T> filterFantasticFishery(registry: Registry<T>): (T & Any) -> Boolean {
+    fun <T : Any> filterFantasticFishery(registry: Registry<T>): (T) -> Boolean {
         return { o ->
             val id = registry.getKey(o)
             id!!.namespace == Constants.MOD_ID

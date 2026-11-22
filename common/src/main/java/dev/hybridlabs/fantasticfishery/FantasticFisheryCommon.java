@@ -5,7 +5,7 @@ import dev.hybridlabs.fantasticfishery.platform.registration.RegistrationProvide
 
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EntityType;
@@ -55,8 +55,8 @@ public class FantasticFisheryCommon {
 
     public static final Path CONFIG_FILE = Services.PLATFORM.getConfigDir().resolve(Constants.MOD_ID + ".json");
 
-    public static ResourceLocation locate(String path) {
-        return ResourceLocation.fromNamespaceAndPath(Constants.MOD_ID, path);
+    public static Identifier locate(String path) {
+        return Identifier.fromNamespaceAndPath(Constants.MOD_ID, path);
     }
 
     public static void init() {

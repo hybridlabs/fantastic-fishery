@@ -2,7 +2,7 @@ package dev.hybridlabs.fantasticfishery.tag
 
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import net.minecraft.core.registries.Registries
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 import net.minecraft.tags.TagKey
 import net.minecraft.world.entity.EntityType
 
@@ -21,6 +21,6 @@ object FFEntityTags {
     }
 
     private fun createHybridAquaticTag(id: String): TagKey<EntityType<*>> {
-        return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("hybrid_aquatic", id))
+        return TagKey.create(Registries.ENTITY_TYPE, Identifier.fromNamespaceAndPath("hybrid_aquatic", id))
     }
 }

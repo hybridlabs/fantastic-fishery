@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "fantastic_fishery:plunderers_core"
-    },
-    {
-      "item": "minecraft:wheat"
-    },
-    {
-      "item": "minecraft:egg"
-    }
+    "fantastic_fishery:plunderers_core",
+    "minecraft:wheat",
+    "minecraft:egg"
   ],
   "result": {
     "count": 1,

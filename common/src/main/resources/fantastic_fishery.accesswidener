@@ -5,3 +5,12 @@ accessible field net/minecraft/world/level/block/state/properties/IntegerPropert
 accessible field net/minecraft/world/level/block/state/properties/IntegerProperty max I
 accessible method net/minecraft/world/level/block/CoralWallFanBlock <init> (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
 accessible method net/minecraft/world/level/block/StairBlock <init> (Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockBehaviour$Properties;)V
+
+# Datagen internals used by the model provider (1.21.11 moved model generation to client.data.models)
+accessible method net/minecraft/client/data/models/BlockModelGenerators createCoral (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;Lnet/minecraft/world/level/block/Block;)V
+accessible method net/minecraft/client/data/models/BlockModelGenerators createCrossBlock (Lnet/minecraft/world/level/block/Block;Lnet/minecraft/client/data/models/BlockModelGenerators$PlantType;)V
+accessible method net/minecraft/client/data/models/BlockModelGenerators createNonTemplateModelBlock (Lnet/minecraft/world/level/block/Block;)V
+accessible method net/minecraft/client/data/models/BlockModelGenerators family (Lnet/minecraft/world/level/block/Block;)Lnet/minecraft/client/data/models/BlockModelGenerators$BlockFamilyProvider;
+accessible class net/minecraft/client/data/models/BlockModelGenerators$PlantType
+accessible class net/minecraft/client/data/models/BlockModelGenerators$BlockFamilyProvider
+accessible method net/minecraft/client/data/models/ItemModelGenerators generateFlatItem (Lnet/minecraft/world/item/Item;Lnet/minecraft/client/data/models/model/ModelTemplate;)V

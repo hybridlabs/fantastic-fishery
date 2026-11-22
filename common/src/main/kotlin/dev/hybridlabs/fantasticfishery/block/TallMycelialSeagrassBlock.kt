@@ -3,7 +3,7 @@ package dev.hybridlabs.fantasticfishery.block
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.tags.FluidTags
-import net.minecraft.world.entity.player.Player
+import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
@@ -37,7 +37,7 @@ class TallMycelialSeagrassBlock(settings: Properties) : DoublePlantBlock(setting
                 !floor.`is`(Blocks.MAGMA_BLOCK)
     }
 
-    override fun getCloneItemStack(level: LevelReader, pos: BlockPos, state: BlockState): ItemStack {
+    override fun getCloneItemStack(level: LevelReader, pos: BlockPos, state: BlockState, includeData: Boolean): ItemStack {
         return ItemStack(FFBlocks.SEASHROOM.get())
     }
 
@@ -68,7 +68,7 @@ class TallMycelialSeagrassBlock(settings: Properties) : DoublePlantBlock(setting
     }
 
     override fun canPlaceLiquid(
-        p0: Player?,
+        p0: LivingEntity?,
         world: BlockGetter,
         pos: BlockPos,
         state: BlockState,

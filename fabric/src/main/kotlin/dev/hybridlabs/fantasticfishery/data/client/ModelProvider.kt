@@ -5,26 +5,22 @@ import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.ShroompadBlock
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
+import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider
 import net.minecraft.core.registries.BuiltInRegistries
-import net.minecraft.data.models.BlockModelGenerators
-import net.minecraft.data.models.ItemModelGenerators
-import net.minecraft.data.models.model.ModelTemplates
-import net.minecraft.data.models.model.TexturedModel
+import net.minecraft.client.data.models.BlockModelGenerators
+import net.minecraft.client.data.models.ItemModelGenerators
+import net.minecraft.client.data.models.model.ModelTemplates
+import net.minecraft.client.data.models.model.TextureMapping
+import net.minecraft.client.data.models.model.TextureSlot
+import net.minecraft.client.data.models.model.TexturedModel
 
 
 class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
         generator.run {
-            BuiltInRegistries.BLOCK
-                .filterIsInstance<ShroompadBlock>()
-                .forEach { block ->
-                    skipAutoItemBlock(block)
-                }
-
             createCrossBlock(
                 FFBlocks.SEASHROOM.get(),
-                BlockModelGenerators.TintState.NOT_TINTED,
+                BlockModelGenerators.PlantType.NOT_TINTED,
             )
             
             createCoral(
@@ -90,13 +86,20 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
                 FFBlocks.MYCELIAL_SAND.get(),
             ).forEach(generator::createTrivialCube)
 
-            setOf(
-                FFBlocks.MYCELIAL_SANDSTONE.get(),
-                FFBlocks.CUT_MYCELIAL_SANDSTONE.get(),
+            // The sandstone families use separate top, side and bottom textures, so build the
+            // family provider from an explicit mapping instead of the default cube texture.
+            generator.BlockFamilyProvider(sandstoneMapping(FFBlocks.MYCELIAL_SANDSTONE.get()))
+                .fullBlock(FFBlocks.MYCELIAL_SANDSTONE.get(), ModelTemplates.CUBE_BOTTOM_TOP)
+                .generateFor(FFBlockFamilies.MYCELIAL_SANDSTONE)
+
+            generator.BlockFamilyProvider(sandstoneMapping(FFBlocks.CUT_MYCELIAL_SANDSTONE.get()))
+                .fullBlock(FFBlocks.CUT_MYCELIAL_SANDSTONE.get(), ModelTemplates.CUBE_BOTTOM_TOP)
+                .generateFor(FFBlockFamilies.CUT_MYCELIAL_SANDSTONE)
+
+            generator.createTrivialBlock(
                 FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get(),
-            ).forEach { block ->
-                generator.createTrivialBlock(block, TexturedModel.CUBE_TOP_BOTTOM)
-            }
+                TexturedModel.CUBE_TOP_BOTTOM,
+            )
 
             generator.family(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get())
                 .generateFor(FFBlockFamilies.SMOOTH_MYCELIAL_SANDSTONE)
@@ -132,5 +135,10 @@ class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
         ).forEach { item ->
             generator.generateFlatItem(item, ModelTemplates.FLAT_ITEM)
         }
+    }
+
+    private fun sandstoneMapping(block: net.minecraft.world.level.block.Block): TextureMapping {
+        return TextureMapping.cubeBottomTop(block)
+            .put(TextureSlot.WALL, TextureMapping.getBlockTexture(block))
     }
 }

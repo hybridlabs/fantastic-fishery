@@ -6,11 +6,12 @@ import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.tags.FluidTags
 import net.minecraft.util.RandomSource
-import net.minecraft.world.entity.player.Player
+import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.LevelAccessor
+import net.minecraft.world.level.ScheduledTickAccess
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.BonemealableBlock
@@ -48,15 +49,17 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
 
     override fun updateShape(
         state: BlockState,
-        direction: Direction,
-        neighborState: BlockState,
-        world: LevelAccessor,
+        level: LevelReader,
+        scheduledTickAccess: ScheduledTickAccess,
         pos: BlockPos,
-        neighborPos: BlockPos
+        direction: Direction,
+        neighborPos: BlockPos,
+        neighborState: BlockState,
+        random: RandomSource
     ): BlockState {
-        val blockState = super.updateShape(state, direction, neighborState, world, pos, neighborPos)
+        val blockState = super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random)
         if (!blockState.isAir) {
-            world.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(world))
+            scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level))
         }
 
         return blockState
@@ -85,7 +88,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
     }
 
     override fun canPlaceLiquid(
-        player: Player?,
+        player: LivingEntity?,
         world: BlockGetter,
         pos: BlockPos,
         state: BlockState,
@@ -103,8 +106,9 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return false
     }
 
-    override fun codec(): MapCodec<out BushBlock> {
-        return CODEC
+    override fun codec(): MapCodec<BushBlock> {
+        @Suppress("UNCHECKED_CAST")
+        return CODEC as MapCodec<BushBlock>
     }
 
     companion object {
