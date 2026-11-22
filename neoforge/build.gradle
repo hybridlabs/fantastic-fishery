@@ -5,9 +5,7 @@ plugins {
 
 dependencies {
     implementation "com.geckolib:geckolib-neoforge-$geckolib_version"
-    implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {
-        exclude(group: "com.github.glitchfiend")
-    }
+    implementation "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-26.1"
 
     implementation("dev.hybridlabs.hapi:hapi-neoforge-26.1.2:1.4.0")
 }
@@ -28,7 +26,7 @@ neoForge {
 }
 
 publishMods.platforms.configureEach {
-    requires 'kotlin-for-forge', 'geckolib', 'biolith', 'hybrid-api'
+    requires 'kotlin-for-forge', 'geckolib', 'lithostitched', 'hybrid-api'
 }
 
 // GeckoLib 5.5 moved to the com.geckolib group, which hybrid-gradle's GeckoLib repository

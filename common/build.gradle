@@ -15,9 +15,7 @@ dependencies {
 
     implementation "com.geckolib:geckolib-neoforge-${geckolib_version}"
 
-    implementation("com.terraformersmc:biolith-neoforge:${biolith_version}") {
-        exclude(group: "com.github.glitchfiend")
-    }
+    compileOnly "maven.modrinth:lithostitched:${lithostitched_version}-neoforge-26.1"
 }
 
 // GeckoLib 5.5 moved to the com.geckolib group, which hybrid-gradle's GeckoLib repository
