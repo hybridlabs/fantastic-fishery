@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     "fantastic_fishery:plunderers_core",
     "minecraft:wheat",

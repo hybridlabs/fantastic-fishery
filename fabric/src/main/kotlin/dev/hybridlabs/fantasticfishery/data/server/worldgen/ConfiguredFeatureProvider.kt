@@ -19,7 +19,7 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.configurations.CompositeFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider
 import net.minecraft.world.level.levelgen.placement.PlacementModifier
 import java.util.concurrent.CompletableFuture
@@ -62,7 +62,7 @@ class ConfiguredFeatureProvider(
                 bootstrap,
                 FFConfiguredFeatures.FUNGAL_REEF_VEGETATION,
                 Feature.SIMPLE_RANDOM_SELECTOR,
-                SimpleRandomFeatureConfiguration(
+                CompositeFeatureConfiguration(
                     HolderSet.direct(
                         PlacementUtils.inlinePlaced(
                             FFFeatures.FUNGAL_REEF_CORAL_TREE.get() as Feature<NoneFeatureConfiguration>,

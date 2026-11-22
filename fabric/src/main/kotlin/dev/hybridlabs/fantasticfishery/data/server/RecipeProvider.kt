@@ -3,7 +3,7 @@ package dev.hybridlabs.fantasticfishery.data.server
 import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
-import net.minecraft.advancements.criterion.InventoryChangeTrigger
+import net.minecraft.advancements.triggers.InventoryChangeTrigger
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeOutput

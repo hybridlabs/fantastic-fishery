@@ -10,6 +10,7 @@ import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BiomeDefaultFeatures
 import net.minecraft.data.worldgen.BootstrapContext
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.world.entity.MobCategory
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.biome.BiomeGenerationSettings
@@ -197,22 +198,22 @@ class BiomeProvider(
         }
 
         fun addDefaultAmbientSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.AMBIENT, 10, MobSpawnSettings.SpawnerData(EntityType.BAT, 8, 8))
+            builder.addSpawn(MobCategory.AMBIENT, 10, MobSpawnSettings.SpawnerData(EntityTypes.BAT, 8, 8))
             builder.addSpawn(
                 MobCategory.UNDERGROUND_WATER_CREATURE, 5,
-                MobSpawnSettings.SpawnerData(EntityType.GLOW_SQUID, 2, 5)
+                MobSpawnSettings.SpawnerData(EntityTypes.GLOW_SQUID, 2, 5)
             )
         }
 
         fun addDefaultMonsterSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SPIDER, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 95, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_VILLAGER, 1, 1))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SKELETON, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.CREEPER, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityType.SLIME, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 10, MobSpawnSettings.SpawnerData(EntityType.ENDERMAN, 1, 4))
-            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityType.WITCH, 1, 1))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SPIDER, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 95, MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIE, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIE_VILLAGER, 1, 1))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SKELETON, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.CREEPER, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SLIME, 4, 4))
+            builder.addSpawn(MobCategory.MONSTER, 10, MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 1, 4))
+            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityTypes.WITCH, 1, 1))
         }
 
         fun createStandardBiomeEffects(): BiomeSpecialEffects.Builder {

@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
+import net.minecraft.world.entity.EntityTypes
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile
@@ -21,9 +22,9 @@ import net.minecraft.world.phys.HitResult
 class PlunderersCoreEntity : ThrowableItemProjectile {
     constructor(entityType: EntityType<out PlunderersCoreEntity>, level: Level) : super(entityType, level)
 
-    constructor(level: Level, shooter: LivingEntity) : super(EntityType.SNOWBALL, shooter, level, ItemStack.EMPTY)
+    constructor(level: Level, shooter: LivingEntity) : super(EntityTypes.SNOWBALL, shooter, level, ItemStack.EMPTY)
 
-    constructor(level: Level, x: Double, y: Double, z: Double) : super(EntityType.SNOWBALL, x, y, z, level, ItemStack.EMPTY)
+    constructor(level: Level, x: Double, y: Double, z: Double) : super(EntityTypes.SNOWBALL, x, y, z, level, ItemStack.EMPTY)
 
     override fun getDefaultItem(): Item = Items.SNOWBALL
 

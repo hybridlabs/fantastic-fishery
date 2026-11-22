@@ -3,9 +3,11 @@ package dev.hybridlabs.fantasticfishery.world.gen.biome
 import com.terraformersmc.biolith.api.biome.BiomePlacement
 import com.terraformersmc.biolith.api.biome.sub.BiomeParameterTargets
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder
+import com.terraformersmc.biolith.api.surface.RuleSourceBootstrapper
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
+import net.minecraft.core.HolderGetter
 import net.minecraft.core.registries.Registries
 import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.Identifier
@@ -15,28 +17,32 @@ import net.minecraft.world.level.levelgen.SurfaceRules.*
 
 object FFBiomes {
     val FUNGAL_SEA: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("fungal_sea"))
-    val FUNGAL_SEA_SURFACE_RULE: RuleSource = ifTrue(
-        isBiome(FUNGAL_SEA),
-        sequence(
-            ifTrue(ON_FLOOR,
-                state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
-            ),
-            ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
-            ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+    val FUNGAL_SEA_SURFACE_RULE: (HolderGetter<Biome>) -> RuleSource = { biomeGetter ->
+        ifTrue(
+            isBiome(biomeGetter, FUNGAL_SEA),
+            sequence(
+                ifTrue(ON_FLOOR,
+                    state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
+                ),
+                ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
+                ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+            )
         )
-    )
+    }
 
     val MUSHROOM_FIELDS_SHORE: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("mushroom_fields_shore"))
-    val MUSHROOM_FIELDS_SHORE_SURFACE_RULE: RuleSource = ifTrue(
-        isBiome(MUSHROOM_FIELDS_SHORE),
-        sequence(
-            ifTrue(ON_FLOOR,
-                state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
-            ),
-            ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
-            ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+    val MUSHROOM_FIELDS_SHORE_SURFACE_RULE: (HolderGetter<Biome>) -> RuleSource = { biomeGetter ->
+        ifTrue(
+            isBiome(biomeGetter, MUSHROOM_FIELDS_SHORE),
+            sequence(
+                ifTrue(ON_FLOOR,
+                    state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
+                ),
+                ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
+                ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+            )
         )
-    )
+    }
 
     fun addBiomes() {
         BiomePlacement.addSubOverworld(
@@ -183,13 +189,15 @@ object FFBiomes {
         //#region Surface Rule Generation
         SurfaceGeneration.addOverworldSurfaceRules(
             Identifier.fromNamespaceAndPath("fantastic_fishery", "rules/overworld"),
-            ifTrue(
-                abovePreliminarySurface(),
-                sequence(
-                    FUNGAL_SEA_SURFACE_RULE,
-                    MUSHROOM_FIELDS_SHORE_SURFACE_RULE,
+            RuleSourceBootstrapper { biomeGetter ->
+                ifTrue(
+                    abovePreliminarySurface(),
+                    sequence(
+                        FUNGAL_SEA_SURFACE_RULE(biomeGetter),
+                        MUSHROOM_FIELDS_SHORE_SURFACE_RULE(biomeGetter),
+                    )
                 )
-            )
+            }
         )
     }
 }

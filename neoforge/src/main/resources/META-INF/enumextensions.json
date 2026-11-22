@@ -6,27 +6,27 @@
             "_name_comment": "The field name of the new entry, must be prefixed with the mod ID",
             "name": "FANTASTIC_FISHERY_FANTASTIC_FISH",
             "_constructor_comment": "The constructor to be used",
-            "constructor": "(Ljava/lang/String;IZZI)V",
+            "constructor": "(Ljava/lang/String;Ljava/lang/String;IZZI)V",
             "_parameters_comment": "Constant parameters provided directly.",
-            "parameters": [ "fantastic_fishery:fantastic_fish", 6, true, false, 128 ]
+            "parameters": [ "fantastic_fishery:fantastic_fish", "fantastic_fishery:fantastic_fish", 6, true, false, 128 ]
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
             "name": "FANTASTIC_FISHERY_FANTASTIC_JELLYFISH",
-            "constructor": "(Ljava/lang/String;IZZI)V",
-            "parameters": [ "fantastic_fishery:fantastic_jellyfish", 4, true, false, 64]
+            "constructor": "(Ljava/lang/String;Ljava/lang/String;IZZI)V",
+            "parameters": [ "fantastic_fishery:fantastic_jellyfish", "fantastic_fishery:fantastic_jellyfish", 4, true, false, 64]
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
             "name": "FANTASTIC_FISHERY_FANTASTIC_SHARK",
-            "constructor": "(Ljava/lang/String;IZZI)V",
-            "parameters": [ "fantastic_fishery:fantastic_shark", 2, true, true, 128]
+            "constructor": "(Ljava/lang/String;Ljava/lang/String;IZZI)V",
+            "parameters": [ "fantastic_fishery:fantastic_shark", "fantastic_fishery:fantastic_shark", 2, true, true, 128]
         },
         {
             "enum": "net/minecraft/world/entity/MobCategory",
             "name": "FANTASTIC_FISHERY_FANTASTIC_CRUSTACEAN",
-            "constructor": "(Ljava/lang/String;IZZI)V",
-            "parameters": [ "fantastic_fishery:fantastic_crustacean", 4, true, false, 64]
+            "constructor": "(Ljava/lang/String;Ljava/lang/String;IZZI)V",
+            "parameters": [ "fantastic_fishery:fantastic_crustacean", "fantastic_fishery:fantastic_crustacean", 4, true, false, 64]
         }
     ]
 }
