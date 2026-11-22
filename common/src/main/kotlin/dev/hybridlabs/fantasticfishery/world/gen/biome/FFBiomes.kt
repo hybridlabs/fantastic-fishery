@@ -3,7 +3,7 @@ package dev.hybridlabs.fantasticfishery.world.gen.biome
 import com.terraformersmc.biolith.api.biome.BiomePlacement
 import com.terraformersmc.biolith.api.biome.sub.BiomeParameterTargets
 import com.terraformersmc.biolith.api.biome.sub.CriterionBuilder
-import com.terraformersmc.biolith.api.surface.RuleSourceBootstrapper
+import com.terraformersmc.biolith.api.surface.MaterialRuleBootstrapper
 import com.terraformersmc.biolith.api.surface.SurfaceGeneration
 import dev.hybridlabs.fantasticfishery.FantasticFisheryCommon
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
@@ -13,33 +13,35 @@ import net.minecraft.resources.ResourceKey
 import net.minecraft.resources.Identifier
 import net.minecraft.world.level.biome.Biome
 import net.minecraft.world.level.biome.Biomes
-import net.minecraft.world.level.levelgen.SurfaceRules.*
+import net.minecraft.world.level.levelgen.material.MaterialRules.*
+import net.minecraft.world.level.levelgen.material.rule.MaterialRule
+import net.minecraft.world.level.levelgen.placement.CaveSurface
 
 object FFBiomes {
     val FUNGAL_SEA: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("fungal_sea"))
-    val FUNGAL_SEA_SURFACE_RULE: (HolderGetter<Biome>) -> RuleSource = { biomeGetter ->
+    val FUNGAL_SEA_SURFACE_RULE: (HolderGetter<Biome>) -> MaterialRule = { biomeGetter ->
         ifTrue(
             isBiome(biomeGetter, FUNGAL_SEA),
             sequence(
-                ifTrue(ON_FLOOR,
+                ifTrue(stoneDepthCheck(0, false, CaveSurface.FLOOR),
                     state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
                 ),
-                ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
-                ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+                ifTrue(stoneDepthCheck(0, true, CaveSurface.FLOOR), state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
+                ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
             )
         )
     }
 
     val MUSHROOM_FIELDS_SHORE: ResourceKey<Biome> = ResourceKey.create(Registries.BIOME, FantasticFisheryCommon.locate("mushroom_fields_shore"))
-    val MUSHROOM_FIELDS_SHORE_SURFACE_RULE: (HolderGetter<Biome>) -> RuleSource = { biomeGetter ->
+    val MUSHROOM_FIELDS_SHORE_SURFACE_RULE: (HolderGetter<Biome>) -> MaterialRule = { biomeGetter ->
         ifTrue(
             isBiome(biomeGetter, MUSHROOM_FIELDS_SHORE),
             sequence(
-                ifTrue(ON_FLOOR,
+                ifTrue(stoneDepthCheck(0, false, CaveSurface.FLOOR),
                     state(FFBlocks.MYCELIAL_SAND.get().defaultBlockState())
                 ),
-                ifTrue(UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
-                ifTrue(DEEP_UNDER_FLOOR, state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
+                ifTrue(stoneDepthCheck(0, true, CaveSurface.FLOOR), state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState())),
+                ifTrue(stoneDepthCheck(0, true, 6, CaveSurface.FLOOR), state(FFBlocks.MYCELIAL_SANDSTONE.get().defaultBlockState()))
             )
         )
     }
@@ -189,7 +191,8 @@ object FFBiomes {
         //#region Surface Rule Generation
         SurfaceGeneration.addOverworldSurfaceRules(
             Identifier.fromNamespaceAndPath("fantastic_fishery", "rules/overworld"),
-            RuleSourceBootstrapper { biomeGetter ->
+            MaterialRuleBootstrapper { registryAccess ->
+                val biomeGetter = registryAccess.lookupOrThrow(Registries.BIOME)
                 ifTrue(
                     abovePreliminarySurface(),
                     sequence(

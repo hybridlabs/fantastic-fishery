@@ -1,13 +1,14 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import com.mojang.serialization.Codec
+import com.mojang.serialization.MapCodec
 import net.minecraft.core.BlockPos
 import net.minecraft.util.RandomSource
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.Feature
 
-class FungalReefDiscFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReefFeature(codec) {
+class FungalReefDiscFeature : FungalReefFeature() {
+    override fun codec(): MapCodec<out Feature> = CODEC
 
     override fun placeFeature(
         level: LevelAccessor,
@@ -15,7 +16,6 @@ class FungalReefDiscFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
         pos: BlockPos,
         state: BlockState,
     ): Boolean {
-
         val radius = random.nextInt(3) + 2
         val spacing = 2
 
@@ -37,7 +37,7 @@ class FungalReefDiscFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
         random: RandomSource,
         center: BlockPos,
         radius: Int,
-        state: BlockState
+        state: BlockState,
     ) {
         val mutable = BlockPos.MutableBlockPos()
 
@@ -55,5 +55,9 @@ class FungalReefDiscFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
                 }
             }
         }
+    }
+
+    companion object {
+        val CODEC: MapCodec<FungalReefDiscFeature> = MapCodec.unit(FungalReefDiscFeature())
     }
 }

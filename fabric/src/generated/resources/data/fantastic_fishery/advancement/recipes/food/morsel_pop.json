@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:morsel_pop"
+        "recipes": "fantastic_fishery:morsel_pop"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

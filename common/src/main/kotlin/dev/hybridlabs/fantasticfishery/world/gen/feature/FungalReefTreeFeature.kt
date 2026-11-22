@@ -1,14 +1,16 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import com.mojang.serialization.Codec
+import com.mojang.serialization.MapCodec
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.util.RandomSource
 import net.minecraft.world.level.LevelAccessor
 import net.minecraft.world.level.block.state.BlockState
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.Feature
 
-class FungalReefTreeFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReefFeature(codec) {
+class FungalReefTreeFeature : FungalReefFeature() {
+    override fun codec(): MapCodec<out Feature> = CODEC
+
     override fun placeFeature(
         level: LevelAccessor,
         random: RandomSource,
@@ -62,5 +64,9 @@ class FungalReefTreeFeature(codec: Codec<NoneFeatureConfiguration>) : FungalReef
                 }
             }
         }
+    }
+
+    companion object {
+        val CODEC: MapCodec<FungalReefTreeFeature> = MapCodec.unit(FungalReefTreeFeature())
     }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:smooth_mycelial_sandstone_stairs"
+        "recipes": "fantastic_fishery:smooth_mycelial_sandstone_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

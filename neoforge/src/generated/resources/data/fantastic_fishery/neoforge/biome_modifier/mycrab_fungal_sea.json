@@ -1,10 +1,15 @@
 {
   "type": "neoforge:add_spawns",
   "biomes": "#fantastic_fishery:fungal_sea",
-  "spawners": {
-    "type": "fantastic_fishery:mycrab",
-    "maxCount": 3,
-    "minCount": 1,
-    "weight": 8
-  }
+  "spawners": [
+    {
+      "type": "fantastic_fishery:mycrab",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 1
+      },
+      "weight": 8
+    }
+  ]
 }

@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import com.mojang.serialization.Codec
 import dev.hybridlabs.fantasticfishery.tag.FFBlockTags
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -8,21 +7,23 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.tags.TagKey
 import net.minecraft.util.RandomSource
 import net.minecraft.world.level.LevelAccessor
+import net.minecraft.world.level.WorldGenLevel
 import net.minecraft.world.level.block.BaseCoralWallFanBlock
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.chunk.ChunkGenerator
 import net.minecraft.world.level.levelgen.feature.Feature
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
 
-abstract class FungalReefFeature(codec: Codec<NoneFeatureConfiguration>) : Feature<NoneFeatureConfiguration>(codec) {
-    override fun place(context: FeaturePlaceContext<NoneFeatureConfiguration>): Boolean {
-        val randomSource = context.random()
-        val worldGenLevel = context.level()
-        val blockPos = context.origin()
-        val block = randomBlock(FFBlockTags.FUNGAL_CORAL_BLOCKS, randomSource) ?: return false
-        return this.placeFeature(worldGenLevel, randomSource, blockPos, block.defaultBlockState())
+abstract class FungalReefFeature : Feature {
+    override fun place(
+        level: WorldGenLevel,
+        chunkGenerator: ChunkGenerator,
+        random: RandomSource,
+        origin: BlockPos,
+    ): Boolean {
+        val block = randomBlock(FFBlockTags.FUNGAL_CORAL_BLOCKS, random) ?: return false
+        return this.placeFeature(level, random, origin, block.defaultBlockState())
     }
 
     protected abstract fun placeFeature(

@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "features": [
+    {
+      "feature": {
+        "type": "fantastic_fishery:fungal_reef_coral_tree"
+      },
+      "placement": []
+    },
+    {
+      "feature": {
+        "type": "fantastic_fishery:fungal_reef_coral_claw"
+      },
+      "placement": []
+    },
+    {
+      "feature": {
+        "type": "fantastic_fishery:fungal_reef_coral_mushroom"
+      },
+      "placement": []
+    },
+    {
+      "feature": {
+        "type": "fantastic_fishery:fungal_reef_coral_table"
+      },
+      "placement": []
+    },
+    {
+      "feature": {
+        "type": "fantastic_fishery:fungal_reef_coral_disc"
+      },
+      "placement": []
+    }
+  ]
+}

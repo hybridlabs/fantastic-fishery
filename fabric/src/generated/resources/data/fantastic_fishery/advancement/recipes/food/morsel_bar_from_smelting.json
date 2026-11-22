@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:morsel_bar_from_smelting"
+        "recipes": "fantastic_fishery:morsel_bar_from_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

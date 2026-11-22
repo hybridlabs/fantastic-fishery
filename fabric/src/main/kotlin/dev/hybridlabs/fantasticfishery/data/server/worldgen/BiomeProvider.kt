@@ -17,7 +17,7 @@ import net.minecraft.world.level.biome.BiomeGenerationSettings
 import net.minecraft.world.level.biome.BiomeSpecialEffects
 import net.minecraft.world.level.biome.MobSpawnSettings
 import net.minecraft.world.level.levelgen.GenerationStep
-import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver
+import net.minecraft.world.level.levelgen.carver.WorldCarver
 import net.minecraft.world.level.levelgen.placement.PlacedFeature
 import java.util.concurrent.CompletableFuture
 
@@ -27,7 +27,7 @@ class BiomeProvider(
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
     companion object {
         fun bootstrapBiomes(bootstrap: BootstrapContext<Biome>) {
-            val carversGetter = bootstrap.lookup(Registries.CONFIGURED_CARVER)
+            val carversGetter = bootstrap.lookup(Registries.CARVER)
             val featuresGetter = bootstrap.lookup(Registries.PLACED_FEATURE)
 
             bootstrap.register(
@@ -60,13 +60,11 @@ class BiomeProvider(
 
         fun create(
             features: HolderGetter<PlacedFeature>,
-            carvers: HolderGetter<ConfiguredWorldCarver<*>>,
+            carvers: HolderGetter<WorldCarver>,
             temperature: Float,
             downfall: Float,
             waterColor: Int,
             waterFogColor: Int,
-            extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>> = ArrayList(),
-            extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>> = emptyList(),
             extraFeatures: (BiomeGenerationSettings.Builder.() -> Unit)? = null,
         ): Biome {
             val builder = BiomeGenerationSettings.Builder(features, carvers)
@@ -80,7 +78,7 @@ class BiomeProvider(
             return Biome.BiomeBuilder()
                 .generationSettings(makeGenerationSettings(features, carvers))
                 .generationSettings(builder.build()).mobSpawnSettings(
-                    makeSpawnSettings(extraSpawns, extraSpawnCosts)
+                    makeSpawnSettings()
                 )
 
                 .hasPrecipitation(true)
@@ -96,13 +94,11 @@ class BiomeProvider(
 
         fun createFungalBiome(
             features: HolderGetter<PlacedFeature>,
-            carvers: HolderGetter<ConfiguredWorldCarver<*>>,
+            carvers: HolderGetter<WorldCarver>,
             temperature: Float,
             downfall: Float,
             waterColor: Int,
             waterFogColor: Int,
-            extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>> = ArrayList(),
-            extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>> = emptyList(),
             extraFeatures: (BiomeGenerationSettings.Builder.() -> Unit)? = null,
         ): Biome {
             val builder = BiomeGenerationSettings.Builder(features, carvers)
@@ -116,7 +112,7 @@ class BiomeProvider(
             return Biome.BiomeBuilder()
                 .generationSettings(makeGenerationSettings(features, carvers))
                 .generationSettings(builder.build()).mobSpawnSettings(
-                    makeFungalBiomeSpawnSettings(extraSpawns, extraSpawnCosts)
+                    makeFungalBiomeSpawnSettings()
                 )
 
                 .hasPrecipitation(true)
@@ -132,7 +128,7 @@ class BiomeProvider(
 
         fun makeGenerationSettings(
             features: HolderGetter<PlacedFeature>,
-            carvers: HolderGetter<ConfiguredWorldCarver<*>>
+            carvers: HolderGetter<WorldCarver>
         ): BiomeGenerationSettings {
             val builder = BiomeGenerationSettings.Builder(features, carvers)
             addStandardFeatures(builder)
@@ -141,36 +137,14 @@ class BiomeProvider(
             return builder.build()
         }
 
-        fun makeSpawnSettings(
-            extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>>,
-            extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>>
-        ): MobSpawnSettings {
+        fun makeSpawnSettings(): MobSpawnSettings {
             val builder = makeDefaultFungalBiomeSpawnSettings()
-
-            for ((category, spawner) in extraSpawns) {
-                builder.addSpawn(category, 10, spawner)
-            }
-
-            for ((entity, charge, budget) in extraSpawnCosts) {
-                builder.addMobCharge(entity, charge, budget)
-            }
 
             return builder.build()
         }
 
-        fun makeFungalBiomeSpawnSettings(
-            extraSpawns: List<Pair<MobCategory, MobSpawnSettings.SpawnerData>>,
-            extraSpawnCosts: List<Triple<EntityType<*>, Double, Double>>
-        ): MobSpawnSettings {
+        fun makeFungalBiomeSpawnSettings(): MobSpawnSettings {
             val builder = makeDefaultSpawnSettings()
-
-            for ((category, spawner) in extraSpawns) {
-                builder.addSpawn(category, 10, spawner)
-            }
-
-            for ((entity, charge, budget) in extraSpawnCosts) {
-                builder.addMobCharge(entity, charge, budget)
-            }
 
             return builder.build()
         }
@@ -198,22 +172,19 @@ class BiomeProvider(
         }
 
         fun addDefaultAmbientSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.AMBIENT, 10, MobSpawnSettings.SpawnerData(EntityTypes.BAT, 8, 8))
-            builder.addSpawn(
-                MobCategory.UNDERGROUND_WATER_CREATURE, 5,
-                MobSpawnSettings.SpawnerData(EntityTypes.GLOW_SQUID, 2, 5)
-            )
+            builder.addSpawn(EntityTypes.BAT, 10, 8, 8)
+            builder.addSpawn(EntityTypes.GLOW_SQUID, 5, 2, 5)
         }
 
         fun addDefaultMonsterSpawns(builder: MobSpawnSettings.Builder) {
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SPIDER, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 95, MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIE, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityTypes.ZOMBIE_VILLAGER, 1, 1))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SKELETON, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.CREEPER, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 100, MobSpawnSettings.SpawnerData(EntityTypes.SLIME, 4, 4))
-            builder.addSpawn(MobCategory.MONSTER, 10, MobSpawnSettings.SpawnerData(EntityTypes.ENDERMAN, 1, 4))
-            builder.addSpawn(MobCategory.MONSTER, 5, MobSpawnSettings.SpawnerData(EntityTypes.WITCH, 1, 1))
+            builder.addSpawn(EntityTypes.SPIDER, 100, 4, 4)
+            builder.addSpawn(EntityTypes.ZOMBIE, 95, 4, 4)
+            builder.addSpawn(EntityTypes.ZOMBIE_VILLAGER, 5, 1, 1)
+            builder.addSpawn(EntityTypes.SKELETON, 100, 4, 4)
+            builder.addSpawn(EntityTypes.CREEPER, 100, 4, 4)
+            builder.addSpawn(EntityTypes.SLIME, 100, 4, 4)
+            builder.addSpawn(EntityTypes.ENDERMAN, 10, 1, 4)
+            builder.addSpawn(EntityTypes.WITCH, 5, 1, 1)
         }
 
         fun createStandardBiomeEffects(): BiomeSpecialEffects.Builder {

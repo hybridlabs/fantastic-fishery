@@ -38,7 +38,7 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
 
     override fun buildRegistry(registryBuilder: RegistrySetBuilder) {
         registryBuilder.add(Registries.PLACED_FEATURE, PlacedFeatureProvider::bootstrapPlacedFeatures)
-        registryBuilder.add(Registries.CONFIGURED_FEATURE, ConfiguredFeatureProvider::bootstrapConfiguredFeatures)
+        registryBuilder.add(Registries.FEATURE, ConfiguredFeatureProvider::bootstrapConfiguredFeatures)
         registryBuilder.add(Registries.BIOME, BiomeProvider::bootstrapBiomes )
     }
 

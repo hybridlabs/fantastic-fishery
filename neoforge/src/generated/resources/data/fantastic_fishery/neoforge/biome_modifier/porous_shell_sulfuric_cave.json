@@ -1,10 +1,15 @@
 {
   "type": "neoforge:add_spawns",
   "biomes": "#hapi:sulfuric_cave",
-  "spawners": {
-    "type": "fantastic_fishery:porous_shell",
-    "maxCount": 2,
-    "minCount": 1,
-    "weight": 8
-  }
+  "spawners": [
+    {
+      "type": "fantastic_fishery:porous_shell",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 2,
+        "min_inclusive": 1
+      },
+      "weight": 8
+    }
+  ]
 }

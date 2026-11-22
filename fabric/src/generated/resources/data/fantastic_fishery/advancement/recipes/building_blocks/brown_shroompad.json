@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:brown_shroompad"
+        "recipes": "fantastic_fishery:brown_shroompad"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

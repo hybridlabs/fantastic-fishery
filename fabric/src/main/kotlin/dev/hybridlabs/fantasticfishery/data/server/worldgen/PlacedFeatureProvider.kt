@@ -27,7 +27,7 @@ class PlacedFeatureProvider(
         }
 
         fun bootstrapPlacedFeatures(bootstrap: BootstrapContext<PlacedFeature>) {
-            val reg = bootstrap.lookup(Registries.CONFIGURED_FEATURE)
+            val reg = bootstrap.lookup(Registries.FEATURE)
 
             PlacementUtils.register(
                 bootstrap,

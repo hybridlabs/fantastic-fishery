@@ -37,7 +37,6 @@ class PorousShellEntity(type: EntityType<out PorousShellEntity>, world: Level) :
                 pearlfishEntity?.let {
                     it.customName = text
                     it.isNoAi = isNoAi
-                    it.isInvulnerable = this.isInvulnerable
                     it.snapTo(
                         this.x + offsetX,
                         this.y + 0.5,

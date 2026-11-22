@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:star_donut"
+        "recipes": "fantastic_fishery:star_donut"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

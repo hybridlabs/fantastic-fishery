@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:glass_from_smelting_mycelial_sand"
+        "recipes": "fantastic_fishery:glass_from_smelting_mycelial_sand"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -1,6 +1,5 @@
 package dev.hybridlabs.fantasticfishery.block
 
-import com.mojang.serialization.MapCodec
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.server.level.ServerLevel
@@ -15,6 +14,7 @@ import net.minecraft.world.level.ScheduledTickAccess
 import net.minecraft.world.level.LevelReader
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.BonemealableBlock
+import net.minecraft.world.level.block.BonemealSource
 import net.minecraft.world.level.block.BushBlock
 import net.minecraft.world.level.block.LiquidBlockContainer
 import net.minecraft.world.level.block.TallSeagrassBlock
@@ -65,11 +65,11 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return blockState
     }
 
-    override fun isValidBonemealTarget(world: LevelReader, pos: BlockPos, state: BlockState): Boolean {
+    override fun isValidBonemealTarget(world: LevelReader, pos: BlockPos, state: BlockState, source: BonemealSource): Boolean {
         return true
     }
 
-    override fun isBonemealSuccess(world: Level, random: RandomSource, pos: BlockPos, state: BlockState): Boolean {
+    override fun isBonemealSuccess(world: Level, random: RandomSource, pos: BlockPos, state: BlockState, source: BonemealSource): Boolean {
         return true
     }
 
@@ -77,7 +77,7 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return Fluids.WATER.getSource(false)
     }
 
-    override fun performBonemeal(world: ServerLevel, random: RandomSource, pos: BlockPos, state: BlockState) {
+    override fun performBonemeal(world: ServerLevel, random: RandomSource, pos: BlockPos, state: BlockState, source: BonemealSource) {
         val blockState = FFBlocks.TALL_SEASHROOM.get().defaultBlockState()
         val blockState2 = blockState.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER) as BlockState
         val blockPos = pos.above()
@@ -106,14 +106,8 @@ class MycelialSeagrassBlock(settings: Properties) : BushBlock(settings), Bonemea
         return false
     }
 
-    override fun codec(): MapCodec<BushBlock> {
-        @Suppress("UNCHECKED_CAST")
-        return CODEC as MapCodec<BushBlock>
-    }
 
     companion object {
-        val CODEC: MapCodec<MycelialSeagrassBlock> = simpleCodec(::MycelialSeagrassBlock)
-
         private val SHAPE: VoxelShape = box(2.0, 0.0, 2.0, 14.0, 12.0, 14.0)
     }
 }

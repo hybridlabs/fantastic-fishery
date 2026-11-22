@@ -1,10 +1,15 @@
 {
   "type": "neoforge:add_spawns",
   "biomes": "#fantastic_fishery:fungal_sea",
-  "spawners": {
-    "type": "fantastic_fishery:jellyshroom",
-    "maxCount": 3,
-    "minCount": 1,
-    "weight": 8
-  }
+  "spawners": [
+    {
+      "type": "fantastic_fishery:jellyshroom",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 1
+      },
+      "weight": 8
+    }
+  ]
 }

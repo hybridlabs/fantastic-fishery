@@ -1,10 +1,15 @@
 {
   "type": "neoforge:add_spawns",
   "biomes": "#hapi:frozen_oceans",
-  "spawners": {
-    "type": "fantastic_fishery:frigid_vessel",
-    "maxCount": 5,
-    "minCount": 1,
-    "weight": 10
-  }
+  "spawners": [
+    {
+      "type": "fantastic_fishery:frigid_vessel",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 5,
+        "min_inclusive": 1
+      },
+      "weight": 10
+    }
+  ]
 }

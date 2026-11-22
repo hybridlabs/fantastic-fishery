@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "fantastic_fishery:morsel_bar_from_campfire_cooking"
+        "recipes": "fantastic_fishery:morsel_bar_from_campfire_cooking"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

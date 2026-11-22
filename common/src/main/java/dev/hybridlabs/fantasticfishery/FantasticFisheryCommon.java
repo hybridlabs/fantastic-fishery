@@ -43,8 +43,8 @@ public class FantasticFisheryCommon {
             RegistrationProvider.get(BuiltInRegistries.ENTITY_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<BlockEntityType<?>> BLOCK_ENTITY_TYPES =
             RegistrationProvider.get(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.MOD_ID);
-    public static final RegistrationProvider<Feature<?>> FEATURE =
-            RegistrationProvider.get(BuiltInRegistries.FEATURE, Constants.MOD_ID);
+    public static final RegistrationProvider<com.mojang.serialization.MapCodec<? extends Feature>> FEATURE_TYPE =
+            RegistrationProvider.get(BuiltInRegistries.FEATURE_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<ParticleType<?>> PARTICLE_TYPE =
             RegistrationProvider.get(BuiltInRegistries.PARTICLE_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<CreativeModeTab> CREATIVE_MODE_TABS =

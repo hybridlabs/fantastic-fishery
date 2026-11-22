@@ -1,25 +1,17 @@
 package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
-import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
-import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
+import dev.hybridlabs.fantasticfishery.world.gen.feature.*
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.HolderSet
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.worldgen.BootstrapContext
-import net.minecraft.data.worldgen.features.FeatureUtils
 import net.minecraft.data.worldgen.placement.PlacementUtils
-import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature
 import net.minecraft.world.level.levelgen.feature.Feature
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.CompositeFeatureConfiguration
+import net.minecraft.world.level.levelgen.feature.SimpleBlockFeature
+import net.minecraft.world.level.levelgen.feature.SimpleRandomSelectorFeature
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider
 import net.minecraft.world.level.levelgen.placement.PlacementModifier
 import java.util.concurrent.CompletableFuture
@@ -29,66 +21,31 @@ class ConfiguredFeatureProvider(
     registriesFuture: CompletableFuture<HolderLookup.Provider>,
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
     companion object {
-        fun bootstrapConfiguredFeatures(bootstrap: BootstrapContext<ConfiguredFeature<*, *>>) {
-
-            FeatureUtils.register(
-                bootstrap,
+        fun bootstrapConfiguredFeatures(bootstrap: BootstrapContext<Feature>) {
+            bootstrap.register(
                 FFConfiguredFeatures.RED_SHROOMPADS,
-                Feature.SIMPLE_BLOCK,
-                SimpleBlockConfiguration(
-                    SimpleStateProvider.simple(FFBlocks.RED_SHROOMPAD.get())
-                )
+                SimpleBlockFeature(SimpleStateProvider(FFBlocks.RED_SHROOMPAD.get().defaultBlockState()))
             )
 
-            FeatureUtils.register(
-                bootstrap,
+            bootstrap.register(
                 FFConfiguredFeatures.BROWN_SHROOMPADS,
-                Feature.SIMPLE_BLOCK,
-                SimpleBlockConfiguration(
-                    SimpleStateProvider.simple(FFBlocks.BROWN_SHROOMPAD.get())
-                )
+                SimpleBlockFeature(SimpleStateProvider(FFBlocks.BROWN_SHROOMPAD.get().defaultBlockState()))
             )
 
-            FeatureUtils.register(
-                bootstrap,
+            bootstrap.register(
                 FFConfiguredFeatures.SEASHROOM_PATCH,
-                FFFeatures.SEASHROOM_PATCH.get(),
-                ProbabilityFeatureConfiguration(
-                    0.33f
-                )
+                SeashroomFeature()
             )
 
-            FeatureUtils.register(
-                bootstrap,
+            bootstrap.register(
                 FFConfiguredFeatures.FUNGAL_REEF_VEGETATION,
-                Feature.SIMPLE_RANDOM_SELECTOR,
-                CompositeFeatureConfiguration(
+                SimpleRandomSelectorFeature(
                     HolderSet.direct(
-                        PlacementUtils.inlinePlaced(
-                            FFFeatures.FUNGAL_REEF_CORAL_TREE.get() as Feature<NoneFeatureConfiguration>,
-                            NoneFeatureConfiguration.INSTANCE,
-                            *emptyArray<PlacementModifier>()
-                        ),
-                        PlacementUtils.inlinePlaced(
-                            FFFeatures.FUNGAL_REEF_CORAL_CLAW.get() as Feature<NoneFeatureConfiguration>,
-                            NoneFeatureConfiguration.INSTANCE,
-                            *emptyArray<PlacementModifier>()
-                        ),
-                        PlacementUtils.inlinePlaced(
-                            FFFeatures.FUNGAL_REEF_CORAL_MUSHROOM.get() as Feature<NoneFeatureConfiguration>,
-                            NoneFeatureConfiguration.INSTANCE,
-                            *emptyArray<PlacementModifier>()
-                        ),
-                        PlacementUtils.inlinePlaced(
-                            FFFeatures.FUNGAL_REEF_CORAL_TABLE.get() as Feature<NoneFeatureConfiguration>,
-                            NoneFeatureConfiguration.INSTANCE,
-                            *emptyArray<PlacementModifier>()
-                        ),
-                        PlacementUtils.inlinePlaced(
-                            FFFeatures.FUNGAL_REEF_CORAL_DISC.get() as Feature<NoneFeatureConfiguration>,
-                            NoneFeatureConfiguration.INSTANCE,
-                            *emptyArray<PlacementModifier>()
-                        )
+                        PlacementUtils.inlinePlaced(FungalReefTreeFeature(), *emptyArray<PlacementModifier>()),
+                        PlacementUtils.inlinePlaced(FungalReefClawFeature(), *emptyArray<PlacementModifier>()),
+                        PlacementUtils.inlinePlaced(FungalReefMushroomFeature(), *emptyArray<PlacementModifier>()),
+                        PlacementUtils.inlinePlaced(FungalReefTableFeature(), *emptyArray<PlacementModifier>()),
+                        PlacementUtils.inlinePlaced(FungalReefDiscFeature(), *emptyArray<PlacementModifier>()),
                     )
                 )
             )
@@ -96,7 +53,7 @@ class ConfiguredFeatureProvider(
     }
 
     override fun configure(registries: HolderLookup.Provider, entries: Entries) {
-        val reg = registries.lookup(Registries.CONFIGURED_FEATURE).get()
+        val reg = registries.lookup(Registries.FEATURE).get()
 
         entries.add(reg.getOrThrow(FFConfiguredFeatures.RED_SHROOMPADS))
         entries.add(reg.getOrThrow(FFConfiguredFeatures.BROWN_SHROOMPADS))
@@ -105,6 +62,6 @@ class ConfiguredFeatureProvider(
     }
 
     override fun getName(): String {
-        return "Configured Features"
+        return "Features"
     }
 }

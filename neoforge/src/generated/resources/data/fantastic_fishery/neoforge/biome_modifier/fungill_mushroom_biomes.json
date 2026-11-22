@@ -1,10 +1,15 @@
 {
   "type": "neoforge:add_spawns",
   "biomes": "#fantastic_fishery:mushroom_biomes",
-  "spawners": {
-    "type": "fantastic_fishery:fungill",
-    "maxCount": 3,
-    "minCount": 1,
-    "weight": 10
-  }
+  "spawners": [
+    {
+      "type": "fantastic_fishery:fungill",
+      "count": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 3,
+        "min_inclusive": 1
+      },
+      "weight": 10
+    }
+  ]
 }

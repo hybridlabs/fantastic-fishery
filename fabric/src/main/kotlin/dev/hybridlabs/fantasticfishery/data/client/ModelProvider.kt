@@ -98,7 +98,7 @@ class ModelProvider(output: FabricPackOutput) : FabricModelProvider(output) {
 
             generator.createTrivialBlock(
                 FFBlocks.CHISELED_MYCELIAL_SANDSTONE.get(),
-                TexturedModel.CUBE_TOP_BOTTOM,
+                TexturedModel.CUBE_BOTTOM_TOP,
             )
 
             generator.family(FFBlocks.SMOOTH_MYCELIAL_SANDSTONE.get())

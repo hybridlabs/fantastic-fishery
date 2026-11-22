@@ -4,9 +4,12 @@ import dev.hybridlabs.fantasticfishery.item.FFItems
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancements.triggers.InventoryChangeTrigger
+import net.minecraft.advancements.Advancement
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeOutput
+import net.minecraft.data.worldgen.BootstrapContext
+import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.data.recipes.RecipeProvider as VanillaRecipeProvider
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.data.recipes.ShapedRecipeBuilder
@@ -25,16 +28,17 @@ class RecipeProvider(output: FabricPackOutput, lookupProvider: CompletableFuture
 
     override fun createRecipeProvider(
         registries: HolderLookup.Provider,
-        output: RecipeOutput,
-    ): VanillaRecipeProvider = GeneratedRecipes(registries, output)
+        recipes: BootstrapContext<Recipe<*>>,
+        advancements: BootstrapContext<Advancement>,
+    ): VanillaRecipeProvider = GeneratedRecipes(recipes, advancements)
 
     override fun getName(): String = "Recipes"
 
     private class GeneratedRecipes(
-        registries: HolderLookup.Provider,
-        output: RecipeOutput,
-    ) : VanillaRecipeProvider(registries, output) {
-        private val itemLookup = registries.lookupOrThrow(net.minecraft.core.registries.Registries.ITEM)
+        recipes: BootstrapContext<Recipe<*>>,
+        advancements: BootstrapContext<Advancement>,
+    ) : VanillaRecipeProvider(recipes, advancements) {
+        private val itemLookup = recipes.lookup(net.minecraft.core.registries.Registries.ITEM)
 
     override fun buildRecipes() {
         val exporter = this.output

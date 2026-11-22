@@ -99,7 +99,7 @@ class ShroompadBlock(settings: Properties) : Block(settings) {
         super.entityInside(state, world, pos, entity, applier, intersects)
         if (world is ServerLevel && entity is Boat) {
             entity.makeStuckInBlock(state, Vec3(0.66, 0.66, 0.66))
-            world.destroyBlock(BlockPos(pos), false, entity)
+            world.destroyBlock(pos, false)
         }
     }
 

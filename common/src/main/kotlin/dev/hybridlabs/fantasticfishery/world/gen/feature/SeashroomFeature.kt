@@ -1,46 +1,48 @@
 package dev.hybridlabs.fantasticfishery.world.gen.feature
 
-import com.mojang.serialization.Codec
+import com.mojang.serialization.MapCodec
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import net.minecraft.core.BlockPos
+import net.minecraft.util.RandomSource
+import net.minecraft.world.level.WorldGenLevel
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.TallSeagrassBlock
-import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf
+import net.minecraft.world.level.chunk.ChunkGenerator
 import net.minecraft.world.level.levelgen.Heightmap
 import net.minecraft.world.level.levelgen.feature.Feature
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext
-import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
 
-class SeashroomFeature(codec: Codec<ProbabilityFeatureConfiguration>) :
-    Feature<ProbabilityFeatureConfiguration>(codec) {
-    override fun place(context: FeaturePlaceContext<ProbabilityFeatureConfiguration>): Boolean {
+class SeashroomFeature : Feature {
+    override fun codec(): MapCodec<out Feature> = CODEC
+
+    override fun place(
+        level: WorldGenLevel,
+        chunkGenerator: ChunkGenerator,
+        random: RandomSource,
+        origin: BlockPos,
+    ): Boolean {
         var bl = false
-        val random = context.random()
-        val structureLevelAccessor = context.level()
-        val blockPos = context.origin()
-        val probabilityConfig = context.config() as ProbabilityFeatureConfiguration
         val i = random.nextInt(8) - random.nextInt(8)
         val j = random.nextInt(8) - random.nextInt(8)
-        val k = structureLevelAccessor.getHeight(Heightmap.Types.OCEAN_FLOOR, blockPos.x + i, blockPos.z + j)
-        val blockPos2 = BlockPos(blockPos.x + i, k, blockPos.z + j)
-        if (structureLevelAccessor.getBlockState(blockPos2).`is`(Blocks.WATER)) {
-            val bl2 = random.nextDouble() < probabilityConfig.probability.toDouble()
+        val k = level.getHeight(Heightmap.Types.OCEAN_FLOOR, origin.x + i, origin.z + j)
+        val blockPos2 = BlockPos(origin.x + i, k, origin.z + j)
+        if (level.getBlockState(blockPos2).`is`(Blocks.WATER)) {
+            val bl2 = random.nextDouble() < 0.33
             val blockState = if (bl2) {
                 FFBlocks.TALL_SEASHROOM.get().defaultBlockState()
             } else {
                 FFBlocks.SEASHROOM.get().defaultBlockState()
             }
-            if (blockState.canSurvive(structureLevelAccessor, blockPos2)) {
+            if (blockState.canSurvive(level, blockPos2)) {
                 if (bl2) {
-                    val blockState2 = blockState.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER) as BlockState
+                    val blockState2 = blockState.setValue(TallSeagrassBlock.HALF, DoubleBlockHalf.UPPER)
                     val blockPos3 = blockPos2.above()
-                    if (structureLevelAccessor.getBlockState(blockPos3).`is`(Blocks.WATER)) {
-                        structureLevelAccessor.setBlock(blockPos2, blockState, 2)
-                        structureLevelAccessor.setBlock(blockPos3, blockState2, 2)
+                    if (level.getBlockState(blockPos3).`is`(Blocks.WATER)) {
+                        level.setBlock(blockPos2, blockState, 2)
+                        level.setBlock(blockPos3, blockState2, 2)
                     }
                 } else {
-                    structureLevelAccessor.setBlock(blockPos2, blockState, 2)
+                    level.setBlock(blockPos2, blockState, 2)
                 }
 
                 bl = true
@@ -48,5 +50,9 @@ class SeashroomFeature(codec: Codec<ProbabilityFeatureConfiguration>) :
         }
 
         return bl
+    }
+
+    companion object {
+        val CODEC: MapCodec<SeashroomFeature> = MapCodec.unit(SeashroomFeature())
     }
 }

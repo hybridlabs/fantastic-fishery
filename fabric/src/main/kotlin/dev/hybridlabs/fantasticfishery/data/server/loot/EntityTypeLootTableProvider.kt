@@ -14,8 +14,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders
 import java.util.concurrent.CompletableFuture
 import java.util.function.BiConsumer
 
@@ -26,13 +26,14 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
     SimpleFabricLootTableSubProvider(exporter, lookupProvider, LootContextParamSets.ENTITY) {
     override fun generate(exporter: BiConsumer<ResourceKey<LootTable>, LootTable.Builder>) {
         val lookup = lookupProvider.join()
+        val enchantments = lookup.lookupOrThrow(net.minecraft.core.registries.Registries.ENCHANTMENT)
         export(exporter, FFEntityTypes.MORSEL.get().defaultLootTable.orElseThrow()) {
             pool(
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.MORSEL.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
@@ -42,8 +43,8 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.PLUNDERERS_HOOP.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
@@ -53,8 +54,8 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.FRIGID_VESSEL.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
@@ -64,8 +65,8 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.BLOOD_EEL.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
@@ -75,8 +76,8 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.POROUS_SHELL.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
@@ -86,8 +87,8 @@ class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider
                 LootPool.lootPool()
                     .add(
                         LootItem.lootTableItem(FFItems.FUNGILL.get())
-                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(lookup,UniformGenerator.between(0.0F, 1.0F)))
-                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                            .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(0.0f, 1.0f)))
+                            .apply(SetItemCountFunction.setCount(ContextIntProviders.exactly(1)))
                     ).build()
             )
         }
