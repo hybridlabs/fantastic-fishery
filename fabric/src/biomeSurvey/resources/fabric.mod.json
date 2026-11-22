@@ -1,0 +1,19 @@
+{
+    "schemaVersion": 1,
+    "id": "fantastic_fishery_biome_survey",
+    "version": "1.0.0",
+    "name": "Fantastic Fishery Biome Survey",
+    "description": "Dev-only check that samples overworld biome placement and stops the server.",
+    "environment": "server",
+    "entrypoints": {
+        "main": [
+            {
+                "value": "dev.hybridlabs.fantasticfishery.survey.BiomeSurvey",
+                "adapter": "kotlin"
+            }
+        ]
+    },
+    "depends": {
+        "fantastic_fishery": "*"
+    }
+}
