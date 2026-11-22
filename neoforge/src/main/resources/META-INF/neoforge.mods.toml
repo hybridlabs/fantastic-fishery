@@ -36,9 +36,9 @@ versionRange = "[4.7.4,)"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]
-modId = "biolith"
+modId = "lithostitched"
 type = "required"
-versionRange = "[1.0.1-alpha.1,)"
+versionRange = "[1.8.0,)"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]

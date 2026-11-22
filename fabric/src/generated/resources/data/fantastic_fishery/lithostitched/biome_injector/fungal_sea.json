@@ -1,0 +1,18 @@
+{
+  "type": "lithostitched:replace_partially",
+  "dimension": "minecraft:overworld",
+  "parameters": {
+    "continentalness": [
+      -1.05,
+      -1.0
+    ]
+  },
+  "replacement": "fantastic_fishery:fungal_sea",
+  "targets": [
+    "minecraft:deep_frozen_ocean",
+    "minecraft:deep_cold_ocean",
+    "minecraft:deep_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:warm_ocean"
+  ]
+}
