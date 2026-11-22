@@ -4,7 +4,7 @@ import dev.hybridlabs.fantasticfishery.entity.crustacean.MycrabEntity
 import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseCrustaceanEntityModel
 import net.minecraft.resources.Identifier
-import software.bernie.geckolib.renderer.base.GeoRenderState
+import com.geckolib.renderer.base.GeoRenderState
 
 class MycrabEntityModel : BaseCrustaceanEntityModel<MycrabEntity>("fantastic_fishery", "mycrab") {
 

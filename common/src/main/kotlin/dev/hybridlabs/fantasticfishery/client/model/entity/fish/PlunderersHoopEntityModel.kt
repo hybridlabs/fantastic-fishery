@@ -5,7 +5,7 @@ import dev.hybridlabs.fantasticfishery.client.model.FFDataTickets
 import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import net.minecraft.resources.Identifier
-import software.bernie.geckolib.renderer.base.GeoRenderState
+import com.geckolib.renderer.base.GeoRenderState
 
 class PlunderersHoopEntityModel : BaseFishEntityModel<PlunderersHoopEntity>("fantastic_fishery", "plunderers_hoop") {
 

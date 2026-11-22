@@ -33,7 +33,7 @@ class PlunderersCoreEntity : ThrowableItemProjectile {
             return if (itemstack.isEmpty)
                 ParticleTypes.ITEM_SNOWBALL
             else
-                ItemParticleOption(ParticleTypes.ITEM, itemstack)
+                ItemParticleOption(ParticleTypes.ITEM, net.minecraft.world.item.ItemStackTemplate.fromNonEmptyStack(itemstack))
         }
 
     override fun handleEntityEvent(id: Byte) {

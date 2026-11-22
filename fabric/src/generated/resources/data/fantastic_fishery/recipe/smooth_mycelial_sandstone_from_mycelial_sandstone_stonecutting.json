@@ -2,7 +2,6 @@
   "type": "minecraft:stonecutting",
   "ingredient": "fantastic_fishery:mycelial_sandstone",
   "result": {
-    "count": 1,
     "id": "fantastic_fishery:smooth_mycelial_sandstone"
   }
 }

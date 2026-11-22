@@ -2,7 +2,7 @@ package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.placement.*
 import java.util.concurrent.CompletableFuture
 
 class PlacedFeatureProvider(
-    output: FabricDataOutput, registriesFuture: CompletableFuture<HolderLookup.Provider>,
+    output: FabricPackOutput, registriesFuture: CompletableFuture<HolderLookup.Provider>,
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
 
     companion object {

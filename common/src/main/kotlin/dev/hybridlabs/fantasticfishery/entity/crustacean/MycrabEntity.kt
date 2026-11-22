@@ -18,11 +18,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.ServerLevelAccessor
-import software.bernie.geckolib.constant.DefaultAnimations
-import software.bernie.geckolib.animatable.manager.AnimatableManager
-import software.bernie.geckolib.animation.AnimationController
-import software.bernie.geckolib.animation.state.AnimationTest
-import software.bernie.geckolib.animation.`object`.PlayState
+import com.geckolib.constant.DefaultAnimations
+import com.geckolib.animatable.manager.AnimatableManager
+import com.geckolib.animation.AnimationController
+import com.geckolib.animation.state.AnimationTest
+import com.geckolib.animation.`object`.PlayState
 import java.util.function.IntFunction
 import kotlin.random.Random
 
@@ -50,9 +50,9 @@ class MycrabEntity(entityType: EntityType<out MycrabEntity>, world: Level) :
             )
                 .setParticleKeyframeHandler { event ->
                     particleEvents(
-                        event as software.bernie.geckolib.animation.state.KeyFrameEvent<
+                        event as com.geckolib.animation.state.KeyFrameEvent<
                             BaseCrustaceanEntity,
-                            software.bernie.geckolib.cache.animation.keyframeevent.ParticleKeyframeData
+                            com.geckolib.cache.animation.keyframeevent.ParticleKeyframeData
                         >
                     )
                 }

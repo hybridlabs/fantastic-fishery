@@ -1,6 +1,6 @@
 package dev.hybridlabs.fantasticfishery.client.model
 
-import software.bernie.geckolib.constant.dataticket.DataTicket
+import com.geckolib.constant.dataticket.DataTicket
 
 /**
  * Model-local render state data. GeckoLib 5 models only receive a render state, so values a model

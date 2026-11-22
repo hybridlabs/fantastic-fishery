@@ -2,7 +2,7 @@ package dev.hybridlabs.fantasticfishery.data.server.worldgen
 
 import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderGetter
 import net.minecraft.core.HolderLookup
@@ -21,7 +21,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature
 import java.util.concurrent.CompletableFuture
 
 class BiomeProvider(
-    output: FabricDataOutput,
+    output: FabricPackOutput,
     registriesFuture: CompletableFuture<HolderLookup.Provider>,
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
     companion object {

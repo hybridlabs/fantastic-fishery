@@ -15,7 +15,6 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 
 import java.nio.file.Path;
 
@@ -46,8 +45,6 @@ public class FantasticFisheryCommon {
             RegistrationProvider.get(BuiltInRegistries.BLOCK_ENTITY_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<Feature<?>> FEATURE =
             RegistrationProvider.get(BuiltInRegistries.FEATURE, Constants.MOD_ID);
-    public static final RegistrationProvider<LootPoolEntryType> LOOT_POOL_ENTRY_TYPE =
-            RegistrationProvider.get(BuiltInRegistries.LOOT_POOL_ENTRY_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<ParticleType<?>> PARTICLE_TYPE =
             RegistrationProvider.get(BuiltInRegistries.PARTICLE_TYPE, Constants.MOD_ID);
     public static final RegistrationProvider<CreativeModeTab> CREATIVE_MODE_TABS =

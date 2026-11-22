@@ -1,7 +1,7 @@
 package dev.hybridlabs.fantasticfishery.data.server
 
 import dev.hybridlabs.fantasticfishery.item.FFItems
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider
 import net.minecraft.advancements.criterion.InventoryChangeTrigger
 import net.minecraft.core.HolderLookup
@@ -13,13 +13,14 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.CampfireCookingRecipe
+import net.minecraft.world.item.crafting.CookingBookCategory
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.SmeltingRecipe
 import net.minecraft.world.item.crafting.SmokingRecipe
 import java.util.concurrent.CompletableFuture
 
-class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture<HolderLookup.Provider>) :
+class RecipeProvider(output: FabricPackOutput, lookupProvider: CompletableFuture<HolderLookup.Provider>) :
     FabricRecipeProvider(output, lookupProvider) {
 
     override fun createRecipeProvider(
@@ -129,45 +130,13 @@ class RecipeProvider(output: FabricDataOutput, lookupProvider: CompletableFuture
             FFItems.MYCELIAL_SANDSTONE.get()
         )
 
-        SimpleCookingRecipeBuilder.generic(
-            Ingredient.of(FFItems.MYCELIAL_SAND.get()),
-            RecipeCategory.FOOD,
-            Items.GLASS,
-            0.15f,
-            200,
-            RecipeSerializer.SMELTING_RECIPE,
-            ::SmeltingRecipe
-        ).unlockedBy("has_material", has(FFItems.MYCELIAL_SAND.get())).save(exporter, "glass_from_smelting_mycelial_sand")
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(FFItems.MYCELIAL_SAND.get()), RecipeCategory.FOOD, CookingBookCategory.FOOD, Items.GLASS, 0.15f, 200).unlockedBy("has_material", has(FFItems.MYCELIAL_SAND.get())).save(exporter, "glass_from_smelting_mycelial_sand")
 
-        SimpleCookingRecipeBuilder.generic(
-            Ingredient.of(FFItems.MORSEL.get()),
-            RecipeCategory.FOOD,
-            FFItems.MORSEL_BAR.get(),
-            0.15f,
-            600,
-            RecipeSerializer.SMELTING_RECIPE,
-            ::SmeltingRecipe
-        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smelting")
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(FFItems.MORSEL.get()), RecipeCategory.FOOD, CookingBookCategory.FOOD, FFItems.MORSEL_BAR.get(), 0.15f, 600).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smelting")
 
-        SimpleCookingRecipeBuilder.generic(
-            Ingredient.of(FFItems.MORSEL.get()),
-            RecipeCategory.FOOD,
-            FFItems.MORSEL_BAR.get(),
-            0.15f,
-            300,
-            RecipeSerializer.SMOKING_RECIPE,
-            ::SmokingRecipe
-        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smoking")
+        SimpleCookingRecipeBuilder.smoking(Ingredient.of(FFItems.MORSEL.get()), RecipeCategory.FOOD, FFItems.MORSEL_BAR.get(), 0.15f, 300).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_smoking")
 
-        SimpleCookingRecipeBuilder.generic(
-            Ingredient.of(FFItems.MORSEL.get()),
-            RecipeCategory.FOOD,
-            FFItems.MORSEL_BAR.get(),
-            0.15f,
-            600,
-            RecipeSerializer.CAMPFIRE_COOKING_RECIPE,
-            ::CampfireCookingRecipe
-        ).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_campfire_cooking")
+        SimpleCookingRecipeBuilder.campfireCooking(Ingredient.of(FFItems.MORSEL.get()), RecipeCategory.FOOD, FFItems.MORSEL_BAR.get(), 0.15f, 600).unlockedBy("has_material", has(FFItems.MORSEL.get())).save(exporter, "morsel_bar_from_campfire_cooking")
 
         ShapelessRecipeBuilder.shapeless(itemLookup, RecipeCategory.FOOD, FFItems.STAR_DONUT.get())
             .requires(FFItems.PLUNDERERS_CORE.get())

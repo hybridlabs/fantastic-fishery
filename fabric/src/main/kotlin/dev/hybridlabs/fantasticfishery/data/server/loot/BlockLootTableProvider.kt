@@ -2,73 +2,57 @@ package dev.hybridlabs.fantasticfishery.data.server.loot
 
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.data.FantasticFisheryDataGenerator.filterFantasticFishery
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.block.BaseCoralWallFanBlock
-import net.minecraft.world.level.storage.loot.LootPool
-import net.minecraft.world.level.storage.loot.LootTable
-import net.minecraft.world.level.storage.loot.entries.LootItem
+import net.minecraft.world.level.block.Block
 import java.util.concurrent.CompletableFuture
 
-class BlockLootTableProvider(output: FabricDataOutput, registryLookup: CompletableFuture<HolderLookup.Provider>) :
-    FabricBlockLootTableProvider(output, registryLookup) {
+class BlockLootTableProvider(output: FabricPackOutput, registryLookup: CompletableFuture<HolderLookup.Provider>) :
+    FabricBlockLootSubProvider(output, registryLookup) {
 
     override fun generate() {
+        val handled = mutableSetOf<Block>()
 
         add(FFBlocks.SEASHROOM.get()) { block ->
-            LootTable.lootTable().pool(
-                LootPool.lootPool()
-                    .add(LootItem.lootTableItem(block))
-                    .conditionally(hasShearsOrSilkTouch().build())
-                    .build()
-            )
+            createShearsOrSilkTouchOnlyDrop(block)
         }
+        handled.add(FFBlocks.SEASHROOM.get())
 
-        add(FFBlocks.TALL_SEASHROOM.get(), createSingleItemTable(FFBlocks.SEASHROOM.get()))
-
-        //#region Corals
-        add(FFBlocks.AMETHYST_CORAL_BLOCK.get()) { block ->
-            LootTable.lootTable().withPool(
-                LootPool.lootPool()
-                    .add(
-                        LootItem.lootTableItem(block)
-                            .`when`(hasSilkTouch())
-                    )
-                    .add(
-                        LootItem.lootTableItem(FFBlocks.DEAD_AMETHYST_CORAL_BLOCK.get())
-                            .`when`(hasSilkTouch().invert())
-                    )
-            )
+        add(FFBlocks.TALL_SEASHROOM.get()) { _ ->
+            createSingleItemTable(FFBlocks.SEASHROOM.get())
         }
+        handled.add(FFBlocks.TALL_SEASHROOM.get())
 
         for (block in listOf(
             FFBlocks.AMETHYST_CORAL.get(),
             FFBlocks.DEAD_AMETHYST_CORAL.get(),
             FFBlocks.AMETHYST_CORAL_FAN.get(),
             FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
-            
+
             FFBlocks.CHICKEN_CORAL.get(),
             FFBlocks.DEAD_CHICKEN_CORAL.get(),
             FFBlocks.CHICKEN_CORAL_FAN.get(),
             FFBlocks.DEAD_CHICKEN_CORAL_FAN.get(),
-            
+
             FFBlocks.OYSTER_CORAL.get(),
             FFBlocks.DEAD_OYSTER_CORAL.get(),
             FFBlocks.OYSTER_CORAL_FAN.get(),
             FFBlocks.DEAD_OYSTER_CORAL_FAN.get(),
-            
+
             FFBlocks.SPIRAL_CORAL.get(),
             FFBlocks.DEAD_SPIRAL_CORAL.get(),
             FFBlocks.SPIRAL_CORAL_FAN.get(),
             FFBlocks.DEAD_SPIRAL_CORAL_FAN.get(),
         )) {
-            add(block, createSilkTouchOnlyTable(block))
+            add(block, createSingleItemTable(block))
+            handled.add(block)
         }
 
-        mapOf(
+        val wallFans = mapOf(
             FFBlocks.AMETHYST_CORAL_WALL_FAN.get() to FFBlocks.AMETHYST_CORAL_FAN.get(),
             FFBlocks.DEAD_AMETHYST_CORAL_WALL_FAN.get() to FFBlocks.DEAD_AMETHYST_CORAL_FAN.get(),
             FFBlocks.OYSTER_CORAL_WALL_FAN.get() to FFBlocks.OYSTER_CORAL_FAN.get(),
@@ -77,24 +61,25 @@ class BlockLootTableProvider(output: FabricDataOutput, registryLookup: Completab
             FFBlocks.DEAD_SPIRAL_CORAL_WALL_FAN.get() to FFBlocks.DEAD_SPIRAL_CORAL_FAN.get(),
             FFBlocks.CHICKEN_CORAL_WALL_FAN.get() to FFBlocks.CHICKEN_CORAL_FAN.get(),
             FFBlocks.DEAD_CHICKEN_CORAL_WALL_FAN.get() to FFBlocks.DEAD_CHICKEN_CORAL_FAN.get(),
-        ).forEach { (wallFan, fan) ->
-            add(wallFan, createSilkTouchOnlyTable(fan))
+        )
+        wallFans.forEach { (wallFan, fan) ->
+            add(wallFan, createSingleItemTableWithSilkTouch(wallFan, fan))
+            handled.add(wallFan)
         }
 
-        // generate remaining drops
         BuiltInRegistries.BLOCK
             .filter(filterFantasticFishery(BuiltInRegistries.BLOCK))
             .filter { block ->
                 block.asItem() != Items.AIR
                         && block !is BaseCoralWallFanBlock
-                        && block.lootTable.orElse(null) !in map
+                        && block !in handled
             }
             .forEach { block ->
                 val id = BuiltInRegistries.BLOCK.getKey(block)
                 if (id.path.endsWith("slab")) {
                     add(block, createSlabItemTable(block))
                 } else {
-                    dropSelf(block)
+                    add(block, createSingleItemTable(block))
                 }
             }
     }

@@ -1,12 +1,9 @@
 package dev.hybridlabs.fantasticfishery.platform.services;
 
 import dev.hybridlabs.fantasticfishery.platform.registration.RegistryObject;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -22,12 +19,6 @@ public class ForgeClientPlatformHelper implements ClientPlatformHelper {
         ForgePlatformHelper.getEventBus().addListener(handler::handleEvent);
     }
 
-    @Override
-    public void registerBlockRenderers(ChunkSectionLayer layer, Block... blocks) {
-        for (Block block : blocks) {
-            ItemBlockRenderTypes.setRenderLayer(block, layer);
-        }
-    }
 
     private record RendererRegistrationHandler<T extends Entity>(RegistryObject<EntityType<T>> type,
                                                                  EntityRendererProvider<T> rendererProvider) {

@@ -4,7 +4,7 @@ import dev.hybridlabs.fantasticfishery.block.FFBlockFamilies
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.block.ShroompadBlock
 import dev.hybridlabs.fantasticfishery.item.FFItems
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.client.data.models.BlockModelGenerators
@@ -15,7 +15,7 @@ import net.minecraft.client.data.models.model.TextureSlot
 import net.minecraft.client.data.models.model.TexturedModel
 
 
-class ModelProvider(output: FabricDataOutput) : FabricModelProvider(output) {
+class ModelProvider(output: FabricPackOutput) : FabricModelProvider(output) {
     override fun generateBlockStateModels(generator: BlockModelGenerators) {
         generator.run {
             createCrossBlock(

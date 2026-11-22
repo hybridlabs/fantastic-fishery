@@ -1,6 +1,6 @@
 {
   "type": "minecraft:smelting",
-  "category": "blocks",
+  "category": "food",
   "cookingtime": 200,
   "experience": 0.15,
   "ingredient": "fantastic_fishery:mycelial_sand",

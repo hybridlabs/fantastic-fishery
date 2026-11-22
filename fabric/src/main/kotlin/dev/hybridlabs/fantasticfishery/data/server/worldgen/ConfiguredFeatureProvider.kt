@@ -3,7 +3,7 @@ package dev.hybridlabs.fantasticfishery.data.server.worldgen
 import dev.hybridlabs.fantasticfishery.block.FFBlocks
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricDynamicRegistryProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.HolderSet
@@ -18,7 +18,6 @@ import net.minecraft.world.level.levelgen.feature.Feature
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.ProbabilityFeatureConfiguration
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider
@@ -26,7 +25,7 @@ import net.minecraft.world.level.levelgen.placement.PlacementModifier
 import java.util.concurrent.CompletableFuture
 
 class ConfiguredFeatureProvider(
-    output: FabricDataOutput,
+    output: FabricPackOutput,
     registriesFuture: CompletableFuture<HolderLookup.Provider>,
 ) : FabricDynamicRegistryProvider(output, registriesFuture) {
     companion object {
@@ -35,32 +34,18 @@ class ConfiguredFeatureProvider(
             FeatureUtils.register(
                 bootstrap,
                 FFConfiguredFeatures.RED_SHROOMPADS,
-                Feature.RANDOM_PATCH,
-                RandomPatchConfiguration(
-                    10, 5, 5,
-                    PlacementUtils.filtered(
-                        Feature.SIMPLE_BLOCK,
-                        SimpleBlockConfiguration(
-                            SimpleStateProvider.simple(FFBlocks.RED_SHROOMPAD.get())
-                        ),
-                        BlockPredicate.matchesBlocks(Blocks.WATER)
-                    )
+                Feature.SIMPLE_BLOCK,
+                SimpleBlockConfiguration(
+                    SimpleStateProvider.simple(FFBlocks.RED_SHROOMPAD.get())
                 )
             )
 
             FeatureUtils.register(
                 bootstrap,
                 FFConfiguredFeatures.BROWN_SHROOMPADS,
-                Feature.RANDOM_PATCH,
-                RandomPatchConfiguration(
-                    10, 5, 5,
-                    PlacementUtils.filtered(
-                        Feature.SIMPLE_BLOCK,
-                        SimpleBlockConfiguration(
-                            SimpleStateProvider.simple(FFBlocks.BROWN_SHROOMPAD.get())
-                        ),
-                        BlockPredicate.matchesBlocks(Blocks.WATER)
-                    )
+                Feature.SIMPLE_BLOCK,
+                SimpleBlockConfiguration(
+                    SimpleStateProvider.simple(FFBlocks.BROWN_SHROOMPAD.get())
                 )
             )
 

@@ -5,7 +5,7 @@ import dev.hybridlabs.fantasticfishery.entity.fish.PuffballPufferEntity
 import dev.hybridlabs.fantasticfishery.client.model.FFDataTickets
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import net.minecraft.resources.Identifier
-import software.bernie.geckolib.renderer.base.GeoRenderState
+import com.geckolib.renderer.base.GeoRenderState
 
 class PuffballPufferEntityModel : BaseFishEntityModel<PuffballPufferEntity>("fantastic_fishery", "puffball_puffer") {
 

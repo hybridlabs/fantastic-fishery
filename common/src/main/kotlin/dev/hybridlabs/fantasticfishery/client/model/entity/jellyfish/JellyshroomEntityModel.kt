@@ -4,7 +4,7 @@ import dev.hybridlabs.fantasticfishery.entity.jellyfish.JellyshroomEntity
 import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseJellyfishEntityModel
 import net.minecraft.resources.Identifier
-import software.bernie.geckolib.renderer.base.GeoRenderState
+import com.geckolib.renderer.base.GeoRenderState
 
 class JellyshroomEntityModel : BaseJellyfishEntityModel<JellyshroomEntity>("fantastic_fishery", "jellyshroom") {
 

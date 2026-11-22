@@ -4,7 +4,7 @@ import dev.hybridlabs.fantasticfishery.entity.fish.FungillEntity
 import dev.hybridlabs.hapi.client.model.getVariant
 import dev.hybridlabs.hapi.client.model.entity.aquatic.BaseFishEntityModel
 import net.minecraft.resources.Identifier
-import software.bernie.geckolib.renderer.base.GeoRenderState
+import com.geckolib.renderer.base.GeoRenderState
 
 class FungillEntityModel : BaseFishEntityModel<FungillEntity>("fantastic_fishery", "fungill") {
 

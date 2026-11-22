@@ -2,8 +2,8 @@ package dev.hybridlabs.fantasticfishery.data.server.loot
 
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.item.FFItems
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
+import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableSubProvider
 import net.minecraft.advancements.criterion.EntityFlagsPredicate
 import net.minecraft.advancements.criterion.EntityPredicate
 import net.minecraft.core.HolderLookup
@@ -22,8 +22,8 @@ import java.util.function.BiConsumer
 /**
  * Generates entity loot tables.
  */
-class EntityTypeLootTableProvider(exporter: FabricDataOutput, val lookupProvider: CompletableFuture<HolderLookup.Provider>) :
-    SimpleFabricLootTableProvider(exporter, lookupProvider, LootContextParamSets.ENTITY) {
+class EntityTypeLootTableProvider(exporter: FabricPackOutput, val lookupProvider: CompletableFuture<HolderLookup.Provider>) :
+    SimpleFabricLootTableSubProvider(exporter, lookupProvider, LootContextParamSets.ENTITY) {
     override fun generate(exporter: BiConsumer<ResourceKey<LootTable>, LootTable.Builder>) {
         val lookup = lookupProvider.join()
         export(exporter, FFEntityTypes.MORSEL.get().defaultLootTable.orElseThrow()) {

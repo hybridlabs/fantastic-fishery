@@ -2,14 +2,14 @@ package dev.hybridlabs.fantasticfishery.data.server.tag
 
 import dev.hybridlabs.fantasticfishery.entity.FFEntityTypes
 import dev.hybridlabs.fantasticfishery.tag.FFEntityTags
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider
 import net.minecraft.core.HolderLookup
 import net.minecraft.tags.EntityTypeTags
 import java.util.concurrent.CompletableFuture
 
-class EntityTypeTagProvider(output: FabricDataOutput, registriesFuture: CompletableFuture<HolderLookup.Provider>) :
-    FabricTagProvider.EntityTypeTagProvider(output, registriesFuture) {
+class EntityTypeTagProvider(output: FabricPackOutput, registriesFuture: CompletableFuture<HolderLookup.Provider>) :
+    FabricTagsProvider.EntityTypeTagsProvider(output, registriesFuture) {
     override fun addTags(arg: HolderLookup.Provider) {
         valueLookupBuilder(FFEntityTags.SMALL_CREATURES)
             .add(
