@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Updated to Minecraft 26.3
+- Removed dependency on Biolith; biome placement and surface rules now go through Lithostitched
 
 <details>
 <summary>Developer notes</summary>
@@ -16,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   moved to `assets/<namespace>/geckolib/{models,animations}`
 - Items set their registry id before construction, as required since 1.21.5
 - Updated entity save data, damage handling and block state APIs to 1.21.11
+- Replaced Biolith with Lithostitched: biome placements are `lithostitched:replace_partially` biome
+  injectors and the mycelial sand surface is a `lithostitched:set_material_rule` worldgen modifier.
+  Fungal Sea's "adjacent to Mushroom Fields" placement (a Biolith neighbour criterion) has no Lithostitched
+  equivalent, so it is approximated by the deep-ocean continentalness band just off the Mushroom Fields band.
 
 </details>
 

@@ -10,9 +10,12 @@ import dev.hybridlabs.fantasticfishery.data.server.tag.BiomeTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.BlockTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.EntityTypeTagProvider
 import dev.hybridlabs.fantasticfishery.data.server.tag.ItemTagProvider
+import dev.hybridlabs.fantasticfishery.data.server.worldgen.BiomeInjectorProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.BiomeProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.ConfiguredFeatureProvider
 import dev.hybridlabs.fantasticfishery.data.server.worldgen.PlacedFeatureProvider
+import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
+import dev.worldgen.lithostitched.api.registry.LithostitchedRegistries
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.minecraft.core.Registry
@@ -34,12 +37,16 @@ object FantasticFisheryDataGenerator : DataGeneratorEntrypoint {
         pack.addProvider(::BiomeProvider)
         pack.addProvider(::ConfiguredFeatureProvider)
         pack.addProvider(::PlacedFeatureProvider)
+        pack.addProvider(::BiomeInjectorProvider)
     }
 
     override fun buildRegistry(registryBuilder: RegistrySetBuilder) {
         registryBuilder.add(Registries.PLACED_FEATURE, PlacedFeatureProvider::bootstrapPlacedFeatures)
         registryBuilder.add(Registries.FEATURE, ConfiguredFeatureProvider::bootstrapConfiguredFeatures)
         registryBuilder.add(Registries.BIOME, BiomeProvider::bootstrapBiomes )
+        registryBuilder.add(Registries.MATERIAL_RULE, FFBiomes::bootstrapMaterialRules)
+        registryBuilder.add(LithostitchedRegistries.BIOME_INJECTOR, FFBiomes::bootstrapBiomeInjectors)
+        registryBuilder.add(LithostitchedRegistries.WORLDGEN_MODIFIER, FFBiomes::bootstrapWorldgenModifiers)
     }
 
     fun <T : Any> filterFantasticFishery(registry: Registry<T>): (T) -> Boolean {

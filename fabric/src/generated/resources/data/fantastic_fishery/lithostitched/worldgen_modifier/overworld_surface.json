@@ -1,0 +1,9 @@
+{
+  "type": "lithostitched:set_material_rule",
+  "injection_type": "prepend",
+  "material_rule": "fantastic_fishery:overworld",
+  "target_rules": {
+    "type": "lithostitched:holder_set",
+    "set": "minecraft:overworld"
+  }
+}
