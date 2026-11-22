@@ -1,0 +1,12 @@
+{
+  "type": "lithostitched:replace_partially",
+  "dimension": "minecraft:overworld",
+  "parameters": {
+    "continentalness": [
+      -1.075,
+      -1.05
+    ]
+  },
+  "replacement": "fantastic_fishery:mushroom_fields_shore",
+  "targets": "minecraft:mushroom_fields"
+}

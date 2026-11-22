@@ -11,7 +11,6 @@ import dev.hybridlabs.fantasticfishery.tag.FFBiomeTags
 import dev.hybridlabs.fantasticfishery.tag.FFBlockTags
 import dev.hybridlabs.fantasticfishery.tag.FFEntityTags
 import dev.hybridlabs.fantasticfishery.tag.FFItemTags
-import dev.hybridlabs.fantasticfishery.world.gen.biome.FFBiomes
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFConfiguredFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFFeatures
 import dev.hybridlabs.fantasticfishery.world.gen.feature.FFPlacedFeatures
@@ -32,7 +31,6 @@ object FantasticFishery : ModInitializer {
 
         FFBlocks
         FFEntityTypes
-        FFBiomes.addBiomes()
         FFItems
         FFItemGroups
         FFBlockTags

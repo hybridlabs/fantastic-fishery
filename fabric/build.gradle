@@ -8,9 +8,8 @@ dependencies {
 
     implementation "com.geckolib:geckolib-fabric-$geckolib_version"
     localRuntime("com.terraformersmc:modmenu:${modmenu_version}")
-    implementation("com.terraformersmc:biolith-fabric:${biolith_version}") {
-        exclude(group: "com.github.glitchfiend")
-    }
+
+    implementation "maven.modrinth:lithostitched:${lithostitched_version}-fabric-26.2"
 }
 
 fabricApi {
@@ -29,8 +28,36 @@ tasks.withType(Jar).configureEach {
 }
 
 publishMods.platforms.configureEach {
-    requires 'fabric-api', 'fabric-language-kotlin', 'geckolib', 'biolith', 'hybrid-api'
+    requires 'fabric-api', 'fabric-language-kotlin', 'geckolib', 'lithostitched', 'hybrid-api'
 }
+
+// Dev-only server run that samples overworld biome placement and fails when one of our biomes never generates.
+sourceSets {
+    biomeSurvey {
+        compileClasspath += sourceSets.main.compileClasspath + sourceSets.main.output
+        runtimeClasspath += sourceSets.main.runtimeClasspath + sourceSets.main.output
+    }
+}
+
+loom.runs.create('biomeSurvey') {
+    server()
+    configName = 'Biome Survey'
+    source sourceSets.biomeSurvey
+    runDir 'run/biome-survey'
+    programArgs 'nogui'
+}
+
+def prepareBiomeSurvey = tasks.register('prepareBiomeSurvey') {
+    def dir = file('run/biome-survey')
+    doLast {
+        delete(new File(dir, 'world'), new File(dir, 'biome-survey-report.txt'))
+        new File(dir, 'mods').mkdirs()
+        // Accepts the Minecraft EULA for this throwaway server
+        new File(dir, 'eula.txt').text = 'eula=true\n'
+        new File(dir, 'server.properties').text = 'level-seed=424242\nonline-mode=false\nserver-port=25598\nmax-tick-time=-1\n'
+    }
+}
+tasks.named('runBiomeSurvey') { dependsOn prepareBiomeSurvey }
 
 // GeckoLib 5.5 moved to the com.geckolib group, which hybrid-gradle's GeckoLib repository
 // filter does not include yet.
