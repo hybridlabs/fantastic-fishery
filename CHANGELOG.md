@@ -5,24 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.1.2] 2026-11-24
 
-- Updated to Minecraft 26.1.2
-- Removed dependency on Biolith; biome placement and surface rules now go through Lithostitched
+- Now available for Minecraft 26.1.2.
+- Biolith is no longer required.
+- The Fungal Sea now generates in the deep ocean just off Mushroom Fields.
 
-<details>
-<summary>Developer notes</summary>
+### Developer notes
 
-- Migrated to GeckoLib 5: models and renderers are driven by render states, and GeckoLib assets
-  moved to `assets/<namespace>/geckolib/{models,animations}`
-- Items set their registry id before construction, as required since 1.21.5
-- Updated entity save data, damage handling and block state APIs to 1.21.11
-- Replaced Biolith with Lithostitched: biome placements are `lithostitched:replace_partially` biome
-  injectors and the mycelial sand surface is a `lithostitched:add_surface_rule` worldgen modifier.
-  Fungal Sea's "adjacent to Mushroom Fields" placement (a Biolith neighbour criterion) has no Lithostitched
-  equivalent, so it is approximated by the deep-ocean continentalness band just off the Mushroom Fields band.
-
-</details>
+- Biome placements are generated as Lithostitched biome injectors.
+- The mycelial sand surface is a Lithostitched worldgen modifier.
+- Fungal Sea’s old “adjacent to Mushroom Fields” criterion has no Lithostitched equivalent, so it is approximated by the deep-ocean continentalness band just off the Mushroom Fields band.
 
 ## [1.1.1] 2026-09-13
 
